@@ -142,6 +142,36 @@
       }
     },
     {
+      "name": "morphing-text",
+      "type": "registry:component",
+      "title": "Morphing Text",
+      "description": "Melts one word into the next with a blur and an SVG threshold filter. Screen readers get the whole list once.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/text/morphing-text/morphing-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "text"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/morphing-text.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
       "name": "number-ticker",
       "type": "registry:component",
       "title": "Number Ticker",
@@ -197,6 +227,64 @@
           "repo": "educlopez/smoothui",
           "license": "MIT",
           "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/shine-text/index.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "split-flap-text",
+      "type": "registry:component",
+      "title": "Split Flap Text",
+      "description": "Departure-board lettering. Tiles flip through a drum of letters on a hinge, one beat apart. Screen readers get the lines once.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/text/split-flap-text/split-flap-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "text"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/split-flap-text.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "spoiler-text",
+      "type": "registry:component",
+      "title": "Spoiler Text",
+      "description": "Text hidden under a shimmering field of specks. Click or press Enter to blow them away and read it. Screen readers hear a spoiler button until it opens.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/text/spoiler-text/spoiler-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "text"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/spoiler-text.tsx"
         },
         "status": "stable"
       }
@@ -456,6 +544,36 @@
       }
     },
     {
+      "name": "halftone-background",
+      "type": "registry:component",
+      "title": "Halftone Background",
+      "description": "A halftone print on a canvas: a rotated screen of dots sized by the ink a lit sphere takes, with a light that circles it or follows the cursor.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/background/halftone-background/halftone-background.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "background"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/halftone-background.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
       "name": "mesh-glow",
       "type": "registry:component",
       "title": "Mesh Glow",
@@ -542,6 +660,36 @@
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx",
           "note": "Rebuilt in CSS 3D (upstream is WebGL)."
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "topo-background",
+      "type": "registry:component",
+      "title": "Topo Background",
+      "description": "A drifting topographic map: contour lines traced through a noise terrain on a canvas, with a hill that rises under the cursor.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/background/topo-background/topo-background.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "background"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/topo-background.tsx"
         },
         "status": "stable"
       }
@@ -1245,6 +1393,36 @@
       }
     },
     {
+      "name": "hold-action-button",
+      "type": "registry:component",
+      "title": "Hold Action Button",
+      "description": "A button that confirms only after being held down, with a fill that rewinds on early release. Works with pointer and Space / Enter, announces completion, and completes without animation under reduced motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/interactive/hold-action-button/hold-action-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "interactive"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/hold-action-button.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
       "name": "hover-swap-card",
       "type": "registry:component",
       "title": "Hover Swap Card",
@@ -1268,6 +1446,36 @@
           "repo": "ui-layouts/uilayouts",
           "license": "MIT",
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/card/creative-hover-card.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "lens",
+      "type": "registry:component",
+      "title": "Lens",
+      "description": "A round magnifying lens that follows the pointer over any content. Mouse and trackpad only: touch screens and reduced motion get the plain content. The magnified copy is hidden from assistive tech.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/interactive/lens/lens.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "interactive"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/lens.tsx"
         },
         "status": "stable"
       }
@@ -1532,6 +1740,34 @@
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/orbiting-circles.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "progressive-blur",
+      "type": "registry:component",
+      "title": "Progressive Blur",
+      "description": "A gradual blur over the edge of a scrolling area, built from stacked backdrop-filter layers. Decorative and static.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/layout/progressive-blur/progressive-blur.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "layout"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/progressive-blur.tsx"
         },
         "status": "stable"
       }

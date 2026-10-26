@@ -387,6 +387,76 @@
     "path": "registry/text/chromatic-text-reveal"
   },
   {
+    "name": "morphing-text",
+    "title": "Morphing Text",
+    "description": "Melts one word into the next with a blur and an SVG threshold filter. Screen readers get the whole list once.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/morphing-text.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "words",
+      "blur",
+      "headline",
+      "loop"
+    ],
+    "props": [
+      {
+        "name": "words",
+        "type": "string[]",
+        "required": true,
+        "description": "Words to morph through, in order. The last one morphs back into the first."
+      },
+      {
+        "name": "interval",
+        "type": "number",
+        "default": "0.8",
+        "description": "Seconds each word holds still between morphs."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.5",
+        "description": "Seconds each morph takes."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the first morph is counted."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'span'",
+        "description": "Element to render."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows the first word only."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "morphing-text.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { MorphingText } from './morphing-text'\n\nexport default function MorphingTextDemo() {\n  return (\n    <MorphingText\n      words={['Mozaik', 'Motion', 'Craft', 'Detail']}\n      className=\"text-6xl font-bold tracking-tight sm:text-8xl\"\n    />\n  )\n}\n",
+    "path": "registry/text/morphing-text"
+  },
+  {
     "name": "number-ticker",
     "title": "Number Ticker",
     "description": "Counts a number up or down with a soft ease once it scrolls into view. Screen readers get the final value.",
@@ -535,6 +605,164 @@
     "status": "stable",
     "demo": "import { ShineText } from './shine-text'\n\nexport default function ShineTextDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-5 text-center\">\n      <ShineText className=\"text-6xl font-semibold tracking-tight\">Crafted with care</ShineText>\n      <ShineText\n        duration={3.2}\n        baseColor=\"var(--primary)\"\n        shineColor=\"var(--foreground)\"\n        className=\"text-xl font-medium\"\n      >\n        A light that moves through the words\n      </ShineText>\n    </div>\n  )\n}\n",
     "path": "registry/text/shine-text"
+  },
+  {
+    "name": "split-flap-text",
+    "title": "Split Flap Text",
+    "description": "Departure-board lettering. Tiles flip through a drum of letters on a hinge, one beat apart. Screen readers get the lines once.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/split-flap-text.tsx"
+    },
+    "dependencies": [],
+    "tags": [
+      "board",
+      "airport",
+      "flip",
+      "loop"
+    ],
+    "props": [
+      {
+        "name": "words",
+        "type": "string[]",
+        "required": true,
+        "description": "Lines to show. With two or more, the board cycles through them. Letters outside A-Z, 0-9 and :.-/&!? become blanks."
+      },
+      {
+        "name": "interval",
+        "type": "number",
+        "default": "3.8",
+        "description": "Seconds each line stays up."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.056",
+        "description": "Seconds one flap takes to fall."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the board starts cycling."
+      },
+      {
+        "name": "length",
+        "type": "number",
+        "description": "Tiles always shown. Defaults to the longest line."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'span'",
+        "description": "Element to render."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows the first line and never flips."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      },
+      {
+        "name": "tileClassName",
+        "type": "string",
+        "description": "Classes for each tile, to recolor the board."
+      }
+    ],
+    "files": [
+      "split-flap-text.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { SplitFlapText } from './split-flap-text'\n\nexport default function SplitFlapTextDemo() {\n  return (\n    <SplitFlapText\n      words={['Now boarding', 'Gate 12', 'On time', 'Last call']}\n      className=\"text-4xl sm:text-6xl\"\n    />\n  )\n}\n",
+    "path": "registry/text/split-flap-text"
+  },
+  {
+    "name": "spoiler-text",
+    "title": "Spoiler Text",
+    "description": "Text hidden under a shimmering field of specks. Click or press Enter to blow them away and read it. Screen readers hear a spoiler button until it opens.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/spoiler-text.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "spoiler",
+      "reveal",
+      "canvas",
+      "interactive"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The hidden text."
+      },
+      {
+        "name": "revealed",
+        "type": "boolean",
+        "description": "Controlled state. Leave it out and the spoiler keeps its own."
+      },
+      {
+        "name": "defaultRevealed",
+        "type": "boolean",
+        "default": "false",
+        "description": "Start already revealed."
+      },
+      {
+        "name": "onRevealedChange",
+        "type": "(revealed: boolean) => void",
+        "description": "Called when the text is revealed."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Spoiler, press to reveal'",
+        "description": "What screen readers hear while the text is hidden."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.5",
+        "description": "Seconds the reveal takes."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'span'",
+        "description": "Element to render."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows the text plainly and ignores clicks."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "spoiler-text.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { SpoilerText } from './spoiler-text'\n\nexport default function SpoilerTextDemo() {\n  return (\n    <p className=\"max-w-md text-xl leading-8\">\n      Don&apos;t read ahead. In the finale,{' '}\n      <SpoilerText className=\"font-medium text-primary\">\n        the lighthouse keeper had been writing the letters all along\n      </SpoilerText>\n      , and nobody saw it coming.\n    </p>\n  )\n}\n",
+    "path": "registry/text/spoiler-text"
   },
   {
     "name": "typing-animation",
@@ -1131,6 +1359,69 @@
     "path": "registry/background/graph-paper"
   },
   {
+    "name": "halftone-background",
+    "title": "Halftone Background",
+    "description": "A halftone print on a canvas: a rotated screen of dots sized by the ink a lit sphere takes, with a light that circles it or follows the cursor.",
+    "category": "background",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/halftone-background.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "canvas",
+      "halftone",
+      "dots",
+      "cursor"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content rendered above the dots."
+      },
+      {
+        "name": "cell",
+        "type": "number",
+        "default": "9",
+        "description": "Distance between dots, in pixels."
+      },
+      {
+        "name": "angle",
+        "type": "number",
+        "default": "45",
+        "description": "Screen angle in degrees; 45 is the classic print angle."
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": "1",
+        "description": "How fast the light circles the sphere. 0 holds it still."
+      },
+      {
+        "name": "interactive",
+        "type": "boolean",
+        "default": "true",
+        "description": "Let the light follow the cursor. Off on touch screens and under reduced motion."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "halftone-background.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { HalftoneBackground } from './halftone-background'\n\nexport default function HalftoneBackgroundDemo() {\n  return (\n    <HalftoneBackground className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-center justify-end rounded-2xl border px-8 pb-10 text-center sm:items-start sm:justify-center sm:pb-0 sm:pl-14 sm:text-left\">\n      <h2 className=\"max-w-sm text-5xl font-semibold tracking-tight text-balance\">Printed in dots</h2>\n      <p className=\"mt-4 max-w-sm text-base text-muted-foreground text-pretty\">\n        A halftone screen where the size of every dot is the amount of ink. The light circles\n        the sphere on its own; move your cursor to take it for a walk.\n      </p>\n    </HalftoneBackground>\n  )\n}\n",
+    "path": "registry/background/halftone-background"
+  },
+  {
     "name": "mesh-glow",
     "title": "Mesh Glow",
     "description": "Soft blurred glows over a fine grid with a calm vignette. Drifts slowly, or holds still.",
@@ -1325,6 +1616,69 @@
     "status": "stable",
     "demo": "import { RetroGrid } from './retro-grid'\n\nexport default function RetroGridDemo() {\n  return (\n    <div className=\"relative flex h-[26rem] w-[min(48rem,90vw)] flex-col items-center justify-center overflow-hidden rounded-2xl border border-border bg-background\">\n      <RetroGrid />\n      <p className=\"relative text-xs font-medium tracking-widest text-primary uppercase\">Perspective</p>\n      <h3 className=\"relative mt-3 bg-linear-to-b from-foreground to-foreground/50 bg-clip-text text-5xl font-semibold tracking-tight text-transparent\">\n        Grid to the horizon\n      </h3>\n      <p className=\"relative mt-3 max-w-sm text-center text-sm text-muted-foreground\">\n        A floor of lines rolling toward you. Tilt, cell size and speed are props.\n      </p>\n    </div>\n  )\n}\n",
     "path": "registry/background/retro-grid"
+  },
+  {
+    "name": "topo-background",
+    "title": "Topo Background",
+    "description": "A drifting topographic map: contour lines traced through a noise terrain on a canvas, with a hill that rises under the cursor.",
+    "category": "background",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/topo-background.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "canvas",
+      "contour",
+      "terrain",
+      "cursor"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content rendered above the map."
+      },
+      {
+        "name": "interval",
+        "type": "number",
+        "default": "0.07",
+        "description": "Height difference between two contour lines. Lower draws more lines."
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": "1",
+        "description": "How fast the terrain drifts. 0 holds it still."
+      },
+      {
+        "name": "interactive",
+        "type": "boolean",
+        "default": "true",
+        "description": "Raise a hill under the cursor. Off on touch screens and under reduced motion."
+      },
+      {
+        "name": "seed",
+        "type": "number",
+        "default": "26",
+        "description": "Seed for the terrain, so a page always opens on the same map."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "topo-background.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { TopoBackground } from './topo-background'\n\nexport default function TopoBackgroundDemo() {\n  return (\n    <TopoBackground className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-center justify-center rounded-2xl border px-8 text-center\">\n      <h2 className=\"max-w-xl text-5xl font-semibold tracking-tight text-balance\">Find your footing</h2>\n      <p className=\"mt-4 max-w-md text-base text-muted-foreground text-pretty\">\n        A living contour map. The terrain drifts on its own; move your cursor to raise a hill\n        and watch the lines bend around it.\n      </p>\n    </TopoBackground>\n  )\n}\n",
+    "path": "registry/background/topo-background"
   },
   {
     "name": "magnetic",
@@ -3067,6 +3421,75 @@
     "path": "registry/interactive/family-button"
   },
   {
+    "name": "hold-action-button",
+    "title": "Hold Action Button",
+    "description": "A button that confirms only after being held down, with a fill that rewinds on early release. Works with pointer and Space / Enter, announces completion, and completes without animation under reduced motion.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/hold-action-button.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "button",
+      "hold",
+      "confirm",
+      "progress"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "Resting label and accessible name."
+      },
+      {
+        "name": "holdingLabel",
+        "type": "ReactNode",
+        "default": "'Keep holding'",
+        "description": "Label shown while the button is held."
+      },
+      {
+        "name": "completeLabel",
+        "type": "ReactNode",
+        "default": "'Done'",
+        "description": "Label shown and announced once the hold completes."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.6",
+        "description": "Seconds the button has to be held."
+      },
+      {
+        "name": "onComplete",
+        "type": "() => void",
+        "description": "Called once per completed hold."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables the button."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the button."
+      }
+    ],
+    "files": [
+      "hold-action-button.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useState } from 'react'\nimport { HoldActionButton } from './hold-action-button'\n\nexport default function HoldActionButtonDemo() {\n  const [count, setCount] = useState(0)\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <HoldActionButton duration={1.4} holdingLabel=\"Keep holding...\" completeLabel=\"Deleted\" onComplete={() => setCount((n) => n + 1)}>\n        Hold to delete\n      </HoldActionButton>\n      <p className=\"text-sm text-muted-foreground\">\n        {count === 0 ? 'Press and hold, or hold Space / Enter.' : `Confirmed ${count} time${count === 1 ? '' : 's'}.`}\n      </p>\n      <div className=\"flex items-center gap-4\">\n        <HoldActionButton duration={0.8} className=\"h-12 min-w-40 rounded-full\">\n          Quick hold\n        </HoldActionButton>\n        <HoldActionButton disabled className=\"h-12 min-w-40 rounded-full\">\n          Disabled\n        </HoldActionButton>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/interactive/hold-action-button"
+  },
+  {
     "name": "hover-swap-card",
     "title": "Hover Swap Card",
     "description": "A card that swaps its title and visual and lifts the media on hover or keyboard focus. Pure CSS transitions.",
@@ -3134,6 +3557,70 @@
     "status": "stable",
     "demo": "import { HoverSwapCard } from './hover-swap-card'\n\nconst Bars = ({ heights, accent }: { heights: number[]; accent?: boolean }) => (\n  <div className=\"flex h-full items-end gap-2 px-6 pb-0\">\n    {heights.map((h, i) => (\n      <div\n        key={i}\n        style={{ height: `${h}%` }}\n        className={`flex-1 rounded-t-md ${accent ? 'bg-linear-to-t from-primary/70 to-primary/20' : 'bg-linear-to-t from-muted-foreground/30 to-muted-foreground/5'}`}\n      />\n    ))}\n  </div>\n)\n\nexport default function HoverSwapCardDemo() {\n  return (\n    <div className=\"flex flex-wrap items-start justify-center gap-5\">\n      <HoverSwapCard\n        badge=\"Analytics\"\n        title=\"Subscriber reports\"\n        hoverTitle=\"Subscriber highlights\"\n        description=\"Hover to bring the trend into focus.\"\n        media={<Bars heights={[30, 42, 36, 48, 40, 52, 46]} />}\n        hoverMedia={<Bars accent heights={[28, 44, 52, 66, 74, 86, 96]} />}\n      />\n      <HoverSwapCard\n        badge=\"Security\"\n        title=\"Quiet by default\"\n        hoverTitle=\"Loud when it matters\"\n        description=\"Tab to it and the same swap plays.\"\n        media={<Bars heights={[50, 50, 48, 52, 50, 49, 51]} />}\n        hoverMedia={<Bars accent heights={[20, 35, 90, 40, 25, 70, 30]} />}\n        className=\"hidden sm:block\"\n      />\n    </div>\n  )\n}\n",
     "path": "registry/interactive/hover-swap-card"
+  },
+  {
+    "name": "lens",
+    "title": "Lens",
+    "description": "A round magnifying lens that follows the pointer over any content. Mouse and trackpad only: touch screens and reduced motion get the plain content. The magnified copy is hidden from assistive tech.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/lens.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "magnifier",
+      "zoom",
+      "cursor",
+      "hover"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "Content to magnify. Give it an opaque background so the lens reads cleanly."
+      },
+      {
+        "name": "zoomFactor",
+        "type": "number",
+        "default": "1.6",
+        "description": "How much the lens magnifies. Values below 1 count as 1."
+      },
+      {
+        "name": "lensSize",
+        "type": "number",
+        "default": "170",
+        "description": "Diameter of the lens in pixels."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.15",
+        "description": "Seconds for the lens to fade in and out."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the lens off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "lens.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Lens } from './lens'\n\n/** A self-contained card: token gradient, grid pattern and small text worth magnifying. */\nfunction Card() {\n  return (\n    <div className=\"relative h-72 w-96 max-w-full bg-linear-to-br from-primary/30 via-card to-accent p-6 text-card-foreground\">\n      <div\n        aria-hidden\n        className=\"absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:24px_24px]\"\n      />\n      <div className=\"relative flex h-full flex-col justify-between\">\n        <div>\n          <p className=\"text-xs tracking-widest text-muted-foreground uppercase\">Field notes</p>\n          <h3 className=\"mt-2 text-2xl font-semibold\">Fine print, made readable</h3>\n        </div>\n        <p className=\"text-[10px] leading-snug text-muted-foreground\">\n          Move the pointer over the card to magnify it. The lens appears only for a mouse or trackpad; on touch screens and with\n          reduced motion the card is shown as it is.\n        </p>\n        <div className=\"flex items-end gap-1\" aria-hidden>\n          {[40, 64, 28, 80, 52, 70, 36].map((h, i) => (\n            <span key={i} className=\"w-4 rounded-sm bg-primary\" style={{ height: h * 0.5 }} />\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport default function LensDemo() {\n  return (\n    <Lens className=\"border border-border\">\n      <Card />\n    </Lens>\n  )\n}\n",
+    "path": "registry/interactive/lens"
   },
   {
     "name": "shift-card",
@@ -3751,6 +4238,56 @@
     "status": "stable",
     "demo": "import { Braces, Cpu, Database, Globe, Palette, Zap } from 'lucide-react'\nimport { OrbitingCircles } from './orbiting-circles'\n\nconst iconClass = 'size-full rounded-full border border-border bg-card p-1.5 text-card-foreground'\n\nexport default function OrbitingCirclesDemo() {\n  return (\n    <div className=\"relative flex h-[26rem] w-[min(34rem,90vw)] items-center justify-center overflow-hidden rounded-2xl border border-border bg-background\">\n      <div className=\"grid size-16 place-items-center rounded-full bg-primary text-primary-foreground\">\n        <Zap aria-label=\"Mozaik\" className=\"size-7\" />\n      </div>\n      <OrbitingCircles iconSize={40} radius={90} duration={18}>\n        <Cpu aria-hidden className={iconClass} />\n        <Database aria-hidden className={iconClass} />\n        <Globe aria-hidden className={iconClass} />\n      </OrbitingCircles>\n      <OrbitingCircles iconSize={36} radius={150} duration={26} reverse>\n        <Braces aria-hidden className={iconClass} />\n        <Palette aria-hidden className={iconClass} />\n        <Cpu aria-hidden className={iconClass} />\n        <Database aria-hidden className={iconClass} />\n      </OrbitingCircles>\n    </div>\n  )\n}\n",
     "path": "registry/layout/orbiting-circles"
+  },
+  {
+    "name": "progressive-blur",
+    "title": "Progressive Blur",
+    "description": "A gradual blur over the edge of a scrolling area, built from stacked backdrop-filter layers. Decorative and static.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/progressive-blur.tsx"
+    },
+    "dependencies": [],
+    "tags": [
+      "blur",
+      "scroll",
+      "edge",
+      "overlay"
+    ],
+    "props": [
+      {
+        "name": "position",
+        "type": "'top' | 'bottom' | 'both'",
+        "default": "'bottom'",
+        "description": "Which edge of the nearest positioned ancestor gets the blur."
+      },
+      {
+        "name": "height",
+        "type": "string",
+        "default": "'30%'",
+        "description": "Height of each blurred edge, as any CSS length."
+      },
+      {
+        "name": "blurLevels",
+        "type": "number[]",
+        "default": "[0.5, 1, 2, 4, 8, 16, 32, 64]",
+        "description": "Blur radius in px for each stacked layer, weakest first. More layers give a smoother ramp."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for each blurred edge."
+      }
+    ],
+    "files": [
+      "progressive-blur.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ProgressiveBlur } from './progressive-blur'\n\nconst rows = [\n  'Install the registry',\n  'Pick a component',\n  'Copy the source',\n  'Tune the props',\n  'Check reduced motion',\n  'Ship it',\n  'Write the changelog',\n  'Tag a release',\n  'Open the docs',\n  'Share the demo',\n]\n\nexport default function ProgressiveBlurDemo() {\n  return (\n    <div className=\"relative h-[22rem] w-[min(24rem,90vw)] overflow-hidden rounded-2xl border border-border bg-background\">\n      <div className=\"h-full overflow-y-auto p-4\" tabIndex={0} role=\"region\" aria-label=\"Scrollable list\">\n        <ul className=\"flex flex-col gap-3\">\n          {rows.map((r, i) => (\n            <li\n              key={r}\n              className=\"flex items-center gap-3 rounded-xl border border-border bg-card p-3 text-card-foreground\"\n            >\n              <span className=\"grid size-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-sm font-medium text-primary\">\n                {i + 1}\n              </span>\n              <span className=\"text-sm font-medium\">{r}</span>\n            </li>\n          ))}\n        </ul>\n      </div>\n      <ProgressiveBlur position=\"both\" height=\"5rem\" />\n    </div>\n  )\n}\n",
+    "path": "registry/layout/progressive-blur"
   },
   {
     "name": "smooth-accordion",

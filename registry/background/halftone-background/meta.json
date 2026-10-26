@@ -1,0 +1,18 @@
+{
+  "name": "halftone-background",
+  "title": "Halftone Background",
+  "description": "A halftone print on a canvas: a rotated screen of dots sized by the ink a lit sphere takes, with a light that circles it or follows the cursor.",
+  "category": "background",
+  "layer": "B",
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/halftone-background.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["canvas", "halftone", "dots", "cursor"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the dots." },
+    { "name": "cell", "type": "number", "default": "9", "description": "Distance between dots, in pixels." },
+    { "name": "angle", "type": "number", "default": "45", "description": "Screen angle in degrees; 45 is the classic print angle." },
+    { "name": "speed", "type": "number", "default": "1", "description": "How fast the light circles the sphere. 0 holds it still." },
+    { "name": "interactive", "type": "boolean", "default": "true", "description": "Let the light follow the cursor. Off on touch screens and under reduced motion." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

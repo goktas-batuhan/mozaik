@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lens",
+  "title": "Lens",
+  "description": "A round magnifying lens that follows the pointer over any content. Mouse and trackpad only: touch screens and reduced motion get the plain content. The magnified copy is hidden from assistive tech.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/interactive/lens/lens.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT)\nimport {\n  AnimatePresence,\n  motion,\n  useMotionTemplate,\n  useMotionValue,\n  useReducedMotion,\n  useReducedMotionConfig,\n} from 'motion/react'\nimport { useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nconst FINE_POINTER = '(hover: hover) and (pointer: fine)'\n\nfunction useFinePointer() {\n  const [fine, setFine] = useState(false)\n  useEffect(() => {\n    const mq = window.matchMedia(FINE_POINTER)\n    const update = () => setFine(mq.matches)\n    update()\n    mq.addEventListener('change', update)\n    return () => mq.removeEventListener('change', update)\n  }, [])\n  return fine\n}\n\nexport interface LensProps {\n  /** Content to magnify. Rendered once normally and once, scaled, inside the lens. */\n  children: ReactNode\n  /** How much the lens magnifies. Values below 1 are treated as 1. */\n  zoomFactor?: number\n  /** Diameter of the lens in pixels. */\n  lensSize?: number\n  /** Seconds for the lens to appear and disappear. */\n  duration?: number\n  /** Turns the lens off; the content renders as-is. */\n  disabled?: boolean\n  className?: string\n}\n\n/**\n * Magnifies the area under the pointer with a round lens. The magnified copy is\n * hidden from assistive tech and from tab order. Off on touch devices and under\n * reduced motion, where the content is simply shown as it is.\n */\nexport function Lens({ children, zoomFactor = 1.6, lensSize = 170, duration = 0.15, disabled = false, className }: LensProps) {\n  const reduced = usePrefersReducedMotion()\n  const fine = useFinePointer()\n  const enabled = !disabled && !reduced && fine\n  const [hovering, setHovering] = useState(false)\n  const ref = useRef<HTMLDivElement>(null)\n  const x = useMotionValue(0)\n  const y = useMotionValue(0)\n\n  const zoom = Math.max(1, zoomFactor)\n  const radius = Math.max(0, lensSize) / 2\n  const mask = useMotionTemplate`radial-gradient(circle ${radius}px at ${x}px ${y}px, var(--foreground) 99%, transparent 100%)`\n  const origin = useMotionTemplate`${x}px ${y}px`\n  const ringX = useMotionTemplate`${x}px`\n  const ringY = useMotionTemplate`${y}px`\n\n  const track = (e: PointerEvent<HTMLDivElement>) => {\n    if (e.pointerType === 'touch') return\n    const r = e.currentTarget.getBoundingClientRect()\n    x.set(e.clientX - r.left)\n    y.set(e.clientY - r.top)\n  }\n\n  return (\n    <div\n      ref={ref}\n      className={cn('relative overflow-hidden rounded-xl', className)}\n      onPointerEnter={(e) => {\n        if (!enabled || e.pointerType === 'touch') return\n        track(e)\n        setHovering(true)\n      }}\n      onPointerMove={(e) => enabled && track(e)}\n      onPointerLeave={() => setHovering(false)}\n    >\n      {children}\n      <AnimatePresence>\n        {enabled && hovering && (\n          <motion.div\n            key=\"lens\"\n            aria-hidden\n            inert\n            data-lens=\"\"\n            initial={{ opacity: 0 }}\n            animate={{ opacity: 1 }}\n            exit={{ opacity: 0 }}\n            transition={{ duration }}\n            className=\"pointer-events-none absolute inset-0 z-10\"\n          >\n            <motion.div className=\"absolute inset-0 overflow-hidden bg-background\" style={{ maskImage: mask, WebkitMaskImage: mask }}>\n              <motion.div className=\"absolute inset-0\" style={{ scale: zoom, transformOrigin: origin }}>\n                {children}\n              </motion.div>\n            </motion.div>\n            <motion.span\n              className=\"absolute top-0 left-0 rounded-full border border-border shadow-lg\"\n              style={{ width: lensSize, height: lensSize, left: ringX, top: ringY, x: '-50%', y: '-50%' }}\n            />\n          </motion.div>\n        )}\n      </AnimatePresence>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/lens.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "interactive"
+  ],
+  "type": "registry:component"
+}
