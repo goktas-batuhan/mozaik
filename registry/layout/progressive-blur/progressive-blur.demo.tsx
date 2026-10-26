@@ -1,7 +1,7 @@
 import { ProgressiveBlur } from './progressive-blur'
 
 const rows = [
-  'Install the registry',
+  'Browse the gallery',
   'Pick a component',
   'Copy the source',
   'Tune the props',
