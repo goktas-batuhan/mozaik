@@ -1,0 +1,20 @@
+{
+  "name": "retro-grid",
+  "title": "Retro Grid",
+  "description": "A perspective grid that scrolls toward the viewer. Pure CSS 3D, no canvas. Decorative and still under reduced motion.",
+  "group": "backgrounds",
+  "shelf": "pattern",
+  "layer": "component",
+  "tags": ["loop", "css", "marketing"],
+  "keywords": ["grid", "perspective", "hero"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx", "note": "Rebuilt in CSS 3D (upstream is WebGL)." },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "angle", "type": "number", "default": "65", "description": "Tilt of the floor in degrees. 0 is flat on the screen, 90 is edge-on." },
+    { "name": "cellSize", "type": "number", "default": "60", "description": "Size of one grid cell in pixels." },
+    { "name": "lineColor", "type": "string", "default": "'color-mix(in oklab, var(--foreground) 24%, transparent)'", "description": "Color of the grid lines. Any CSS color." },
+    { "name": "duration", "type": "number", "default": "15", "description": "Seconds for the grid to travel the length of its pattern." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Hides the grid." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

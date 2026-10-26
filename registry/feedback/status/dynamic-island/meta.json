@@ -1,0 +1,19 @@
+{
+  "name": "dynamic-island",
+  "title": "Dynamic Island",
+  "description": "A pill that springs open into richer views, in the style of the iPhone status island. The shell animates real size, so content is never distorted.",
+  "group": "feedback",
+  "shelf": "status",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["island", "status", "notification", "spring"],
+  "source": { "repo": "starc007/ui-components", "license": "MIT", "url": "https://github.com/starc007/ui-components/blob/main/components/motion/dynamic-island.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "view", "type": "string | null", "description": "Id of the active DynamicIslandView. null shows the compact pill." },
+    { "name": "compact", "type": "ReactNode", "description": "Pill content, shown when no view is active." },
+    { "name": "children", "type": "ReactNode", "description": "DynamicIslandView elements. Each one shows when its id matches view." },
+    { "name": "duration", "type": "number", "default": "0.8", "description": "Seconds the shell takes to glide between sizes." },
+    { "name": "className", "type": "string", "description": "Extra classes for the shell." }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "thinking-loader",
+  "title": "Thinking Loader",
+  "description": "A calm waiting indicator in three shapes (dots, bar, grid) that share one tempo and never fake progress.",
+  "group": "feedback",
+  "shelf": "loaders",
+  "layer": "component",
+  "tags": ["loop", "css", "ai"],
+  "keywords": ["loader", "status", "dots"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-loader/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "variant", "type": "'dots' | 'bar' | 'grid'", "default": "'dots'", "description": "Shape of the indicator." },
+    { "name": "label", "type": "string", "default": "'Thinking'", "description": "Text shown before the indicator, also announced to screen readers." },
+    { "name": "showElapsed", "type": "boolean", "default": "false", "description": "Adds a live elapsed-seconds counter. Hidden under reduced motion." },
+    { "name": "duration", "type": "number", "default": "1.2", "description": "Seconds one cycle takes. All variants share it." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

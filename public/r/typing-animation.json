@@ -11,22 +11,26 @@
   ],
   "files": [
     {
-      "path": "registry/text/typing-animation/typing-animation.tsx",
+      "path": "registry/text/reveal/typing-animation/typing-animation.tsx",
       "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/typing-animation.tsx\nimport { motion, useInView, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useMemo, useRef, useState, type ElementType } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface TypingAnimationProps {\n  /** A single string to type. Ignored when `words` is set. */\n  children?: string\n  /** Several strings to type one after another. */\n  words?: string[]\n  /** Seconds per typed character. */\n  duration?: number\n  /** Seconds per deleted character. Defaults to half of `duration`. */\n  deleteSpeed?: number\n  /** Seconds before typing starts. */\n  delay?: number\n  /** Seconds to hold a finished word before deleting it. */\n  pause?: number\n  /** Keep cycling after the last word. */\n  loop?: boolean\n  /** Element to render. */\n  as?: ElementType\n  /** Wait until the text scrolls into view. */\n  startOnView?: boolean\n  /** Show the cursor while typing. */\n  showCursor?: boolean\n  /** Shape of the cursor. */\n  cursorStyle?: 'line' | 'block' | 'underscore'\n  /** Shows the finished text with no typing. */\n  disabled?: boolean\n  className?: string\n}\n\nconst CURSORS = { line: '|', block: '▌', underscore: '_' } as const\n\ntype Step = { word: number; count: number; phase: 'typing' | 'deleting' }\n\n/**\n * Types text out character by character, optionally deleting and moving on to\n * the next word. Screen readers get the full text up front.\n */\nexport function TypingAnimation({\n  children,\n  words,\n  duration = 0.08,\n  deleteSpeed,\n  delay = 0,\n  pause = 1,\n  loop = false,\n  as: Tag = 'span',\n  startOnView = true,\n  showCursor = true,\n  cursorStyle = 'line',\n  disabled = false,\n  className,\n}: TypingAnimationProps) {\n  const ref = useRef<HTMLElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref, { amount: 0.3, once: true })\n  const list = useMemo(() => words ?? (children ? [children] : []), [words, children])\n  const key = list.join('\\u0000')\n  const still = disabled || !!reduced\n  const started = !startOnView || inView\n  const erase = deleteSpeed ?? duration / 2\n\n  const [ready, setReady] = useState(false)\n  const [step, setStep] = useState<Step>({ word: 0, count: 0, phase: 'typing' })\n\n  // Restart whenever the text changes.\n  useEffect(() => {\n    setStep({ word: 0, count: 0, phase: 'typing' })\n  }, [key])\n\n  useEffect(() => {\n    if (still || !started) return\n    const id = setTimeout(() => setReady(true), delay * 1000)\n    return () => clearTimeout(id)\n  }, [still, started, delay])\n\n  const chars = useMemo(() => Array.from(list[step.word] ?? ''), [list, step.word])\n  const last = list.length - 1\n  const finished = !loop && step.word === last && step.phase === 'typing' && step.count >= chars.length\n\n  useEffect(() => {\n    if (still || !ready || list.length === 0 || finished) return\n    let wait: number\n    let next: Step\n    if (step.phase === 'typing') {\n      if (step.count < chars.length) {\n        wait = duration\n        next = { ...step, count: step.count + 1 }\n      } else {\n        wait = pause\n        next = { ...step, phase: 'deleting' }\n      }\n    } else if (step.count > 0) {\n      wait = erase\n      next = { ...step, count: step.count - 1 }\n    } else {\n      wait = 0.15\n      next = { word: (step.word + 1) % list.length, count: 0, phase: 'typing' }\n    }\n    const id = setTimeout(() => setStep(next), wait * 1000)\n    return () => clearTimeout(id)\n  }, [still, ready, list, step, chars.length, finished, duration, pause, erase])\n\n  const shown = still\n    ? (list[loop ? 0 : last] ?? '')\n    : chars.slice(0, step.count).join('')\n  const cursorVisible = showCursor && !still && !finished\n\n  return (\n    <Tag ref={ref} className={cn(Tag === 'span' && 'inline-block', className)}>\n      <span className=\"sr-only\">{list.join(', ')}</span>\n      <span aria-hidden>\n        {shown}\n        {cursorVisible && (\n          <motion.span\n            className=\"inline-block\"\n            animate={{ opacity: [1, 1, 0, 0] }}\n            transition={{ duration: 1, repeat: Infinity, times: [0, 0.5, 0.5, 1] }}\n          >\n            {CURSORS[cursorStyle]}\n          </motion.span>\n        )}\n      </span>\n    </Tag>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "text",
+    "shelf": "reveal",
+    "layer": "component",
     "source": {
       "repo": "magicuidesign/magicui",
       "license": "MIT",
       "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/typing-animation.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "text"
+    "text",
+    "reveal"
   ],
   "type": "registry:component"
 }

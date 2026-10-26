@@ -9,22 +9,26 @@
   ],
   "files": [
     {
-      "path": "registry/background/diagonal-hatch/diagonal-hatch.tsx",
+      "path": "registry/backgrounds/pattern/diagonal-hatch/diagonal-hatch.tsx",
       "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/diagonal-box-pattern.tsx\nimport { cn } from '@/lib/utils'\n\nexport interface DiagonalHatchProps {\n  /** Distance between hatch lines, in pixels. */\n  spacing?: number\n  /** Direction of the lines in degrees. 45 leans right, 135 leans left. */\n  angle?: number\n  /** Line strength as a percentage of the foreground color. */\n  strength?: number\n  /** Fades the hatch out towards the edges. */\n  fade?: boolean\n  className?: string\n}\n\n/** Fine diagonal hatching, like a sketch shaded with a ruler. Place it behind content. */\nexport function DiagonalHatch({ spacing = 10, angle = 45, strength = 9, fade = true, className }: DiagonalHatchProps) {\n  const color = `color-mix(in oklab, var(--foreground) ${strength}%, transparent)`\n  const mask = fade ? 'radial-gradient(ellipse at center, black 25%, transparent 75%)' : undefined\n\n  return (\n    <div\n      aria-hidden\n      className={cn('pointer-events-none absolute inset-0', className)}\n      style={{\n        backgroundImage: `repeating-linear-gradient(${angle}deg, ${color} 0, ${color} 1px, transparent 1px, transparent ${spacing}px)`,\n        maskImage: mask,\n        WebkitMaskImage: mask,\n      }}\n    />\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "backgrounds",
+    "shelf": "pattern",
+    "layer": "component",
     "source": {
       "repo": "bidyut10/opensourceui",
       "license": "MIT",
       "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/diagonal-box-pattern.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "background"
+    "backgrounds",
+    "pattern"
   ],
   "type": "registry:component"
 }

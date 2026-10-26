@@ -11,23 +11,27 @@
   ],
   "files": [
     {
-      "path": "registry/background/retro-grid/retro-grid.tsx",
+      "path": "registry/backgrounds/pattern/retro-grid/retro-grid.tsx",
       "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx\nimport { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface RetroGridProps {\n  /** Tilt of the floor in degrees. 0 is flat on the screen, 90 is edge-on. */\n  angle?: number\n  /** Size of one grid cell in pixels. */\n  cellSize?: number\n  /** Color of the grid lines. Any CSS color; defaults to a soft mix of the foreground token. */\n  lineColor?: string\n  /** Seconds for the grid to travel the length of its pattern. */\n  duration?: number\n  /** Hides the grid. */\n  disabled?: boolean\n  className?: string\n}\n\nconst CELLS = 40\n\n/**\n * A perspective grid that scrolls toward the viewer. Decorative: put it\n * inside a relative element and it fills it.\n */\nexport function RetroGrid({\n  angle = 65,\n  cellSize = 60,\n  lineColor = 'color-mix(in oklab, var(--foreground) 24%, transparent)',\n  duration = 15,\n  disabled = false,\n  className,\n}: RetroGridProps) {\n  const reduced = usePrefersReducedMotion()\n  if (disabled) return null\n\n  const line = `linear-gradient(to right, ${lineColor} 1px, transparent 0), linear-gradient(to bottom, ${lineColor} 1px, transparent 0)`\n\n  return (\n    <div\n      aria-hidden\n      className={cn('pointer-events-none absolute inset-0 overflow-hidden [perspective:200px]', className)}\n    >\n      <div className=\"absolute inset-0\" style={{ transform: `rotateX(${angle}deg)` }}>\n        <motion.div\n          className=\"absolute -ml-[250%] w-[600%]\"\n          style={{\n            height: cellSize * CELLS,\n            backgroundImage: line,\n            backgroundSize: `${cellSize}px ${cellSize}px`,\n            y: '-25%',\n          }}\n          animate={reduced ? undefined : { y: ['-50%', '0%'] }}\n          transition={{ duration, ease: 'linear', repeat: Infinity }}\n        />\n      </div>\n      <div className=\"absolute inset-0 bg-linear-to-b from-background from-10% via-transparent via-50% to-background/50\" />\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "backgrounds",
+    "shelf": "pattern",
+    "layer": "component",
     "source": {
       "repo": "magicuidesign/magicui",
       "license": "MIT",
       "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx",
       "note": "Rebuilt in CSS 3D (upstream is WebGL)."
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "background"
+    "backgrounds",
+    "pattern"
   ],
   "type": "registry:component"
 }

@@ -1,0 +1,18 @@
+{
+  "name": "shader-background",
+  "title": "Shader Background",
+  "description": "A soft, flowing noise field drawn by a raw WebGL shader in your theme colors. Sleeps off screen, falls back to a CSS gradient.",
+  "group": "backgrounds",
+  "shelf": "shader",
+  "layer": "component",
+  "tags": ["loop", "webgl", "marketing"],
+  "keywords": ["webgl", "shader", "gradient", "hero"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the shader." },
+    { "name": "speed", "type": "number", "default": "1", "description": "Speed multiplier. 0 holds the field still." },
+    { "name": "intensity", "type": "number", "default": "0.6", "description": "Strength of the color field, from 0 (plain background) to 1." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

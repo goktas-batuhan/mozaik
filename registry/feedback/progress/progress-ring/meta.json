@@ -1,0 +1,22 @@
+{
+  "name": "progress-ring",
+  "title": "Progress Ring",
+  "description": "A determinate ring that eases to its value and counts up in the middle.",
+  "group": "feedback",
+  "shelf": "progress",
+  "layer": "component",
+  "tags": ["in-view", "svg", "dashboard"],
+  "keywords": ["progress", "ring", "svg"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/others/progress-ring-card.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "value", "type": "number", "required": true, "description": "Progress from 0 to 100." },
+    { "name": "size", "type": "number", "default": "112", "description": "Outer diameter in pixels." },
+    { "name": "strokeWidth", "type": "number", "default": "8", "description": "Stroke width in pixels." },
+    { "name": "label", "type": "string", "default": "'Progress'", "description": "Accessible name of the progress bar." },
+    { "name": "showValue", "type": "boolean", "default": "true", "description": "Shows the percentage in the middle when no children are given." },
+    { "name": "duration", "type": "number", "default": "0.9", "description": "Seconds the ring takes to catch up with a new value." },
+    { "name": "children", "type": "ReactNode", "description": "Replaces the percentage in the middle." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

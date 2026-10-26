@@ -1,0 +1,21 @@
+{
+  "name": "morphing-text",
+  "title": "Morphing Text",
+  "description": "Melts one word into the next with a blur and an SVG threshold filter. Screen readers get the whole list once.",
+  "group": "text",
+  "shelf": "rotate-morph",
+  "layer": "component",
+  "tags": ["loop", "svg"],
+  "keywords": ["words", "blur", "headline", "loop"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/morphing-text.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "words", "type": "string[]", "required": true, "description": "Words to morph through, in order. The last one morphs back into the first." },
+    { "name": "interval", "type": "number", "default": "0.8", "description": "Seconds each word holds still between morphs." },
+    { "name": "duration", "type": "number", "default": "1.5", "description": "Seconds each morph takes." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds before the first morph is counted." },
+    { "name": "as", "type": "ElementType", "default": "'span'", "description": "Element to render." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Shows the first word only." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

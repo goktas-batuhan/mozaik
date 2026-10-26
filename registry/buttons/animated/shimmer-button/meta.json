@@ -1,0 +1,20 @@
+{
+  "name": "shimmer-button",
+  "title": "Shimmer Button",
+  "description": "A button with a light that circles its edge. Stops when disabled or under reduced motion.",
+  "group": "buttons",
+  "shelf": "animated",
+  "layer": "component",
+  "tags": ["loop", "css", "marketing"],
+  "keywords": ["button", "shimmer", "cta"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/shimmer-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "shimmerColor", "type": "string", "default": "'var(--primary)'", "description": "Color of the light that circles the edge. Any CSS color." },
+    { "name": "shimmerSize", "type": "number", "default": "2", "description": "Thickness of the lit edge in pixels." },
+    { "name": "background", "type": "string", "default": "'var(--card)'", "description": "Fill of the button. Any CSS color or gradient." },
+    { "name": "duration", "type": "number", "default": "3", "description": "Seconds for the light to circle the button once." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the button and stops the shimmer." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}

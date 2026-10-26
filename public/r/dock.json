@@ -11,22 +11,26 @@
   ],
   "files": [
     {
-      "path": "registry/interactive/dock/dock.tsx",
+      "path": "registry/navigation/dock-menus/dock/dock.tsx",
       "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx\nimport { motion, useMotionValue, useReducedMotion, useReducedMotionConfig, useSpring, useTransform, type MotionValue } from 'motion/react'\nimport { createContext, useContext, useRef, type ComponentPropsWithoutRef, type ReactNode, type Ref } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\ninterface DockContextValue {\n  mouseX: MotionValue<number>\n  size: number\n  magnification: number\n  distance: number\n}\n\nconst DockContext = createContext<DockContextValue | null>(null)\n\nexport interface DockProps extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {\n  /** Put DockIcon elements here. Each one should wrap a link or a button. */\n  children: ReactNode\n  /** Resting size of each icon in pixels. */\n  iconSize?: number\n  /** Size of the icon under the pointer in pixels. */\n  iconMagnification?: number\n  /** Distance in pixels over which the magnification fades out. */\n  iconDistance?: number\n  /** Which edge the icons grow from. */\n  direction?: 'top' | 'middle' | 'bottom'\n  /** Turns the magnification off. */\n  disabled?: boolean\n  className?: string\n  ref?: Ref<HTMLDivElement>\n}\n\n/** A row of icons that swell as the pointer approaches. Touch and reduced motion keep them at rest. */\nexport function Dock({\n  children,\n  iconSize = 40,\n  iconMagnification = 64,\n  iconDistance = 140,\n  direction = 'bottom',\n  disabled = false,\n  className,\n  ref,\n  ...props\n}: DockProps) {\n  const mouseX = useMotionValue(Infinity)\n  const reduced = usePrefersReducedMotion()\n  const off = disabled || !!reduced\n\n  return (\n    <DockContext.Provider\n      value={{\n        mouseX,\n        size: iconSize,\n        magnification: off ? iconSize : iconMagnification,\n        distance: iconDistance,\n      }}\n    >\n      <div\n        role=\"group\"\n        {...props}\n        ref={ref}\n        style={{ height: iconSize + 18, ...props.style }}\n        onPointerMove={(e) => {\n          if (e.pointerType === 'mouse') mouseX.set(e.clientX)\n          props.onPointerMove?.(e)\n        }}\n        onPointerLeave={(e) => {\n          mouseX.set(Infinity)\n          props.onPointerLeave?.(e)\n        }}\n        className={cn(\n          'mx-auto flex w-max justify-center gap-2 rounded-2xl border border-border bg-card/60 p-2 backdrop-blur-md',\n          direction === 'top' && 'items-start',\n          direction === 'middle' && 'items-center',\n          direction === 'bottom' && 'items-end',\n          className,\n        )}\n      >\n        {children}\n      </div>\n    </DockContext.Provider>\n  )\n}\n\nexport interface DockIconProps extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {\n  /** Usually a link or a button. It fills the icon. */\n  children?: ReactNode\n  className?: string\n}\n\n/** One slot in the dock. */\nexport function DockIcon({ children, className, ...props }: DockIconProps) {\n  const ctx = useContext(DockContext)\n  if (!ctx) throw new Error('DockIcon must be rendered inside Dock')\n  const { mouseX, size, magnification, distance } = ctx\n\n  const ref = useRef<HTMLDivElement>(null)\n  const offset = useTransform(mouseX, (x) => {\n    const bounds = ref.current?.getBoundingClientRect()\n    return bounds ? x - bounds.x - bounds.width / 2 : Infinity\n  })\n  const target = useTransform(offset, [-distance, 0, distance], [size, magnification, size])\n  const dimension = useSpring(target, { mass: 0.1, stiffness: 150, damping: 12 })\n\n  return (\n    <motion.div\n      {...(props as object)}\n      ref={ref}\n      style={{ width: dimension, height: dimension }}\n      className={cn('flex aspect-square shrink-0 items-center justify-center', className)}\n    >\n      <div className=\"grid size-full place-items-center\">{children}</div>\n    </motion.div>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "navigation",
+    "shelf": "dock-menus",
+    "layer": "component",
     "source": {
       "repo": "magicuidesign/magicui",
       "license": "MIT",
       "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "interactive"
+    "navigation",
+    "dock-menus"
   ],
   "type": "registry:component"
 }

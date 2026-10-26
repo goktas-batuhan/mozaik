@@ -1,0 +1,27 @@
+{
+  "name": "typing-animation",
+  "title": "Typing Animation",
+  "description": "Types text out character by character, optionally deleting and cycling through words. Screen readers get the full text up front.",
+  "group": "text",
+  "shelf": "reveal",
+  "layer": "component",
+  "tags": ["loop", "css"],
+  "keywords": ["typewriter", "cursor", "headline"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/typing-animation.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "string", "description": "A single string to type. Ignored when words is set." },
+    { "name": "words", "type": "string[]", "description": "Several strings to type one after another." },
+    { "name": "duration", "type": "number", "default": "0.08", "description": "Seconds per typed character." },
+    { "name": "deleteSpeed", "type": "number", "description": "Seconds per deleted character. Defaults to half of duration." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds before typing starts." },
+    { "name": "pause", "type": "number", "default": "1", "description": "Seconds to hold a finished word before deleting it." },
+    { "name": "loop", "type": "boolean", "default": "false", "description": "Keep cycling after the last word." },
+    { "name": "as", "type": "ElementType", "default": "'span'", "description": "Element to render." },
+    { "name": "startOnView", "type": "boolean", "default": "true", "description": "Wait until the text scrolls into view." },
+    { "name": "showCursor", "type": "boolean", "default": "true", "description": "Show the cursor while typing." },
+    { "name": "cursorStyle", "type": "'line' | 'block' | 'underscore'", "default": "'line'", "description": "Shape of the cursor." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Shows the finished text with no typing." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

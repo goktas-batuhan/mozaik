@@ -11,22 +11,26 @@
   ],
   "files": [
     {
-      "path": "registry/interactive/shift-card/shift-card.tsx",
+      "path": "registry/cards/hover-reveal/shift-card/shift-card.tsx",
       "content": "// Source: nolly-studio/cult-ui (MIT) — https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx\nimport { AnimatePresence, motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useState, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface ShiftCardProps {\n  /** Always visible at the top. */\n  topContent?: ReactNode\n  /** Fades in below `topContent` while the card is expanded. */\n  topRevealContent?: ReactNode\n  /** Centre content that fades out while the card is expanded. */\n  middleContent?: ReactNode\n  /** Bottom panel. A peek stays visible at rest and the rest opens on hover, focus or click. */\n  bottomContent?: ReactNode\n  /** Height in pixels of the bottom peek at rest. */\n  collapsedHeight?: number\n  /** Seconds the panel takes to open. */\n  duration?: number\n  /** Keeps the card closed. */\n  disabled?: boolean\n  /** Extra classes for the root element. */\n  className?: string\n}\n\n/** A card whose bottom panel grows over the middle when you hover, focus or click it. */\nexport function ShiftCard({\n  topContent,\n  topRevealContent,\n  middleContent,\n  bottomContent,\n  collapsedHeight = 44,\n  duration = 0.3,\n  disabled = false,\n  className,\n}: ShiftCardProps) {\n  const reduced = usePrefersReducedMotion()\n  const [hovered, setHovered] = useState(false)\n  const [focused, setFocused] = useState(false)\n  const [pinned, setPinned] = useState(false)\n  const open = !disabled && (hovered || focused || pinned)\n  const t = reduced ? { duration: 0 } : { duration, ease: [0.32, 0.72, 0, 1] as const }\n\n  return (\n    <article\n      tabIndex={disabled ? -1 : 0}\n      onPointerEnter={(e) => e.pointerType === 'mouse' && setHovered(true)}\n      onPointerLeave={() => setHovered(false)}\n      onFocus={() => setFocused(true)}\n      onBlur={() => setFocused(false)}\n      onClick={() => setPinned((p) => !p)}\n      className={cn(\n        'relative flex min-h-[300px] w-[300px] max-w-full cursor-pointer flex-col overflow-hidden rounded-xl border border-border bg-card p-4 text-sm text-card-foreground shadow-sm outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-ring',\n        open && 'shadow-md',\n        disabled && 'cursor-default',\n        className,\n      )}\n    >\n      <div>\n        {topContent}\n        <AnimatePresence initial={false}>\n          {open && (\n            <motion.div\n              key=\"reveal\"\n              initial={{ opacity: 0, y: -6 }}\n              animate={{ opacity: 1, y: 0 }}\n              exit={{ opacity: 0, y: -6 }}\n              transition={t}\n            >\n              {topRevealContent}\n            </motion.div>\n          )}\n        </AnimatePresence>\n      </div>\n\n      <motion.div\n        className=\"flex flex-1 items-center justify-center pb-12\"\n        initial={false}\n        animate={{ opacity: open ? 0 : 1, scale: open ? 0.96 : 1 }}\n        transition={t}\n        aria-hidden={open || undefined}\n      >\n        {middleContent}\n      </motion.div>\n\n      <motion.div\n        initial={false}\n        animate={{ height: open ? 'auto' : collapsedHeight }}\n        transition={t}\n        className=\"absolute inset-x-0 bottom-0 overflow-hidden rounded-b-xl border-t border-border bg-secondary/70 px-4 py-3 backdrop-blur\"\n      >\n        {bottomContent}\n      </motion.div>\n    </article>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "cards",
+    "shelf": "hover-reveal",
+    "layer": "component",
     "source": {
       "repo": "nolly-studio/cult-ui",
       "license": "MIT",
       "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "interactive"
+    "cards",
+    "hover-reveal"
   ],
   "type": "registry:component"
 }

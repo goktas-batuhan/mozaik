@@ -1,0 +1,128 @@
+{
+  "groups": [
+    { "id": "text", "label": "Text", "blurb": "Letters that roll, scramble, reveal and shine.", "shelves": [
+      { "id": "reveal", "label": "Reveal" },
+      { "id": "rotate-morph", "label": "Rotate & morph" },
+      { "id": "counter", "label": "Counter" },
+      { "id": "effect", "label": "Effect" }
+    ] },
+    { "id": "backgrounds", "label": "Backgrounds", "blurb": "Quiet fields of light, grids and shaders behind your content.", "shelves": [
+      { "id": "shader", "label": "Shader" },
+      { "id": "canvas", "label": "Canvas" },
+      { "id": "pattern", "label": "Pattern" },
+      { "id": "gradient", "label": "Gradient" }
+    ] },
+    { "id": "cursor", "label": "Cursor", "blurb": "Pointer-aware pull, light and trails. Off on touch screens.", "shelves": [
+      { "id": "follow-trail", "label": "Follow & trail" },
+      { "id": "magnetic-tilt", "label": "Magnetic & tilt" },
+      { "id": "click-effects", "label": "Click effects" }
+    ] },
+    { "id": "buttons", "label": "Buttons", "blurb": "Buttons that shimmer, slide and ask before they act.", "shelves": [
+      { "id": "animated", "label": "Animated" },
+      { "id": "confirm", "label": "Confirm" },
+      { "id": "toggle-switch", "label": "Toggle & switch" }
+    ] },
+    { "id": "cards", "label": "Cards", "blurb": "Surfaces that react to hover, flip and glow.", "shelves": [
+      { "id": "hover-reveal", "label": "Hover & reveal" },
+      { "id": "flip-stack", "label": "Flip & stack" },
+      { "id": "surface", "label": "Surface" }
+    ] },
+    { "id": "inputs", "label": "Inputs", "blurb": "Fields, sliders, pickers and pads with a bit of physics.", "shelves": [
+      { "id": "text-code", "label": "Text & code" },
+      { "id": "sliders-dials", "label": "Sliders & dials" },
+      { "id": "pickers", "label": "Pickers" },
+      { "id": "choice", "label": "Choice" },
+      { "id": "upload-sign", "label": "Upload & sign" }
+    ] },
+    { "id": "navigation", "label": "Navigation", "blurb": "Docks, tabs, menus and command bars.", "shelves": [
+      { "id": "dock-menus", "label": "Dock & menus" },
+      { "id": "tabs", "label": "Tabs" },
+      { "id": "navbar-sidebar", "label": "Navbar & sidebar" },
+      { "id": "command-search", "label": "Command & search" }
+    ] },
+    { "id": "overlays", "label": "Overlays", "blurb": "Layers above the page: dialogs, lenses and blur.", "shelves": [
+      { "id": "modal-drawer", "label": "Modal & drawer" },
+      { "id": "popover-tooltip", "label": "Popover & tooltip" },
+      { "id": "lightbox-lens", "label": "Lightbox & lens" },
+      { "id": "scrim-blur", "label": "Scrim & blur" }
+    ] },
+    { "id": "layout", "label": "Layout", "blurb": "Lists, carousels, accordions, marquees and grids in motion.", "shelves": [
+      { "id": "lists", "label": "Lists" },
+      { "id": "carousels", "label": "Carousels" },
+      { "id": "accordions", "label": "Accordions" },
+      { "id": "marquee", "label": "Marquee" },
+      { "id": "grids", "label": "Grids" }
+    ] },
+    { "id": "scroll", "label": "Scroll", "blurb": "Progress, reveals and parallax tied to the scroll position.", "shelves": [
+      { "id": "progress", "label": "Progress" },
+      { "id": "reveal", "label": "Reveal on scroll" },
+      { "id": "parallax-sticky", "label": "Parallax & sticky" }
+    ] },
+    { "id": "feedback", "label": "Feedback", "blurb": "Loaders, skeletons, progress and status that say what is happening.", "shelves": [
+      { "id": "loaders", "label": "Loaders" },
+      { "id": "skeletons", "label": "Skeletons" },
+      { "id": "progress", "label": "Progress" },
+      { "id": "notifications", "label": "Notifications" },
+      { "id": "status", "label": "Status" }
+    ] },
+    { "id": "ai", "label": "AI", "blurb": "Chat, reasoning and agent states for AI products.", "shelves": [
+      { "id": "chat", "label": "Chat" },
+      { "id": "reasoning", "label": "Reasoning" },
+      { "id": "agents-tools", "label": "Agents & tools" },
+      { "id": "orbs-voice", "label": "Orbs & voice" }
+    ] },
+    { "id": "data", "label": "Data", "blurb": "Charts, stats and status pages in plain SVG and CSS.", "shelves": [
+      { "id": "charts", "label": "Charts" },
+      { "id": "stats-kpis", "label": "Stats & KPIs" },
+      { "id": "tables", "label": "Tables" },
+      { "id": "status-pages", "label": "Status pages" }
+    ] },
+    { "id": "media", "label": "Media", "blurb": "Galleries, device mock-ups and players.", "shelves": [
+      { "id": "gallery-compare", "label": "Gallery & compare" },
+      { "id": "mockups", "label": "Mockups" },
+      { "id": "video-audio", "label": "Video & audio" }
+    ] },
+    { "id": "onchain", "label": "On-chain", "blurb": "Prices, addresses and transaction states. Data in, no RPC.", "shelves": [
+      { "id": "prices-charts", "label": "Prices & charts" },
+      { "id": "wallet-address", "label": "Wallet & address" },
+      { "id": "transactions", "label": "Transactions" },
+      { "id": "amount-confirm", "label": "Amount & confirm" }
+    ] }
+  ],
+  "blocks": [
+    { "id": "marketing", "label": "Marketing", "blurb": "Sections for landing pages, from navbar to footer.", "shelves": [
+      { "id": "navbar", "label": "Navbar" },
+      { "id": "hero", "label": "Hero" },
+      { "id": "logos", "label": "Logos" },
+      { "id": "features", "label": "Features" },
+      { "id": "stats", "label": "Stats" },
+      { "id": "testimonials", "label": "Testimonials" },
+      { "id": "pricing", "label": "Pricing" },
+      { "id": "faq", "label": "FAQ" },
+      { "id": "cta", "label": "CTA" },
+      { "id": "team", "label": "Team" },
+      { "id": "contact", "label": "Contact" },
+      { "id": "newsletter", "label": "Newsletter" },
+      { "id": "blog", "label": "Blog" },
+      { "id": "changelog", "label": "Changelog" },
+      { "id": "footer", "label": "Footer" }
+    ] },
+    { "id": "app", "label": "App", "blurb": "Screens for products: dashboards, auth and settings.", "shelves": [
+      { "id": "dashboard", "label": "Dashboard" },
+      { "id": "auth", "label": "Auth" },
+      { "id": "settings", "label": "Settings" },
+      { "id": "empty-states", "label": "Empty states" }
+    ] },
+    { "id": "pages", "label": "Pages", "blurb": "Whole pages: 404, coming soon and full landings.", "shelves": [
+      { "id": "not-found", "label": "404" },
+      { "id": "coming-soon", "label": "Coming soon" },
+      { "id": "landing", "label": "Full landing templates" }
+    ] }
+  ],
+  "tags": {
+    "trigger": ["hover", "click", "drag", "scroll", "loop", "in-view", "type"],
+    "tech": ["css", "svg", "canvas", "webgl", "sound"],
+    "weight": ["zero-deps", "motion", "lucide"],
+    "theme": ["web3", "ai", "dashboard", "marketing"]
+  }
+}

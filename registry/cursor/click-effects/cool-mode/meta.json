@@ -1,0 +1,21 @@
+{
+  "name": "cool-mode",
+  "title": "Cool Mode",
+  "description": "Sprays coloured particles or emoji from the cursor while a button is pressed, drawn on a click-through canvas.",
+  "group": "cursor",
+  "shelf": "click-effects",
+  "layer": "component",
+  "tags": ["click", "canvas"],
+  "keywords": ["cursor", "particles", "canvas"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/cool-mode.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "required": true, "description": "The element that sprays particles while it is pressed." },
+    { "name": "particle", "type": "string", "default": "'circle'", "description": "'circle' for dots in the theme's colours, or any short text such as an emoji." },
+    { "name": "size", "type": "number", "description": "Particle size in pixels. Leave out for a mix of sizes." },
+    { "name": "count", "type": "number", "default": "45", "description": "Most particles alive at once." },
+    { "name": "speed", "type": "number", "default": "1", "description": "Multiplier for how fast particles fly." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the effect off. It is also off on touch devices and under reduced motion." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." }
+  ]
+}

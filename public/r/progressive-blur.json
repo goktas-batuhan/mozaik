@@ -9,22 +9,26 @@
   ],
   "files": [
     {
-      "path": "registry/layout/progressive-blur/progressive-blur.tsx",
+      "path": "registry/overlays/scrim-blur/progressive-blur/progressive-blur.tsx",
       "content": "// Source: magicuidesign/magicui (MIT)\nimport type { ComponentPropsWithoutRef } from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface ProgressiveBlurProps extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {\n  /** Which edge of the nearest positioned ancestor gets the blur. */\n  position?: 'top' | 'bottom' | 'both'\n  /** Height of each blurred edge, as any CSS length. */\n  height?: string\n  /** Blur radius in px for each stacked layer, weakest first. More layers = smoother ramp. */\n  blurLevels?: number[]\n  className?: string\n}\n\nconst DEFAULT_LEVELS = [0.5, 1, 2, 4, 8, 16, 32, 64]\n\n/** One edge: stacked backdrop-filter layers, each masked to a band, so blur ramps up toward the edge. */\nfunction Edge({\n  edge,\n  height,\n  levels,\n  className,\n  ...props\n}: {\n  edge: 'top' | 'bottom'\n  height: string\n  levels: number[]\n  className?: string\n} & Omit<ComponentPropsWithoutRef<'div'>, 'children'>) {\n  const n = levels.length\n  const step = 100 / n\n  // The gradient runs from the inner (clear) side toward the screen edge.\n  const dir = edge === 'bottom' ? 'to bottom' : 'to top'\n  const pct = (v: number) => `${Math.min(100, Math.round(v * 100) / 100)}%`\n\n  return (\n    <div\n      aria-hidden=\"true\"\n      className={cn(\n        'pointer-events-none absolute inset-x-0 z-10',\n        edge === 'top' ? 'top-0' : 'bottom-0',\n        className,\n      )}\n      style={{ height }}\n      {...props}\n    >\n      {levels.map((blur, i) => {\n        const last = i === n - 1\n        const mask = last\n          ? `linear-gradient(${dir}, transparent ${pct((n - 1) * step)}, black 100%)`\n          : `linear-gradient(${dir}, transparent ${pct(i * step)}, black ${pct((i + 1) * step)}, black ${pct((i + 2) * step)}, transparent ${pct((i + 3) * step)})`\n        return (\n          <div\n            key={i}\n            className=\"absolute inset-0\"\n            style={{\n              zIndex: i + 1,\n              backdropFilter: `blur(${blur}px)`,\n              WebkitBackdropFilter: `blur(${blur}px)`,\n              maskImage: mask,\n              WebkitMaskImage: mask,\n            }}\n          />\n        )\n      })}\n    </div>\n  )\n}\n\n/** Gradual blur over the edge of a scrolling area. Place it inside a `relative` wrapper, above the content. Purely decorative and static. */\nexport function ProgressiveBlur({\n  position = 'bottom',\n  height = '30%',\n  blurLevels = DEFAULT_LEVELS,\n  className,\n  ...props\n}: ProgressiveBlurProps) {\n  const levels = blurLevels.length > 0 ? blurLevels : DEFAULT_LEVELS\n  return (\n    <>\n      {position !== 'bottom' && (\n        <Edge edge=\"top\" height={height} levels={levels} className={className} data-position=\"top\" {...props} />\n      )}\n      {position !== 'top' && (\n        <Edge edge=\"bottom\" height={height} levels={levels} className={className} data-position=\"bottom\" {...props} />\n      )}\n    </>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "overlays",
+    "shelf": "scrim-blur",
+    "layer": "component",
     "source": {
       "repo": "magicuidesign/magicui",
       "license": "MIT",
       "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/progressive-blur.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "layout"
+    "overlays",
+    "scrim-blur"
   ],
   "type": "registry:component"
 }

@@ -1,0 +1,21 @@
+{
+  "name": "animated-subscribe-button",
+  "title": "Animated Subscribe Button",
+  "description": "A toggle button whose label slides away and the next one drops in. A real button with aria-pressed, in controlled or uncontrolled form.",
+  "group": "feedback",
+  "shelf": "notifications",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["button", "subscribe", "toggle", "follow"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "[ReactNode, ReactNode]", "description": "Two nodes: the idle label, then the subscribed label." },
+    { "name": "subscribed", "type": "boolean", "description": "Controlled state. Omit it and the button keeps its own." },
+    { "name": "defaultSubscribed", "type": "boolean", "default": "false", "description": "Initial state when uncontrolled." },
+    { "name": "onSubscribedChange", "type": "(subscribed: boolean) => void", "description": "Called with the next state when the button is pressed." },
+    { "name": "duration", "type": "number", "default": "0.25", "description": "Seconds the label swap takes." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the button." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}

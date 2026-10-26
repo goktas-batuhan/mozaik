@@ -1,0 +1,19 @@
+{
+  "name": "notification-stack",
+  "title": "Notification Stack",
+  "description": "A pile of notifications that fans out on hover or focus. Swipe, click or press Delete to dismiss; the remaining cards close the gap.",
+  "group": "feedback",
+  "shelf": "notifications",
+  "layer": "component",
+  "tags": ["drag", "svg"],
+  "keywords": ["notification", "stack", "swipe", "dismiss"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/notification-stack.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "notifications", "type": "StackNotification[]", "description": "Initial notifications, newest first: { id, app, title, body, time, icon? }. The stack tracks dismissals itself." },
+    { "name": "onDismiss", "type": "(id: string) => void", "description": "Called after a notification has been swiped, clicked or deleted away." },
+    { "name": "title", "type": "string", "default": "'Notifications'", "description": "Heading above the stack and label of the list." },
+    { "name": "duration", "type": "number", "default": "0.3", "description": "Seconds the stack takes to fan out and a dismissed card to leave." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

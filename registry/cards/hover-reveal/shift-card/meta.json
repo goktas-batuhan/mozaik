@@ -1,0 +1,22 @@
+{
+  "name": "shift-card",
+  "title": "Shift Card",
+  "description": "A card whose bottom panel grows over the middle content on hover, focus or click, swapping what the top shows.",
+  "group": "cards",
+  "shelf": "hover-reveal",
+  "layer": "component",
+  "tags": ["hover", "css"],
+  "keywords": ["card", "hover", "reveal"],
+  "source": { "repo": "nolly-studio/cult-ui", "license": "MIT", "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "topContent", "type": "ReactNode", "description": "Always visible at the top." },
+    { "name": "topRevealContent", "type": "ReactNode", "description": "Fades in below topContent while the card is expanded." },
+    { "name": "middleContent", "type": "ReactNode", "description": "Centre content that fades out while the card is expanded." },
+    { "name": "bottomContent", "type": "ReactNode", "description": "Bottom panel. A peek stays visible at rest and the rest opens on hover, focus or click." },
+    { "name": "collapsedHeight", "type": "number", "default": "44", "description": "Height in pixels of the bottom peek at rest." },
+    { "name": "duration", "type": "number", "default": "0.3", "description": "Seconds the panel takes to open." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Keeps the card closed." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

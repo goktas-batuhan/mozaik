@@ -1,0 +1,23 @@
+{
+  "name": "slide-to-confirm",
+  "title": "Slide to Confirm",
+  "description": "A slide-to-commit control for irreversible actions: drag the thumb to the end, or press Enter, Space or the right arrow. Shows busy and done states.",
+  "group": "buttons",
+  "shelf": "confirm",
+  "layer": "component",
+  "tags": ["drag", "svg", "web3"],
+  "keywords": ["confirm", "slider", "swap", "send"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-to-confirm.tsx" },
+  "dependencies": ["motion"],
+  "cssVars": { "light": {"success": "oklch(0.6 0.15 155)"}, "dark": {"success": "oklch(0.72 0.15 155)"} },
+  "props": [
+    { "name": "label", "type": "string", "default": "'Slide to confirm'", "description": "What sliding does, e.g. 'Slide to send 0.25 ETH'." },
+    { "name": "confirmingLabel", "type": "string", "default": "'Confirming'", "description": "Shown and announced while onConfirm runs." },
+    { "name": "doneLabel", "type": "string", "default": "'Confirmed'", "description": "Shown and announced once it is done." },
+    { "name": "onConfirm", "type": "() => Promise<unknown> | unknown", "description": "The real work. Return a promise to keep the spinner up until it settles; a rejection sends the thumb back." },
+    { "name": "resetAfter", "type": "number | null", "default": "2.6", "description": "Seconds before it returns to the start once done. null stays done." },
+    { "name": "duration", "type": "number", "default": "0.8", "description": "Minimum seconds the busy state shows." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Blocks dragging and keyboard confirmation." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "image-accordion",
+  "title": "Image Accordion",
+  "description": "A row of image panels where one is wide and the rest are slim. The open panel follows hover, focus or click and reveals its title.",
+  "group": "layout",
+  "shelf": "carousels",
+  "layer": "component",
+  "tags": ["hover", "css"],
+  "keywords": ["accordion", "gallery", "hover"],
+  "source": { "repo": "ui-layouts/uilayouts", "license": "MIT", "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/accordion/image-hover.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "items", "type": "ImageAccordionItem[]", "required": true, "description": "The panels, left to right: { id, title, description?, media }." },
+    { "name": "defaultIndex", "type": "number", "default": "0", "description": "Index of the panel that is open first." },
+    { "name": "trigger", "type": "'hover' | 'click'", "default": "'hover'", "description": "What opens a panel. Focus and click always work." },
+    { "name": "height", "type": "number", "default": "380", "description": "Height of the strip in pixels." },
+    { "name": "duration", "type": "number", "default": "0.5", "description": "Seconds the panels take to resize." },
+    { "name": "onIndexChange", "type": "(index: number) => void", "description": "Called with the new index when a different panel opens." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

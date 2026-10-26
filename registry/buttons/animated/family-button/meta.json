@@ -1,0 +1,24 @@
+{
+  "name": "family-button",
+  "title": "Family Button",
+  "description": "A square button that springs open into a panel and collapses back. The toggle rotates from plus to close.",
+  "group": "buttons",
+  "shelf": "animated",
+  "layer": "component",
+  "tags": ["click", "svg"],
+  "keywords": ["expand", "panel", "spring"],
+  "source": { "repo": "nolly-studio/cult-ui", "license": "MIT", "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/family-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "required": true, "description": "Content shown inside the expanded panel." },
+    { "name": "label", "type": "string", "default": "'Toggle panel'", "description": "Accessible name of the toggle button." },
+    { "name": "defaultOpen", "type": "boolean", "default": "false", "description": "Whether the panel starts open." },
+    { "name": "open", "type": "boolean", "description": "Controlled open state." },
+    { "name": "onOpenChange", "type": "(open: boolean) => void", "description": "Called when the panel opens or closes." },
+    { "name": "width", "type": "number", "default": "220", "description": "Width of the open panel in pixels." },
+    { "name": "height", "type": "number", "default": "260", "description": "Height of the open panel in pixels." },
+    { "name": "duration", "type": "number", "default": "0.35", "description": "Seconds the expand and collapse take." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the button off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

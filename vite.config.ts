@@ -12,7 +12,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    include: ['registry/**/*.test.tsx'],
+    include: ['registry/**/*.test.tsx', 'blocks/**/*.test.tsx'],
     setupFiles: ['./src/test-setup.ts'],
   },
 })

@@ -11,18 +11,22 @@
   ],
   "files": [
     {
-      "path": "registry/text/split-reveal/split-reveal.tsx",
+      "path": "registry/text/reveal/split-reveal/split-reveal.tsx",
       "content": "import { motion, useInView, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useRef, useState, type ElementType } from 'react'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface SplitRevealProps {\n  /** The text. Screen readers read it as one string. */\n  text: string\n  /** Element to render. */\n  as?: ElementType\n  /** Reveal word by word or letter by letter. */\n  split?: 'words' | 'chars'\n  /** When the reveal plays. */\n  trigger?: 'mount' | 'in-view'\n  /** Seconds between pieces. Defaults to 0.06 for words and 0.018 for chars. */\n  stagger?: number\n  /** Seconds per piece. */\n  duration?: number\n  /** Seconds before the first piece. */\n  delay?: number\n  /** Starting blur in pixels. 0 turns the blur off. */\n  blur?: number\n  /** Turns the animation off and renders plain text. */\n  disabled?: boolean\n  className?: string\n}\n\nconst EASE = [0.22, 1, 0.36, 1] as const\n\n/** Every word (or letter) rises out of its own mask, sharpening as it lands. */\nexport function SplitReveal({\n  text,\n  as: Tag = 'p',\n  split = 'words',\n  trigger = 'in-view',\n  stagger,\n  duration = 0.8,\n  delay = 0,\n  blur = 8,\n  disabled = false,\n  className,\n}: SplitRevealProps) {\n  const ref = useRef<HTMLElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref, { once: true, amount: 0.4 })\n  const [mounted, setMounted] = useState(false)\n\n  useEffect(() => {\n    if (trigger !== 'mount') return\n    const id = requestAnimationFrame(() => setMounted(true))\n    return () => cancelAnimationFrame(id)\n  }, [trigger])\n\n  if (disabled || reduced) {\n    return (\n      <Tag ref={ref} className={className}>\n        {text}\n      </Tag>\n    )\n  }\n\n  const active = trigger === 'mount' ? mounted : inView\n  const step = stagger ?? (split === 'chars' ? 0.018 : 0.06)\n  const hidden = { y: '110%', opacity: 0, filter: `blur(${blur}px)` }\n  const shown = { y: '0%', opacity: 1, filter: 'blur(0px)' }\n  let index = 0\n\n  const piece = (content: string, key: string | number) => {\n    const i = index++\n    return (\n      // The mask: a little padding keeps descenders and accents from being clipped.\n      <span key={key} className=\"-my-[0.12em] inline-block overflow-hidden py-[0.12em] align-top\">\n        <motion.span\n          className=\"inline-block will-change-transform\"\n          initial={hidden}\n          animate={active ? shown : hidden}\n          transition={{ duration, delay: delay + i * step, ease: EASE }}\n        >\n          {content}\n        </motion.span>\n      </span>\n    )\n  }\n\n  return (\n    <Tag ref={ref} className={className}>\n      <span className=\"sr-only\">{text}</span>\n      {text.split(/(\\s+)/).map((word, w) => {\n        if (!word) return null\n        if (/^\\s+$/.test(word)) return ' '\n        if (split === 'words') return <span key={w} aria-hidden>{piece(word, w)}</span>\n        return (\n          <span key={w} aria-hidden className=\"inline-block whitespace-nowrap\">\n            {Array.from(word).map((char, c) => piece(char, c))}\n          </span>\n        )\n      })}\n    </Tag>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "A",
+    "group": "text",
+    "shelf": "reveal",
+    "layer": "component",
     "source": "original",
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "text"
+    "text",
+    "reveal"
   ],
   "type": "registry:component"
 }

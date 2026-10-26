@@ -1,0 +1,20 @@
+{
+  "name": "terminal",
+  "title": "Terminal",
+  "description": "A terminal window that plays its lines in sequence: typed commands and fading output. Shows everything at once under reduced motion.",
+  "group": "media",
+  "shelf": "mockups",
+  "layer": "component",
+  "tags": ["in-view", "css"],
+  "keywords": ["terminal", "cli", "typing"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/terminal.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "required": true, "description": "TerminalLine and TerminalTyping elements, in the order they should appear." },
+    { "name": "title", "type": "string", "description": "Text in the title bar." },
+    { "name": "sequence", "type": "boolean", "default": "true", "description": "Play the lines one after another. When off, each line runs on its own delay." },
+    { "name": "startOnView", "type": "boolean", "default": "true", "description": "Wait until the terminal scrolls into view." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Shows every line in full with no animation." },
+    { "name": "className", "type": "string", "description": "Extra classes for the window." }
+  ]
+}

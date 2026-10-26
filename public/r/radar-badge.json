@@ -11,7 +11,7 @@
   ],
   "files": [
     {
-      "path": "registry/onchain/radar-badge/radar-badge.tsx",
+      "path": "registry/feedback/status/radar-badge/radar-badge.tsx",
       "content": "import { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport type RadarStatus = 'live' | 'scanning' | 'idle' | 'alert'\n\nexport interface RadarBadgeProps {\n  /** What the watcher is doing. Sets the color and the motion. */\n  status?: RadarStatus\n  /** Text next to the radar. Defaults to the status name. */\n  label?: string\n  /** Badge size. */\n  size?: 'sm' | 'md'\n  className?: string\n}\n\nconst NAMES: Record<RadarStatus, string> = {\n  live: 'Live',\n  scanning: 'Scanning',\n  idle: 'Idle',\n  alert: 'Alert',\n}\n\nconst TONE: Record<RadarStatus, string> = {\n  live: 'text-[var(--success)]',\n  scanning: 'text-primary',\n  idle: 'text-muted-foreground',\n  alert: 'text-destructive',\n}\n\n// Seconds per sweep turn and per ring; 0 turns the part off.\nconst MOTION: Record<RadarStatus, { sweep: number; ring: number }> = {\n  live: { sweep: 2.6, ring: 2.6 },\n  scanning: { sweep: 1.2, ring: 0 },\n  idle: { sweep: 0, ring: 0 },\n  alert: { sweep: 1.6, ring: 1.3 },\n}\n\n/** A small live-monitoring badge: a radar sweep with spreading rings next to a label. */\nexport function RadarBadge({ status = 'live', label, size = 'md', className }: RadarBadgeProps) {\n  const reduced = usePrefersReducedMotion()\n  const name = NAMES[status]\n  const text = label ?? name\n  const { sweep, ring } = reduced ? { sweep: 0, ring: 0 } : MOTION[status]\n\n  return (\n    <span\n      role=\"status\"\n      data-status={status}\n      className={cn(\n        'inline-flex items-center rounded-full border bg-card font-medium text-card-foreground',\n        size === 'sm' ? 'h-6 gap-1.5 pr-2.5 pl-1.5 text-xs' : 'h-8 gap-2 pr-3.5 pl-2 text-sm',\n        className,\n      )}\n    >\n      <span\n        aria-hidden\n        className={cn(\n          'relative shrink-0 overflow-hidden rounded-full border border-current/35 bg-current/10',\n          size === 'sm' ? 'size-4' : 'size-5',\n          TONE[status],\n        )}\n      >\n        <span className=\"absolute inset-[28%] rounded-full border border-current/25\" />\n        {sweep > 0 && (\n          <motion.span\n            className=\"absolute inset-0 rounded-full opacity-70\"\n            style={{ background: 'conic-gradient(from 0deg, transparent 0deg 250deg, currentColor 360deg)' }}\n            animate={{ rotate: 360 }}\n            transition={{ duration: sweep, repeat: Infinity, ease: 'linear' }}\n          />\n        )}\n        {ring > 0 &&\n          [0, 0.5].map((offset) => (\n            <motion.span\n              key={offset}\n              className=\"absolute inset-0 rounded-full border border-current\"\n              initial={{ scale: 0.15, opacity: 0.9 }}\n              animate={{ scale: 1, opacity: 0 }}\n              transition={{ duration: ring, delay: offset * ring, repeat: Infinity, ease: 'easeOut' }}\n            />\n          ))}\n        <span\n          className={cn(\n            'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-current',\n            size === 'sm' ? 'size-1' : 'size-1.5',\n          )}\n        />\n      </span>\n      {label && label !== name && <span className=\"sr-only\">{name}: </span>}\n      <span className=\"tabular-nums\">{text}</span>\n    </span>\n  )\n}\n",
       "type": "registry:component"
     }
@@ -25,12 +25,16 @@
     }
   },
   "meta": {
-    "layer": "A",
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
     "source": "original",
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "onchain"
+    "feedback",
+    "status"
   ],
   "type": "registry:component"
 }

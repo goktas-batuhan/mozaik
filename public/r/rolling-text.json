@@ -11,18 +11,22 @@
   ],
   "files": [
     {
-      "path": "registry/text/rolling-text/rolling-text.tsx",
+      "path": "registry/text/counter/rolling-text/rolling-text.tsx",
       "content": "import { motion, useInView, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useRef, useState, type ElementType } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface RollingTextProps {\n  /** The text. Screen readers read it as one string. */\n  text: string\n  /** Element to render. */\n  as?: ElementType\n  /** When the letters roll. */\n  trigger?: 'hover' | 'mount' | 'in-view'\n  /** Seconds per letter. */\n  duration?: number\n  /** Seconds between letters. */\n  stagger?: number\n  /** Seconds before the first letter. */\n  delay?: number\n  /** Turns the animation off and renders plain text. */\n  disabled?: boolean\n  className?: string\n}\n\n/** Rolls every letter up and swaps it for a copy of itself. */\nexport function RollingText({\n  text,\n  as: Tag = 'span',\n  trigger = 'hover',\n  duration = 0.45,\n  stagger = 0.025,\n  delay = 0,\n  disabled = false,\n  className,\n}: RollingTextProps) {\n  const ref = useRef<HTMLElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref, { once: true, amount: 0.6 })\n  const [hovered, setHovered] = useState(false)\n  const [mounted, setMounted] = useState(false)\n\n  useEffect(() => {\n    if (trigger !== 'mount') return\n    const id = requestAnimationFrame(() => setMounted(true))\n    return () => cancelAnimationFrame(id)\n  }, [trigger])\n\n  if (disabled || reduced) {\n    return (\n      <Tag ref={ref} className={cn('inline-block', className)}>\n        {text}\n      </Tag>\n    )\n  }\n\n  const active = trigger === 'hover' ? hovered : trigger === 'in-view' ? inView : mounted\n\n  return (\n    <Tag\n      ref={ref}\n      className={cn('inline-flex flex-wrap whitespace-pre', className)}\n      onPointerEnter={() => setHovered(true)}\n      onPointerLeave={() => setHovered(false)}\n    >\n      <span className=\"sr-only\">{text}</span>\n      {Array.from(text).map((char, i) => (\n        <span key={i} aria-hidden className=\"relative inline-block h-[1.15em] overflow-hidden leading-[1.15]\">\n          <motion.span\n            className=\"flex flex-col\"\n            initial={false}\n            animate={{ y: active ? '-50%' : '0%' }}\n            transition={{ duration, delay: delay + i * stagger, ease: [0.65, 0, 0.35, 1] }}\n          >\n            <span>{char}</span>\n            <span>{char}</span>\n          </motion.span>\n        </span>\n      ))}\n    </Tag>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "A",
+    "group": "text",
+    "shelf": "counter",
+    "layer": "component",
     "source": "original",
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "text"
+    "text",
+    "counter"
   ],
   "type": "registry:component"
 }

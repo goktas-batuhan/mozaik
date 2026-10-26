@@ -4,84 +4,6 @@
   "homepage": "https://github.com/goktas-batuhan/mozaik",
   "items": [
     {
-      "name": "rolling-text",
-      "type": "registry:component",
-      "title": "Rolling Text",
-      "description": "Rolls every letter up and swaps it for a copy of itself, on hover, mount or scroll into view.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/text/rolling-text/rolling-text.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "text"
-      ],
-      "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "scramble-text",
-      "type": "registry:component",
-      "title": "Scramble Text",
-      "description": "Letters cycle through random glyphs and decode into the real text, on mount, hover or scroll into view.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/text/scramble-text/scramble-text.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "text"
-      ],
-      "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "split-reveal",
-      "type": "registry:component",
-      "title": "Split Reveal",
-      "description": "Words or letters rise out of their own masks and sharpen from a blur, on mount or scroll into view.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/text/split-reveal/split-reveal.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "text"
-      ],
-      "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
       "name": "blur-fade",
       "type": "registry:component",
       "title": "Blur Fade",
@@ -94,21 +16,25 @@
       ],
       "files": [
         {
-          "path": "registry/text/blur-fade/blur-fade.tsx",
+          "path": "registry/text/reveal/blur-fade/blur-fade.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "text"
+        "text",
+        "reveal"
       ],
       "meta": {
-        "layer": "B",
+        "group": "text",
+        "shelf": "reveal",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/blur-fade.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -124,28 +50,32 @@
       ],
       "files": [
         {
-          "path": "registry/text/chromatic-text-reveal/chromatic-text-reveal.tsx",
+          "path": "registry/text/reveal/chromatic-text-reveal/chromatic-text-reveal.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "text"
+        "text",
+        "reveal"
       ],
       "meta": {
-        "layer": "B",
+        "group": "text",
+        "shelf": "reveal",
+        "layer": "component",
         "source": {
           "repo": "starc007/ui-components",
           "license": "MIT",
           "url": "https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "morphing-text",
+      "name": "split-reveal",
       "type": "registry:component",
-      "title": "Morphing Text",
-      "description": "Melts one word into the next with a blur and an SVG threshold filter. Screen readers get the whole list once.",
+      "title": "Split Reveal",
+      "description": "Words or letters rise out of their own masks and sharpen from a blur, on mount or scroll into view.",
       "dependencies": [
         "motion"
       ],
@@ -154,139 +84,21 @@
       ],
       "files": [
         {
-          "path": "registry/text/morphing-text/morphing-text.tsx",
+          "path": "registry/text/reveal/split-reveal/split-reveal.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "text"
+        "text",
+        "reveal"
       ],
       "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/morphing-text.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "number-ticker",
-      "type": "registry:component",
-      "title": "Number Ticker",
-      "description": "Counts a number up or down with a soft ease once it scrolls into view. Screen readers get the final value.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/text/number-ticker/number-ticker.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "text"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/number-ticker.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "shine-text",
-      "type": "registry:component",
-      "title": "Shine Text",
-      "description": "A band of light glides across the text on a loop, like polished metal catching a lamp.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/text/shine-text/shine-text.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "text"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "educlopez/smoothui",
-          "license": "MIT",
-          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/shine-text/index.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "split-flap-text",
-      "type": "registry:component",
-      "title": "Split Flap Text",
-      "description": "Departure-board lettering. Tiles flip through a drum of letters on a hinge, one beat apart. Screen readers get the lines once.",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/text/split-flap-text/split-flap-text.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "text"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "kokonut-labs/kokonutui",
-          "license": "MIT",
-          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/split-flap-text.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "spoiler-text",
-      "type": "registry:component",
-      "title": "Spoiler Text",
-      "description": "Text hidden under a shimmering field of specks. Click or press Enter to blow them away and read it. Screen readers hear a spoiler button until it opens.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/text/spoiler-text/spoiler-text.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "text"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "kokonut-labs/kokonutui",
-          "license": "MIT",
-          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/spoiler-text.tsx"
-        },
-        "status": "stable"
+        "group": "text",
+        "shelf": "reveal",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -302,28 +114,32 @@
       ],
       "files": [
         {
-          "path": "registry/text/typing-animation/typing-animation.tsx",
+          "path": "registry/text/reveal/typing-animation/typing-animation.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "text"
+        "text",
+        "reveal"
       ],
       "meta": {
-        "layer": "B",
+        "group": "text",
+        "shelf": "reveal",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/typing-animation.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "wave-text",
+      "name": "morphing-text",
       "type": "registry:component",
-      "title": "Wave Text",
-      "description": "A gentle wave rolls through the letters, each one a beat behind its neighbour.",
+      "title": "Morphing Text",
+      "description": "Melts one word into the next with a blur and an SVG threshold filter. Screen readers get the whole list once.",
       "dependencies": [
         "motion"
       ],
@@ -332,21 +148,25 @@
       ],
       "files": [
         {
-          "path": "registry/text/wave-text/wave-text.tsx",
+          "path": "registry/text/rotate-morph/morphing-text/morphing-text.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "text"
+        "text",
+        "rotate-morph"
       ],
       "meta": {
-        "layer": "B",
+        "group": "text",
+        "shelf": "rotate-morph",
+        "layer": "component",
         "source": {
-          "repo": "educlopez/smoothui",
+          "repo": "magicuidesign/magicui",
           "license": "MIT",
-          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wave-text/index.tsx"
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/morphing-text.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -362,28 +182,32 @@
       ],
       "files": [
         {
-          "path": "registry/text/word-rotate/word-rotate.tsx",
+          "path": "registry/text/rotate-morph/word-rotate/word-rotate.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "text"
+        "text",
+        "rotate-morph"
       ],
       "meta": {
-        "layer": "B",
+        "group": "text",
+        "shelf": "rotate-morph",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/word-rotate.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "aurora-background",
+      "name": "number-ticker",
       "type": "registry:component",
-      "title": "Aurora Background",
-      "description": "A slow, blurred aurora drifting behind your content. Tinted from the primary token, paused off screen, still under reduced motion.",
+      "title": "Number Ticker",
+      "description": "Counts a number up or down with a soft ease once it scrolls into view. Screen readers get the final value.",
       "dependencies": [
         "motion"
       ],
@@ -392,24 +216,32 @@
       ],
       "files": [
         {
-          "path": "registry/background/aurora-background/aurora-background.tsx",
+          "path": "registry/text/counter/number-ticker/number-ticker.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "background"
+        "text",
+        "counter"
       ],
       "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
+        "group": "text",
+        "shelf": "counter",
+        "layer": "component",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/number-ticker.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "dot-grid",
+      "name": "rolling-text",
       "type": "registry:component",
-      "title": "Dot Grid",
-      "description": "A dot grid with a fine grain and soft edges. Dots near the cursor take the primary color and grow.",
+      "title": "Rolling Text",
+      "description": "Rolls every letter up and swaps it for a copy of itself, on hover, mount or scroll into view.",
       "dependencies": [
         "motion"
       ],
@@ -418,17 +250,185 @@
       ],
       "files": [
         {
-          "path": "registry/background/dot-grid/dot-grid.tsx",
+          "path": "registry/text/counter/rolling-text/rolling-text.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "background"
+        "text",
+        "counter"
       ],
       "meta": {
-        "layer": "A",
+        "group": "text",
+        "shelf": "counter",
+        "layer": "component",
         "source": "original",
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "split-flap-text",
+      "type": "registry:component",
+      "title": "Split Flap Text",
+      "description": "Departure-board lettering. Tiles flip through a drum of letters on a hinge, one beat apart. Screen readers get the lines once.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/text/counter/split-flap-text/split-flap-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "text",
+        "counter"
+      ],
+      "meta": {
+        "group": "text",
+        "shelf": "counter",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/split-flap-text.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "scramble-text",
+      "type": "registry:component",
+      "title": "Scramble Text",
+      "description": "Letters cycle through random glyphs and decode into the real text, on mount, hover or scroll into view.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/text/effect/scramble-text/scramble-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "text",
+        "effect"
+      ],
+      "meta": {
+        "group": "text",
+        "shelf": "effect",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "shine-text",
+      "type": "registry:component",
+      "title": "Shine Text",
+      "description": "A band of light glides across the text on a loop, like polished metal catching a lamp.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/text/effect/shine-text/shine-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "text",
+        "effect"
+      ],
+      "meta": {
+        "group": "text",
+        "shelf": "effect",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/shine-text/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "spoiler-text",
+      "type": "registry:component",
+      "title": "Spoiler Text",
+      "description": "Text hidden under a shimmering field of specks. Click or press Enter to blow them away and read it. Screen readers hear a spoiler button until it opens.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/text/effect/spoiler-text/spoiler-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "text",
+        "effect"
+      ],
+      "meta": {
+        "group": "text",
+        "shelf": "effect",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/spoiler-text.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "wave-text",
+      "type": "registry:component",
+      "title": "Wave Text",
+      "description": "A gentle wave rolls through the letters, each one a beat behind its neighbour.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/text/effect/wave-text/wave-text.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "text",
+        "effect"
+      ],
+      "meta": {
+        "group": "text",
+        "shelf": "effect",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wave-text/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -444,103 +444,21 @@
       ],
       "files": [
         {
-          "path": "registry/background/shader-background/shader-background.tsx",
+          "path": "registry/backgrounds/shader/shader-background/shader-background.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "background"
+        "backgrounds",
+        "shader"
       ],
       "meta": {
-        "layer": "A",
+        "group": "backgrounds",
+        "shelf": "shader",
+        "layer": "component",
         "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "border-beam",
-      "type": "registry:component",
-      "title": "Border Beam",
-      "description": "A light that travels around the border of its parent card. Decorative, follows the parent's radius.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/background/border-beam/border-beam.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "background"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/border-beam.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "diagonal-hatch",
-      "type": "registry:component",
-      "title": "Diagonal Hatch",
-      "description": "Fine diagonal hatching that fades towards the edges, like a sketch shaded with a ruler.",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/background/diagonal-hatch/diagonal-hatch.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "background"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "bidyut10/opensourceui",
-          "license": "MIT",
-          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/diagonal-box-pattern.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "graph-paper",
-      "type": "registry:component",
-      "title": "Graph Paper",
-      "description": "Engineering graph paper: fine squares with a stronger line every few cells, fading out towards the edges.",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/background/graph-paper/graph-paper.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "background"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "bidyut10/opensourceui",
-          "license": "MIT",
-          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/graph-paper-pattern.tsx"
-        },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -556,51 +474,25 @@
       ],
       "files": [
         {
-          "path": "registry/background/halftone-background/halftone-background.tsx",
+          "path": "registry/backgrounds/canvas/halftone-background/halftone-background.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "background"
+        "backgrounds",
+        "canvas"
       ],
       "meta": {
-        "layer": "B",
+        "group": "backgrounds",
+        "shelf": "canvas",
+        "layer": "component",
         "source": {
           "repo": "kokonut-labs/kokonutui",
           "license": "MIT",
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/halftone-background.tsx"
         },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "mesh-glow",
-      "type": "registry:component",
-      "title": "Mesh Glow",
-      "description": "Soft blurred glows over a fine grid with a calm vignette. Drifts slowly, or holds still.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/background/mesh-glow/mesh-glow.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "background"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "bidyut10/opensourceui",
-          "license": "MIT",
-          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-gradient/dark-midnight-mesh-background.tsx"
-        },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -616,52 +508,25 @@
       ],
       "files": [
         {
-          "path": "registry/background/meteors/meteors.tsx",
+          "path": "registry/backgrounds/canvas/meteors/meteors.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "background"
+        "backgrounds",
+        "canvas"
       ],
       "meta": {
-        "layer": "B",
+        "group": "backgrounds",
+        "shelf": "canvas",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/meteors.tsx"
         },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "retro-grid",
-      "type": "registry:component",
-      "title": "Retro Grid",
-      "description": "A perspective grid that scrolls toward the viewer. Pure CSS 3D, no canvas. Decorative and still under reduced motion.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/background/retro-grid/retro-grid.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "background"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx",
-          "note": "Rebuilt in CSS 3D (upstream is WebGL)."
-        },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -677,28 +542,64 @@
       ],
       "files": [
         {
-          "path": "registry/background/topo-background/topo-background.tsx",
+          "path": "registry/backgrounds/canvas/topo-background/topo-background.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "background"
+        "backgrounds",
+        "canvas"
       ],
       "meta": {
-        "layer": "B",
+        "group": "backgrounds",
+        "shelf": "canvas",
+        "layer": "component",
         "source": {
           "repo": "kokonut-labs/kokonutui",
           "license": "MIT",
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/topo-background.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "magnetic",
+      "name": "diagonal-hatch",
       "type": "registry:component",
-      "title": "Magnetic",
-      "description": "Pulls a button or icon toward the pointer on a spring when the cursor comes close.",
+      "title": "Diagonal Hatch",
+      "description": "Fine diagonal hatching that fades towards the edges, like a sketch shaded with a ruler.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/backgrounds/pattern/diagonal-hatch/diagonal-hatch.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "backgrounds",
+        "pattern"
+      ],
+      "meta": {
+        "group": "backgrounds",
+        "shelf": "pattern",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/diagonal-box-pattern.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "dot-grid",
+      "type": "registry:component",
+      "title": "Dot Grid",
+      "description": "A dot grid with a fine grain and soft edges. Dots near the cursor take the primary color and grow.",
       "dependencies": [
         "motion"
       ],
@@ -707,24 +608,60 @@
       ],
       "files": [
         {
-          "path": "registry/cursor/magnetic/magnetic.tsx",
+          "path": "registry/backgrounds/pattern/dot-grid/dot-grid.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "cursor"
+        "backgrounds",
+        "pattern"
       ],
       "meta": {
-        "layer": "A",
+        "group": "backgrounds",
+        "shelf": "pattern",
+        "layer": "component",
         "source": "original",
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "spotlight",
+      "name": "graph-paper",
       "type": "registry:component",
-      "title": "Spotlight",
-      "description": "A soft primary-tinted light that follows the pointer across a card, with an optional glow on the nearest edge.",
+      "title": "Graph Paper",
+      "description": "Engineering graph paper: fine squares with a stronger line every few cells, fading out towards the edges.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/backgrounds/pattern/graph-paper/graph-paper.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "backgrounds",
+        "pattern"
+      ],
+      "meta": {
+        "group": "backgrounds",
+        "shelf": "pattern",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/graph-paper-pattern.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "retro-grid",
+      "type": "registry:component",
+      "title": "Retro Grid",
+      "description": "A perspective grid that scrolls toward the viewer. Pure CSS 3D, no canvas. Decorative and still under reduced motion.",
       "dependencies": [
         "motion"
       ],
@@ -733,47 +670,90 @@
       ],
       "files": [
         {
-          "path": "registry/cursor/spotlight/spotlight.tsx",
+          "path": "registry/backgrounds/pattern/retro-grid/retro-grid.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "cursor"
+        "backgrounds",
+        "pattern"
       ],
       "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "cool-mode",
-      "type": "registry:component",
-      "title": "Cool Mode",
-      "description": "Sprays coloured particles or emoji from the cursor while a button is pressed, drawn on a click-through canvas.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/cursor/cool-mode/cool-mode.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "cursor"
-      ],
-      "meta": {
-        "layer": "B",
+        "group": "backgrounds",
+        "shelf": "pattern",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/cool-mode.tsx"
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx",
+          "note": "Rebuilt in CSS 3D (upstream is WebGL)."
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "aurora-background",
+      "type": "registry:component",
+      "title": "Aurora Background",
+      "description": "A slow, blurred aurora drifting behind your content. Tinted from the primary token, paused off screen, still under reduced motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/backgrounds/gradient/aurora-background/aurora-background.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "backgrounds",
+        "gradient"
+      ],
+      "meta": {
+        "group": "backgrounds",
+        "shelf": "gradient",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "mesh-glow",
+      "type": "registry:component",
+      "title": "Mesh Glow",
+      "description": "Soft blurred glows over a fine grid with a calm vignette. Drifts slowly, or holds still.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/backgrounds/gradient/mesh-glow/mesh-glow.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "backgrounds",
+        "gradient"
+      ],
+      "meta": {
+        "group": "backgrounds",
+        "shelf": "gradient",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-gradient/dark-midnight-mesh-background.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -789,21 +769,25 @@
       ],
       "files": [
         {
-          "path": "registry/cursor/cursor-image-trail/cursor-image-trail.tsx",
+          "path": "registry/cursor/follow-trail/cursor-image-trail/cursor-image-trail.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "cursor"
+        "cursor",
+        "follow-trail"
       ],
       "meta": {
-        "layer": "B",
+        "group": "cursor",
+        "shelf": "follow-trail",
+        "layer": "component",
         "source": {
           "repo": "educlopez/smoothui",
           "license": "MIT",
           "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/cursor-image-trail/index.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -819,21 +803,85 @@
       ],
       "files": [
         {
-          "path": "registry/cursor/smooth-cursor/smooth-cursor.tsx",
+          "path": "registry/cursor/follow-trail/smooth-cursor/smooth-cursor.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "cursor"
+        "cursor",
+        "follow-trail"
       ],
       "meta": {
-        "layer": "B",
+        "group": "cursor",
+        "shelf": "follow-trail",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "spotlight",
+      "type": "registry:component",
+      "title": "Spotlight",
+      "description": "A soft primary-tinted light that follows the pointer across a card, with an optional glow on the nearest edge.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cursor/follow-trail/spotlight/spotlight.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cursor",
+        "follow-trail"
+      ],
+      "meta": {
+        "group": "cursor",
+        "shelf": "follow-trail",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "magnetic",
+      "type": "registry:component",
+      "title": "Magnetic",
+      "description": "Pulls a button or icon toward the pointer on a spring when the cursor comes close.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cursor/magnetic-tilt/magnetic/magnetic.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cursor",
+        "magnetic-tilt"
+      ],
+      "meta": {
+        "group": "cursor",
+        "shelf": "magnetic-tilt",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -849,52 +897,32 @@
       ],
       "files": [
         {
-          "path": "registry/cursor/tilt-card/tilt-card.tsx",
+          "path": "registry/cursor/magnetic-tilt/tilt-card/tilt-card.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "cursor"
+        "cursor",
+        "magnetic-tilt"
       ],
       "meta": {
-        "layer": "B",
+        "group": "cursor",
+        "shelf": "magnetic-tilt",
+        "layer": "component",
         "source": {
           "repo": "starc007/ui-components",
           "license": "MIT",
           "url": "https://github.com/starc007/ui-components/blob/main/components/motion/tilt-card.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "bento-grid",
+      "name": "cool-mode",
       "type": "registry:component",
-      "title": "Bento Grid",
-      "description": "Container-responsive bento grid with cards that lift on hover, move their artwork and follow the pointer with a soft glow.",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/blocks/bento-grid/bento-grid.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "blocks"
-      ],
-      "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "hero-section",
-      "type": "registry:component",
-      "title": "Hero Section",
-      "description": "Landing hero with an eyebrow pill, headline, copy, two calls to action and an optional media slot, revealed in a soft stagger.",
+      "title": "Cool Mode",
+      "description": "Sprays coloured particles or emoji from the cursor while a button is pressed, drawn on a click-through canvas.",
       "dependencies": [
         "motion"
       ],
@@ -903,463 +931,25 @@
       ],
       "files": [
         {
-          "path": "registry/blocks/hero-section/hero-section.tsx",
+          "path": "registry/cursor/click-effects/cool-mode/cool-mode.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "blocks"
+        "cursor",
+        "click-effects"
       ],
       "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "ai-tool-approval",
-      "type": "registry:component",
-      "title": "AI Tool Approval",
-      "description": "A card where the user approves or denies an agent's tool call, showing the command or fields, the reason, and a polite live announcement of the decision.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/blocks/ai-tool-approval/ai-tool-approval.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "blocks"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "kokonut-labs/kokonutui",
-          "license": "MIT",
-          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-tool-approval.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "animated-beam",
-      "type": "registry:component",
-      "title": "Animated Beam",
-      "description": "A light that flows along a curved path between two elements, for integration diagrams. Holds a still path under reduced motion and pauses off screen.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/blocks/animated-beam/animated-beam.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "blocks"
-      ],
-      "meta": {
-        "layer": "B",
+        "group": "cursor",
+        "shelf": "click-effects",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-beam.tsx"
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/cool-mode.tsx"
         },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "uptime-card",
-      "type": "registry:component",
-      "title": "Uptime Card",
-      "description": "A status card with a row of daily bars per service, an uptime percentage and a short list of recent incidents. Bars are readable by screen readers and inspectable with the keyboard.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/blocks/uptime-card/uptime-card.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "blocks"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "kokonut-labs/kokonutui",
-          "license": "MIT",
-          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/uptime-card.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "address-chip",
-      "type": "registry:component",
-      "title": "Address Chip",
-      "description": "A compact EVM address with a generated blockie-style avatar, copy button, ENS label and explorer link.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/onchain/address-chip/address-chip.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "onchain"
-      ],
-      "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "price-ticker",
-      "type": "registry:component",
-      "title": "Price Ticker",
-      "description": "A price that rolls its digits on every update, flashes green or red, and shows a percent change badge.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/onchain/price-ticker/price-ticker.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "onchain"
-      ],
-      "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "radar-badge",
-      "type": "registry:component",
-      "title": "Radar Badge",
-      "description": "A live-monitoring badge: a tiny radar sweep with spreading rings next to a label, in live, scanning, idle and alert states.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/onchain/radar-badge/radar-badge.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "onchain"
-      ],
-      "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "tx-steps",
-      "type": "registry:component",
-      "title": "Transaction Steps",
-      "description": "Step-by-step transaction status (Approve, Sign, Broadcast, Confirmed) with a spinning active step, checkmarks and error state.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/onchain/tx-steps/tx-steps.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "onchain"
-      ],
-      "meta": {
-        "layer": "A",
-        "source": "original",
-        "status": "stable"
-      }
-    },
-    {
-      "name": "amount-pad",
-      "type": "registry:component",
-      "title": "Amount Pad",
-      "description": "A number pad for entering a token amount: animated digits, presets, a per-transfer cap, shake on refusal and physical keyboard input.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/onchain/amount-pad/amount-pad.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "onchain"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "kokonut-labs/kokonutui",
-          "license": "MIT",
-          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/amount-pad.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "order-book",
-      "type": "registry:component",
-      "title": "Order Book",
-      "description": "A depth ladder with asks above and bids below, cumulative depth bars, a spread bar and a fill-cost readout on hover. Driven by snapshots passed as props.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/onchain/order-book/order-book.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "onchain"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "starc007/ui-components",
-          "license": "MIT",
-          "url": "https://github.com/starc007/ui-components/blob/main/components/charts/order-book.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "receipt-printer",
-      "type": "registry:component",
-      "title": "Receipt Printer",
-      "description": "A transaction receipt (hash, from, to, amount, fee, status) that feeds out of a printer slot one line at a time, with a serrated edge.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/onchain/receipt-printer/receipt-printer.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "onchain"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "kokonut-labs/kokonutui",
-          "license": "MIT",
-          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/receipt-printer.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "slide-to-confirm",
-      "type": "registry:component",
-      "title": "Slide to Confirm",
-      "description": "A slide-to-commit control for irreversible actions: drag the thumb to the end, or press Enter, Space or the right arrow. Shows busy and done states.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/onchain/slide-to-confirm/slide-to-confirm.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "cssVars": {
-        "light": {
-          "success": "oklch(0.6 0.15 155)"
-        },
-        "dark": {
-          "success": "oklch(0.72 0.15 155)"
-        }
-      },
-      "categories": [
-        "onchain"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "kokonut-labs/kokonutui",
-          "license": "MIT",
-          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-to-confirm.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "direction-aware-tabs",
-      "type": "registry:component",
-      "title": "Direction Aware Tabs",
-      "description": "Tabs whose panel slides in from the side you are moving towards, with a sliding pill and an animated panel height.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/interactive/direction-aware-tabs/direction-aware-tabs.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "interactive"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "nolly-studio/cult-ui",
-          "license": "MIT",
-          "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/direction-aware-tabs.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "dock",
-      "type": "registry:component",
-      "title": "Dock",
-      "description": "A row of icons that swell as the pointer approaches, macOS style. Stays at rest on touch and under reduced motion.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/interactive/dock/dock.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "interactive"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx"
-        },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -1375,139 +965,25 @@
       ],
       "files": [
         {
-          "path": "registry/interactive/family-button/family-button.tsx",
+          "path": "registry/buttons/animated/family-button/family-button.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "interactive"
+        "buttons",
+        "animated"
       ],
       "meta": {
-        "layer": "B",
+        "group": "buttons",
+        "shelf": "animated",
+        "layer": "component",
         "source": {
           "repo": "nolly-studio/cult-ui",
           "license": "MIT",
           "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/family-button.tsx"
         },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "hold-action-button",
-      "type": "registry:component",
-      "title": "Hold Action Button",
-      "description": "A button that confirms only after being held down, with a fill that rewinds on early release. Works with pointer and Space / Enter, announces completion, and completes without animation under reduced motion.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/interactive/hold-action-button/hold-action-button.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "interactive"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "starc007/ui-components",
-          "license": "MIT",
-          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/hold-action-button.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "hover-swap-card",
-      "type": "registry:component",
-      "title": "Hover Swap Card",
-      "description": "A card that swaps its title and visual and lifts the media on hover or keyboard focus. Pure CSS transitions.",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/interactive/hover-swap-card/hover-swap-card.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "interactive"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "ui-layouts/uilayouts",
-          "license": "MIT",
-          "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/card/creative-hover-card.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "lens",
-      "type": "registry:component",
-      "title": "Lens",
-      "description": "A round magnifying lens that follows the pointer over any content. Mouse and trackpad only: touch screens and reduced motion get the plain content. The magnified copy is hidden from assistive tech.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/interactive/lens/lens.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "interactive"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/lens.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "shift-card",
-      "type": "registry:component",
-      "title": "Shift Card",
-      "description": "A card whose bottom panel grows over the middle content on hover, focus or click, swapping what the top shows.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/interactive/shift-card/shift-card.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "interactive"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "nolly-studio/cult-ui",
-          "license": "MIT",
-          "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx"
-        },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -1523,21 +999,25 @@
       ],
       "files": [
         {
-          "path": "registry/interactive/shimmer-button/shimmer-button.tsx",
+          "path": "registry/buttons/animated/shimmer-button/shimmer-button.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "interactive"
+        "buttons",
+        "animated"
       ],
       "meta": {
-        "layer": "B",
+        "group": "buttons",
+        "shelf": "animated",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/shimmer-button.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -1551,21 +1031,201 @@
       ],
       "files": [
         {
-          "path": "registry/interactive/slide-text-button/slide-text-button.tsx",
+          "path": "registry/buttons/animated/slide-text-button/slide-text-button.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "interactive"
+        "buttons",
+        "animated"
       ],
       "meta": {
-        "layer": "B",
+        "group": "buttons",
+        "shelf": "animated",
+        "layer": "component",
         "source": {
           "repo": "kokonut-labs/kokonutui",
           "license": "MIT",
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-text-button.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "hold-action-button",
+      "type": "registry:component",
+      "title": "Hold Action Button",
+      "description": "A button that confirms only after being held down, with a fill that rewinds on early release. Works with pointer and Space / Enter, announces completion, and completes without animation under reduced motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/buttons/confirm/hold-action-button/hold-action-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "buttons",
+        "confirm"
+      ],
+      "meta": {
+        "group": "buttons",
+        "shelf": "confirm",
+        "layer": "component",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/hold-action-button.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "slide-to-confirm",
+      "type": "registry:component",
+      "title": "Slide to Confirm",
+      "description": "A slide-to-commit control for irreversible actions: drag the thumb to the end, or press Enter, Space or the right arrow. Shows busy and done states.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/buttons/confirm/slide-to-confirm/slide-to-confirm.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "buttons",
+        "confirm"
+      ],
+      "meta": {
+        "group": "buttons",
+        "shelf": "confirm",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-to-confirm.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "hover-swap-card",
+      "type": "registry:component",
+      "title": "Hover Swap Card",
+      "description": "A card that swaps its title and visual and lifts the media on hover or keyboard focus. Pure CSS transitions.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cards/hover-reveal/hover-swap-card/hover-swap-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cards",
+        "hover-reveal"
+      ],
+      "meta": {
+        "group": "cards",
+        "shelf": "hover-reveal",
+        "layer": "component",
+        "source": {
+          "repo": "ui-layouts/uilayouts",
+          "license": "MIT",
+          "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/card/creative-hover-card.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "shift-card",
+      "type": "registry:component",
+      "title": "Shift Card",
+      "description": "A card whose bottom panel grows over the middle content on hover, focus or click, swapping what the top shows.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cards/hover-reveal/shift-card/shift-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cards",
+        "hover-reveal"
+      ],
+      "meta": {
+        "group": "cards",
+        "shelf": "hover-reveal",
+        "layer": "component",
+        "source": {
+          "repo": "nolly-studio/cult-ui",
+          "license": "MIT",
+          "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:component",
+      "title": "Border Beam",
+      "description": "A light that travels around the border of its parent card. Decorative, follows the parent's radius.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cards/surface/border-beam/border-beam.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cards",
+        "surface"
+      ],
+      "meta": {
+        "group": "cards",
+        "shelf": "surface",
+        "layer": "component",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/border-beam.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -1579,21 +1239,159 @@
       ],
       "files": [
         {
-          "path": "registry/interactive/texture-card/texture-card.tsx",
+          "path": "registry/cards/surface/texture-card/texture-card.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "interactive"
+        "cards",
+        "surface"
       ],
       "meta": {
-        "layer": "B",
+        "group": "cards",
+        "shelf": "surface",
+        "layer": "component",
         "source": {
           "repo": "nolly-studio/cult-ui",
           "license": "MIT",
           "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/texture-card.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "dock",
+      "type": "registry:component",
+      "title": "Dock",
+      "description": "A row of icons that swell as the pointer approaches, macOS style. Stays at rest on touch and under reduced motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/dock-menus/dock/dock.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "dock-menus"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "dock-menus",
+        "layer": "component",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "direction-aware-tabs",
+      "type": "registry:component",
+      "title": "Direction Aware Tabs",
+      "description": "Tabs whose panel slides in from the side you are moving towards, with a sliding pill and an animated panel height.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/tabs/direction-aware-tabs/direction-aware-tabs.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "tabs"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "tabs",
+        "layer": "component",
+        "source": {
+          "repo": "nolly-studio/cult-ui",
+          "license": "MIT",
+          "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/direction-aware-tabs.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "lens",
+      "type": "registry:component",
+      "title": "Lens",
+      "description": "A round magnifying lens that follows the pointer over any content. Mouse and trackpad only: touch screens and reduced motion get the plain content. The magnified copy is hidden from assistive tech.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/overlays/lightbox-lens/lens/lens.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlays",
+        "lightbox-lens"
+      ],
+      "meta": {
+        "group": "overlays",
+        "shelf": "lightbox-lens",
+        "layer": "component",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/lens.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "progressive-blur",
+      "type": "registry:component",
+      "title": "Progressive Blur",
+      "description": "A gradual blur over the edge of a scrolling area, built from stacked backdrop-filter layers. Decorative and static.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/overlays/scrim-blur/progressive-blur/progressive-blur.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "overlays",
+        "scrim-blur"
+      ],
+      "meta": {
+        "group": "overlays",
+        "shelf": "scrim-blur",
+        "layer": "component",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/progressive-blur.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -1609,21 +1407,25 @@
       ],
       "files": [
         {
-          "path": "registry/layout/animated-list/animated-list.tsx",
+          "path": "registry/layout/lists/animated-list/animated-list.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "layout"
+        "layout",
+        "lists"
       ],
       "meta": {
-        "layer": "B",
+        "group": "layout",
+        "shelf": "lists",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-list.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -1639,21 +1441,25 @@
       ],
       "files": [
         {
-          "path": "registry/layout/drag-carousel/drag-carousel.tsx",
+          "path": "registry/layout/carousels/drag-carousel/drag-carousel.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "layout"
+        "layout",
+        "carousels"
       ],
       "meta": {
-        "layer": "B",
+        "group": "layout",
+        "shelf": "carousels",
+        "layer": "component",
         "source": {
           "repo": "ui-layouts/uilayouts",
           "license": "MIT",
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-drag-sliding-carousel.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -1667,169 +1473,25 @@
       ],
       "files": [
         {
-          "path": "registry/layout/image-accordion/image-accordion.tsx",
+          "path": "registry/layout/carousels/image-accordion/image-accordion.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "layout"
+        "layout",
+        "carousels"
       ],
       "meta": {
-        "layer": "B",
+        "group": "layout",
+        "shelf": "carousels",
+        "layer": "component",
         "source": {
           "repo": "ui-layouts/uilayouts",
           "license": "MIT",
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/accordion/image-hover.tsx"
         },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "marquee",
-      "type": "registry:component",
-      "title": "Marquee",
-      "description": "Endless horizontal or vertical loop of any content, with pause on hover and a still frame under reduced motion.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/layout/marquee/marquee.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "layout"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "orbiting-circles",
-      "type": "registry:component",
-      "title": "Orbiting Circles",
-      "description": "Spreads its children around a ring and walks them around it. Items stay upright and rest under reduced motion.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/layout/orbiting-circles/orbiting-circles.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "layout"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/orbiting-circles.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "progressive-blur",
-      "type": "registry:component",
-      "title": "Progressive Blur",
-      "description": "A gradual blur over the edge of a scrolling area, built from stacked backdrop-filter layers. Decorative and static.",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/layout/progressive-blur/progressive-blur.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "layout"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/progressive-blur.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "smooth-accordion",
-      "type": "registry:component",
-      "title": "Smooth Accordion",
-      "description": "A stack of disclosures with panels that grow to their content, single or multiple mode, and full keyboard navigation.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/layout/smooth-accordion/smooth-accordion.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "layout"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "ui-layouts/uilayouts",
-          "license": "MIT",
-          "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/accordion.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "terminal",
-      "type": "registry:component",
-      "title": "Terminal",
-      "description": "A terminal window that plays its lines in sequence: typed commands and fading output. Shows everything at once under reduced motion.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/layout/terminal/terminal.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "layout"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "magicuidesign/magicui",
-          "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/terminal.tsx"
-        },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -1845,28 +1507,32 @@
       ],
       "files": [
         {
-          "path": "registry/layout/thumbnail-carousel/thumbnail-carousel.tsx",
+          "path": "registry/layout/carousels/thumbnail-carousel/thumbnail-carousel.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "layout"
+        "layout",
+        "carousels"
       ],
       "meta": {
-        "layer": "B",
+        "group": "layout",
+        "shelf": "carousels",
+        "layer": "component",
         "source": {
           "repo": "ui-layouts/uilayouts",
           "license": "MIT",
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-moveable-thumnbails.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "ai-reasoning",
+      "name": "smooth-accordion",
       "type": "registry:component",
-      "title": "AI Reasoning",
-      "description": "A collapsible reasoning trace. The summary shimmers only while the model is working, then settles, reports how long it took and folds away.",
+      "title": "Smooth Accordion",
+      "description": "A stack of disclosures with panels that grow to their content, single or multiple mode, and full keyboard navigation.",
       "dependencies": [
         "motion"
       ],
@@ -1875,28 +1541,32 @@
       ],
       "files": [
         {
-          "path": "registry/feedback/ai-reasoning/ai-reasoning.tsx",
+          "path": "registry/layout/accordions/smooth-accordion/smooth-accordion.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "feedback"
+        "layout",
+        "accordions"
       ],
       "meta": {
-        "layer": "B",
+        "group": "layout",
+        "shelf": "accordions",
+        "layer": "component",
         "source": {
-          "repo": "educlopez/smoothui",
+          "repo": "ui-layouts/uilayouts",
           "license": "MIT",
-          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-reasoning/index.tsx"
+          "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/accordion.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "animated-subscribe-button",
+      "name": "marquee",
       "type": "registry:component",
-      "title": "Animated Subscribe Button",
-      "description": "A toggle button whose label slides away and the next one drops in. A real button with aria-pressed, in controlled or uncontrolled form.",
+      "title": "Marquee",
+      "description": "Endless horizontal or vertical loop of any content, with pause on hover and a still frame under reduced motion.",
       "dependencies": [
         "motion"
       ],
@@ -1905,28 +1575,32 @@
       ],
       "files": [
         {
-          "path": "registry/feedback/animated-subscribe-button/animated-subscribe-button.tsx",
+          "path": "registry/layout/marquee/marquee/marquee.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "feedback"
+        "layout",
+        "marquee"
       ],
       "meta": {
-        "layer": "B",
+        "group": "layout",
+        "shelf": "marquee",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
-          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx"
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "dynamic-island",
+      "name": "orbiting-circles",
       "type": "registry:component",
-      "title": "Dynamic Island",
-      "description": "A pill that springs open into richer views, in the style of the iPhone status island. The shell animates real size, so content is never distorted.",
+      "title": "Orbiting Circles",
+      "description": "Spreads its children around a ring and walks them around it. Items stay upright and rest under reduced motion.",
       "dependencies": [
         "motion"
       ],
@@ -1935,28 +1609,32 @@
       ],
       "files": [
         {
-          "path": "registry/feedback/dynamic-island/dynamic-island.tsx",
+          "path": "registry/layout/marquee/orbiting-circles/orbiting-circles.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "feedback"
+        "layout",
+        "marquee"
       ],
       "meta": {
-        "layer": "B",
+        "group": "layout",
+        "shelf": "marquee",
+        "layer": "component",
         "source": {
-          "repo": "starc007/ui-components",
+          "repo": "magicuidesign/magicui",
           "license": "MIT",
-          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/dynamic-island.tsx"
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/orbiting-circles.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "notification-stack",
+      "name": "animated-beam",
       "type": "registry:component",
-      "title": "Notification Stack",
-      "description": "A pile of notifications that fans out on hover or focus. Swipe, click or press Delete to dismiss; the remaining cards close the gap.",
+      "title": "Animated Beam",
+      "description": "A light that flows along a curved path between two elements, for integration diagrams. Holds a still path under reduced motion and pauses off screen.",
       "dependencies": [
         "motion"
       ],
@@ -1965,81 +1643,53 @@
       ],
       "files": [
         {
-          "path": "registry/feedback/notification-stack/notification-stack.tsx",
+          "path": "registry/layout/grids/animated-beam/animated-beam.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "feedback"
+        "layout",
+        "grids"
       ],
       "meta": {
-        "layer": "B",
+        "group": "layout",
+        "shelf": "grids",
+        "layer": "component",
         "source": {
-          "repo": "kokonut-labs/kokonutui",
+          "repo": "magicuidesign/magicui",
           "license": "MIT",
-          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/notification-stack.tsx"
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-beam.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "progress-ring",
+      "name": "bento-grid",
       "type": "registry:component",
-      "title": "Progress Ring",
-      "description": "A determinate ring that eases to its value and counts up in the middle.",
-      "dependencies": [
-        "motion"
-      ],
+      "title": "Bento Grid",
+      "description": "Container-responsive bento grid with cards that lift on hover, move their artwork and follow the pointer with a soft glow.",
+      "dependencies": [],
       "registryDependencies": [
         "utils"
       ],
       "files": [
         {
-          "path": "registry/feedback/progress-ring/progress-ring.tsx",
+          "path": "registry/layout/grids/bento-grid/bento-grid.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "feedback"
+        "layout",
+        "grids"
       ],
       "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "bidyut10/opensourceui",
-          "license": "MIT",
-          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/others/progress-ring-card.tsx"
-        },
-        "status": "stable"
-      }
-    },
-    {
-      "name": "ring-spinner",
-      "type": "registry:component",
-      "title": "Ring Spinner",
-      "description": "A minimal indeterminate ring in three sizes that takes its color from the surrounding text.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/feedback/ring-spinner/ring-spinner.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "categories": [
-        "feedback"
-      ],
-      "meta": {
-        "layer": "B",
-        "source": {
-          "repo": "educlopez/smoothui",
-          "license": "MIT",
-          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/spinner/index.tsx"
-        },
-        "status": "stable"
+        "group": "layout",
+        "shelf": "grids",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -2055,28 +1705,32 @@
       ],
       "files": [
         {
-          "path": "registry/feedback/scroll-progress/scroll-progress.tsx",
+          "path": "registry/scroll/progress/scroll-progress/scroll-progress.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "feedback"
+        "scroll",
+        "progress"
       ],
       "meta": {
-        "layer": "B",
+        "group": "scroll",
+        "shelf": "progress",
+        "layer": "component",
         "source": {
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/scroll-progress.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
-      "name": "shimmer-skeleton",
+      "name": "ring-spinner",
       "type": "registry:component",
-      "title": "Shimmer Skeleton",
-      "description": "A placeholder block with a soft light sweeping across it. Wrap real content and it keeps the exact size.",
+      "title": "Ring Spinner",
+      "description": "A minimal indeterminate ring in three sizes that takes its color from the surrounding text.",
       "dependencies": [
         "motion"
       ],
@@ -2085,21 +1739,25 @@
       ],
       "files": [
         {
-          "path": "registry/feedback/shimmer-skeleton/shimmer-skeleton.tsx",
+          "path": "registry/feedback/loaders/ring-spinner/ring-spinner.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "feedback"
+        "feedback",
+        "loaders"
       ],
       "meta": {
-        "layer": "B",
+        "group": "feedback",
+        "shelf": "loaders",
+        "layer": "component",
         "source": {
           "repo": "educlopez/smoothui",
           "license": "MIT",
-          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/content-skeleton/index.tsx"
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/spinner/index.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -2115,21 +1773,648 @@
       ],
       "files": [
         {
-          "path": "registry/feedback/thinking-loader/thinking-loader.tsx",
+          "path": "registry/feedback/loaders/thinking-loader/thinking-loader.tsx",
           "type": "registry:component"
         }
       ],
       "categories": [
-        "feedback"
+        "feedback",
+        "loaders"
       ],
       "meta": {
-        "layer": "B",
+        "group": "feedback",
+        "shelf": "loaders",
+        "layer": "component",
         "source": {
           "repo": "educlopez/smoothui",
           "license": "MIT",
           "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-loader/index.tsx"
         },
-        "status": "stable"
+        "status": "stable",
+        "variants": 3
+      }
+    },
+    {
+      "name": "shimmer-skeleton",
+      "type": "registry:component",
+      "title": "Shimmer Skeleton",
+      "description": "A placeholder block with a soft light sweeping across it. Wrap real content and it keeps the exact size.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/skeletons/shimmer-skeleton/shimmer-skeleton.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "skeletons"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "skeletons",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/content-skeleton/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "progress-ring",
+      "type": "registry:component",
+      "title": "Progress Ring",
+      "description": "A determinate ring that eases to its value and counts up in the middle.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/progress/progress-ring/progress-ring.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "progress"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "progress",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/others/progress-ring-card.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "animated-subscribe-button",
+      "type": "registry:component",
+      "title": "Animated Subscribe Button",
+      "description": "A toggle button whose label slides away and the next one drops in. A real button with aria-pressed, in controlled or uncontrolled form.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/notifications/animated-subscribe-button/animated-subscribe-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "notifications"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "notifications",
+        "layer": "component",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "notification-stack",
+      "type": "registry:component",
+      "title": "Notification Stack",
+      "description": "A pile of notifications that fans out on hover or focus. Swipe, click or press Delete to dismiss; the remaining cards close the gap.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/notifications/notification-stack/notification-stack.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "notifications"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "notifications",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/notification-stack.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "dynamic-island",
+      "type": "registry:component",
+      "title": "Dynamic Island",
+      "description": "A pill that springs open into richer views, in the style of the iPhone status island. The shell animates real size, so content is never distorted.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/status/dynamic-island/dynamic-island.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "status"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "status",
+        "layer": "component",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/dynamic-island.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "radar-badge",
+      "type": "registry:component",
+      "title": "Radar Badge",
+      "description": "A live-monitoring badge: a tiny radar sweep with spreading rings next to a label, in live, scanning, idle and alert states.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/status/radar-badge/radar-badge.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "feedback",
+        "status"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "status",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "ai-reasoning",
+      "type": "registry:component",
+      "title": "AI Reasoning",
+      "description": "A collapsible reasoning trace. The summary shimmers only while the model is working, then settles, reports how long it took and folds away.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ai/reasoning/ai-reasoning/ai-reasoning.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "ai",
+        "reasoning"
+      ],
+      "meta": {
+        "group": "ai",
+        "shelf": "reasoning",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-reasoning/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "ai-tool-approval",
+      "type": "registry:component",
+      "title": "AI Tool Approval",
+      "description": "A card where the user approves or denies an agent's tool call, showing the command or fields, the reason, and a polite live announcement of the decision.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ai/agents-tools/ai-tool-approval/ai-tool-approval.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "ai",
+        "agents-tools"
+      ],
+      "meta": {
+        "group": "ai",
+        "shelf": "agents-tools",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-tool-approval.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "uptime-card",
+      "type": "registry:component",
+      "title": "Uptime Card",
+      "description": "A status card with a row of daily bars per service, an uptime percentage and a short list of recent incidents. Bars are readable by screen readers and inspectable with the keyboard.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/data/status-pages/uptime-card/uptime-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "data",
+        "status-pages"
+      ],
+      "meta": {
+        "group": "data",
+        "shelf": "status-pages",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/uptime-card.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "terminal",
+      "type": "registry:component",
+      "title": "Terminal",
+      "description": "A terminal window that plays its lines in sequence: typed commands and fading output. Shows everything at once under reduced motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/media/mockups/terminal/terminal.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "media",
+        "mockups"
+      ],
+      "meta": {
+        "group": "media",
+        "shelf": "mockups",
+        "layer": "component",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/terminal.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "order-book",
+      "type": "registry:component",
+      "title": "Order Book",
+      "description": "A depth ladder with asks above and bids below, cumulative depth bars, a spread bar and a fill-cost readout on hover. Driven by snapshots passed as props.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/prices-charts/order-book/order-book.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain",
+        "prices-charts"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "prices-charts",
+        "layer": "component",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/charts/order-book.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "price-ticker",
+      "type": "registry:component",
+      "title": "Price Ticker",
+      "description": "A price that rolls its digits on every update, flashes green or red, and shows a percent change badge.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/prices-charts/price-ticker/price-ticker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain",
+        "prices-charts"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "prices-charts",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "address-chip",
+      "type": "registry:component",
+      "title": "Address Chip",
+      "description": "A compact EVM address with a generated blockie-style avatar, copy button, ENS label and explorer link.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/wallet-address/address-chip/address-chip.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain",
+        "wallet-address"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "wallet-address",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "receipt-printer",
+      "type": "registry:component",
+      "title": "Receipt Printer",
+      "description": "A transaction receipt (hash, from, to, amount, fee, status) that feeds out of a printer slot one line at a time, with a serrated edge.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/transactions/receipt-printer/receipt-printer.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain",
+        "transactions"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "transactions",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/receipt-printer.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "tx-steps",
+      "type": "registry:component",
+      "title": "Transaction Steps",
+      "description": "Step-by-step transaction status (Approve, Sign, Broadcast, Confirmed) with a spinning active step, checkmarks and error state.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/transactions/tx-steps/tx-steps.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "onchain",
+        "transactions"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "transactions",
+        "layer": "component",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "amount-pad",
+      "type": "registry:component",
+      "title": "Amount Pad",
+      "description": "A number pad for entering a token amount: animated digits, presets, a per-transfer cap, shake on refusal and physical keyboard input.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/amount-confirm/amount-pad/amount-pad.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain",
+        "amount-confirm"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "amount-confirm",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/amount-pad.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "hero-section",
+      "type": "registry:block",
+      "title": "Hero Section",
+      "description": "Landing hero with an eyebrow pill, headline, copy, two calls to action and an optional media slot, revealed in a soft stagger.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils",
+        "https://raw.githubusercontent.com/goktas-batuhan/mozaik/main/public/r/word-rotate.json"
+      ],
+      "files": [
+        {
+          "path": "blocks/marketing/hero/hero-section/hero-section.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "marketing",
+        "hero"
+      ],
+      "meta": {
+        "group": "marketing",
+        "shelf": "hero",
+        "layer": "block",
+        "source": "original",
+        "status": "stable",
+        "variants": 0
       }
     }
   ]

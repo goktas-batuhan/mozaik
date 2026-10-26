@@ -6,9 +6,13 @@
   "description": "A growing collection of React components in one design language, distributed as a shadcn registry.",
   "license": "MIT",
   "scripts": {
+    "link": "node scripts/link-components.mjs",
+    "predev": "npm run link",
     "dev": "vite",
     "registry:build": "node scripts/build-registry.mjs",
+    "pretypecheck": "npm run link",
     "typecheck": "tsc -b",
+    "pretest": "npm run link",
     "test": "vitest run",
     "smoke": "playwright test",
     "gate": "node scripts/gate.mjs",

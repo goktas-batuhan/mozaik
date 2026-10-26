@@ -1,0 +1,22 @@
+{
+  "name": "dot-grid",
+  "title": "Dot Grid",
+  "description": "A dot grid with a fine grain and soft edges. Dots near the cursor take the primary color and grow.",
+  "group": "backgrounds",
+  "shelf": "pattern",
+  "layer": "component",
+  "tags": ["hover", "svg"],
+  "keywords": ["grid", "cursor", "noise"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the grid." },
+    { "name": "gap", "type": "number", "default": "24", "description": "Distance between dots, in pixels." },
+    { "name": "dotSize", "type": "number", "default": "2", "description": "Dot diameter, in pixels." },
+    { "name": "glow", "type": "boolean", "default": "true", "description": "Light up and grow the dots near the cursor. Off on touch screens and under reduced motion." },
+    { "name": "glowRadius", "type": "number", "default": "140", "description": "Radius of the cursor glow, in pixels." },
+    { "name": "fade", "type": "boolean", "default": "true", "description": "Fade the grid out towards the edges." },
+    { "name": "noise", "type": "boolean", "default": "true", "description": "Lay a fine film grain over the grid." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

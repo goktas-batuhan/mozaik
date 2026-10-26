@@ -1,0 +1,29 @@
+{
+  "name": "bento-grid",
+  "title": "Bento Grid",
+  "description": "Container-responsive bento grid with cards that lift on hover, move their artwork and follow the pointer with a soft glow.",
+  "group": "layout",
+  "shelf": "grids",
+  "layer": "component",
+  "tags": ["hover", "svg", "marketing"],
+  "keywords": ["grid", "features", "cards"],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    { "name": "children", "type": "ReactNode", "required": true, "description": "BentoGrid: BentoCard elements." },
+    { "name": "columns", "type": "2 | 3 | 4", "default": "3", "description": "BentoGrid: columns on wide containers. One column below 672px of container width." },
+    { "name": "rowHeight", "type": "string", "default": "'13rem'", "description": "BentoGrid: minimum height of one grid row, any CSS length." },
+    { "name": "as", "type": "ElementType", "default": "'div'", "description": "BentoGrid: element for the grid." },
+    { "name": "title", "type": "ReactNode", "required": true, "description": "BentoCard: heading, also the accessible name of the link or button." },
+    { "name": "description", "type": "ReactNode", "description": "BentoCard: short copy under the title." },
+    { "name": "icon", "type": "ReactNode", "description": "BentoCard: small icon above the title." },
+    { "name": "visual", "type": "ReactNode", "description": "BentoCard: decorative artwork behind the content. Use group-hover/bento: classes inside it to react to hover." },
+    { "name": "colSpan", "type": "1 | 2 | 3 | 4", "default": "1", "description": "BentoCard: columns spanned on wide containers, clamped to the grid's column count." },
+    { "name": "rowSpan", "type": "1 | 2 | 3", "default": "1", "description": "BentoCard: rows spanned on wide containers." },
+    { "name": "href", "type": "string", "description": "BentoCard: makes the whole card a link." },
+    { "name": "onClick", "type": "() => void", "description": "BentoCard: makes the whole card a button when there is no href." },
+    { "name": "cta", "type": "ReactNode", "description": "BentoCard: small call to action under the copy, shown on interactive cards only." },
+    { "name": "titleAs", "type": "ElementType", "default": "'h3'", "description": "BentoCard: element for the heading." },
+    { "name": "className", "type": "string", "description": "Extra classes for the grid or the card." }
+  ]
+}

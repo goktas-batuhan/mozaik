@@ -1,0 +1,23 @@
+{
+  "name": "split-flap-text",
+  "title": "Split Flap Text",
+  "description": "Departure-board lettering. Tiles flip through a drum of letters on a hinge, one beat apart. Screen readers get the lines once.",
+  "group": "text",
+  "shelf": "counter",
+  "layer": "component",
+  "tags": ["loop", "css"],
+  "keywords": ["board", "airport", "flip", "loop"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/split-flap-text.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "words", "type": "string[]", "required": true, "description": "Lines to show. With two or more, the board cycles through them. Letters outside A-Z, 0-9 and :.-/&!? become blanks." },
+    { "name": "interval", "type": "number", "default": "3.8", "description": "Seconds each line stays up." },
+    { "name": "duration", "type": "number", "default": "0.056", "description": "Seconds one flap takes to fall." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds before the board starts cycling." },
+    { "name": "length", "type": "number", "description": "Tiles always shown. Defaults to the longest line." },
+    { "name": "as", "type": "ElementType", "default": "'span'", "description": "Element to render." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Shows the first line and never flips." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." },
+    { "name": "tileClassName", "type": "string", "description": "Classes for each tile, to recolor the board." }
+  ]
+}

@@ -11,22 +11,26 @@
   ],
   "files": [
     {
-      "path": "registry/text/number-ticker/number-ticker.tsx",
+      "path": "registry/text/counter/number-ticker/number-ticker.tsx",
       "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/number-ticker.tsx\nimport { animate, motion, useInView, useMotionValue, useReducedMotion, useReducedMotionConfig, useTransform } from 'motion/react'\nimport { useEffect, useMemo, useRef, type ComponentPropsWithoutRef } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface NumberTickerProps extends Omit<ComponentPropsWithoutRef<'span'>, 'children'> {\n  /** The number to count to (or from, when direction is \"down\"). */\n  value: number\n  /** The number the count starts at. */\n  startValue?: number\n  /** Count up to value, or down from value to startValue. */\n  direction?: 'up' | 'down'\n  /** Seconds the count takes. */\n  duration?: number\n  /** Seconds to wait once the number is in view. */\n  delay?: number\n  /** Digits after the decimal point. */\n  decimalPlaces?: number\n  /** BCP 47 locale used to format the number. */\n  locale?: string\n  /** Skips the count and shows the final number. */\n  disabled?: boolean\n  className?: string\n}\n\n/** Counts a number up (or down) once it scrolls into view. Screen readers get the final number. */\nexport function NumberTicker({\n  value,\n  startValue = 0,\n  direction = 'up',\n  duration = 2,\n  delay = 0,\n  decimalPlaces = 0,\n  locale = 'en-US',\n  disabled = false,\n  className,\n  ...props\n}: NumberTickerProps) {\n  const ref = useRef<HTMLSpanElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref, { once: true })\n  const from = direction === 'down' ? value : startValue\n  const to = direction === 'down' ? startValue : value\n  const still = disabled || !!reduced\n\n  const format = useMemo(\n    () =>\n      new Intl.NumberFormat(locale, {\n        minimumFractionDigits: decimalPlaces,\n        maximumFractionDigits: decimalPlaces,\n      }),\n    [locale, decimalPlaces],\n  )\n\n  const motionValue = useMotionValue(still ? to : from)\n  const text = useTransform(motionValue, (v) => format.format(v))\n\n  useEffect(() => {\n    if (still) {\n      motionValue.set(to)\n      return\n    }\n    if (!inView) return\n    const controls = animate(motionValue, to, { duration, delay, ease: [0.16, 1, 0.3, 1] })\n    return () => controls.stop()\n  }, [still, inView, motionValue, to, duration, delay])\n\n  return (\n    <span ref={ref} className={cn('inline-block tabular-nums', className)} {...props}>\n      <span className=\"sr-only\">{format.format(to)}</span>\n      <motion.span aria-hidden>{text}</motion.span>\n    </span>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "text",
+    "shelf": "counter",
+    "layer": "component",
     "source": {
       "repo": "magicuidesign/magicui",
       "license": "MIT",
       "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/number-ticker.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "text"
+    "text",
+    "counter"
   ],
   "type": "registry:component"
 }

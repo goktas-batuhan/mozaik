@@ -9,22 +9,26 @@
   ],
   "files": [
     {
-      "path": "registry/background/graph-paper/graph-paper.tsx",
+      "path": "registry/backgrounds/pattern/graph-paper/graph-paper.tsx",
       "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/graph-paper-pattern.tsx\nimport { cn } from '@/lib/utils'\n\nexport type GraphPaperFade = 'none' | 'radial' | 'vertical'\n\nexport interface GraphPaperProps {\n  /** Size of one small square, in pixels. */\n  size?: number\n  /** Every n-th line is drawn stronger. Use 0 to draw only the small grid. */\n  majorEvery?: number\n  /** Fades the grid out towards the edges. */\n  fade?: GraphPaperFade\n  className?: string\n}\n\nconst MASK: Record<GraphPaperFade, string | undefined> = {\n  none: undefined,\n  radial: 'radial-gradient(ellipse at center, black 30%, transparent 75%)',\n  vertical: 'linear-gradient(to bottom, black 35%, transparent 100%)',\n}\n\nconst line = (percent: number) => `color-mix(in oklab, var(--foreground) ${percent}%, transparent)`\n\n/** Engineering graph paper: fine squares with a stronger line every few cells. Place it behind content. */\nexport function GraphPaper({ size = 24, majorEvery = 5, fade = 'radial', className }: GraphPaperProps) {\n  const major = size * majorEvery\n  const layers = [\n    `linear-gradient(to right, ${line(6)} 1px, transparent 1px)`,\n    `linear-gradient(to bottom, ${line(6)} 1px, transparent 1px)`,\n  ]\n  const sizes = [`${size}px ${size}px`, `${size}px ${size}px`]\n  if (majorEvery > 0) {\n    layers.unshift(\n      `linear-gradient(to right, ${line(12)} 1px, transparent 1px)`,\n      `linear-gradient(to bottom, ${line(12)} 1px, transparent 1px)`,\n    )\n    sizes.unshift(`${major}px ${major}px`, `${major}px ${major}px`)\n  }\n\n  return (\n    <div\n      aria-hidden\n      className={cn('pointer-events-none absolute inset-0', className)}\n      style={{\n        backgroundImage: layers.join(', '),\n        backgroundSize: sizes.join(', '),\n        maskImage: MASK[fade],\n        WebkitMaskImage: MASK[fade],\n      }}\n    />\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "backgrounds",
+    "shelf": "pattern",
+    "layer": "component",
     "source": {
       "repo": "bidyut10/opensourceui",
       "license": "MIT",
       "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/graph-paper-pattern.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "background"
+    "backgrounds",
+    "pattern"
   ],
   "type": "registry:component"
 }

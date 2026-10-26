@@ -1,0 +1,18 @@
+{
+  "name": "tx-steps",
+  "title": "Transaction Steps",
+  "description": "Step-by-step transaction status (Approve, Sign, Broadcast, Confirmed) with a spinning active step, checkmarks and error state.",
+  "group": "onchain",
+  "shelf": "transactions",
+  "layer": "component",
+  "tags": ["in-view", "svg", "web3"],
+  "keywords": ["stepper", "transaction", "status"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "steps", "type": "{ label: string; description?: string; status: 'pending' | 'active' | 'done' | 'error' }[]", "required": true, "description": "The steps in order, each with its own status." },
+    { "name": "orientation", "type": "'vertical' | 'horizontal'", "default": "'vertical'", "description": "Stack the steps or lay them out in a row." },
+    { "name": "label", "type": "string", "default": "'Transaction progress'", "description": "Accessible name for the list." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

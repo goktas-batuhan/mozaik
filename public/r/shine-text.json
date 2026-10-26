@@ -11,22 +11,26 @@
   ],
   "files": [
     {
-      "path": "registry/text/shine-text/shine-text.tsx",
+      "path": "registry/text/effect/shine-text/shine-text.tsx",
       "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/shine-text/index.tsx\nimport { motion, useInView, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useRef } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface ShineTextProps {\n  /** The text to light up. */\n  children: string\n  /** Seconds one sweep takes. */\n  duration?: number\n  /** Seconds to rest between sweeps. */\n  delay?: number\n  /** Resting text color. Any CSS color; defaults to the muted token. */\n  baseColor?: string\n  /** Color of the moving highlight. Any CSS color; defaults to the foreground token. */\n  shineColor?: string\n  /** Turns the animation off and renders calm static text. */\n  disabled?: boolean\n  className?: string\n}\n\n/** A band of light glides across the text on a loop. */\nexport function ShineText({\n  children,\n  duration = 2.5,\n  delay = 0.6,\n  baseColor = 'var(--muted-foreground)',\n  shineColor = 'var(--foreground)',\n  disabled = false,\n  className,\n}: ShineTextProps) {\n  const ref = useRef<HTMLSpanElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref)\n\n  if (disabled || reduced) {\n    return (\n      <span ref={ref} className={className} style={{ color: baseColor }}>\n        {children}\n      </span>\n    )\n  }\n\n  return (\n    <motion.span\n      ref={ref}\n      className={cn('bg-clip-text text-transparent', className)}\n      style={{\n        backgroundImage: `linear-gradient(110deg, ${baseColor} 40%, ${shineColor} 50%, ${baseColor} 60%)`,\n        backgroundSize: '250% 100%',\n        WebkitTextFillColor: 'transparent',\n      }}\n      initial={{ backgroundPositionX: '150%' }}\n      animate={inView ? { backgroundPositionX: ['150%', '-150%'] } : { backgroundPositionX: '150%' }}\n      transition={{ duration, ease: 'linear', repeat: Infinity, repeatDelay: delay }}\n    >\n      {children}\n    </motion.span>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "text",
+    "shelf": "effect",
+    "layer": "component",
     "source": {
       "repo": "educlopez/smoothui",
       "license": "MIT",
       "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/shine-text/index.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "text"
+    "text",
+    "effect"
   ],
   "type": "registry:component"
 }

@@ -11,22 +11,26 @@
   ],
   "files": [
     {
-      "path": "registry/interactive/family-button/family-button.tsx",
+      "path": "registry/buttons/animated/family-button/family-button.tsx",
       "content": "// Source: nolly-studio/cult-ui (MIT) — https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/family-button.tsx\nimport { AnimatePresence, motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useId, useState, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface FamilyButtonProps {\n  /** Content shown inside the expanded panel. */\n  children: ReactNode\n  /** Accessible name of the toggle button. */\n  label?: string\n  /** Whether the panel starts open. */\n  defaultOpen?: boolean\n  /** Controlled open state. */\n  open?: boolean\n  /** Called when the panel opens or closes. */\n  onOpenChange?: (open: boolean) => void\n  /** Width of the open panel in pixels. */\n  width?: number\n  /** Height of the open panel in pixels. */\n  height?: number\n  /** Seconds the expand and collapse take. */\n  duration?: number\n  /** Turns the button off. */\n  disabled?: boolean\n  /** Extra classes for the root element. */\n  className?: string\n}\n\nconst CLOSED = 64\n\n/** A square button that grows into a panel. Escape or the toggle collapses it again. */\nexport function FamilyButton({\n  children,\n  label = 'Toggle panel',\n  defaultOpen = false,\n  open: controlled,\n  onOpenChange,\n  width = 220,\n  height = 260,\n  duration = 0.35,\n  disabled = false,\n  className,\n}: FamilyButtonProps) {\n  const reduced = usePrefersReducedMotion()\n  const panelId = useId()\n  const [inner, setInner] = useState(defaultOpen)\n  const open = controlled ?? inner\n\n  const setOpen = (next: boolean) => {\n    if (disabled) return\n    if (controlled === undefined) setInner(next)\n    onOpenChange?.(next)\n  }\n\n  useEffect(() => {\n    if (!open) return\n    const onKey = (e: globalThis.KeyboardEvent) => e.key === 'Escape' && setOpen(false)\n    window.addEventListener('keydown', onKey)\n    return () => window.removeEventListener('keydown', onKey)\n  })\n\n  const t = reduced ? { duration: 0 } : { type: 'spring' as const, damping: 26, stiffness: 320, duration }\n\n  return (\n    <div className={cn('inline-block rounded-[26px] border border-foreground/10 bg-card p-[3px] shadow-sm', className)}>\n      <motion.div\n        initial={false}\n        animate={{ width: open ? width : CLOSED, height: open ? height : CLOSED, borderRadius: 22 }}\n        transition={t}\n        className=\"relative overflow-hidden border border-border bg-linear-to-b from-secondary to-card text-card-foreground\"\n      >\n        <AnimatePresence initial={false}>\n          {open && (\n            <motion.div\n              id={panelId}\n              key=\"panel\"\n              role=\"region\"\n              aria-label={label}\n              initial={{ opacity: 0 }}\n              animate={{ opacity: 1, transition: reduced ? { duration: 0 } : { delay: 0.15, duration: 0.3 } }}\n              exit={{ opacity: 0, transition: { duration: reduced ? 0 : 0.1 } }}\n              className=\"absolute inset-x-0 top-0 bottom-16 overflow-auto p-4\"\n            >\n              {children}\n            </motion.div>\n          )}\n        </AnimatePresence>\n\n        <button\n          type=\"button\"\n          aria-label={label}\n          aria-expanded={open}\n          aria-controls={open ? panelId : undefined}\n          disabled={disabled}\n          onClick={() => setOpen(!open)}\n          className={cn(\n            'absolute grid place-items-center text-foreground outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none disabled:opacity-50',\n            open\n              ? 'bottom-3 left-1/2 size-10 -translate-x-1/2 rounded-full border border-border bg-background/60 hover:bg-background'\n              : 'inset-0 rounded-[inherit] hover:bg-accent/60',\n          )}\n        >\n          <svg\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth=\"2\"\n            strokeLinecap=\"round\"\n            aria-hidden\n            className={cn('size-6 transition-transform duration-300 motion-reduce:transition-none', open && 'rotate-45')}\n          >\n            <path d=\"M12 5v14M5 12h14\" />\n          </svg>\n        </button>\n      </motion.div>\n    </div>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "buttons",
+    "shelf": "animated",
+    "layer": "component",
     "source": {
       "repo": "nolly-studio/cult-ui",
       "license": "MIT",
       "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/family-button.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "interactive"
+    "buttons",
+    "animated"
   ],
   "type": "registry:component"
 }

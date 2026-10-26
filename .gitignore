@@ -18,5 +18,6 @@ wiki/
 CLAUDE.md
 .claude/
 
-# Her build'de üretilen ara dosya (yayın public/r'de)
+# Her build'de üretilen ara dosyalar (yayın public/r'de; kısayollar scripts/link-components.mjs)
 /registry.json
+/src/components/

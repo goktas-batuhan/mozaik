@@ -1,0 +1,30 @@
+{
+  "name": "hero-section",
+  "title": "Hero Section",
+  "description": "Landing hero with an eyebrow pill, headline, copy, two calls to action and an optional media slot, revealed in a soft stagger.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": ["in-view", "css", "marketing"],
+  "keywords": ["landing", "hero", "cta"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["word-rotate"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "The headline. Labels the section for assistive tech." },
+    { "name": "rotatingWords", "type": "string[]", "description": "Words that take turns after the headline. Uses Word Rotate, installed with the block." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "eyebrow", "type": "ReactNode", "description": "Small pill above the headline, e.g. \"New · v1.0\"." },
+    { "name": "primaryAction", "type": "{ label: ReactNode; href?: string; onClick?: () => void }", "description": "Filled call to action. A link when href is set, a button otherwise." },
+    { "name": "secondaryAction", "type": "{ label: ReactNode; href?: string; onClick?: () => void }", "description": "Outlined call to action next to the primary one." },
+    { "name": "media", "type": "ReactNode", "description": "Image, video or mock-up. Beside the copy when align is 'left', below it when 'center'." },
+    { "name": "align", "type": "'center' | 'left'", "default": "'center'", "description": "Text alignment and layout." },
+    { "name": "titleAs", "type": "ElementType", "default": "'h1'", "description": "Element for the headline." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "duration", "type": "number", "default": "0.6", "description": "Seconds each piece takes to fade in." },
+    { "name": "stagger", "type": "number", "default": "0.08", "description": "Seconds between pieces." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds before the first piece." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

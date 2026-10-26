@@ -1,0 +1,20 @@
+{
+  "name": "animated-list",
+  "title": "Animated List",
+  "description": "Adds its children one at a time, newest on top, with a springy push. Shows everything at once under reduced motion.",
+  "group": "layout",
+  "shelf": "lists",
+  "layer": "component",
+  "tags": ["loop", "css"],
+  "keywords": ["list", "feed", "notifications"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-list.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "required": true, "description": "The items. Each needs a stable key. The newest item appears on top." },
+    { "name": "interval", "type": "number", "default": "1.2", "description": "Seconds between one item appearing and the next." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds before the first item appears." },
+    { "name": "loop", "type": "boolean", "default": "false", "description": "Start over after the last item, instead of stopping." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Shows every item at once with no animation." },
+    { "name": "className", "type": "string", "description": "Extra classes for the list." }
+  ]
+}

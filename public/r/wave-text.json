@@ -11,22 +11,26 @@
   ],
   "files": [
     {
-      "path": "registry/text/wave-text/wave-text.tsx",
+      "path": "registry/text/effect/wave-text/wave-text.tsx",
       "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wave-text/index.tsx\nimport { motion, useInView, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useRef, type ElementType } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface WaveTextProps {\n  /** The text. Screen readers read it as one string. */\n  text: string\n  /** Element to render. */\n  as?: ElementType\n  /** How far each letter rises, in pixels. */\n  amplitude?: number\n  /** Seconds one wave cycle takes. */\n  duration?: number\n  /** Seconds between neighbouring letters. */\n  stagger?: number\n  /** Turns the animation off and renders plain text. */\n  disabled?: boolean\n  className?: string\n}\n\n/** A gentle wave rolls through the letters, forever. */\nexport function WaveText({\n  text,\n  as: Tag = 'span',\n  amplitude = 8,\n  duration = 1.4,\n  stagger = 0.06,\n  disabled = false,\n  className,\n}: WaveTextProps) {\n  const ref = useRef<HTMLElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref)\n\n  if (disabled || reduced) {\n    return (\n      <Tag ref={ref} className={className}>\n        {text}\n      </Tag>\n    )\n  }\n\n  return (\n    <Tag ref={ref} className={cn('inline-block whitespace-pre', className)}>\n      <span className=\"sr-only\">{text}</span>\n      {Array.from(text).map((char, i) => (\n        <motion.span\n          key={i}\n          aria-hidden\n          className=\"inline-block\"\n          animate={inView ? { y: [0, -amplitude, 0, amplitude * 0.4, 0] } : { y: 0 }}\n          transition={{\n            delay: i * stagger,\n            duration,\n            ease: 'easeInOut',\n            times: [0, 0.25, 0.5, 0.75, 1],\n            repeat: Infinity,\n          }}\n        >\n          {char}\n        </motion.span>\n      ))}\n    </Tag>\n  )\n}\n",
       "type": "registry:component"
     }
   ],
   "meta": {
-    "layer": "B",
+    "group": "text",
+    "shelf": "effect",
+    "layer": "component",
     "source": {
       "repo": "educlopez/smoothui",
       "license": "MIT",
       "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wave-text/index.tsx"
     },
-    "status": "stable"
+    "status": "stable",
+    "variants": 0
   },
   "categories": [
-    "text"
+    "text",
+    "effect"
   ],
   "type": "registry:component"
 }
