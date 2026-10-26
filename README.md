@@ -1,6 +1,6 @@
 # Mozaik
 
-**48 animated React components in one design language, distributed as a shadcn registry.**
+**63 animated React components in one design language, distributed as a shadcn registry.**
 
 Every component is accessible, follows `prefers-reduced-motion`, runs on a shared token layer and installs into your project as plain source code with one command.
 
@@ -16,17 +16,17 @@ npx shadcn@latest add https://raw.githubusercontent.com/goktas-batuhan/mozaik/ma
 | --- | --- | --- |
 | Text | 10 | rolling-text, scramble-text, split-reveal, number-ticker, typing-animation |
 | Background | 9 | shader-background (raw WebGL), aurora-background, dot-grid, retro-grid, meteors |
-| Cursor | 2 | magnetic, spotlight |
+| Cursor | 6 | magnetic, spotlight, smooth-cursor, cool-mode, tilt-card |
 | Interactive | 8 | dock, direction-aware-tabs, shimmer-button, texture-card, family-button |
 | Layout | 8 | marquee, terminal, animated-list, drag-carousel, smooth-accordion |
-| Feedback | 5 | progress-ring, shimmer-skeleton, thinking-loader, scroll-progress |
-| Blocks | 2 | hero-section, bento-grid |
-| On-chain | 4 | price-ticker, address-chip, tx-steps, radar-badge |
+| Feedback | 9 | dynamic-island, notification-stack, ai-reasoning, thinking-loader, progress-ring |
+| Blocks | 5 | hero-section, bento-grid, animated-beam, uptime-card, ai-tool-approval |
+| On-chain | 8 | price-ticker, tx-steps, slide-to-confirm, amount-pad, order-book |
 
 Two layers:
 
 - **Original (14):** written from scratch for Mozaik.
-- **Adapted (34):** rebuilt from MIT-licensed projects (Magic UI, cult-ui, kokonutui, ui-layouts, smoothui, beui, opensourceui). Each file names its source and license on the first line, and [CREDITS.md](CREDITS.md) lists them all.
+- **Adapted (49):** rebuilt from MIT-licensed projects (Magic UI, cult-ui, kokonutui, ui-layouts, smoothui, beui, opensourceui). Each file names its source and license on the first line, and [CREDITS.md](CREDITS.md) lists them all.
 
 ## Install
 
@@ -70,7 +70,7 @@ npm run gate
 2. Vitest + Testing Library: 165 tests on roles, labels, props and reduced-motion paths.
 3. Playwright: every demo renders without runtime errors, and holds still under reduced motion.
 
-Components that pass get a `stable` badge, the rest ship as `beta`. Current status: **48 / 48 stable**. CI runs the same gate on every push.
+Components that pass get a `stable` badge, the rest ship as `beta`. Current status: **63 / 63 stable**. CI runs the same gate on every push.
 
 ## Project structure
 

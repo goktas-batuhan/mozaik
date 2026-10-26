@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smooth-cursor",
+  "title": "Smooth Cursor",
+  "description": "Replaces the system cursor inside an area with a spring-smoothed arrow that turns toward the direction of travel.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/cursor/smooth-cursor/smooth-cursor.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT)\nimport { motion, useReducedMotion, useReducedMotionConfig, useSpring } from 'motion/react'\nimport { useEffect, useRef, useState, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport interface SmoothCursorProps {\n  /** Content of the area. The system cursor is replaced only inside it. */\n  children?: ReactNode\n  /** Custom cursor graphic. Defaults to an arrow that rotates toward the direction of travel. */\n  cursor?: ReactNode\n  /** Spring stiffness of the follow motion. Higher is snappier. */\n  stiffness?: number\n  /** Spring damping of the follow motion. Higher settles with less overshoot. */\n  damping?: number\n  /** Turns the custom cursor off and keeps the system cursor. */\n  disabled?: boolean\n  className?: string\n}\n\nconst FINE_POINTER = '(hover: hover) and (pointer: fine)'\n\nfunction useFinePointer() {\n  const [fine, setFine] = useState(false)\n  useEffect(() => {\n    const mq = window.matchMedia(FINE_POINTER)\n    const update = () => setFine(mq.matches)\n    update()\n    mq.addEventListener('change', update)\n    return () => mq.removeEventListener('change', update)\n  }, [])\n  return fine\n}\n\nfunction DefaultCursor() {\n  return (\n    <svg width=\"25\" height=\"27\" viewBox=\"0 0 50 54\" fill=\"none\" aria-hidden=\"true\" className=\"drop-shadow-md\">\n      <path\n        d=\"M42.68 41.15 27.51 6.8c-.78-1.77-3.3-1.77-4.12 0L7.6 41.15c-.84 1.83.93 3.74 2.81 3.05l13.96-5.15c.51-.19 1.07-.19 1.57 0l13.87 5.15c1.87.69 3.68-1.22 2.87-3.05Z\"\n        className=\"fill-foreground stroke-background\"\n        strokeWidth=\"2.25\"\n      />\n    </svg>\n  )\n}\n\n/**\n * Replaces the system cursor inside its area with a spring-smoothed one that turns toward the\n * direction of travel. Off on touch devices and under reduced motion, where the system cursor stays.\n */\nexport function SmoothCursor({\n  children,\n  cursor,\n  stiffness = 400,\n  damping = 45,\n  disabled = false,\n  className,\n}: SmoothCursorProps) {\n  const areaRef = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const fine = useFinePointer()\n  const enabled = !disabled && !reduced && fine\n  const [inside, setInside] = useState(false)\n\n  const x = useSpring(0, { stiffness, damping, mass: 1, restDelta: 0.001 })\n  const y = useSpring(0, { stiffness, damping, mass: 1, restDelta: 0.001 })\n  const rotate = useSpring(0, { stiffness: 300, damping: 60, mass: 1 })\n  const scale = useSpring(1, { stiffness: 500, damping: 35, mass: 1 })\n\n  useEffect(() => {\n    const area = areaRef.current\n    if (!enabled || !area) return\n    let last: { x: number; y: number; t: number } | null = null\n    let angle = 0\n    let turns = 0\n    let settle: ReturnType<typeof setTimeout> | undefined\n    let raf = 0\n    let pending: PointerEvent | null = null\n\n    const apply = (e: PointerEvent) => {\n      raf = 0\n      const rect = area.getBoundingClientRect()\n      const px = e.clientX - rect.left\n      const py = e.clientY - rect.top\n      const now = performance.now()\n      if (!last) {\n        x.jump(px)\n        y.jump(py)\n      } else if (now > last.t) {\n        const vx = (px - last.x) / (now - last.t)\n        const vy = (py - last.y) / (now - last.t)\n        if (Math.hypot(vx, vy) > 0.1) {\n          const next = (Math.atan2(vy, vx) * 180) / Math.PI + 90\n          let diff = next - angle\n          if (diff > 180) diff -= 360\n          if (diff < -180) diff += 360\n          turns += diff\n          angle = next\n          rotate.set(turns)\n          scale.set(0.95)\n          clearTimeout(settle)\n          settle = setTimeout(() => scale.set(1), 150)\n        }\n      }\n      last = { x: px, y: py, t: now }\n      x.set(px)\n      y.set(py)\n    }\n    const onMove = (e: PointerEvent) => {\n      if (e.pointerType === 'touch') return\n      setInside(true)\n      pending = e\n      if (!raf) raf = requestAnimationFrame(() => pending && apply(pending))\n    }\n    const onLeave = () => {\n      setInside(false)\n      last = null\n    }\n    area.addEventListener('pointermove', onMove, { passive: true })\n    area.addEventListener('pointerleave', onLeave)\n    return () => {\n      area.removeEventListener('pointermove', onMove)\n      area.removeEventListener('pointerleave', onLeave)\n      if (raf) cancelAnimationFrame(raf)\n      clearTimeout(settle)\n      setInside(false)\n    }\n  }, [enabled, x, y, rotate, scale])\n\n  return (\n    <div ref={areaRef} className={cn('relative', enabled && 'cursor-none [&_*]:cursor-none', className)}>\n      {children}\n      {enabled ? (\n        <motion.div\n          aria-hidden=\"true\"\n          className=\"pointer-events-none absolute top-0 left-0 z-50 will-change-transform\"\n          style={{ x, y, rotate, scale, translateX: '-50%', translateY: '-50%' }}\n          initial={false}\n          animate={{ opacity: inside ? 1 : 0 }}\n          transition={{ duration: 0.15 }}\n        >\n          {cursor ?? <DefaultCursor />}\n        </motion.div>\n      ) : null}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "cursor"
+  ],
+  "type": "registry:component"
+}

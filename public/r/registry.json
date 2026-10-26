@@ -599,6 +599,126 @@
       }
     },
     {
+      "name": "cool-mode",
+      "type": "registry:component",
+      "title": "Cool Mode",
+      "description": "Sprays coloured particles or emoji from the cursor while a button is pressed, drawn on a click-through canvas.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cursor/cool-mode/cool-mode.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cursor"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/cool-mode.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "cursor-image-trail",
+      "type": "registry:component",
+      "title": "Cursor Image Trail",
+      "description": "Drops a pool of images or cards along the pointer's path inside an area, larger and longer-lived the faster you move.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cursor/cursor-image-trail/cursor-image-trail.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cursor"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/cursor-image-trail/index.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "smooth-cursor",
+      "type": "registry:component",
+      "title": "Smooth Cursor",
+      "description": "Replaces the system cursor inside an area with a spring-smoothed arrow that turns toward the direction of travel.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cursor/smooth-cursor/smooth-cursor.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cursor"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:component",
+      "title": "Tilt Card",
+      "description": "A card that tilts toward the pointer in 3D on a spring, with an optional soft glare that follows the cursor.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/cursor/tilt-card/tilt-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "cursor"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/tilt-card.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
       "name": "bento-grid",
       "type": "registry:component",
       "title": "Bento Grid",
@@ -645,6 +765,112 @@
       "meta": {
         "layer": "A",
         "source": "original",
+        "status": "stable"
+      }
+    },
+    {
+      "name": "ai-tool-approval",
+      "type": "registry:component",
+      "title": "AI Tool Approval",
+      "description": "A card where the user approves or denies an agent's tool call, showing the command or fields, the reason, and a polite live announcement of the decision.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/ai-tool-approval/ai-tool-approval.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "blocks"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-tool-approval.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "animated-beam",
+      "type": "registry:component",
+      "title": "Animated Beam",
+      "description": "A light that flows along a curved path between two elements, for integration diagrams. Holds a still path under reduced motion and pauses off screen.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/animated-beam/animated-beam.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "blocks"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-beam.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "uptime-card",
+      "type": "registry:component",
+      "title": "Uptime Card",
+      "description": "A status card with a row of daily bars per service, an uptime percentage and a short list of recent incidents. Bars are readable by screen readers and inspectable with the keyboard.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/blocks/uptime-card/uptime-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "blocks"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/uptime-card.tsx"
+        },
         "status": "stable"
       }
     },
@@ -773,6 +999,158 @@
       "meta": {
         "layer": "A",
         "source": "original",
+        "status": "stable"
+      }
+    },
+    {
+      "name": "amount-pad",
+      "type": "registry:component",
+      "title": "Amount Pad",
+      "description": "A number pad for entering a token amount: animated digits, presets, a per-transfer cap, shake on refusal and physical keyboard input.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/amount-pad/amount-pad.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/amount-pad.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "order-book",
+      "type": "registry:component",
+      "title": "Order Book",
+      "description": "A depth ladder with asks above and bids below, cumulative depth bars, a spread bar and a fill-cost readout on hover. Driven by snapshots passed as props.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/order-book/order-book.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/charts/order-book.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "receipt-printer",
+      "type": "registry:component",
+      "title": "Receipt Printer",
+      "description": "A transaction receipt (hash, from, to, amount, fee, status) that feeds out of a printer slot one line at a time, with a serrated edge.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/receipt-printer/receipt-printer.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/receipt-printer.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "slide-to-confirm",
+      "type": "registry:component",
+      "title": "Slide to Confirm",
+      "description": "A slide-to-commit control for irreversible actions: drag the thumb to the end, or press Enter, Space or the right arrow. Shows busy and done states.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/slide-to-confirm/slide-to-confirm.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-to-confirm.tsx"
+        },
         "status": "stable"
       }
     },
@@ -1244,6 +1622,126 @@
           "repo": "ui-layouts/uilayouts",
           "license": "MIT",
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-moveable-thumnbails.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "ai-reasoning",
+      "type": "registry:component",
+      "title": "AI Reasoning",
+      "description": "A collapsible reasoning trace. The summary shimmers only while the model is working, then settles, reports how long it took and folds away.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/ai-reasoning/ai-reasoning.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-reasoning/index.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "animated-subscribe-button",
+      "type": "registry:component",
+      "title": "Animated Subscribe Button",
+      "description": "A toggle button whose label slides away and the next one drops in. A real button with aria-pressed, in controlled or uncontrolled form.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/animated-subscribe-button/animated-subscribe-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "magicuidesign/magicui",
+          "license": "MIT",
+          "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "dynamic-island",
+      "type": "registry:component",
+      "title": "Dynamic Island",
+      "description": "A pill that springs open into richer views, in the style of the iPhone status island. The shell animates real size, so content is never distorted.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/dynamic-island/dynamic-island.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/dynamic-island.tsx"
+        },
+        "status": "stable"
+      }
+    },
+    {
+      "name": "notification-stack",
+      "type": "registry:component",
+      "title": "Notification Stack",
+      "description": "A pile of notifications that fans out on hover or focus. Swipe, click or press Delete to dismiss; the remaining cards close the gap.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/notification-stack/notification-stack.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback"
+      ],
+      "meta": {
+        "layer": "B",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/notification-stack.tsx"
         },
         "status": "stable"
       }

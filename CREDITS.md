@@ -8,15 +8,26 @@ Every adapted component is listed here with its source and license. Add a row wh
 | graph-paper | [bidyut10/opensourceui](https://github.com/bidyut10/opensourceui) | MIT | [upstream](https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/graph-paper-pattern.tsx) |
 | mesh-glow | [bidyut10/opensourceui](https://github.com/bidyut10/opensourceui) | MIT | [upstream](https://github.com/bidyut10/opensourceui/blob/main/components/background-gradient/dark-midnight-mesh-background.tsx) |
 | progress-ring | [bidyut10/opensourceui](https://github.com/bidyut10/opensourceui) | MIT | [upstream](https://github.com/bidyut10/opensourceui/blob/main/components/others/progress-ring-card.tsx) |
+| ai-reasoning | [educlopez/smoothui](https://github.com/educlopez/smoothui) | MIT | [upstream](https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-reasoning/index.tsx) |
+| cursor-image-trail | [educlopez/smoothui](https://github.com/educlopez/smoothui) | MIT | [upstream](https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/cursor-image-trail/index.tsx) |
 | ring-spinner | [educlopez/smoothui](https://github.com/educlopez/smoothui) | MIT | [upstream](https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/spinner/index.tsx) |
 | shimmer-skeleton | [educlopez/smoothui](https://github.com/educlopez/smoothui) | MIT | [upstream](https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/content-skeleton/index.tsx) |
 | shine-text | [educlopez/smoothui](https://github.com/educlopez/smoothui) | MIT | [upstream](https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/shine-text/index.tsx) |
 | thinking-loader | [educlopez/smoothui](https://github.com/educlopez/smoothui) | MIT | [upstream](https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-loader/index.tsx) |
 | wave-text | [educlopez/smoothui](https://github.com/educlopez/smoothui) | MIT | [upstream](https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wave-text/index.tsx) |
+| ai-tool-approval | [kokonut-labs/kokonutui](https://github.com/kokonut-labs/kokonutui) | MIT | [upstream](https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-tool-approval.tsx) |
+| amount-pad | [kokonut-labs/kokonutui](https://github.com/kokonut-labs/kokonutui) | MIT | [upstream](https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/amount-pad.tsx) |
+| notification-stack | [kokonut-labs/kokonutui](https://github.com/kokonut-labs/kokonutui) | MIT | [upstream](https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/notification-stack.tsx) |
+| receipt-printer | [kokonut-labs/kokonutui](https://github.com/kokonut-labs/kokonutui) | MIT | [upstream](https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/receipt-printer.tsx) |
 | slide-text-button | [kokonut-labs/kokonutui](https://github.com/kokonut-labs/kokonutui) | MIT | [upstream](https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-text-button.tsx) |
+| slide-to-confirm | [kokonut-labs/kokonutui](https://github.com/kokonut-labs/kokonutui) | MIT | [upstream](https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-to-confirm.tsx) |
+| uptime-card | [kokonut-labs/kokonutui](https://github.com/kokonut-labs/kokonutui) | MIT | [upstream](https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/uptime-card.tsx) |
+| animated-beam | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-beam.tsx) |
 | animated-list | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-list.tsx) |
+| animated-subscribe-button | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx) |
 | blur-fade | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/blur-fade.tsx) |
 | border-beam | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/border-beam.tsx) |
+| cool-mode | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/cool-mode.tsx) |
 | dock | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx) |
 | marquee | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx) |
 | meteors | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/meteors.tsx) |
@@ -25,6 +36,7 @@ Every adapted component is listed here with its source and license. Add a row wh
 | retro-grid | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx) Rebuilt in CSS 3D (upstream is WebGL). |
 | scroll-progress | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/scroll-progress.tsx) |
 | shimmer-button | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/shimmer-button.tsx) |
+| smooth-cursor | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx) |
 | terminal | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/terminal.tsx) |
 | typing-animation | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/typing-animation.tsx) |
 | word-rotate | [magicuidesign/magicui](https://github.com/magicuidesign/magicui) | MIT | [upstream](https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/word-rotate.tsx) |
@@ -33,6 +45,9 @@ Every adapted component is listed here with its source and license. Add a row wh
 | shift-card | [nolly-studio/cult-ui](https://github.com/nolly-studio/cult-ui) | MIT | [upstream](https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx) |
 | texture-card | [nolly-studio/cult-ui](https://github.com/nolly-studio/cult-ui) | MIT | [upstream](https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/texture-card.tsx) |
 | chromatic-text-reveal | [starc007/ui-components](https://github.com/starc007/ui-components) | MIT | [upstream](https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx) |
+| dynamic-island | [starc007/ui-components](https://github.com/starc007/ui-components) | MIT | [upstream](https://github.com/starc007/ui-components/blob/main/components/motion/dynamic-island.tsx) |
+| order-book | [starc007/ui-components](https://github.com/starc007/ui-components) | MIT | [upstream](https://github.com/starc007/ui-components/blob/main/components/charts/order-book.tsx) |
+| tilt-card | [starc007/ui-components](https://github.com/starc007/ui-components) | MIT | [upstream](https://github.com/starc007/ui-components/blob/main/components/motion/tilt-card.tsx) |
 | drag-carousel | [ui-layouts/uilayouts](https://github.com/ui-layouts/uilayouts) | MIT | [upstream](https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-drag-sliding-carousel.tsx) |
 | hover-swap-card | [ui-layouts/uilayouts](https://github.com/ui-layouts/uilayouts) | MIT | [upstream](https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/card/creative-hover-card.tsx) |
 | image-accordion | [ui-layouts/uilayouts](https://github.com/ui-layouts/uilayouts) | MIT | [upstream](https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/accordion/image-hover.tsx) |

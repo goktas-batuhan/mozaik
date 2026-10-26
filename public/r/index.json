@@ -1438,6 +1438,277 @@
     "path": "registry/cursor/spotlight"
   },
   {
+    "name": "cool-mode",
+    "title": "Cool Mode",
+    "description": "Sprays coloured particles or emoji from the cursor while a button is pressed, drawn on a click-through canvas.",
+    "category": "cursor",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/cool-mode.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "cursor",
+      "particles",
+      "canvas"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The element that sprays particles while it is pressed."
+      },
+      {
+        "name": "particle",
+        "type": "string",
+        "default": "'circle'",
+        "description": "'circle' for dots in the theme's colours, or any short text such as an emoji."
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "description": "Particle size in pixels. Leave out for a mix of sizes."
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "default": "45",
+        "description": "Most particles alive at once."
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": "1",
+        "description": "Multiplier for how fast particles fly."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the effect off. It is also off on touch devices and under reduced motion."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "cool-mode.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { CoolMode } from './cool-mode'\n\nconst button =\n  'rounded-full px-7 py-4 text-base font-medium shadow-lg transition-transform active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring'\n\nexport default function CoolModeDemo() {\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col items-center gap-10 text-center\">\n      <div className=\"space-y-3\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Press and hold</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Make it a little louder</h2>\n      </div>\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        <CoolMode>\n          <button type=\"button\" className={`${button} bg-primary text-primary-foreground shadow-primary/20`}>\n            Celebrate\n          </button>\n        </CoolMode>\n        <CoolMode particle=\"✨\" size={20} count={30}>\n          <button type=\"button\" className={`${button} border bg-card text-card-foreground`}>\n            Sparkles\n          </button>\n        </CoolMode>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/cursor/cool-mode"
+  },
+  {
+    "name": "cursor-image-trail",
+    "title": "Cursor Image Trail",
+    "description": "Drops a pool of images or cards along the pointer's path inside an area, larger and longer-lived the faster you move.",
+    "category": "cursor",
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/cursor-image-trail/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "cursor",
+      "images",
+      "trail"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "ReactNode[]",
+        "required": true,
+        "description": "What the trail drops, in turn: images, cards, anything that fits a square."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "The area the trail follows the pointer across."
+      },
+      {
+        "name": "distance",
+        "type": "number",
+        "default": "90",
+        "description": "Pixels the pointer travels before the next item drops."
+      },
+      {
+        "name": "itemSize",
+        "type": "number",
+        "default": "96",
+        "description": "Width and height of each dropped item in pixels."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.7",
+        "description": "Seconds an item stays before it has fully faded."
+      },
+      {
+        "name": "poolSize",
+        "type": "number",
+        "default": "12",
+        "description": "Most items alive at once."
+      },
+      {
+        "name": "rotate",
+        "type": "number",
+        "default": "12",
+        "description": "Largest random tilt in degrees."
+      },
+      {
+        "name": "velocityScale",
+        "type": "number",
+        "default": "0.5",
+        "description": "How much pointer speed enlarges and lengthens an item, from 0 to 1."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the trail off. It is also off on touch devices and under reduced motion."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the area."
+      }
+    ],
+    "files": [
+      "cursor-image-trail.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Compass, Mountain, Snowflake, Sunrise, Waves } from 'lucide-react'\nimport { CursorImageTrail } from './cursor-image-trail'\n\nconst tones = [\n  'from-primary/50 via-primary/15 to-muted',\n  'from-muted-foreground/35 via-muted to-card',\n  'from-primary/30 via-muted to-secondary',\n  'from-foreground/20 via-muted to-card',\n  'from-primary/40 via-secondary to-muted',\n]\nconst icons = [Mountain, Snowflake, Sunrise, Waves, Compass]\n\nconst items = icons.map((Icon, i) => (\n  <div key={i} className={`grid size-full place-items-center border border-border bg-linear-to-br ${tones[i]}`}>\n    <Icon className=\"size-8 text-foreground/50\" aria-hidden />\n  </div>\n))\n\nexport default function CursorImageTrailDemo() {\n  return (\n    <CursorImageTrail\n      items={items}\n      className=\"grid h-[380px] w-[760px] max-w-full place-items-center rounded-2xl border bg-card\"\n    >\n      <div className=\"space-y-3 text-center\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move across the panel</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Leave a trail</h2>\n      </div>\n    </CursorImageTrail>\n  )\n}\n",
+    "path": "registry/cursor/cursor-image-trail"
+  },
+  {
+    "name": "smooth-cursor",
+    "title": "Smooth Cursor",
+    "description": "Replaces the system cursor inside an area with a spring-smoothed arrow that turns toward the direction of travel.",
+    "category": "cursor",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "cursor",
+      "spring",
+      "pointer"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content of the area. The system cursor is replaced only inside it."
+      },
+      {
+        "name": "cursor",
+        "type": "ReactNode",
+        "description": "Custom cursor graphic. Defaults to an arrow that rotates toward the direction of travel."
+      },
+      {
+        "name": "stiffness",
+        "type": "number",
+        "default": "400",
+        "description": "Spring stiffness of the follow motion. Higher is snappier."
+      },
+      {
+        "name": "damping",
+        "type": "number",
+        "default": "45",
+        "description": "Spring damping of the follow motion. Higher settles with less overshoot."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the custom cursor off and keeps the system cursor. It is also off on touch devices and under reduced motion."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the area."
+      }
+    ],
+    "files": [
+      "smooth-cursor.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { SmoothCursor } from './smooth-cursor'\n\nconst cards = [\n  { title: 'Calm', body: 'The pointer glides instead of snapping.' },\n  { title: 'Aware', body: 'It turns toward the way you are moving.' },\n  { title: 'Scoped', body: 'The system cursor returns outside this area.' },\n]\n\nexport default function SmoothCursorDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move inside the box</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">A cursor with some weight</h2>\n      </div>\n      <SmoothCursor className=\"grid grid-cols-1 gap-3 overflow-hidden rounded-2xl border bg-card p-6 sm:grid-cols-3\">\n        {cards.map(({ title, body }) => (\n          <div key={title} className=\"rounded-xl border bg-background p-5\">\n            <h3 className=\"text-sm font-medium\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </div>\n        ))}\n      </SmoothCursor>\n    </div>\n  )\n}\n",
+    "path": "registry/cursor/smooth-cursor"
+  },
+  {
+    "name": "tilt-card",
+    "title": "Tilt Card",
+    "description": "A card that tilts toward the pointer in 3D on a spring, with an optional soft glare that follows the cursor.",
+    "category": "cursor",
+    "layer": "B",
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/tilt-card.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "cursor",
+      "card",
+      "3d"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content of the card."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "12",
+        "description": "Largest tilt in degrees, reached at the card's edge."
+      },
+      {
+        "name": "glare",
+        "type": "boolean",
+        "default": "true",
+        "description": "Adds a soft highlight that follows the pointer."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the tilt off. The card is also flat on touch devices and under reduced motion."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the card."
+      }
+    ],
+    "files": [
+      "tilt-card.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Gauge, Layers, ShieldCheck } from 'lucide-react'\nimport { TiltCard } from './tilt-card'\n\nconst cards = [\n  { Icon: Layers, title: 'Depth', body: 'The card leans toward the pointer.' },\n  { Icon: Gauge, title: 'Springy', body: 'It settles back the moment you leave.' },\n  { Icon: ShieldCheck, title: 'Considerate', body: 'Flat on touch screens and under reduced motion.' },\n]\n\nexport default function TiltCardDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Hover a card</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Cards with a little weight</h2>\n      </div>\n      <div className=\"grid grid-cols-1 gap-4 sm:grid-cols-3\">\n        {cards.map(({ Icon, title, body }) => (\n          <TiltCard key={title} className=\"border bg-card p-6\">\n            <Icon className=\"size-5 text-primary\" aria-hidden />\n            <h3 className=\"mt-8 text-sm font-medium text-card-foreground\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </TiltCard>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/cursor/tilt-card"
+  },
+  {
     "name": "bento-grid",
     "title": "Bento Grid",
     "description": "Container-responsive bento grid with cards that lift on hover, move their artwork and follow the pointer with a soft glow.",
@@ -1643,6 +1914,322 @@
     "status": "stable",
     "demo": "import { ArrowRight } from 'lucide-react'\nimport { HeroSection } from './hero-section'\n\n// Mosaic tiles for the mock window: opacity steps of the primary token.\nconst tiles = [\n  'bg-primary', 'bg-primary/40', 'bg-muted', 'bg-primary/15', 'bg-primary/70', 'bg-muted', 'bg-primary/25', 'bg-primary/55',\n  'bg-muted', 'bg-primary/80', 'bg-primary/20', 'bg-primary/45', 'bg-muted', 'bg-primary/30', 'bg-primary', 'bg-primary/10',\n  'bg-primary/50', 'bg-muted', 'bg-primary/65', 'bg-primary/15', 'bg-primary/35', 'bg-primary/90', 'bg-muted', 'bg-primary/40',\n]\n\nfunction ProductWindow() {\n  return (\n    <div aria-hidden className=\"relative\">\n      <div className=\"pointer-events-none absolute -inset-8 rounded-[2rem] bg-primary/10 blur-3xl\" />\n      <div className=\"relative overflow-hidden rounded-xl border border-border bg-card shadow-2xl shadow-foreground/5\">\n        <div className=\"flex items-center gap-1.5 border-b border-border px-4 py-3\">\n          <span className=\"size-2.5 rounded-full bg-muted-foreground/30\" />\n          <span className=\"size-2.5 rounded-full bg-muted-foreground/30\" />\n          <span className=\"size-2.5 rounded-full bg-muted-foreground/30\" />\n          <span className=\"ml-3 h-2 w-28 rounded-full bg-muted\" />\n        </div>\n        <div className=\"grid grid-cols-[5.5rem_1fr] gap-4 p-4\">\n          <div className=\"space-y-2.5 pt-1\">\n            <span className=\"block h-2 w-14 rounded-full bg-foreground/70\" />\n            <span className=\"block h-2 w-16 rounded-full bg-muted\" />\n            <span className=\"block h-2 w-12 rounded-full bg-muted\" />\n            <span className=\"block h-2 w-[3.75rem] rounded-full bg-primary/60\" />\n            <span className=\"block h-2 w-10 rounded-full bg-muted\" />\n          </div>\n          <div className=\"space-y-3\">\n            <div className=\"grid grid-cols-8 gap-1.5\">\n              {tiles.map((c, i) => (\n                <span key={i} className={`aspect-square rounded-[4px] ${c}`} />\n              ))}\n            </div>\n            <div className=\"flex items-center justify-between rounded-lg border border-border bg-background px-3 py-2 font-mono text-[11px] text-muted-foreground\">\n              <span>\n                <span className=\"text-primary\">$</span> npx shadcn add mozaik/hero-section\n              </span>\n              <span className=\"hidden text-foreground/60 @sm:inline\">done</span>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport default function HeroSectionDemo() {\n  return (\n    <div className=\"w-full max-w-5xl\">\n      <HeroSection\n        align=\"left\"\n        eyebrow=\"New · v1.0 is live\"\n        title={\n          <>\n            Components that <span className=\"text-primary\">fit together</span>\n          </>\n        }\n        description=\"Mozaik is a growing set of React components in one design language. Add them with one command and own every line.\"\n        primaryAction={{\n          label: (\n            <>\n              Get started <ArrowRight className=\"size-4\" aria-hidden />\n            </>\n          ),\n          href: '#',\n        }}\n        secondaryAction={{ label: 'Browse components', href: '#' }}\n        media={<ProductWindow />}\n      />\n    </div>\n  )\n}\n",
     "path": "registry/blocks/hero-section"
+  },
+  {
+    "name": "ai-tool-approval",
+    "title": "AI Tool Approval",
+    "description": "A card where the user approves or denies an agent's tool call, showing the command or fields, the reason, and a polite live announcement of the decision.",
+    "category": "blocks",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-tool-approval.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "ai",
+      "agent",
+      "approval",
+      "tool-call"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "tool",
+        "type": "string",
+        "required": true,
+        "description": "The tool's name, such as bash or write_file."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": "What the agent wants to do, in plain words."
+      },
+      {
+        "name": "input",
+        "type": "string | Record<string, string | number | boolean>",
+        "required": true,
+        "description": "A command or text shows as code; an object shows as labelled fields."
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "description": "Why the agent wants this, shown under the input."
+      },
+      {
+        "name": "destructive",
+        "type": "boolean",
+        "default": "false",
+        "description": "Adds a badge and styles the Approve button as destructive."
+      },
+      {
+        "name": "decision",
+        "type": "'pending' | 'approved' | 'denied'",
+        "description": "Controls the decision from outside. Leave it out and the card keeps its own."
+      },
+      {
+        "name": "approveLabel",
+        "type": "string",
+        "default": "'Approve'",
+        "description": "Label of the approve button."
+      },
+      {
+        "name": "denyLabel",
+        "type": "string",
+        "default": "'Deny'",
+        "description": "Label of the deny button."
+      },
+      {
+        "name": "onApprove",
+        "type": "() => void",
+        "description": "Called when the user approves."
+      },
+      {
+        "name": "onDeny",
+        "type": "() => void",
+        "description": "Called when the user denies."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.25",
+        "description": "Seconds for the card to fade in and fold."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the card fades in."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables both buttons."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Extra content under the reason, e.g. a diff preview."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the card."
+      }
+    ],
+    "files": [
+      "ai-tool-approval.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useState } from 'react'\nimport { AIToolApproval, type ToolDecision } from './ai-tool-approval'\n\nconst CALLS = [\n  {\n    id: 'test',\n    tool: 'bash',\n    title: 'Run a command',\n    input: 'npm test -- checkout',\n    reason: 'Check the checkout tests before changing the form.',\n  },\n  {\n    id: 'clean',\n    tool: 'bash',\n    title: 'Run a command',\n    input: 'rm -rf .next && npm run build',\n    reason: 'Clear the stale build cache, then rebuild.',\n    destructive: true,\n  },\n]\n\nexport default function AIToolApprovalDemo() {\n  const [index, setIndex] = useState(0)\n  const [decision, setDecision] = useState<ToolDecision>('pending')\n  const call = CALLS[index]\n\n  return (\n    <div className=\"flex w-[min(92vw,440px)] flex-col items-stretch gap-3\">\n      <AIToolApproval\n        key={call.id}\n        {...call}\n        decision={decision}\n        onApprove={() => setDecision('approved')}\n        onDeny={() => setDecision('denied')}\n      />\n      {decision !== 'pending' && (\n        <button\n          type=\"button\"\n          onClick={() => {\n            setDecision('pending')\n            setIndex((i) => (i + 1) % CALLS.length)\n          }}\n          className=\"self-end rounded-md px-2 py-1 text-xs text-muted-foreground outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring\"\n        >\n          Next call\n        </button>\n      )}\n    </div>\n  )\n}\n",
+    "path": "registry/blocks/ai-tool-approval"
+  },
+  {
+    "name": "animated-beam",
+    "title": "Animated Beam",
+    "description": "A light that flows along a curved path between two elements, for integration diagrams. Holds a still path under reduced motion and pauses off screen.",
+    "category": "blocks",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-beam.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "beam",
+      "diagram",
+      "integrations",
+      "svg"
+    ],
+    "props": [
+      {
+        "name": "containerRef",
+        "type": "RefObject<HTMLElement | null>",
+        "required": true,
+        "description": "The positioned element the SVG is laid over."
+      },
+      {
+        "name": "fromRef",
+        "type": "RefObject<HTMLElement | null>",
+        "required": true,
+        "description": "Where the beam starts."
+      },
+      {
+        "name": "toRef",
+        "type": "RefObject<HTMLElement | null>",
+        "required": true,
+        "description": "Where the beam ends."
+      },
+      {
+        "name": "curvature",
+        "type": "number",
+        "default": "0",
+        "description": "How far the path bows away from a straight line, in pixels. Negative bows the other way."
+      },
+      {
+        "name": "reverse",
+        "type": "boolean",
+        "default": "false",
+        "description": "Runs the beam from toRef back to fromRef."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "3",
+        "description": "Seconds for one pass of the light."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the first pass."
+      },
+      {
+        "name": "repeatDelay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds to wait between passes."
+      },
+      {
+        "name": "pathWidth",
+        "type": "number",
+        "default": "2",
+        "description": "Stroke width of the path and the beam."
+      },
+      {
+        "name": "pathOpacity",
+        "type": "number",
+        "default": "0.25",
+        "description": "Opacity of the resting path under the beam."
+      },
+      {
+        "name": "pathColor",
+        "type": "string",
+        "default": "'var(--muted-foreground)'",
+        "description": "Color of the resting path."
+      },
+      {
+        "name": "gradientFrom",
+        "type": "string",
+        "default": "'var(--primary)'",
+        "description": "Color at the head of the beam."
+      },
+      {
+        "name": "gradientTo",
+        "type": "string",
+        "default": "'var(--ring)'",
+        "description": "Color at the tail of the beam."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Stops the light; only the resting path stays."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the SVG."
+      }
+    ],
+    "files": [
+      "animated-beam.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { createRef, forwardRef, useRef, type ReactNode } from 'react'\nimport { AnimatedBeam } from './animated-beam'\n\nconst Node = forwardRef<HTMLDivElement, { label: string; children: ReactNode; large?: boolean }>(\n  ({ label, children, large }, ref) => (\n    <div\n      ref={ref}\n      role=\"img\"\n      aria-label={label}\n      className={\n        large\n          ? 'z-10 grid size-16 place-items-center rounded-full border-2 border-primary bg-card text-primary shadow-sm'\n          : 'z-10 grid size-12 place-items-center rounded-full border bg-card text-sm font-semibold text-card-foreground shadow-sm'\n      }\n    >\n      {children}\n    </div>\n  ),\n)\nNode.displayName = 'Node'\n\nconst LEFT = ['Docs', 'Mail', 'Chat']\nconst RIGHT = ['Git', 'Pay', 'Data']\n\nexport default function AnimatedBeamDemo() {\n  const container = useRef<HTMLDivElement>(null)\n  const hub = useRef<HTMLDivElement>(null)\n  const left = useRef(LEFT.map(() => createRef<HTMLDivElement>())).current\n  const right = useRef(RIGHT.map(() => createRef<HTMLDivElement>())).current\n\n  return (\n    <div\n      ref={container}\n      className=\"relative flex h-[320px] w-[min(92vw,520px)] items-center justify-between overflow-hidden rounded-2xl border bg-background px-6 sm:px-10\"\n    >\n      <div className=\"flex flex-col gap-6\">\n        {LEFT.map((name, i) => (\n          <Node key={name} ref={left[i]} label={name}>\n            {name[0]}\n          </Node>\n        ))}\n      </div>\n      <Node ref={hub} label=\"Mozaik hub\" large>\n        <svg viewBox=\"0 0 24 24\" className=\"size-7\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" aria-hidden=\"true\">\n          <path d=\"M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z\" />\n        </svg>\n      </Node>\n      <div className=\"flex flex-col gap-6\">\n        {RIGHT.map((name, i) => (\n          <Node key={name} ref={right[i]} label={name}>\n            {name[0]}\n          </Node>\n        ))}\n      </div>\n\n      {left.map((ref, i) => (\n        <AnimatedBeam key={`l${i}`} containerRef={container} fromRef={ref} toRef={hub} curvature={(i - 1) * 24} delay={i * 0.4} />\n      ))}\n      {right.map((ref, i) => (\n        <AnimatedBeam key={`r${i}`} containerRef={container} fromRef={ref} toRef={hub} curvature={(i - 1) * -24} delay={i * 0.4 + 0.2} reverse />\n      ))}\n    </div>\n  )\n}\n",
+    "path": "registry/blocks/animated-beam"
+  },
+  {
+    "name": "uptime-card",
+    "title": "Uptime Card",
+    "description": "A status card with a row of daily bars per service, an uptime percentage and a short list of recent incidents. Bars are readable by screen readers and inspectable with the keyboard.",
+    "category": "blocks",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/uptime-card.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "status",
+      "uptime",
+      "monitoring",
+      "incidents"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "services",
+        "type": "UptimeService[]",
+        "required": true,
+        "description": "Each service has a name, a history of daily statuses ('up' | 'degraded' | 'down' | 'none'), an optional uptime override and optional incidents."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "default": "'System status'",
+        "description": "Card heading."
+      },
+      {
+        "name": "endDate",
+        "type": "string",
+        "description": "The last day shown, as YYYY-MM-DD (UTC). Defaults to today."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.5",
+        "description": "Seconds for the bars to grow in."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the bars start to grow."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns off hover and keyboard inspection."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the card."
+      }
+    ],
+    "files": [
+      "uptime-card.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { UptimeCard, type DayStatus, type UptimeService } from './uptime-card'\n\nconst DAYS = 45\n\n/** A history of `up` days with a few marked ones. */\nfunction history(marks: Record<number, DayStatus>, missing = 0): DayStatus[] {\n  return Array.from({ length: DAYS }, (_, i) => (i < missing ? 'none' : (marks[i] ?? 'up')))\n}\n\nconst SERVICES: UptimeService[] = [\n  {\n    name: 'API',\n    history: history({ 12: 'degraded', 31: 'degraded' }),\n    incidents: [\n      { day: 12, title: 'Elevated error rates on writes', minutes: 18 },\n      { day: 31, title: 'Slow responses in eu-west', minutes: 23 },\n    ],\n  },\n  {\n    name: 'Webhooks',\n    history: history({ 27: 'down', 44: 'degraded' }),\n    incidents: [\n      { day: 27, title: 'Deliveries delayed', minutes: 48 },\n      { day: 44, title: 'Retries backing up', minutes: 11 },\n    ],\n  },\n  {\n    name: 'Database',\n    history: history({ 20: 'down' }, 6),\n    incidents: [{ day: 20, title: 'Failover to replica', minutes: 9 }],\n  },\n]\n\nexport default function UptimeCardDemo() {\n  return <UptimeCard services={SERVICES} endDate=\"2026-10-14\" className=\"w-[min(92vw,560px)]\" />\n}\n",
+    "path": "registry/blocks/uptime-card"
   },
   {
     "name": "address-chip",
@@ -1907,6 +2494,362 @@
     "status": "stable",
     "demo": "import { RotateCcw, TriangleAlert } from 'lucide-react'\nimport { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { TxSteps, type TxStep } from './tx-steps'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nconst BASE = [\n  { label: 'Approve', description: 'Allow the router to spend USDC' },\n  { label: 'Sign', description: 'Confirm the swap in your wallet' },\n  { label: 'Broadcast', description: 'Sent to the network' },\n  { label: 'Confirmed', description: 'Included in block 21,408,117' },\n]\n\nconst toSteps = (active: number, failed: boolean): TxStep[] =>\n  BASE.map((s, i) => ({\n    ...s,\n    status: i < active ? 'done' : i === active ? (failed ? 'error' : 'active') : 'pending',\n    ...(failed && i === active ? { description: 'Rejected in wallet. Try again.' } : {}),\n  }))\n\nexport default function TxStepsDemo() {\n  const reduced = usePrefersReducedMotion()\n  // Under reduced motion the demo holds on the second step and waits for clicks.\n  const [active, setActive] = useState(1)\n  const [failed, setFailed] = useState(false)\n  const [orientation, setOrientation] = useState<'vertical' | 'horizontal'>('horizontal')\n\n  useEffect(() => {\n    if (reduced || failed) return\n    const id = setTimeout(() => setActive((a) => (a >= BASE.length ? 0 : a + 1)), active >= BASE.length ? 2600 : 1700)\n    return () => clearTimeout(id)\n  }, [active, failed, reduced])\n\n  const steps = toSteps(active, failed)\n  const finished = active >= BASE.length\n\n  const button =\n    'inline-flex h-8 items-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'\n\n  return (\n    <div className=\"w-[min(92vw,680px)] rounded-2xl border bg-card p-6 text-card-foreground shadow-sm\">\n      <div className=\"mb-6 flex flex-wrap items-center justify-between gap-3\">\n        <div>\n          <p className=\"text-sm font-medium\">Swap 1,250 USDC → 0.36 ETH</p>\n          <p className=\"text-xs text-muted-foreground\">\n            {failed ? 'Transaction failed' : finished ? 'Swap complete' : `Step ${active + 1} of ${BASE.length}`}\n          </p>\n        </div>\n        <div role=\"radiogroup\" aria-label=\"Layout\" className=\"inline-flex rounded-md border bg-muted p-0.5 text-xs\">\n          {(['horizontal', 'vertical'] as const).map((o) => (\n            <button\n              key={o}\n              type=\"button\"\n              role=\"radio\"\n              aria-checked={orientation === o}\n              onClick={() => setOrientation(o)}\n              className=\"rounded px-2.5 py-1 font-medium capitalize text-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring aria-checked:bg-background aria-checked:text-foreground aria-checked:shadow-sm\"\n            >\n              {o}\n            </button>\n          ))}\n        </div>\n      </div>\n\n      <TxSteps steps={steps} orientation={orientation} className={orientation === 'vertical' ? 'mx-auto max-w-sm' : undefined} />\n\n      <div className=\"mt-6 flex flex-wrap gap-2 border-t pt-4\">\n        <button type=\"button\" className={button} disabled={failed || finished} onClick={() => setActive((a) => a + 1)}>\n          Next step\n        </button>\n        <button type=\"button\" className={button} disabled={failed || finished} onClick={() => setFailed(true)}>\n          <TriangleAlert aria-hidden className=\"size-3.5\" />\n          Fail current\n        </button>\n        <button\n          type=\"button\"\n          className={button}\n          onClick={() => {\n            setFailed(false)\n            setActive(0)\n          }}\n        >\n          <RotateCcw aria-hidden className=\"size-3.5\" />\n          Restart\n        </button>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/onchain/tx-steps"
+  },
+  {
+    "name": "amount-pad",
+    "title": "Amount Pad",
+    "description": "A number pad for entering a token amount: animated digits, presets, a per-transfer cap, shake on refusal and physical keyboard input.",
+    "category": "onchain",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/amount-pad.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "amount",
+      "keypad",
+      "input",
+      "send"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "symbol",
+        "type": "string",
+        "default": "'$'",
+        "description": "Token or currency symbol, e.g. 'ETH' or '$'."
+      },
+      {
+        "name": "symbolPosition",
+        "type": "'prefix' | 'suffix'",
+        "default": "'prefix'",
+        "description": "Draw the symbol before or after the amount."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "2500",
+        "description": "Largest amount allowed in one go."
+      },
+      {
+        "name": "decimals",
+        "type": "number",
+        "default": "2",
+        "description": "Fraction digits allowed. 0 hides the decimal key."
+      },
+      {
+        "name": "balance",
+        "type": "number",
+        "description": "Available balance, shown under the amount until you hit the cap."
+      },
+      {
+        "name": "presets",
+        "type": "number[]",
+        "default": "[]",
+        "description": "One-tap amounts."
+      },
+      {
+        "name": "actionLabel",
+        "type": "string",
+        "default": "'Send'",
+        "description": "Label of the submit button; the amount is appended."
+      },
+      {
+        "name": "onSubmit",
+        "type": "(amount: number) => void",
+        "description": "Called with the amount when the submit button is pressed."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.6",
+        "description": "Seconds the done state shows before the pad resets."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables every key and the submit button."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Optional header, e.g. who the amount goes to."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "amount-pad.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { AmountPad } from './amount-pad'\n\nexport default function AmountPadDemo() {\n  return (\n    <AmountPad symbol=\"ETH\" symbolPosition=\"suffix\" decimals={4} max={5} balance={3.2041} presets={[0.1, 0.5, 1]}>\n      <div className=\"flex items-center gap-3\">\n        <span className=\"flex size-9 items-center justify-center rounded-full bg-muted font-mono text-xs font-medium\">0x</span>\n        <div className=\"min-w-0 leading-tight\">\n          <p className=\"text-xs text-muted-foreground\">Send to</p>\n          <p className=\"truncate font-mono text-sm font-medium\">0x71C7…976F</p>\n        </div>\n      </div>\n    </AmountPad>\n  )\n}\n",
+    "path": "registry/onchain/amount-pad"
+  },
+  {
+    "name": "order-book",
+    "title": "Order Book",
+    "description": "A depth ladder with asks above and bids below, cumulative depth bars, a spread bar and a fill-cost readout on hover. Driven by snapshots passed as props.",
+    "category": "onchain",
+    "layer": "B",
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/charts/order-book.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "order book",
+      "depth",
+      "trading",
+      "dex"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "bids",
+        "type": "{ price: number; size: number }[]",
+        "required": true,
+        "description": "Snapshot of buy levels. Equal prices are combined; invalid and zero sizes are dropped."
+      },
+      {
+        "name": "asks",
+        "type": "{ price: number; size: number }[]",
+        "required": true,
+        "description": "Snapshot of sell levels. Pass new arrays when the book changes."
+      },
+      {
+        "name": "levels",
+        "type": "number",
+        "default": "9",
+        "description": "Number of nearest levels to show on each side."
+      },
+      {
+        "name": "lastPrice",
+        "type": "number",
+        "description": "Last traded price. Omit to show the midpoint of the best bid and ask."
+      },
+      {
+        "name": "baseSymbol",
+        "type": "string",
+        "default": "''",
+        "description": "Symbol of the traded token, e.g. 'ETH'."
+      },
+      {
+        "name": "quoteSymbol",
+        "type": "string",
+        "default": "'USD'",
+        "description": "Symbol prices are quoted in."
+      },
+      {
+        "name": "formatPrice",
+        "type": "(value: number) => string",
+        "description": "Custom price formatter."
+      },
+      {
+        "name": "formatSize",
+        "type": "(value: number) => string",
+        "description": "Custom size formatter."
+      },
+      {
+        "name": "onLevelSelect",
+        "type": "(level: { price: number; size: number; total: number }, side: 'bid' | 'ask') => void",
+        "description": "Makes each price a button, for example to fill an order ticket."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Order book'",
+        "description": "Accessible name."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables the price buttons."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "order-book.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { OrderBook, type OrderBookLevel } from './order-book'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nconst MID = 3468.4\nconst ladder = (side: 1 | -1, seed: number): OrderBookLevel[] =>\n  Array.from({ length: 8 }, (_, i) => ({\n    price: Number((MID + side * (0.5 + i * 0.75)).toFixed(2)),\n    size: Number((1.2 + ((i * 7 + seed) % 9) * 0.9).toFixed(3)),\n  }))\n\nexport default function OrderBookDemo() {\n  const reduced = usePrefersReducedMotion()\n  const [book, setBook] = useState(() => ({ bids: ladder(-1, 1), asks: ladder(1, 4) }))\n\n  // Simulated feed: a few sizes change every second. It stops under reduced motion.\n  useEffect(() => {\n    if (reduced) return\n    const id = setInterval(() => {\n      setBook((b) => {\n        const bump = (levels: OrderBookLevel[]) =>\n          levels.map((l) => (Math.random() > 0.6 ? { ...l, size: Number(Math.max(0.2, l.size + (Math.random() - 0.5) * 2).toFixed(3)) } : l))\n        return { bids: bump(b.bids), asks: bump(b.asks) }\n      })\n    }, 1000)\n    return () => clearInterval(id)\n  }, [reduced])\n\n  return (\n    <div className=\"w-[min(92vw,460px)]\">\n      <OrderBook bids={book.bids} asks={book.asks} levels={6} baseSymbol=\"ETH\" quoteSymbol=\"USDC\" lastPrice={MID} />\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/order-book"
+  },
+  {
+    "name": "receipt-printer",
+    "title": "Receipt Printer",
+    "description": "A transaction receipt (hash, from, to, amount, fee, status) that feeds out of a printer slot one line at a time, with a serrated edge.",
+    "category": "onchain",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/receipt-printer.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "receipt",
+      "transaction",
+      "print"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "tx",
+        "type": "{ hash: string; from: string; to: string; amount: string; symbol: string; fee: string; feeSymbol?: string; status: 'confirmed' | 'pending' | 'failed'; network?: string; timestamp?: string }",
+        "required": true,
+        "description": "The transaction to print. Amounts are strings so no precision is lost."
+      },
+      {
+        "name": "autoPrint",
+        "type": "boolean",
+        "default": "true",
+        "description": "Print as soon as it mounts. When false the paper waits for the button."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.8",
+        "description": "Seconds the paper takes to feed out."
+      },
+      {
+        "name": "onPrint",
+        "type": "() => void",
+        "description": "Called each time the printer starts."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "receipt-printer.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ReceiptPrinter } from './receipt-printer'\n\nexport default function ReceiptPrinterDemo() {\n  return (\n    <ReceiptPrinter\n      tx={{\n        hash: '0x8f3a1c52d9e47b60a1f3c8d25e9b7a4c6d01f2e3b4a5968778695a4b3c2d1e0f',\n        from: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F',\n        to: '0x2a9fB1c0E5d3a7C8b4F6e1D2c9A0b3E7f5d4C6B8',\n        amount: '0.2500',\n        symbol: 'ETH',\n        fee: '0.00042',\n        status: 'confirmed',\n        network: 'Ethereum',\n        timestamp: '26 Oct 2026 · 08:42',\n      }}\n    />\n  )\n}\n",
+    "path": "registry/onchain/receipt-printer"
+  },
+  {
+    "name": "slide-to-confirm",
+    "title": "Slide to Confirm",
+    "description": "A slide-to-commit control for irreversible actions: drag the thumb to the end, or press Enter, Space or the right arrow. Shows busy and done states.",
+    "category": "onchain",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-to-confirm.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "confirm",
+      "slider",
+      "swap",
+      "send"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Slide to confirm'",
+        "description": "What sliding does, e.g. 'Slide to send 0.25 ETH'."
+      },
+      {
+        "name": "confirmingLabel",
+        "type": "string",
+        "default": "'Confirming'",
+        "description": "Shown and announced while onConfirm runs."
+      },
+      {
+        "name": "doneLabel",
+        "type": "string",
+        "default": "'Confirmed'",
+        "description": "Shown and announced once it is done."
+      },
+      {
+        "name": "onConfirm",
+        "type": "() => Promise<unknown> | unknown",
+        "description": "The real work. Return a promise to keep the spinner up until it settles; a rejection sends the thumb back."
+      },
+      {
+        "name": "resetAfter",
+        "type": "number | null",
+        "default": "2.6",
+        "description": "Seconds before it returns to the start once done. null stays done."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.8",
+        "description": "Minimum seconds the busy state shows."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Blocks dragging and keyboard confirmation."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "slide-to-confirm.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { SlideToConfirm } from './slide-to-confirm'\n\nexport default function SlideToConfirmDemo() {\n  return (\n    <div className=\"w-[min(92vw,380px)] rounded-2xl border bg-card p-6 text-card-foreground shadow-sm\">\n      <p className=\"text-sm text-muted-foreground\">Send</p>\n      <p className=\"mt-1 text-3xl font-semibold tabular-nums tracking-tight\">0.25 ETH</p>\n      <dl className=\"mt-4 mb-6 space-y-2 border-t pt-4 text-sm\">\n        <div className=\"flex justify-between\">\n          <dt className=\"text-muted-foreground\">To</dt>\n          <dd className=\"font-mono\">0x71C7…976F</dd>\n        </div>\n        <div className=\"flex justify-between\">\n          <dt className=\"text-muted-foreground\">Network fee</dt>\n          <dd className=\"tabular-nums\">~$0.42</dd>\n        </div>\n      </dl>\n      <SlideToConfirm\n        label=\"Slide to send\"\n        confirmingLabel=\"Sending\"\n        doneLabel=\"Sent\"\n        onConfirm={() => new Promise((resolve) => setTimeout(resolve, 1200))}\n        className=\"max-w-none\"\n      />\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/slide-to-confirm"
   },
   {
     "name": "direction-aware-tabs",
@@ -3012,6 +3955,245 @@
     "status": "stable",
     "demo": "import { ThumbnailCarousel, type ThumbnailCarouselItem } from './thumbnail-carousel'\n\nconst tones = [\n  'from-primary/50 to-muted',\n  'from-muted-foreground/35 to-card',\n  'from-primary/30 to-secondary',\n  'from-foreground/20 to-muted',\n  'from-primary/40 to-card',\n  'from-muted-foreground/25 to-secondary',\n  'from-primary/25 to-muted',\n]\nconst titles = ['Dawn', 'Ridge', 'Meadow', 'Lake', 'Pine', 'Dusk', 'Night']\n\nconst items: ThumbnailCarouselItem[] = titles.map((title, i) => ({\n  id: title,\n  title,\n  media: (\n    <div className={`flex size-full items-end bg-linear-to-br p-6 ${tones[i]}`}>\n      <span className=\"text-3xl font-semibold tracking-tight text-foreground\">{title}</span>\n    </div>\n  ),\n  thumb: <div className={`size-full bg-linear-to-br ${tones[i]}`} />,\n}))\n\nexport default function ThumbnailCarouselDemo() {\n  return (\n    <div className=\"w-[640px] max-w-full\">\n      <ThumbnailCarousel items={items} height={300} label=\"Trail photos\" />\n    </div>\n  )\n}\n",
     "path": "registry/layout/thumbnail-carousel"
+  },
+  {
+    "name": "ai-reasoning",
+    "title": "AI Reasoning",
+    "description": "A collapsible reasoning trace. The summary shimmers only while the model is working, then settles, reports how long it took and folds away.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-reasoning/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "ai",
+      "reasoning",
+      "collapsible",
+      "streaming"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "The reasoning trace."
+      },
+      {
+        "name": "isStreaming",
+        "type": "boolean",
+        "default": "false",
+        "description": "True while the model is still reasoning. Drives the shimmer and the summary."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "description": "Start expanded. Defaults to the value of isStreaming."
+      },
+      {
+        "name": "collapseWhenDone",
+        "type": "boolean",
+        "default": "true",
+        "description": "Collapse once streaming ends, unless the reader has toggled it by hand."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "description": "Seconds the model spent. Omit to have the component time the stream itself."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "ai-reasoning.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useEffect, useState } from 'react'\nimport { AIReasoning } from './ai-reasoning'\n\n/** The stream only runs when the visitor asks for it, so the demo is still on load. */\nexport default function AIReasoningDemo() {\n  const [streaming, setStreaming] = useState(false)\n\n  useEffect(() => {\n    if (!streaming) return\n    const id = window.setTimeout(() => setStreaming(false), 3000)\n    return () => window.clearTimeout(id)\n  }, [streaming])\n\n  return (\n    <div className=\"flex w-[min(26rem,90vw)] flex-col gap-4 rounded-xl border border-border bg-card p-5 text-card-foreground\">\n      <AIReasoning isStreaming={streaming} defaultOpen duration={4.2}>\n        <p>The question asks for the cheapest route that still arrives before noon.</p>\n        <p className=\"mt-2\">Train A is 12 minutes faster but costs twice as much. Train B arrives at 11:40, inside the limit.</p>\n      </AIReasoning>\n      <p className=\"text-sm\">Take train B: it arrives at 11:40 and costs half as much.</p>\n      <button\n        type=\"button\"\n        disabled={streaming}\n        onClick={() => setStreaming(true)}\n        className=\"w-fit rounded-md border border-border px-3 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50\"\n      >\n        {streaming ? 'Reasoning…' : 'Replay reasoning'}\n      </button>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/ai-reasoning"
+  },
+  {
+    "name": "animated-subscribe-button",
+    "title": "Animated Subscribe Button",
+    "description": "A toggle button whose label slides away and the next one drops in. A real button with aria-pressed, in controlled or uncontrolled form.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "button",
+      "subscribe",
+      "toggle",
+      "follow"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "[ReactNode, ReactNode]",
+        "description": "Two nodes: the idle label, then the subscribed label."
+      },
+      {
+        "name": "subscribed",
+        "type": "boolean",
+        "description": "Controlled state. Omit it and the button keeps its own."
+      },
+      {
+        "name": "defaultSubscribed",
+        "type": "boolean",
+        "default": "false",
+        "description": "Initial state when uncontrolled."
+      },
+      {
+        "name": "onSubscribedChange",
+        "type": "(subscribed: boolean) => void",
+        "description": "Called with the next state when the button is pressed."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.25",
+        "description": "Seconds the label swap takes."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables the button."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the button."
+      }
+    ],
+    "files": [
+      "animated-subscribe-button.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useState } from 'react'\nimport { AnimatedSubscribeButton } from './animated-subscribe-button'\n\nconst Check = () => (\n  <svg aria-hidden viewBox=\"0 0 24 24\" className=\"size-4\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2.5\" strokeLinecap=\"round\" strokeLinejoin=\"round\">\n    <path d=\"m5 12 5 5L20 7\" />\n  </svg>\n)\n\nexport default function AnimatedSubscribeButtonDemo() {\n  const [on, setOn] = useState(true)\n\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <AnimatedSubscribeButton>\n        <span>Subscribe</span>\n        <span className=\"flex items-center gap-2\">\n          <Check /> Subscribed\n        </span>\n      </AnimatedSubscribeButton>\n      <div className=\"flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 text-card-foreground\">\n        <span aria-hidden className=\"grid size-9 place-items-center rounded-full bg-primary/15 text-sm font-semibold text-primary\">\n          MZ\n        </span>\n        <div className=\"mr-2\">\n          <p className=\"text-sm font-medium\">Mozaik Weekly</p>\n          <p className=\"text-xs text-muted-foreground\">{on ? 'You get the newsletter' : 'Not subscribed'}</p>\n        </div>\n        <AnimatedSubscribeButton subscribed={on} onSubscribedChange={setOn} className=\"h-9 px-4 text-sm\">\n          <span>Follow</span>\n          <span>Following</span>\n        </AnimatedSubscribeButton>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/animated-subscribe-button"
+  },
+  {
+    "name": "dynamic-island",
+    "title": "Dynamic Island",
+    "description": "A pill that springs open into richer views, in the style of the iPhone status island. The shell animates real size, so content is never distorted.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/dynamic-island.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "island",
+      "status",
+      "notification",
+      "spring"
+    ],
+    "props": [
+      {
+        "name": "view",
+        "type": "string | null",
+        "description": "Id of the active DynamicIslandView. null shows the compact pill."
+      },
+      {
+        "name": "compact",
+        "type": "ReactNode",
+        "description": "Pill content, shown when no view is active."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "DynamicIslandView elements. Each one shows when its id matches view."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.8",
+        "description": "Seconds the shell takes to glide between sizes."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the shell."
+      }
+    ],
+    "files": [
+      "dynamic-island.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useState } from 'react'\nimport { DynamicIsland, DynamicIslandView } from './dynamic-island'\n\nconst views = ['call', 'timer', 'music'] as const\n\nconst btn =\n  'rounded-full border border-border bg-card px-3 py-1.5 text-sm text-card-foreground outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring aria-pressed:bg-primary aria-pressed:text-primary-foreground'\n\nexport default function DynamicIslandDemo() {\n  const [view, setView] = useState<string | null>(null)\n\n  return (\n    <div className=\"flex min-h-64 w-[min(28rem,90vw)] flex-col items-center gap-8\">\n      <DynamicIsland\n        view={view}\n        compact={\n          <>\n            <span aria-hidden className=\"size-2 rounded-full bg-success\" />\n            <span>Mozaik</span>\n          </>\n        }\n      >\n        <DynamicIslandView id=\"call\" className=\"gap-4\">\n          <span\n            aria-hidden\n            className=\"grid size-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground\"\n          >\n            AK\n          </span>\n          <div className=\"min-w-32\">\n            <p className=\"text-sm font-medium\">Ada Kaya</p>\n            <p className=\"text-xs opacity-60\">Incoming call</p>\n          </div>\n        </DynamicIslandView>\n        <DynamicIslandView id=\"timer\" className=\"gap-4\">\n          <p className=\"text-3xl font-semibold tabular-nums\">04:32</p>\n          <p className=\"text-xs opacity-60\">Focus session</p>\n        </DynamicIslandView>\n        <DynamicIslandView id=\"music\" className=\"flex-col gap-1 px-10\">\n          <p className=\"text-sm font-medium\">Now playing</p>\n          <p className=\"text-xs opacity-60\">Tessellate, Mozaik Quartet</p>\n        </DynamicIslandView>\n      </DynamicIsland>\n      <div className=\"flex flex-wrap justify-center gap-2\" role=\"group\" aria-label=\"Island view\">\n        <button type=\"button\" className={btn} aria-pressed={view === null} onClick={() => setView(null)}>\n          Compact\n        </button>\n        {views.map((v) => (\n          <button key={v} type=\"button\" className={btn} aria-pressed={view === v} onClick={() => setView(v)}>\n            {v[0].toUpperCase() + v.slice(1)}\n          </button>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/dynamic-island"
+  },
+  {
+    "name": "notification-stack",
+    "title": "Notification Stack",
+    "description": "A pile of notifications that fans out on hover or focus. Swipe, click or press Delete to dismiss; the remaining cards close the gap.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/notification-stack.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "notification",
+      "stack",
+      "swipe",
+      "dismiss"
+    ],
+    "props": [
+      {
+        "name": "notifications",
+        "type": "StackNotification[]",
+        "description": "Initial notifications, newest first: { id, app, title, body, time, icon? }. The stack tracks dismissals itself."
+      },
+      {
+        "name": "onDismiss",
+        "type": "(id: string) => void",
+        "description": "Called after a notification has been swiped, clicked or deleted away."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "default": "'Notifications'",
+        "description": "Heading above the stack and label of the list."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.3",
+        "description": "Seconds the stack takes to fan out and a dismissed card to leave."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "notification-stack.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { NotificationStack, type StackNotification } from './notification-stack'\n\nconst badge = (initials: string) => (\n  <span className=\"grid size-8 place-items-center rounded-lg bg-primary/15 text-xs font-semibold text-primary\">\n    {initials}\n  </span>\n)\n\nconst notifications: StackNotification[] = [\n  { id: 'n-1', app: 'Messages', title: 'Maya Chen', body: 'Pushed the fix. Can you take a look before standup?', time: 'now', icon: badge('MC') },\n  { id: 'n-2', app: 'Calendar', title: 'Design review in 10 min', body: 'Room 4B, registry roadmap', time: '9:50', icon: badge('CA') },\n  { id: 'n-3', app: 'Mail', title: 'Invoice #2041 paid', body: 'Acme Inc. paid $1,280.00. The receipt is attached.', time: '9:12', icon: badge('ML') },\n  { id: 'n-4', app: 'Wallet', title: 'Card payment', body: '$4.50 at Blue Bottle Coffee', time: '8:31', icon: badge('WA') },\n]\n\nexport default function NotificationStackDemo() {\n  return (\n    <div className=\"min-h-80 w-[min(24rem,90vw)]\">\n      <NotificationStack notifications={notifications} />\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/notification-stack"
   },
   {
     "name": "progress-ring",

@@ -1,0 +1,22 @@
+{
+  "name": "cursor-image-trail",
+  "title": "Cursor Image Trail",
+  "description": "Drops a pool of images or cards along the pointer's path inside an area, larger and longer-lived the faster you move.",
+  "category": "cursor",
+  "layer": "B",
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/cursor-image-trail/index.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["cursor", "images", "trail"],
+  "props": [
+    { "name": "items", "type": "ReactNode[]", "required": true, "description": "What the trail drops, in turn: images, cards, anything that fits a square." },
+    { "name": "children", "type": "ReactNode", "description": "The area the trail follows the pointer across." },
+    { "name": "distance", "type": "number", "default": "90", "description": "Pixels the pointer travels before the next item drops." },
+    { "name": "itemSize", "type": "number", "default": "96", "description": "Width and height of each dropped item in pixels." },
+    { "name": "duration", "type": "number", "default": "0.7", "description": "Seconds an item stays before it has fully faded." },
+    { "name": "poolSize", "type": "number", "default": "12", "description": "Most items alive at once." },
+    { "name": "rotate", "type": "number", "default": "12", "description": "Largest random tilt in degrees." },
+    { "name": "velocityScale", "type": "number", "default": "0.5", "description": "How much pointer speed enlarges and lengthens an item, from 0 to 1." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the trail off. It is also off on touch devices and under reduced motion." },
+    { "name": "className", "type": "string", "description": "Extra classes for the area." }
+  ]
+}

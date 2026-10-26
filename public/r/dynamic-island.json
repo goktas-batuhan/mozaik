@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dynamic-island",
+  "title": "Dynamic Island",
+  "description": "A pill that springs open into richer views, in the style of the iPhone status island. The shell animates real size, so content is never distorted.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/dynamic-island/dynamic-island.tsx",
+      "content": "// Source: starc007/ui-components (MIT)\nimport { AnimatePresence, motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport {\n  createContext,\n  useContext,\n  useEffect,\n  useLayoutEffect,\n  useMemo,\n  useRef,\n  useState,\n  type ReactNode,\n} from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nconst EASE_OUT = [0.23, 1, 0.32, 1] as const\n\ninterface IslandContextValue {\n  view: string | null\n  reduced: boolean\n}\n\nconst IslandContext = createContext<IslandContextValue | null>(null)\n\n/** Shell and content spring in Apple's duration/bounce form: one long glide, barely any overshoot. */\nconst shellSpring = (duration: number) => ({ type: 'spring', duration, bounce: 0.2 }) as const\nconst contentSpring = (duration: number) => ({ type: 'spring', duration, bounce: 0.35 }) as const\n\n/** Never animated. The browser clamps it to half the height, so pill and rounded rectangle share one rule. */\nconst RADIUS = 32\nconst PILL_WIDTH = 126\nconst PILL_HEIGHT = 37\n\n/** Natural size of the content, so the shell can spring to explicit dimensions. */\nfunction useContentSize() {\n  const ref = useRef<HTMLDivElement | null>(null)\n  const [size, setSize] = useState<{ width: number; height: number } | null>(null)\n\n  useLayoutEffect(() => {\n    const el = ref.current\n    if (el) setSize({ width: el.offsetWidth, height: el.offsetHeight })\n  }, [])\n\n  useEffect(() => {\n    const el = ref.current\n    if (!el || typeof ResizeObserver === 'undefined') return\n    const observer = new ResizeObserver(() => setSize({ width: el.offsetWidth, height: el.offsetHeight }))\n    observer.observe(el)\n    return () => observer.disconnect()\n  }, [])\n\n  return [ref, size] as const\n}\n\nfunction Slot({\n  keyId,\n  children,\n  className,\n  reduced,\n  duration,\n}: {\n  keyId: string\n  children: ReactNode\n  className?: string\n  reduced: boolean\n  duration: number\n}) {\n  return (\n    <motion.div\n      key={keyId}\n      initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.9, y: -8, filter: 'blur(5px)' }}\n      animate={reduced ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}\n      // The exit is sucked up into the pill: fast and blur-free, before the shrinking shell can clip it.\n      exit={\n        reduced\n          ? { opacity: 0, transition: { duration: 0 } }\n          : { opacity: 0, scale: 0.9, y: -6, transition: { duration: 0.08, ease: EASE_OUT } }\n      }\n      transition={reduced ? { duration: 0 } : contentSpring(duration)}\n      style={{ transformOrigin: 'top center' }}\n      className={cn('flex items-center justify-center', className)}\n    >\n      {children}\n    </motion.div>\n  )\n}\n\nexport interface DynamicIslandProps {\n  /** Id of the active view. `null` shows the compact pill. */\n  view: string | null\n  /** Pill content, shown when no view is active. */\n  compact?: ReactNode\n  /** `DynamicIslandView` elements. */\n  children?: ReactNode\n  /** Seconds the shell takes to glide between sizes. */\n  duration?: number\n  className?: string\n}\n\n/** A pill that springs open into richer views, like the iPhone status island. */\nexport function DynamicIsland({ view, compact, children, duration = 0.8, className }: DynamicIslandProps) {\n  const reduced = usePrefersReducedMotion()\n  const expanded = view !== null\n  const [sizerRef, size] = useContentSize()\n  const ctx = useMemo(() => ({ view, reduced }), [view, reduced])\n\n  return (\n    <IslandContext.Provider value={ctx}>\n      <motion.div\n        role=\"status\"\n        aria-live=\"polite\"\n        initial={false}\n        animate={size ? { width: size.width, height: size.height } : { width: PILL_WIDTH, height: PILL_HEIGHT }}\n        transition={reduced ? { duration: 0 } : shellSpring(duration)}\n        style={{ borderRadius: RADIUS }}\n        // items-start pins content to the top while the shell resizes, so it unfurls downward out of the pill.\n        className={cn(\n          'relative inline-flex items-start justify-center overflow-hidden bg-foreground text-background shadow-2xl',\n          className,\n        )}\n      >\n        <div ref={sizerRef} className=\"w-max\">\n          <AnimatePresence mode=\"popLayout\" initial={false}>\n            {!expanded && compact ? (\n              <Slot\n                keyId=\"compact\"\n                reduced={reduced}\n                duration={duration}\n                className=\"min-h-[37px] min-w-[126px] gap-2 px-4 py-1.5 text-xs font-medium\"\n              >\n                {compact}\n              </Slot>\n            ) : null}\n          </AnimatePresence>\n          {children}\n        </div>\n      </motion.div>\n    </IslandContext.Provider>\n  )\n}\n\nexport interface DynamicIslandViewProps {\n  /** Shown when the parent `view` equals this id. */\n  id: string\n  children: ReactNode\n  className?: string\n}\n\nexport function DynamicIslandView({ id, children, className }: DynamicIslandViewProps) {\n  const ctx = useContext(IslandContext)\n  if (!ctx) throw new Error('DynamicIslandView must be used inside <DynamicIsland>')\n\n  return (\n    <AnimatePresence mode=\"popLayout\" initial={false}>\n      {ctx.view === id ? (\n        <Slot keyId={id} reduced={ctx.reduced} duration={0.8} className={cn('px-6 py-4', className)}>\n          {children}\n        </Slot>\n      ) : null}\n    </AnimatePresence>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/dynamic-island.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "feedback"
+  ],
+  "type": "registry:component"
+}

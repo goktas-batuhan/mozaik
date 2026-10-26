@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-subscribe-button",
+  "title": "Animated Subscribe Button",
+  "description": "A toggle button whose label slides away and the next one drops in. A real button with aria-pressed, in controlled or uncontrolled form.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/animated-subscribe-button/animated-subscribe-button.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT)\nimport { AnimatePresence, motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { Children, type ReactNode, forwardRef, useState } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport interface AnimatedSubscribeButtonProps {\n  /** Two nodes: the idle label, then the subscribed label. */\n  children: [ReactNode, ReactNode] | ReactNode\n  /** Controlled state. Omit it and the button keeps its own. */\n  subscribed?: boolean\n  /** Initial state when uncontrolled. */\n  defaultSubscribed?: boolean\n  /** Called with the next state when the button is pressed. */\n  onSubscribedChange?: (subscribed: boolean) => void\n  /** Seconds the label swap takes. */\n  duration?: number\n  disabled?: boolean\n  className?: string\n}\n\n/** A toggle button whose label slides out and the next one drops in. It is a real button with aria-pressed. */\nexport const AnimatedSubscribeButton = forwardRef<HTMLButtonElement, AnimatedSubscribeButtonProps>(\n  (\n    { children, subscribed, defaultSubscribed = false, onSubscribedChange, duration = 0.25, disabled, className },\n    ref,\n  ) => {\n    const reduced = usePrefersReducedMotion()\n    const [inner, setInner] = useState(defaultSubscribed)\n    const isSubscribed = subscribed ?? inner\n    const [idle, done] = Children.toArray(children)\n    const label = isSubscribed ? done : idle\n\n    return (\n      <>\n        <button\n          ref={ref}\n          type=\"button\"\n          aria-pressed={isSubscribed}\n          disabled={disabled}\n          onClick={() => {\n            if (subscribed === undefined) setInner(!isSubscribed)\n            onSubscribedChange?.(!isSubscribed)\n          }}\n          className={cn(\n            'relative flex h-10 w-fit cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-6 font-semibold text-primary-foreground outline-none transition-opacity focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',\n            className,\n          )}\n        >\n          <AnimatePresence mode=\"wait\" initial={false}>\n            <motion.span\n              key={isSubscribed ? 'done' : 'idle'}\n              className=\"flex items-center justify-center gap-2\"\n              initial={reduced ? false : isSubscribed ? { y: -24, opacity: 0 } : { x: 0, opacity: 0 }}\n              animate={{ x: 0, y: 0, opacity: 1 }}\n              exit={reduced ? { opacity: 1, transition: { duration: 0 } } : { x: 40, opacity: 0, transition: { duration: duration * 0.4 } }}\n              transition={reduced ? { duration: 0 } : { duration, ease: [0.23, 1, 0.32, 1] }}\n            >\n              {label}\n            </motion.span>\n          </AnimatePresence>\n        </button>\n        <span role=\"status\" aria-live=\"polite\" className=\"sr-only\">\n          {isSubscribed ? done : null}\n        </span>\n      </>\n    )\n  },\n)\nAnimatedSubscribeButton.displayName = 'AnimatedSubscribeButton'\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "feedback"
+  ],
+  "type": "registry:component"
+}

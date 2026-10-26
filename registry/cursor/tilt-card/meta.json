@@ -1,0 +1,17 @@
+{
+  "name": "tilt-card",
+  "title": "Tilt Card",
+  "description": "A card that tilts toward the pointer in 3D on a spring, with an optional soft glare that follows the cursor.",
+  "category": "cursor",
+  "layer": "B",
+  "source": { "repo": "starc007/ui-components", "license": "MIT", "url": "https://github.com/starc007/ui-components/blob/main/components/motion/tilt-card.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["cursor", "card", "3d"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content of the card." },
+    { "name": "max", "type": "number", "default": "12", "description": "Largest tilt in degrees, reached at the card's edge." },
+    { "name": "glare", "type": "boolean", "default": "true", "description": "Adds a soft highlight that follows the pointer." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the tilt off. The card is also flat on touch devices and under reduced motion." },
+    { "name": "className", "type": "string", "description": "Extra classes for the card." }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "receipt-printer",
+  "title": "Receipt Printer",
+  "description": "A transaction receipt (hash, from, to, amount, fee, status) that feeds out of a printer slot one line at a time, with a serrated edge.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/onchain/receipt-printer/receipt-printer.tsx",
+      "content": "// Source: kokonut-labs/kokonutui (MIT)\nimport { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { type ReactNode, useEffect, useRef, useState } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport type ReceiptStatus = 'confirmed' | 'pending' | 'failed'\n\nexport interface ReceiptTx {\n  /** Full transaction hash. */\n  hash: string\n  from: string\n  to: string\n  /** Amount as a string, so no precision is lost, e.g. '0.2500'. */\n  amount: string\n  /** Token symbol of the amount, e.g. 'ETH'. */\n  symbol: string\n  /** Network fee, e.g. '0.00042'. */\n  fee: string\n  /** Token symbol of the fee. Defaults to `symbol`. */\n  feeSymbol?: string\n  status: ReceiptStatus\n  /** Network name, e.g. 'Ethereum'. */\n  network?: string\n  /** Already formatted, e.g. '26 Oct 2026 · 08:42'. */\n  timestamp?: string\n}\n\nexport interface ReceiptPrinterProps {\n  tx: ReceiptTx\n  /** Print as soon as it mounts. When false, the paper waits for the button. */\n  autoPrint?: boolean\n  /** Seconds the paper takes to feed out. */\n  duration?: number\n  /** Called each time the printer starts. */\n  onPrint?: () => void\n  className?: string\n}\n\nconst STATUS: Record<ReceiptStatus, { text: string; tone: string }> = {\n  confirmed: { text: 'Confirmed', tone: 'text-[var(--success)]' },\n  pending: { text: 'Pending', tone: 'text-muted-foreground' },\n  failed: { text: 'Failed', tone: 'text-destructive' },\n}\n\nconst short = (value: string) => (value.length > 14 ? `${value.slice(0, 6)}…${value.slice(-4)}` : value)\n\n// The printer feeds a line at a time, so the paper advances in steps rather than a glide.\nconst LINES = 22\nconst feed = (t: number) => Math.floor(t * LINES) / LINES\n\n// Serrated bottom edge, made with a mask so it follows the card colour.\nconst TOOTH = 8\nconst SAW = `conic-gradient(from -45deg at 50% 100%, transparent, black 1deg 89deg, transparent 90deg) 50% 100% / ${TOOTH}px ${TOOTH / 2}px repeat-x, linear-gradient(black 0 0) 0 0 / 100% calc(100% - ${TOOTH / 2}px) no-repeat`\n\nfunction Row({ label, children, tone }: { label: string; children: ReactNode; tone?: string }) {\n  return (\n    <div className=\"flex items-baseline justify-between gap-3\">\n      <dt className=\"text-muted-foreground\">{label}</dt>\n      <dd className={cn('min-w-0 truncate text-right tabular-nums', tone)}>{children}</dd>\n    </div>\n  )\n}\n\n/** A transaction receipt that prints out of a slot one line at a time. Pass the transaction as props. */\nexport function ReceiptPrinter({ tx, autoPrint = true, duration = 1.8, onPrint, className }: ReceiptPrinterProps) {\n  const reduced = usePrefersReducedMotion()\n  const [printed, setPrinted] = useState(autoPrint)\n  const [run, setRun] = useState(0)\n  const [done, setDone] = useState(false)\n  const printRef = useRef(onPrint)\n  printRef.current = onPrint\n\n  useEffect(() => {\n    if (!printed) return\n    setDone(reduced)\n    printRef.current?.()\n  }, [printed, run, reduced])\n\n  const status = STATUS[tx.status]\n  const feeSymbol = tx.feeSymbol ?? tx.symbol\n  const showPaper = printed || reduced\n\n  return (\n    <div className={cn('w-full max-w-xs', className)} data-printing={printed && !done ? 'true' : 'false'}>\n      {/* The slot the paper comes out of. */}\n      <div aria-hidden className=\"relative z-10 h-3 rounded-full border border-border bg-muted shadow-inner\" />\n\n      <div className=\"-mt-1.5 overflow-hidden px-3 pb-2\">\n        <motion.article\n          key={run}\n          aria-label=\"Transaction receipt\"\n          className=\"border border-t-0 border-border bg-card px-5 pt-6 pb-9 font-mono text-[11px] leading-[15px] text-card-foreground shadow-sm\"\n          style={{ mask: SAW, WebkitMask: SAW }}\n          initial={reduced ? false : { y: '-100%' }}\n          animate={{ y: showPaper ? 0 : '-100%' }}\n          transition={{ duration, ease: feed }}\n          onAnimationComplete={() => printed && setDone(true)}\n        >\n          <p className=\"text-center text-xs font-semibold tracking-[0.2em]\">TRANSACTION RECEIPT</p>\n          {tx.timestamp && <p className=\"text-center text-muted-foreground\">{tx.timestamp}</p>}\n          {tx.network && <p className=\"text-center text-muted-foreground\">{tx.network}</p>}\n\n          <dl className=\"mt-3 space-y-0.5 border-t border-dashed border-border pt-3\">\n            <Row label=\"Status\" tone={status.tone}>\n              {status.text}\n            </Row>\n            <Row label=\"Tx hash\">\n              <span className=\"sr-only\">{tx.hash}</span>\n              <span aria-hidden title={tx.hash}>\n                {short(tx.hash)}\n              </span>\n            </Row>\n            <Row label=\"From\">\n              <span className=\"sr-only\">{tx.from}</span>\n              <span aria-hidden title={tx.from}>\n                {short(tx.from)}\n              </span>\n            </Row>\n            <Row label=\"To\">\n              <span className=\"sr-only\">{tx.to}</span>\n              <span aria-hidden title={tx.to}>\n                {short(tx.to)}\n              </span>\n            </Row>\n          </dl>\n\n          <dl className=\"mt-3 space-y-0.5 border-t border-dashed border-border pt-3\">\n            <Row label=\"Amount\">\n              {tx.amount} {tx.symbol}\n            </Row>\n            <Row label=\"Network fee\">\n              {tx.fee} {feeSymbol}\n            </Row>\n            <div className=\"flex items-baseline justify-between gap-3 pt-1 text-[13px] font-semibold\">\n              <dt>Total</dt>\n              <dd className=\"tabular-nums\">\n                {tx.symbol === feeSymbol ? `${(Number(tx.amount) + Number(tx.fee)).toLocaleString('en-US', { maximumFractionDigits: 8 })} ${tx.symbol}` : `${tx.amount} ${tx.symbol} + ${tx.fee} ${feeSymbol}`}\n              </dd>\n            </div>\n          </dl>\n        </motion.article>\n      </div>\n\n      <span role=\"status\" aria-live=\"polite\" className=\"sr-only\">\n        {done ? `Receipt printed, transaction ${status.text.toLowerCase()}` : ''}\n      </span>\n\n      <button\n        type=\"button\"\n        onClick={() => {\n          setDone(false)\n          setPrinted(true)\n          setRun((n) => n + 1)\n        }}\n        className=\"mx-auto mt-3 block rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground outline-none transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring\"\n      >\n        {printed ? 'Print again' : 'Print receipt'}\n      </button>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "cssVars": {
+    "light": {
+      "success": "oklch(0.6 0.15 155)"
+    },
+    "dark": {
+      "success": "oklch(0.72 0.15 155)"
+    }
+  },
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/receipt-printer.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "onchain"
+  ],
+  "type": "registry:component"
+}

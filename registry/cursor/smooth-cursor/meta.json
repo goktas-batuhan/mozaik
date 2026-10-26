@@ -1,0 +1,18 @@
+{
+  "name": "smooth-cursor",
+  "title": "Smooth Cursor",
+  "description": "Replaces the system cursor inside an area with a spring-smoothed arrow that turns toward the direction of travel.",
+  "category": "cursor",
+  "layer": "B",
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["cursor", "spring", "pointer"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content of the area. The system cursor is replaced only inside it." },
+    { "name": "cursor", "type": "ReactNode", "description": "Custom cursor graphic. Defaults to an arrow that rotates toward the direction of travel." },
+    { "name": "stiffness", "type": "number", "default": "400", "description": "Spring stiffness of the follow motion. Higher is snappier." },
+    { "name": "damping", "type": "number", "default": "45", "description": "Spring damping of the follow motion. Higher settles with less overshoot." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the custom cursor off and keeps the system cursor. It is also off on touch devices and under reduced motion." },
+    { "name": "className", "type": "string", "description": "Extra classes for the area." }
+  ]
+}

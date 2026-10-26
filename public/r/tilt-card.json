@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tilt-card",
+  "title": "Tilt Card",
+  "description": "A card that tilts toward the pointer in 3D on a spring, with an optional soft glare that follows the cursor.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/cursor/tilt-card/tilt-card.tsx",
+      "content": "// Source: starc007/ui-components (MIT)\nimport {\n  motion,\n  useMotionTemplate,\n  useMotionValue,\n  useReducedMotion,\n  useReducedMotionConfig,\n  useSpring,\n} from 'motion/react'\nimport { useEffect, useRef, useState, type PointerEvent, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport interface TiltCardProps {\n  /** Content of the card. */\n  children?: ReactNode\n  /** Largest tilt in degrees, reached at the card's edge. */\n  max?: number\n  /** Adds a soft highlight that follows the pointer. */\n  glare?: boolean\n  /** Turns the tilt off. */\n  disabled?: boolean\n  className?: string\n}\n\nconst FINE_POINTER = '(hover: hover) and (pointer: fine)'\nconst SPRING = { stiffness: 220, damping: 22, mass: 0.5 }\n\nfunction useFinePointer() {\n  const [fine, setFine] = useState(false)\n  useEffect(() => {\n    const mq = window.matchMedia(FINE_POINTER)\n    const update = () => setFine(mq.matches)\n    update()\n    mq.addEventListener('change', update)\n    return () => mq.removeEventListener('change', update)\n  }, [])\n  return fine\n}\n\n/**\n * A card that tilts toward the pointer in 3D on a spring, with an optional glare.\n * Flat on touch devices and under reduced motion.\n */\nexport function TiltCard({ children, max = 12, glare = true, disabled = false, className }: TiltCardProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const fine = useFinePointer()\n  const enabled = !disabled && !reduced && fine\n\n  const rx = useMotionValue(0)\n  const ry = useMotionValue(0)\n  const gx = useMotionValue(50)\n  const gy = useMotionValue(50)\n  const glareOpacity = useSpring(0, { stiffness: 200, damping: 30 })\n  const srx = useSpring(rx, SPRING)\n  const sry = useSpring(ry, SPRING)\n\n  const transform = useMotionTemplate`perspective(1000px) rotateX(${srx}deg) rotateY(${sry}deg)`\n  const glareBg = useMotionTemplate`radial-gradient(circle at ${gx}% ${gy}%, var(--foreground), transparent 50%)`\n\n  const onMove = (e: PointerEvent<HTMLDivElement>) => {\n    const el = ref.current\n    if (!el || !enabled || e.pointerType === 'touch') return\n    const rect = el.getBoundingClientRect()\n    const px = (e.clientX - rect.left) / rect.width\n    const py = (e.clientY - rect.top) / rect.height\n    ry.set((px - 0.5) * max)\n    rx.set((0.5 - py) * max)\n    gx.set(px * 100)\n    gy.set(py * 100)\n    glareOpacity.set(0.15)\n  }\n  const onLeave = () => {\n    rx.set(0)\n    ry.set(0)\n    glareOpacity.set(0)\n  }\n\n  return (\n    <motion.div\n      ref={ref}\n      onPointerMove={onMove}\n      onPointerLeave={onLeave}\n      style={enabled ? { transform, transformStyle: 'preserve-3d' } : undefined}\n      className={cn('relative overflow-hidden rounded-2xl', enabled && 'will-change-transform', className)}\n    >\n      {children}\n      {glare && enabled ? (\n        <motion.div\n          aria-hidden=\"true\"\n          style={{ background: glareBg, opacity: glareOpacity }}\n          className=\"pointer-events-none absolute inset-0\"\n        />\n      ) : null}\n    </motion.div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/tilt-card.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "cursor"
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "uptime-card",
+  "title": "Uptime Card",
+  "description": "A status card with a row of daily bars per service, an uptime percentage and a short list of recent incidents. Bars are readable by screen readers and inspectable with the keyboard.",
+  "category": "blocks",
+  "layer": "B",
+  "source": {
+    "repo": "kokonut-labs/kokonutui",
+    "license": "MIT",
+    "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/uptime-card.tsx"
+  },
+  "dependencies": ["motion"],
+  "tags": ["status", "uptime", "monitoring", "incidents"],
+  "cssVars": {
+    "light": { "success": "oklch(0.6 0.15 155)" },
+    "dark": { "success": "oklch(0.72 0.15 155)" }
+  },
+  "props": [
+    { "name": "services", "type": "UptimeService[]", "required": true, "description": "Each service has a name, a history of daily statuses ('up' | 'degraded' | 'down' | 'none'), an optional uptime override and optional incidents." },
+    { "name": "title", "type": "string", "default": "'System status'", "description": "Card heading." },
+    { "name": "endDate", "type": "string", "description": "The last day shown, as YYYY-MM-DD (UTC). Defaults to today." },
+    { "name": "duration", "type": "number", "default": "0.5", "description": "Seconds for the bars to grow in." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds before the bars start to grow." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns off hover and keyboard inspection." },
+    { "name": "className", "type": "string", "description": "Extra classes for the card." }
+  ]
+}
