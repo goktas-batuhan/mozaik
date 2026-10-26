@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drag-carousel",
+  "title": "Drag Carousel",
+  "description": "A free-scrolling row of slides with elastic drag, plus arrow-key and button stepping.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/layout/drag-carousel/drag-carousel.tsx",
+      "content": "// Source: ui-layouts/uilayouts (MIT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-drag-sliding-carousel.tsx\nimport { animate, motion, useMotionValue, useMotionValueEvent, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { Children, useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface DragCarouselProps {\n  /** The slides. Each child becomes one slide. */\n  children: ReactNode\n  /** Accessible name of the carousel. */\n  label?: string\n  /** Gap between slides in pixels. */\n  gap?: number\n  /** Width of every slide, any CSS length. */\n  slideWidth?: string\n  /** How far the track stretches past its ends while dragging, from 0 to 1. */\n  elasticity?: number\n  /** Shows previous and next buttons. */\n  controls?: boolean\n  /** Turns dragging and the buttons off. */\n  disabled?: boolean\n  /** Extra classes for the root element. */\n  className?: string\n}\n\n/** A free-scrolling row of slides you drag with the pointer or step with the arrow keys and buttons. */\nexport function DragCarousel({\n  children,\n  label = 'Carousel',\n  gap = 16,\n  slideWidth = '18rem',\n  elasticity = 0.2,\n  controls = true,\n  disabled = false,\n  className,\n}: DragCarouselProps) {\n  const reduced = usePrefersReducedMotion()\n  const viewport = useRef<HTMLDivElement>(null)\n  const track = useRef<HTMLDivElement>(null)\n  const x = useMotionValue(0)\n  const [limit, setLimit] = useState(0)\n  const [pos, setPos] = useState(0)\n  const slides = Children.toArray(children)\n\n  useEffect(() => {\n    const measure = () => {\n      if (!viewport.current || !track.current) return\n      setLimit(Math.max(0, track.current.scrollWidth - viewport.current.offsetWidth))\n    }\n    measure()\n    if (typeof ResizeObserver === 'undefined') return\n    const ro = new ResizeObserver(measure)\n    if (viewport.current) ro.observe(viewport.current)\n    if (track.current) ro.observe(track.current)\n    return () => ro.disconnect()\n  }, [slides.length, gap, slideWidth])\n\n  useMotionValueEvent(x, 'change', (v) => setPos(v))\n\n  const step = useCallback(\n    (dir: 1 | -1) => {\n      const first = track.current?.firstElementChild as HTMLElement | null\n      const size = (first?.offsetWidth ?? 280) + gap\n      const target = Math.min(0, Math.max(-limit, x.get() - dir * size))\n      animate(x, target, reduced ? { duration: 0 } : { type: 'spring', stiffness: 260, damping: 32 })\n    },\n    [gap, limit, reduced, x],\n  )\n\n  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {\n    if (disabled) return\n    if (e.key === 'ArrowRight') (e.preventDefault(), step(1))\n    if (e.key === 'ArrowLeft') (e.preventDefault(), step(-1))\n  }\n\n  const atStart = pos >= -1\n  const atEnd = pos <= -limit + 1\n\n  return (\n    <div className={cn('w-full', className)}>\n      <div\n        ref={viewport}\n        role=\"group\"\n        aria-roledescription=\"carousel\"\n        aria-label={label}\n        tabIndex={0}\n        onKeyDown={onKeyDown}\n        className=\"overflow-hidden rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring\"\n      >\n        <motion.div\n          ref={track}\n          drag={disabled ? false : 'x'}\n          dragConstraints={{ left: -limit, right: 0 }}\n          dragElastic={elasticity}\n          dragTransition={{ bounceDamping: 30 }}\n          whileDrag={reduced ? undefined : { scale: 0.98 }}\n          style={{ x, gap }}\n          className={cn('flex w-max', !disabled && 'cursor-grab active:cursor-grabbing')}\n        >\n          {slides.map((slide, i) => (\n            <div\n              key={i}\n              role=\"group\"\n              aria-roledescription=\"slide\"\n              aria-label={`${i + 1} of ${slides.length}`}\n              style={{ width: slideWidth }}\n              className=\"shrink-0 select-none\"\n              draggable={false}\n            >\n              {slide}\n            </div>\n          ))}\n        </motion.div>\n      </div>\n\n      {controls && (\n        <div className=\"mt-3 flex justify-end gap-2\">\n          {([-1, 1] as const).map((dir) => (\n            <button\n              key={dir}\n              type=\"button\"\n              aria-label={dir === -1 ? 'Previous slides' : 'Next slides'}\n              disabled={disabled || (dir === -1 ? atStart : atEnd)}\n              onClick={() => step(dir)}\n              className=\"grid size-9 place-items-center rounded-full border border-border bg-card text-foreground outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-40\"\n            >\n              <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" aria-hidden className=\"size-4\">\n                <path d={dir === -1 ? 'M15 18l-6-6 6-6' : 'M9 18l6-6-6-6'} />\n              </svg>\n            </button>\n          ))}\n        </div>\n      )}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-drag-sliding-carousel.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "layout"
+  ],
+  "type": "registry:component"
+}

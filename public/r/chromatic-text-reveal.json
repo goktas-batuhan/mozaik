@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chromatic-text-reveal",
+  "title": "Chromatic Text Reveal",
+  "description": "A sentence whose last word is painted in by a moving, colored edge, then swapped for the next.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/text/chromatic-text-reveal/chromatic-text-reveal.tsx",
+      "content": "// Source: starc007/ui-components (MIT) — https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx\nimport { motion, useInView, useReducedMotion, useReducedMotionConfig, type MotionStyle } from 'motion/react'\nimport { useEffect, useRef, useState } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nconst TRAIL = 14\nconst START = `-${TRAIL}%`\nconst FINISH = `${100 + TRAIL}%`\n\nconst DEFAULT_COLORS = [\n  'var(--primary)',\n  'color-mix(in oklab, var(--primary) 55%, var(--foreground))',\n  'var(--destructive)',\n  'color-mix(in oklab, var(--primary) 70%, var(--muted-foreground))',\n]\n\nexport interface ChromaticTextRevealProps {\n  /** Text that stays put while the last word changes. */\n  prefix: string\n  /** Words revealed one after another after the prefix. */\n  words: string[]\n  /** Colors of the moving edge, any CSS color. Defaults to the primary token family. */\n  colors?: string[]\n  /** Seconds one sweep takes. */\n  duration?: number\n  /** Seconds before each sweep starts. */\n  delay?: number\n  /** Seconds a finished word rests before the next one. */\n  pause?: number\n  /** Goes back to the first word after the last one. */\n  loop?: boolean\n  className?: string\n}\n\nfunction buildGradient(colors: string[]) {\n  const stops = colors.map((color, i) => {\n    const offset = colors.length === 1 ? 0 : -TRAIL + (i / (colors.length - 1)) * TRAIL * 2\n    const sign = offset < 0 ? '-' : '+'\n    return `${color} calc(var(--chromatic-sweep) ${sign} ${Math.abs(Number(offset.toFixed(2)))}%)`\n  })\n  return `linear-gradient(90deg, var(--foreground) 0%, var(--foreground) calc(var(--chromatic-sweep) - ${TRAIL}%), ${stops.join(', ')}, transparent calc(var(--chromatic-sweep) + ${TRAIL}%), transparent 100%)`\n}\n\n/** A sentence whose last word is painted in by a moving, colored edge. */\nexport function ChromaticTextReveal({\n  prefix,\n  words,\n  colors = DEFAULT_COLORS,\n  duration = 1.2,\n  delay = 0,\n  pause = 0.9,\n  loop = true,\n  className,\n}: ChromaticTextRevealProps) {\n  const ref = useRef<HTMLSpanElement>(null)\n  const timer = useRef<number | null>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref, { once: true, amount: 0.4 })\n  const [index, setIndex] = useState(0)\n\n  useEffect(\n    () => () => {\n      if (timer.current !== null) window.clearTimeout(timer.current)\n    },\n    [],\n  )\n\n  const active = words.length ? index % words.length : 0\n  const word = words[active] ?? ''\n\n  if (reduced) {\n    return (\n      <span ref={ref} className={className}>\n        {prefix}\n        {word ? ` ${words[0]}` : ''}\n      </span>\n    )\n  }\n\n  const next = () => {\n    const last = active === words.length - 1\n    if (words.length < 2 || (last && !loop)) return\n    timer.current = window.setTimeout(() => setIndex((i) => (i + 1) % words.length), pause * 1000)\n  }\n\n  return (\n    <span ref={ref} className={cn('inline-flex items-baseline', className)}>\n      <span className=\"whitespace-nowrap\">\n        {prefix}\n        {word ? ' ' : null}\n      </span>\n      {word ? (\n        <span className=\"relative inline-grid\">\n          {Array.from(new Set(words)).map((w) => (\n            <span key={w} aria-hidden className=\"invisible col-start-1 row-start-1 whitespace-nowrap\">\n              {w}\n            </span>\n          ))}\n          <motion.span\n            key={`${word}-${active}`}\n            aria-hidden\n            className=\"absolute start-0 top-0 whitespace-nowrap bg-clip-text text-transparent [background-image:var(--chromatic-gradient)]\"\n            style={\n              {\n                '--chromatic-sweep': START,\n                '--chromatic-gradient': buildGradient(colors),\n                backgroundSize: '100% 100%',\n                backgroundRepeat: 'no-repeat',\n              } as MotionStyle\n            }\n            initial={{ opacity: 0.5, filter: 'blur(6px)', y: 5 }}\n            animate={{\n              '--chromatic-sweep': inView ? FINISH : START,\n              opacity: 1,\n              filter: 'blur(0px)',\n              y: 0,\n            }}\n            transition={{\n              '--chromatic-sweep': { duration, delay, ease: [0.77, 0, 0.175, 1] },\n              default: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },\n            }}\n            onAnimationComplete={() => inView && next()}\n          >\n            {word}\n          </motion.span>\n          <span className=\"sr-only\">{word}</span>\n        </span>\n      ) : null}\n    </span>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "text"
+  ],
+  "type": "registry:component"
+}

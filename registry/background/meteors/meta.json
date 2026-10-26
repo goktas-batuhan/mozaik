@@ -1,0 +1,21 @@
+{
+  "name": "meteors",
+  "title": "Meteors",
+  "description": "Streaks of light that fall across the parent box. Decorative, deterministic, still under reduced motion.",
+  "category": "background",
+  "layer": "B",
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/meteors.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["sky", "particles", "hero"],
+  "props": [
+    { "name": "number", "type": "number", "default": "20", "description": "How many meteors to render." },
+    { "name": "minDelay", "type": "number", "default": "0.2", "description": "Shortest wait before a meteor first falls, in seconds." },
+    { "name": "maxDelay", "type": "number", "default": "6", "description": "Longest wait before a meteor first falls, in seconds." },
+    { "name": "minDuration", "type": "number", "default": "2.5", "description": "Shortest fall, in seconds." },
+    { "name": "maxDuration", "type": "number", "default": "6", "description": "Longest fall, in seconds." },
+    { "name": "angle", "type": "number", "default": "35", "description": "Direction of travel in degrees from straight down. Positive leans left, negative leans right." },
+    { "name": "distance", "type": "number", "default": "700", "description": "How far each meteor travels, in pixels." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Hides the meteors." },
+    { "name": "className", "type": "string", "description": "Extra classes for each meteor head." }
+  ]
+}

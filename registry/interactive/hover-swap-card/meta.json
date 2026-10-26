@@ -1,0 +1,24 @@
+{
+  "name": "hover-swap-card",
+  "title": "Hover Swap Card",
+  "description": "A card that swaps its title and visual and lifts the media on hover or keyboard focus. Pure CSS transitions.",
+  "category": "interactive",
+  "layer": "B",
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/card/creative-hover-card.tsx"
+  },
+  "dependencies": [],
+  "tags": ["card", "hover", "swap"],
+  "props": [
+    { "name": "badge", "type": "string", "description": "Small pill above the title." },
+    { "name": "title", "type": "string", "required": true, "description": "Title at rest. Screen readers read this one." },
+    { "name": "hoverTitle", "type": "string", "description": "Title that crossfades in on hover or focus." },
+    { "name": "description", "type": "string", "description": "Body text." },
+    { "name": "media", "type": "ReactNode", "required": true, "description": "Visual shown at rest." },
+    { "name": "hoverMedia", "type": "ReactNode", "description": "Visual that crossfades in on hover or focus." },
+    { "name": "duration", "type": "number", "default": "0.5", "description": "Seconds the swap takes." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

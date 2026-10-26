@@ -1,0 +1,21 @@
+{
+  "name": "marquee",
+  "title": "Marquee",
+  "description": "Endless horizontal or vertical loop of any content, with pause on hover and a still frame under reduced motion.",
+  "category": "layout",
+  "layer": "B",
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["loop", "logos", "scroll"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "required": true, "description": "Content to loop." },
+    { "name": "reverse", "type": "boolean", "default": "false", "description": "Run the loop in the opposite direction." },
+    { "name": "pauseOnHover", "type": "boolean", "default": "false", "description": "Pause while the pointer or keyboard focus is inside." },
+    { "name": "vertical", "type": "boolean", "default": "false", "description": "Scroll vertically instead of horizontally." },
+    { "name": "repeat", "type": "number", "default": "4", "description": "How many copies of the content to render. Raise it if the content is short." },
+    { "name": "duration", "type": "number", "default": "40", "description": "Seconds for one full loop." },
+    { "name": "gap", "type": "string", "default": "'1rem'", "description": "Space between items and between copies, any CSS length." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Stops the loop and shows the content still." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

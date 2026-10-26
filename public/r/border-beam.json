@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam",
+  "title": "Border Beam",
+  "description": "A light that travels around the border of its parent card. Decorative, follows the parent's radius.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/background/border-beam/border-beam.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/border-beam.tsx\nimport { motion, useReducedMotion, useReducedMotionConfig, type MotionStyle } from 'motion/react'\nimport type { CSSProperties } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface BorderBeamProps {\n  /** Length of the beam in pixels. */\n  size?: number\n  /** Seconds for one lap around the border. */\n  duration?: number\n  /** Seconds to wait before the beam starts. */\n  delay?: number\n  /** Color at the head of the beam. Any CSS color; defaults to the primary token. */\n  colorFrom?: string\n  /** Color along the tail of the beam. Any CSS color; defaults to the foreground token. */\n  colorTo?: string\n  /** Run the lap in the opposite direction. */\n  reverse?: boolean\n  /** Where on the border the beam starts, 0 to 100 (percent of a lap). */\n  initialOffset?: number\n  /** Thickness of the lit border in pixels. */\n  borderWidth?: number\n  /** Hides the beam. */\n  disabled?: boolean\n  className?: string\n}\n\n/**\n * A light that travels around the border of its parent. Put it inside a\n * `relative` element with a border radius; it follows that radius.\n */\nexport function BorderBeam({\n  size = 60,\n  duration = 6,\n  delay = 0,\n  colorFrom = 'var(--primary)',\n  colorTo = 'var(--foreground)',\n  reverse = false,\n  initialOffset = 0,\n  borderWidth = 1.5,\n  disabled = false,\n  className,\n}: BorderBeamProps) {\n  const reduced = usePrefersReducedMotion()\n  if (disabled) return null\n\n  const start = reverse ? 100 - initialOffset : initialOffset\n  const end = reverse ? -initialOffset : 100 + initialOffset\n\n  return (\n    <div\n      aria-hidden\n      className=\"pointer-events-none absolute inset-0 rounded-[inherit] border-(length:--beam-width) border-transparent mask-[linear-gradient(transparent,transparent),linear-gradient(#000,#000)] mask-intersect [mask-clip:padding-box,border-box]\"\n      style={{ '--beam-width': `${borderWidth}px` } as CSSProperties}\n    >\n      <motion.div\n        className={cn('absolute aspect-square bg-linear-to-l from-(--beam-from) via-(--beam-to) to-transparent', className)}\n        style={\n          {\n            width: size,\n            offsetPath: `rect(0 auto auto 0 round ${size}px)`,\n            '--beam-from': colorFrom,\n            '--beam-to': colorTo,\n          } as MotionStyle\n        }\n        initial={{ offsetDistance: `${start}%` }}\n        animate={reduced ? undefined : { offsetDistance: [`${start}%`, `${end}%`] }}\n        transition={{ repeat: Infinity, ease: 'linear', duration, delay: -delay }}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/border-beam.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "background"
+  ],
+  "type": "registry:component"
+}

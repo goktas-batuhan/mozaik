@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-list",
+  "title": "Animated List",
+  "description": "Adds its children one at a time, newest on top, with a springy push. Shows everything at once under reduced motion.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/layout/animated-list/animated-list.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-list.tsx\nimport { AnimatePresence, motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { Children, useEffect, useMemo, useState, type ComponentPropsWithoutRef, type ReactElement, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface AnimatedListProps extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {\n  /** The items. Each needs a stable key. The newest item appears on top. */\n  children: ReactNode\n  /** Seconds between one item appearing and the next. */\n  interval?: number\n  /** Seconds before the first item appears. */\n  delay?: number\n  /** Start over after the last item, instead of stopping. */\n  loop?: boolean\n  /** Shows every item at once with no animation. */\n  disabled?: boolean\n  className?: string\n}\n\n/** Adds its children one at a time, newest on top, pushing the rest down. */\nexport function AnimatedList({\n  children,\n  interval = 1.2,\n  delay = 0,\n  loop = false,\n  disabled = false,\n  className,\n  ...props\n}: AnimatedListProps) {\n  const reduced = usePrefersReducedMotion()\n  const items = useMemo(() => Children.toArray(children), [children])\n  const total = items.length\n  const still = disabled || !!reduced\n  const [count, setCount] = useState(delay > 0 ? 0 : 1)\n\n  useEffect(() => {\n    if (still) return\n    let wait = interval\n    let next = count + 1\n    if (count === 0) {\n      wait = delay\n      next = 1\n    } else if (count >= total) {\n      if (!loop) return\n      wait = interval * 3\n      next = 0\n    }\n    const id = setTimeout(() => setCount(next), wait * 1000)\n    return () => clearTimeout(id)\n  }, [still, count, total, interval, delay, loop])\n\n  const visible = (still ? items : items.slice(0, count)).slice().reverse()\n\n  return (\n    <div role=\"list\" className={cn('flex flex-col items-center gap-3', className)} {...props}>\n      <AnimatePresence initial={false}>\n        {visible.map((item) => (\n          <motion.div\n            key={(item as ReactElement).key}\n            role=\"listitem\"\n            className=\"w-full\"\n            layout={!still}\n            initial={still ? false : { scale: 0.8, opacity: 0 }}\n            animate={{ scale: 1, opacity: 1 }}\n            exit={{ scale: 0.8, opacity: 0 }}\n            transition={{ type: 'spring', stiffness: 350, damping: 40 }}\n            style={{ originY: 0 }}\n          >\n            {item}\n          </motion.div>\n        ))}\n      </AnimatePresence>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-list.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "layout"
+  ],
+  "type": "registry:component"
+}

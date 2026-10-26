@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic",
+  "title": "Magnetic",
+  "description": "Pulls a button or icon toward the pointer on a spring when the cursor comes close.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/cursor/magnetic/magnetic.tsx",
+      "content": "import { motion, useReducedMotion, useReducedMotionConfig, useSpring } from 'motion/react'\nimport { useEffect, useRef, useState, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface MagneticProps {\n  /** The element to pull, usually a button or an icon link. */\n  children: ReactNode\n  /** Share of the pointer's offset the child follows, from 0 to 1. */\n  strength?: number\n  /** Pixels around the child where the pull starts. */\n  radius?: number\n  /** Turns the pull off. */\n  disabled?: boolean\n  className?: string\n}\n\nconst SPRING = { stiffness: 220, damping: 18, mass: 0.4 }\nconst FINE_POINTER = '(hover: hover) and (pointer: fine)'\n\nfunction useFinePointer() {\n  const [fine, setFine] = useState(false)\n  useEffect(() => {\n    const mq = window.matchMedia(FINE_POINTER)\n    const update = () => setFine(mq.matches)\n    update()\n    mq.addEventListener('change', update)\n    return () => mq.removeEventListener('change', update)\n  }, [])\n  return fine\n}\n\n/**\n * Pulls its child toward the pointer on a spring once the pointer comes within `radius`.\n * Off on touch devices and under reduced motion. The child keeps its place in the tab order.\n */\nexport function Magnetic({ children, strength = 0.35, radius = 60, disabled = false, className }: MagneticProps) {\n  const ref = useRef<HTMLSpanElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const fine = useFinePointer()\n  const enabled = !disabled && !reduced && fine\n  const x = useSpring(0, SPRING)\n  const y = useSpring(0, SPRING)\n\n  useEffect(() => {\n    const el = ref.current\n    if (!enabled || !el) return\n    const reset = () => {\n      x.set(0)\n      y.set(0)\n    }\n    const onMove = (e: PointerEvent) => {\n      if (e.pointerType === 'touch') return\n      // The outer box never moves, so measuring it gives a stable centre.\n      const r = el.getBoundingClientRect()\n      const dx = e.clientX - (r.left + r.width / 2)\n      const dy = e.clientY - (r.top + r.height / 2)\n      const near = Math.abs(dx) <= r.width / 2 + radius && Math.abs(dy) <= r.height / 2 + radius\n      x.set(near ? dx * strength : 0)\n      y.set(near ? dy * strength : 0)\n    }\n    const root = document.documentElement\n    window.addEventListener('pointermove', onMove, { passive: true })\n    root.addEventListener('pointerleave', reset)\n    window.addEventListener('blur', reset)\n    return () => {\n      window.removeEventListener('pointermove', onMove)\n      root.removeEventListener('pointerleave', reset)\n      window.removeEventListener('blur', reset)\n      x.jump(0)\n      y.jump(0)\n    }\n  }, [enabled, strength, radius, x, y])\n\n  return (\n    <span ref={ref} className={cn('relative inline-block', className)}>\n      {/* Same element either way, so toggling never remounts (or unfocuses) the child. */}\n      <motion.span className=\"inline-block\" style={enabled ? { x, y } : undefined}>\n        {children}\n      </motion.span>\n    </span>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "A",
+    "source": "original",
+    "status": "stable"
+  },
+  "categories": [
+    "cursor"
+  ],
+  "type": "registry:component"
+}

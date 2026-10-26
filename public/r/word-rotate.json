@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "word-rotate",
+  "title": "Word Rotate",
+  "description": "Swaps one word for the next with a short slide and fade. Screen readers get the whole list once.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/text/word-rotate/word-rotate.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/word-rotate.tsx\nimport { AnimatePresence, motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState, type ElementType } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface WordRotateProps {\n  /** Words to cycle through, in order. */\n  words: string[]\n  /** Seconds each word stays on screen. */\n  interval?: number\n  /** Seconds each swap takes. */\n  duration?: number\n  /** Seconds before the first swap is counted. */\n  delay?: number\n  /** Element to render. */\n  as?: ElementType\n  /** Shows the first word only. */\n  disabled?: boolean\n  className?: string\n}\n\n/**\n * Swaps one word for the next with a short slide and fade. Assistive tech\n * reads the whole list once; the visible swap is hidden from it.\n */\nexport function WordRotate({\n  words,\n  interval = 2.5,\n  duration = 0.3,\n  delay = 0,\n  as: Tag = 'span',\n  disabled = false,\n  className,\n}: WordRotateProps) {\n  const reduced = usePrefersReducedMotion()\n  const [index, setIndex] = useState(0)\n  const still = disabled || !!reduced || words.length < 2\n\n  useEffect(() => {\n    if (still) return\n    let id: ReturnType<typeof setInterval> | undefined\n    const start = setTimeout(\n      () => {\n        id = setInterval(() => setIndex((i) => (i + 1) % words.length), interval * 1000)\n      },\n      delay * 1000,\n    )\n    return () => {\n      clearTimeout(start)\n      if (id !== undefined) clearInterval(id)\n    }\n  }, [still, interval, delay, words.length])\n\n  if (still) {\n    return <Tag className={cn('inline-block', className)}>{words[0]}</Tag>\n  }\n\n  return (\n    <Tag className={cn('inline-block overflow-hidden py-[0.1em] align-bottom', className)}>\n      <span className=\"sr-only\">{words.join(', ')}</span>\n      <AnimatePresence mode=\"wait\" initial={false}>\n        <motion.span\n          key={index}\n          aria-hidden\n          className=\"block\"\n          initial={{ opacity: 0, y: '-60%' }}\n          animate={{ opacity: 1, y: '0%' }}\n          exit={{ opacity: 0, y: '60%' }}\n          transition={{ duration, ease: 'easeOut' }}\n        >\n          {words[index]}\n        </motion.span>\n      </AnimatePresence>\n    </Tag>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/word-rotate.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "text"
+  ],
+  "type": "registry:component"
+}

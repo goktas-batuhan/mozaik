@@ -1,0 +1,3310 @@
+[
+  {
+    "name": "rolling-text",
+    "title": "Rolling Text",
+    "description": "Rolls every letter up and swaps it for a copy of itself, on hover, mount or scroll into view.",
+    "category": "text",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "hover",
+      "letters",
+      "link"
+    ],
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "The text. Screen readers read it as one string."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'span'",
+        "description": "Element to render."
+      },
+      {
+        "name": "trigger",
+        "type": "'hover' | 'mount' | 'in-view'",
+        "default": "'hover'",
+        "description": "When the letters roll."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.45",
+        "description": "Seconds per letter."
+      },
+      {
+        "name": "stagger",
+        "type": "number",
+        "default": "0.025",
+        "description": "Seconds between letters."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the first letter."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the animation off and renders plain text."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "rolling-text.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { RollingText } from './rolling-text'\n\nexport default function RollingTextDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6 text-center\">\n      <RollingText\n        as=\"h2\"\n        text=\"Hover to roll\"\n        className=\"text-5xl font-semibold tracking-tight\"\n      />\n      <a\n        href=\"#\"\n        className=\"group rounded-full border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-2\"\n      >\n        <RollingText text=\"Get started\" />\n      </a>\n    </div>\n  )\n}\n",
+    "path": "registry/text/rolling-text"
+  },
+  {
+    "name": "scramble-text",
+    "title": "Scramble Text",
+    "description": "Letters cycle through random glyphs and decode into the real text, on mount, hover or scroll into view.",
+    "category": "text",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "decode",
+      "letters",
+      "hover"
+    ],
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "The text. Screen readers read it as one string."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'span'",
+        "description": "Element to render."
+      },
+      {
+        "name": "trigger",
+        "type": "'mount' | 'hover' | 'in-view'",
+        "default": "'mount'",
+        "description": "When the text decodes."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.9",
+        "description": "Seconds until the last letter settles."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds of pure noise before the first letter settles."
+      },
+      {
+        "name": "characters",
+        "type": "string",
+        "default": "'A-Z 0-9 #%&*+=<>/?'",
+        "description": "Glyph set the letters cycle through. Whitespace is ignored."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the animation off and renders plain text."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element. A monospace font gives the steadiest look."
+      }
+    ],
+    "files": [
+      "scramble-text.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { RotateCcw } from 'lucide-react'\nimport { useState } from 'react'\nimport { ScrambleText } from './scramble-text'\n\nconst links = ['Work', 'Writing', 'Contact']\n\nexport default function ScrambleTextDemo() {\n  const [run, setRun] = useState(0)\n\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col items-center gap-10 text-center\">\n      <div key={run} className=\"flex flex-col items-center gap-4\">\n        <ScrambleText\n          text=\"// incoming transmission\"\n          delay={0.1}\n          duration={0.8}\n          className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\"\n        />\n        <ScrambleText\n          as=\"h2\"\n          text=\"SIGNAL ACQUIRED\"\n          delay={0.3}\n          duration={1.4}\n          className=\"font-mono text-5xl font-semibold tracking-tight sm:text-6xl\"\n        />\n        <ScrambleText\n          as=\"p\"\n          text=\"Encrypted end to end. Readable only by you.\"\n          characters=\"01\"\n          delay={0.6}\n          duration={1.2}\n          className=\"font-mono text-sm text-muted-foreground\"\n        />\n      </div>\n\n      <nav aria-label=\"Demo links\" className=\"flex flex-wrap justify-center gap-2\">\n        {links.map((label) => (\n          <a\n            key={label}\n            href=\"#\"\n            className=\"rounded-full border bg-card px-4 py-1.5 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n          >\n            <ScrambleText text={label} trigger=\"hover\" duration={0.45} />\n          </a>\n        ))}\n      </nav>\n\n      <button\n        type=\"button\"\n        onClick={() => setRun((r) => r + 1)}\n        className=\"inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n      >\n        <RotateCcw className=\"size-3.5\" aria-hidden />\n        Replay\n      </button>\n    </div>\n  )\n}\n",
+    "path": "registry/text/scramble-text"
+  },
+  {
+    "name": "split-reveal",
+    "title": "Split Reveal",
+    "description": "Words or letters rise out of their own masks and sharpen from a blur, on mount or scroll into view.",
+    "category": "text",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "reveal",
+      "headline",
+      "scroll"
+    ],
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "The text. Screen readers read it as one string."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'p'",
+        "description": "Element to render."
+      },
+      {
+        "name": "split",
+        "type": "'words' | 'chars'",
+        "default": "'words'",
+        "description": "Reveal word by word or letter by letter."
+      },
+      {
+        "name": "trigger",
+        "type": "'mount' | 'in-view'",
+        "default": "'in-view'",
+        "description": "When the reveal plays."
+      },
+      {
+        "name": "stagger",
+        "type": "number",
+        "default": "0.06 (words), 0.018 (chars)",
+        "description": "Seconds between pieces."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.8",
+        "description": "Seconds per piece."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the first piece."
+      },
+      {
+        "name": "blur",
+        "type": "number",
+        "default": "8",
+        "description": "Starting blur in pixels. 0 turns the blur off."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the animation off and renders plain text."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "split-reveal.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { RotateCcw } from 'lucide-react'\nimport { useState } from 'react'\nimport { SplitReveal } from './split-reveal'\n\nexport default function SplitRevealDemo() {\n  const [run, setRun] = useState(0)\n\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col items-start gap-8\">\n      <div key={run} className=\"flex flex-col gap-5\">\n        <SplitReveal\n          text=\"CHAPTER 01 / MOTION\"\n          split=\"chars\"\n          trigger=\"mount\"\n          duration={0.6}\n          className=\"font-mono text-xs tracking-[0.3em] text-primary\"\n        />\n        <SplitReveal\n          as=\"h2\"\n          text=\"Interfaces that feel considered, down to the very last frame.\"\n          trigger=\"mount\"\n          delay={0.15}\n          className=\"text-4xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-5xl\"\n        />\n        <SplitReveal\n          text=\"Every word rises out of its own mask and sharpens as it lands. Split by words for headlines, by letters for labels.\"\n          trigger=\"mount\"\n          delay={0.6}\n          stagger={0.02}\n          blur={4}\n          className=\"max-w-xl text-base leading-relaxed text-muted-foreground\"\n        />\n      </div>\n\n      <button\n        type=\"button\"\n        onClick={() => setRun((r) => r + 1)}\n        className=\"inline-flex items-center gap-2 rounded-full border bg-card px-4 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n      >\n        <RotateCcw className=\"size-3.5\" aria-hidden />\n        Replay\n      </button>\n    </div>\n  )\n}\n",
+    "path": "registry/text/split-reveal"
+  },
+  {
+    "name": "blur-fade",
+    "title": "Blur Fade",
+    "description": "Fades content in out of a blur, from any direction, on mount or when it scrolls into view.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/blur-fade.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "fade",
+      "blur",
+      "entrance"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "Content to reveal."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.4",
+        "description": "Seconds the fade takes."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds to wait before the fade starts."
+      },
+      {
+        "name": "offset",
+        "type": "number",
+        "default": "8",
+        "description": "Pixels the content travels while it fades in."
+      },
+      {
+        "name": "direction",
+        "type": "'up' | 'down' | 'left' | 'right'",
+        "default": "'up'",
+        "description": "Direction the content moves while it appears."
+      },
+      {
+        "name": "blur",
+        "type": "number",
+        "default": "6",
+        "description": "Blur radius in pixels at the start."
+      },
+      {
+        "name": "inView",
+        "type": "boolean",
+        "default": "false",
+        "description": "Wait until the content scrolls into view."
+      },
+      {
+        "name": "inViewMargin",
+        "type": "string",
+        "default": "'-50px'",
+        "description": "Margin around the viewport used by inView."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows the content right away, with no animation."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "blur-fade.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { BlurFade } from './blur-fade'\n\nexport default function BlurFadeDemo() {\n  return (\n    <div className=\"flex w-[min(40rem,90vw)] flex-col items-center gap-4 text-center\">\n      <BlurFade delay={0.1}>\n        <p className=\"text-xs font-medium tracking-widest text-muted-foreground uppercase\">Introducing</p>\n      </BlurFade>\n      <BlurFade delay={0.25} duration={0.6} blur={10}>\n        <h2 className=\"text-5xl font-semibold tracking-tight\">Blur, then clarity</h2>\n      </BlurFade>\n      <BlurFade delay={0.45}>\n        <p className=\"max-w-md text-muted-foreground\">\n          Stagger a few of these with <code className=\"rounded bg-muted px-1.5 py-0.5 text-sm\">delay</code> and a page\n          assembles itself in order.\n        </p>\n      </BlurFade>\n      <BlurFade delay={0.65} direction=\"left\">\n        <a\n          href=\"#start\"\n          className=\"mt-2 inline-block rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n        >\n          Get started\n        </a>\n      </BlurFade>\n    </div>\n  )\n}\n",
+    "path": "registry/text/blur-fade"
+  },
+  {
+    "name": "chromatic-text-reveal",
+    "title": "Chromatic Text Reveal",
+    "description": "A sentence whose last word is painted in by a moving, colored edge, then swapped for the next.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "reveal",
+      "gradient",
+      "words"
+    ],
+    "props": [
+      {
+        "name": "prefix",
+        "type": "string",
+        "required": true,
+        "description": "Text that stays put while the last word changes."
+      },
+      {
+        "name": "words",
+        "type": "string[]",
+        "required": true,
+        "description": "Words revealed one after another after the prefix."
+      },
+      {
+        "name": "colors",
+        "type": "string[]",
+        "default": "primary token family",
+        "description": "Colors of the moving edge, any CSS color."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.2",
+        "description": "Seconds one sweep takes."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before each sweep starts."
+      },
+      {
+        "name": "pause",
+        "type": "number",
+        "default": "0.9",
+        "description": "Seconds a finished word rests before the next one."
+      },
+      {
+        "name": "loop",
+        "type": "boolean",
+        "default": "true",
+        "description": "Goes back to the first word after the last one."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "chromatic-text-reveal.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ChromaticTextReveal } from './chromatic-text-reveal'\n\nexport default function ChromaticTextRevealDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6 text-center\">\n      <ChromaticTextReveal\n        prefix=\"Design that feels\"\n        words={['effortless', 'considered', 'alive']}\n        className=\"text-5xl font-semibold tracking-tight\"\n      />\n      <p className=\"max-w-md text-sm text-muted-foreground\">\n        Each word is painted in by a soft colored edge, then makes room for the next.\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/text/chromatic-text-reveal"
+  },
+  {
+    "name": "number-ticker",
+    "title": "Number Ticker",
+    "description": "Counts a number up or down with a soft ease once it scrolls into view. Screen readers get the final value.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/number-ticker.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "counter",
+      "stats",
+      "scroll"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": "The number to count to (or from, when direction is \"down\")."
+      },
+      {
+        "name": "startValue",
+        "type": "number",
+        "default": "0",
+        "description": "The number the count starts at."
+      },
+      {
+        "name": "direction",
+        "type": "'up' | 'down'",
+        "default": "'up'",
+        "description": "Count up to value, or down from value to startValue."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "2",
+        "description": "Seconds the count takes."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds to wait once the number is in view."
+      },
+      {
+        "name": "decimalPlaces",
+        "type": "number",
+        "default": "0",
+        "description": "Digits after the decimal point."
+      },
+      {
+        "name": "locale",
+        "type": "string",
+        "default": "'en-US'",
+        "description": "BCP 47 locale used to format the number."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Skips the count and shows the final number."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "number-ticker.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { NumberTicker } from './number-ticker'\n\nconst stats = [\n  { value: 120, suffix: '+', label: 'Components' },\n  { value: 99.9, suffix: '%', label: 'Uptime', decimals: 1 },\n  { value: 48210, suffix: '', label: 'Installs' },\n]\n\nexport default function NumberTickerDemo() {\n  return (\n    <div className=\"grid w-[min(48rem,90vw)] grid-cols-3 divide-x divide-border rounded-2xl border border-border bg-card\">\n      {stats.map((s, i) => (\n        <div key={s.label} className=\"flex flex-col items-center gap-1 px-4 py-10\">\n          <p className=\"text-4xl font-semibold tracking-tight text-card-foreground sm:text-5xl\">\n            <NumberTicker value={s.value} decimalPlaces={s.decimals ?? 0} delay={i * 0.15} />\n            <span className=\"text-primary\">{s.suffix}</span>\n          </p>\n          <p className=\"text-sm text-muted-foreground\">{s.label}</p>\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+    "path": "registry/text/number-ticker"
+  },
+  {
+    "name": "shine-text",
+    "title": "Shine Text",
+    "description": "A band of light glides across the text on a loop, like polished metal catching a lamp.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/shine-text/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "shine",
+      "gradient",
+      "loop"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "string",
+        "required": true,
+        "description": "The text to light up."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "2.5",
+        "description": "Seconds one sweep takes."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0.6",
+        "description": "Seconds to rest between sweeps."
+      },
+      {
+        "name": "baseColor",
+        "type": "string",
+        "default": "'var(--muted-foreground)'",
+        "description": "Resting text color. Any CSS color."
+      },
+      {
+        "name": "shineColor",
+        "type": "string",
+        "default": "'var(--foreground)'",
+        "description": "Color of the moving highlight. Any CSS color."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the animation off and renders calm static text."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the text element."
+      }
+    ],
+    "files": [
+      "shine-text.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ShineText } from './shine-text'\n\nexport default function ShineTextDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-5 text-center\">\n      <ShineText className=\"text-6xl font-semibold tracking-tight\">Crafted with care</ShineText>\n      <ShineText\n        duration={3.2}\n        baseColor=\"var(--primary)\"\n        shineColor=\"var(--foreground)\"\n        className=\"text-xl font-medium\"\n      >\n        A light that moves through the words\n      </ShineText>\n    </div>\n  )\n}\n",
+    "path": "registry/text/shine-text"
+  },
+  {
+    "name": "typing-animation",
+    "title": "Typing Animation",
+    "description": "Types text out character by character, optionally deleting and cycling through words. Screen readers get the full text up front.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/typing-animation.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "typewriter",
+      "cursor",
+      "headline"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "string",
+        "description": "A single string to type. Ignored when words is set."
+      },
+      {
+        "name": "words",
+        "type": "string[]",
+        "description": "Several strings to type one after another."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.08",
+        "description": "Seconds per typed character."
+      },
+      {
+        "name": "deleteSpeed",
+        "type": "number",
+        "description": "Seconds per deleted character. Defaults to half of duration."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before typing starts."
+      },
+      {
+        "name": "pause",
+        "type": "number",
+        "default": "1",
+        "description": "Seconds to hold a finished word before deleting it."
+      },
+      {
+        "name": "loop",
+        "type": "boolean",
+        "default": "false",
+        "description": "Keep cycling after the last word."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'span'",
+        "description": "Element to render."
+      },
+      {
+        "name": "startOnView",
+        "type": "boolean",
+        "default": "true",
+        "description": "Wait until the text scrolls into view."
+      },
+      {
+        "name": "showCursor",
+        "type": "boolean",
+        "default": "true",
+        "description": "Show the cursor while typing."
+      },
+      {
+        "name": "cursorStyle",
+        "type": "'line' | 'block' | 'underscore'",
+        "default": "'line'",
+        "description": "Shape of the cursor."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows the finished text with no typing."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "typing-animation.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { TypingAnimation } from './typing-animation'\n\nexport default function TypingAnimationDemo() {\n  return (\n    <div className=\"flex w-[min(40rem,90vw)] flex-col items-center gap-6 text-center\">\n      <p className=\"text-xs font-medium tracking-widest text-muted-foreground uppercase\">Now typing</p>\n      <h2 className=\"min-h-[1.2em] text-5xl font-semibold tracking-tight\">\n        <TypingAnimation\n          startOnView={false}\n          loop\n          pause={1.4}\n          words={['Design systems', 'Motion that behaves', 'Components you own']}\n        />\n      </h2>\n      <p className=\"text-muted-foreground\">\n        <TypingAnimation startOnView={false} delay={0.4} duration={0.03} cursorStyle=\"underscore\">\n          One sentence, typed once, left alone afterwards.\n        </TypingAnimation>\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/text/typing-animation"
+  },
+  {
+    "name": "wave-text",
+    "title": "Wave Text",
+    "description": "A gentle wave rolls through the letters, each one a beat behind its neighbour.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wave-text/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "wave",
+      "letters",
+      "loop"
+    ],
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "The text. Screen readers read it as one string."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'span'",
+        "description": "Element to render."
+      },
+      {
+        "name": "amplitude",
+        "type": "number",
+        "default": "8",
+        "description": "How far each letter rises, in pixels."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.4",
+        "description": "Seconds one wave cycle takes."
+      },
+      {
+        "name": "stagger",
+        "type": "number",
+        "default": "0.06",
+        "description": "Seconds between neighbouring letters."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the animation off and renders plain text."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "wave-text.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { WaveText } from './wave-text'\n\nexport default function WaveTextDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6 text-center\">\n      <WaveText as=\"h2\" text=\"Ride the wave\" className=\"text-6xl font-semibold tracking-tight\" />\n      <WaveText\n        text=\"Every letter moves a little later than the last\"\n        amplitude={5}\n        duration={1.8}\n        className=\"text-lg text-muted-foreground\"\n      />\n    </div>\n  )\n}\n",
+    "path": "registry/text/wave-text"
+  },
+  {
+    "name": "word-rotate",
+    "title": "Word Rotate",
+    "description": "Swaps one word for the next with a short slide and fade. Screen readers get the whole list once.",
+    "category": "text",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/word-rotate.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "words",
+      "headline",
+      "loop"
+    ],
+    "props": [
+      {
+        "name": "words",
+        "type": "string[]",
+        "required": true,
+        "description": "Words to cycle through, in order."
+      },
+      {
+        "name": "interval",
+        "type": "number",
+        "default": "2.5",
+        "description": "Seconds each word stays on screen."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.3",
+        "description": "Seconds each swap takes."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the first swap is counted."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'span'",
+        "description": "Element to render."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows the first word only."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "word-rotate.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { WordRotate } from './word-rotate'\n\nexport default function WordRotateDemo() {\n  return (\n    <h2 className=\"flex items-baseline gap-3 text-5xl font-semibold tracking-tight\">\n      <span>Build something</span>\n      <WordRotate words={['calm', 'sharp', 'useful', 'yours']} className=\"text-primary\" />\n    </h2>\n  )\n}\n",
+    "path": "registry/text/word-rotate"
+  },
+  {
+    "name": "aurora-background",
+    "title": "Aurora Background",
+    "description": "A slow, blurred aurora drifting behind your content. Tinted from the primary token, paused off screen, still under reduced motion.",
+    "category": "background",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "aurora",
+      "gradient",
+      "hero"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content rendered above the aurora."
+      },
+      {
+        "name": "intensity",
+        "type": "number",
+        "default": "0.7",
+        "description": "Strength of the aurora, from 0 (off) to 1."
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": "1",
+        "description": "Speed multiplier. 0 holds the aurora still."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "aurora-background.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ArrowRight } from 'lucide-react'\nimport { AuroraBackground } from './aurora-background'\n\nexport default function AuroraBackgroundDemo() {\n  return (\n    <AuroraBackground className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-center justify-center rounded-2xl border px-8 text-center\">\n      <span className=\"rounded-full border bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur\">\n        Now in public beta\n      </span>\n      <h2 className=\"mt-6 max-w-xl text-5xl font-semibold tracking-tight text-balance\">\n        Ship interfaces that feel alive\n      </h2>\n      <p className=\"mt-4 max-w-md text-base text-muted-foreground text-pretty\">\n        A slow, soft aurora that stays out of the way of your content and rests when\n        nobody is looking.\n      </p>\n      <div className=\"mt-8 flex items-center gap-3\">\n        <a\n          href=\"#\"\n          className=\"inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2\"\n        >\n          Get started <ArrowRight aria-hidden className=\"size-4\" />\n        </a>\n        <a\n          href=\"#\"\n          className=\"rounded-full border bg-background/60 px-5 py-2.5 text-sm font-medium backdrop-blur transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2\"\n        >\n          Read the docs\n        </a>\n      </div>\n    </AuroraBackground>\n  )\n}\n",
+    "path": "registry/background/aurora-background"
+  },
+  {
+    "name": "dot-grid",
+    "title": "Dot Grid",
+    "description": "A dot grid with a fine grain and soft edges. Dots near the cursor take the primary color and grow.",
+    "category": "background",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "grid",
+      "cursor",
+      "noise"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content rendered above the grid."
+      },
+      {
+        "name": "gap",
+        "type": "number",
+        "default": "24",
+        "description": "Distance between dots, in pixels."
+      },
+      {
+        "name": "dotSize",
+        "type": "number",
+        "default": "2",
+        "description": "Dot diameter, in pixels."
+      },
+      {
+        "name": "glow",
+        "type": "boolean",
+        "default": "true",
+        "description": "Light up and grow the dots near the cursor. Off on touch screens and under reduced motion."
+      },
+      {
+        "name": "glowRadius",
+        "type": "number",
+        "default": "140",
+        "description": "Radius of the cursor glow, in pixels."
+      },
+      {
+        "name": "fade",
+        "type": "boolean",
+        "default": "true",
+        "description": "Fade the grid out towards the edges."
+      },
+      {
+        "name": "noise",
+        "type": "boolean",
+        "default": "true",
+        "description": "Lay a fine film grain over the grid."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "dot-grid.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { MousePointer2 } from 'lucide-react'\nimport { DotGrid } from './dot-grid'\n\nexport default function DotGridDemo() {\n  return (\n    <DotGrid className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-center justify-center rounded-2xl border px-8 text-center\">\n      <span className=\"inline-flex items-center gap-1.5 rounded-full border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground\">\n        <MousePointer2 aria-hidden className=\"size-3.5\" />\n        Move your cursor\n      </span>\n      <h2 className=\"mt-6 max-w-xl text-5xl font-semibold tracking-tight text-balance\">\n        Every pixel on the grid\n      </h2>\n      <p className=\"mt-4 max-w-md text-base text-muted-foreground text-pretty\">\n        A quiet dot pattern with a fine grain. The dots near your pointer warm up and\n        grow; the edges fade into the page.\n      </p>\n    </DotGrid>\n  )\n}\n",
+    "path": "registry/background/dot-grid"
+  },
+  {
+    "name": "shader-background",
+    "title": "Shader Background",
+    "description": "A soft, flowing noise field drawn by a raw WebGL shader in your theme colors. Sleeps off screen, falls back to a CSS gradient.",
+    "category": "background",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "webgl",
+      "shader",
+      "gradient",
+      "hero"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content rendered above the shader."
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": "1",
+        "description": "Speed multiplier. 0 holds the field still."
+      },
+      {
+        "name": "intensity",
+        "type": "number",
+        "default": "0.6",
+        "description": "Strength of the color field, from 0 (plain background) to 1."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "shader-background.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ArrowRight, Sparkles } from 'lucide-react'\nimport { ShaderBackground } from './shader-background'\n\nexport default function ShaderBackgroundDemo() {\n  return (\n    <ShaderBackground className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-start justify-end rounded-2xl border p-10\">\n      <span className=\"inline-flex items-center gap-1.5 rounded-full border bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur\">\n        <Sparkles aria-hidden className=\"size-3.5\" />\n        Raw WebGL, zero dependencies\n      </span>\n      <h2 className=\"mt-5 max-w-lg text-5xl font-semibold tracking-tight text-balance\">\n        Color that moves like weather\n      </h2>\n      <p className=\"mt-4 max-w-md text-base text-muted-foreground text-pretty\">\n        A fragment shader tinted by your theme tokens. It sleeps off screen and settles\n        into a single frame when motion is reduced.\n      </p>\n      <a\n        href=\"#\"\n        className=\"mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2\"\n      >\n        Explore the field <ArrowRight aria-hidden className=\"size-4\" />\n      </a>\n    </ShaderBackground>\n  )\n}\n",
+    "path": "registry/background/shader-background"
+  },
+  {
+    "name": "border-beam",
+    "title": "Border Beam",
+    "description": "A light that travels around the border of its parent card. Decorative, follows the parent's radius.",
+    "category": "background",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/border-beam.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "border",
+      "card",
+      "glow"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "number",
+        "default": "60",
+        "description": "Length of the beam in pixels."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "6",
+        "description": "Seconds for one lap around the border."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds to wait before the beam starts."
+      },
+      {
+        "name": "colorFrom",
+        "type": "string",
+        "default": "'var(--primary)'",
+        "description": "Color at the head of the beam. Any CSS color."
+      },
+      {
+        "name": "colorTo",
+        "type": "string",
+        "default": "'var(--foreground)'",
+        "description": "Color along the tail of the beam. Any CSS color."
+      },
+      {
+        "name": "reverse",
+        "type": "boolean",
+        "default": "false",
+        "description": "Run the lap in the opposite direction."
+      },
+      {
+        "name": "initialOffset",
+        "type": "number",
+        "default": "0",
+        "description": "Where on the border the beam starts, 0 to 100 (percent of a lap)."
+      },
+      {
+        "name": "borderWidth",
+        "type": "number",
+        "default": "1.5",
+        "description": "Thickness of the lit border in pixels."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Hides the beam."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the beam element."
+      }
+    ],
+    "files": [
+      "border-beam.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { BorderBeam } from './border-beam'\n\nexport default function BorderBeamDemo() {\n  return (\n    <div className=\"relative w-[min(26rem,90vw)] overflow-hidden rounded-2xl border border-border bg-card p-8 text-card-foreground\">\n      <p className=\"text-xs font-medium tracking-widest text-muted-foreground uppercase\">Pro plan</p>\n      <h3 className=\"mt-3 text-3xl font-semibold tracking-tight\">Everything, unlocked</h3>\n      <p className=\"mt-2 text-sm text-muted-foreground\">\n        A single light walks the edge of the card. Nothing else on the page moves.\n      </p>\n      <button\n        type=\"button\"\n        className=\"mt-6 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n      >\n        Get started\n      </button>\n      <BorderBeam size={120} duration={7} />\n      <BorderBeam size={120} duration={7} delay={3.5} colorFrom=\"var(--foreground)\" colorTo=\"var(--primary)\" />\n    </div>\n  )\n}\n",
+    "path": "registry/background/border-beam"
+  },
+  {
+    "name": "diagonal-hatch",
+    "title": "Diagonal Hatch",
+    "description": "Fine diagonal hatching that fades towards the edges, like a sketch shaded with a ruler.",
+    "category": "background",
+    "layer": "B",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/diagonal-box-pattern.tsx"
+    },
+    "dependencies": [],
+    "tags": [
+      "hatch",
+      "pattern",
+      "static"
+    ],
+    "props": [
+      {
+        "name": "spacing",
+        "type": "number",
+        "default": "10",
+        "description": "Distance between hatch lines, in pixels."
+      },
+      {
+        "name": "angle",
+        "type": "number",
+        "default": "45",
+        "description": "Direction of the lines in degrees."
+      },
+      {
+        "name": "strength",
+        "type": "number",
+        "default": "9",
+        "description": "Line strength as a percentage of the foreground color."
+      },
+      {
+        "name": "fade",
+        "type": "boolean",
+        "default": "true",
+        "description": "Fades the hatch out towards the edges."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the layer. Place it absolutely behind your content."
+      }
+    ],
+    "files": [
+      "diagonal-hatch.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { DiagonalHatch } from './diagonal-hatch'\n\nexport default function DiagonalHatchDemo() {\n  return (\n    <div className=\"relative isolate grid h-[420px] w-[820px] max-w-full place-items-center overflow-hidden rounded-2xl border bg-background\">\n      <DiagonalHatch />\n      <div className=\"relative rounded-xl border bg-card px-8 py-6 text-center shadow-sm\">\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Shaded, not shouting</h2>\n        <p className=\"mt-2 max-w-xs text-sm text-muted-foreground\">\n          A quiet texture that gives flat surfaces some grain.\n        </p>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/background/diagonal-hatch"
+  },
+  {
+    "name": "graph-paper",
+    "title": "Graph Paper",
+    "description": "Engineering graph paper: fine squares with a stronger line every few cells, fading out towards the edges.",
+    "category": "background",
+    "layer": "B",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/graph-paper-pattern.tsx"
+    },
+    "dependencies": [],
+    "tags": [
+      "grid",
+      "pattern",
+      "static"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "number",
+        "default": "24",
+        "description": "Size of one small square, in pixels."
+      },
+      {
+        "name": "majorEvery",
+        "type": "number",
+        "default": "5",
+        "description": "Every n-th line is drawn stronger. Use 0 to draw only the small grid."
+      },
+      {
+        "name": "fade",
+        "type": "'none' | 'radial' | 'vertical'",
+        "default": "'radial'",
+        "description": "Fades the grid out towards the edges."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the layer. Place it absolutely behind your content."
+      }
+    ],
+    "files": [
+      "graph-paper.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { GraphPaper } from './graph-paper'\n\nexport default function GraphPaperDemo() {\n  return (\n    <div className=\"relative isolate grid h-[420px] w-[820px] max-w-full place-items-center overflow-hidden rounded-2xl border bg-background\">\n      <GraphPaper />\n      <div className=\"relative text-center\">\n        <p className=\"text-sm font-medium uppercase tracking-widest text-muted-foreground\">Blueprint</p>\n        <h2 className=\"mt-2 text-5xl font-semibold tracking-tight\">Plotted to the pixel</h2>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/background/graph-paper"
+  },
+  {
+    "name": "mesh-glow",
+    "title": "Mesh Glow",
+    "description": "Soft blurred glows over a fine grid with a calm vignette. Drifts slowly, or holds still.",
+    "category": "background",
+    "layer": "B",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-gradient/dark-midnight-mesh-background.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "gradient",
+      "glow",
+      "ambient"
+    ],
+    "props": [
+      {
+        "name": "animated",
+        "type": "boolean",
+        "default": "true",
+        "description": "Lets the glows drift slowly. Off, or under reduced motion, they hold still."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "24",
+        "description": "Seconds one drift cycle takes."
+      },
+      {
+        "name": "intensity",
+        "type": "number",
+        "default": "1",
+        "description": "Overall strength of the glows, from 0 to 1."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the layer. Place it absolutely behind your content."
+      }
+    ],
+    "files": [
+      "mesh-glow.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { MeshGlow } from './mesh-glow'\n\nexport default function MeshGlowDemo() {\n  return (\n    <div className=\"relative isolate grid h-[420px] w-[820px] max-w-full place-items-center overflow-hidden rounded-2xl border bg-background\">\n      <MeshGlow />\n      <div className=\"relative text-center\">\n        <p className=\"text-sm font-medium uppercase tracking-widest text-muted-foreground\">Ambient</p>\n        <h2 className=\"mt-2 text-5xl font-semibold tracking-tight\">Light with no source</h2>\n        <p className=\"mx-auto mt-3 max-w-sm text-sm text-muted-foreground\">\n          Three slow glows, a faint grid and a vignette. Nothing to read, everything to feel.\n        </p>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/background/mesh-glow"
+  },
+  {
+    "name": "meteors",
+    "title": "Meteors",
+    "description": "Streaks of light that fall across the parent box. Decorative, deterministic, still under reduced motion.",
+    "category": "background",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/meteors.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "sky",
+      "particles",
+      "hero"
+    ],
+    "props": [
+      {
+        "name": "number",
+        "type": "number",
+        "default": "20",
+        "description": "How many meteors to render."
+      },
+      {
+        "name": "minDelay",
+        "type": "number",
+        "default": "0.2",
+        "description": "Shortest wait before a meteor first falls, in seconds."
+      },
+      {
+        "name": "maxDelay",
+        "type": "number",
+        "default": "6",
+        "description": "Longest wait before a meteor first falls, in seconds."
+      },
+      {
+        "name": "minDuration",
+        "type": "number",
+        "default": "2.5",
+        "description": "Shortest fall, in seconds."
+      },
+      {
+        "name": "maxDuration",
+        "type": "number",
+        "default": "6",
+        "description": "Longest fall, in seconds."
+      },
+      {
+        "name": "angle",
+        "type": "number",
+        "default": "35",
+        "description": "Direction of travel in degrees from straight down. Positive leans left, negative leans right."
+      },
+      {
+        "name": "distance",
+        "type": "number",
+        "default": "700",
+        "description": "How far each meteor travels, in pixels."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Hides the meteors."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for each meteor head."
+      }
+    ],
+    "files": [
+      "meteors.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Meteors } from './meteors'\n\nexport default function MeteorsDemo() {\n  return (\n    <div className=\"relative flex h-[26rem] w-[min(48rem,90vw)] flex-col items-center justify-center overflow-hidden rounded-2xl border border-border bg-card\">\n      <Meteors number={26} distance={560} />\n      <p className=\"relative text-xs font-medium tracking-widest text-muted-foreground uppercase\">Night shift</p>\n      <h3 className=\"relative mt-3 text-4xl font-semibold tracking-tight text-card-foreground\">Quiet sky, busy build</h3>\n      <p className=\"relative mt-2 max-w-sm text-center text-sm text-muted-foreground\">\n        Meteors fill whatever box you put them in, and stay behind your content.\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/background/meteors"
+  },
+  {
+    "name": "retro-grid",
+    "title": "Retro Grid",
+    "description": "A perspective grid that scrolls toward the viewer. Pure CSS 3D, no canvas. Decorative and still under reduced motion.",
+    "category": "background",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/retro-grid.tsx",
+      "note": "Rebuilt in CSS 3D (upstream is WebGL)."
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "grid",
+      "perspective",
+      "hero"
+    ],
+    "props": [
+      {
+        "name": "angle",
+        "type": "number",
+        "default": "65",
+        "description": "Tilt of the floor in degrees. 0 is flat on the screen, 90 is edge-on."
+      },
+      {
+        "name": "cellSize",
+        "type": "number",
+        "default": "60",
+        "description": "Size of one grid cell in pixels."
+      },
+      {
+        "name": "lineColor",
+        "type": "string",
+        "default": "'color-mix(in oklab, var(--foreground) 24%, transparent)'",
+        "description": "Color of the grid lines. Any CSS color."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "15",
+        "description": "Seconds for the grid to travel the length of its pattern."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Hides the grid."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "retro-grid.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { RetroGrid } from './retro-grid'\n\nexport default function RetroGridDemo() {\n  return (\n    <div className=\"relative flex h-[26rem] w-[min(48rem,90vw)] flex-col items-center justify-center overflow-hidden rounded-2xl border border-border bg-background\">\n      <RetroGrid />\n      <p className=\"relative text-xs font-medium tracking-widest text-primary uppercase\">Perspective</p>\n      <h3 className=\"relative mt-3 bg-linear-to-b from-foreground to-foreground/50 bg-clip-text text-5xl font-semibold tracking-tight text-transparent\">\n        Grid to the horizon\n      </h3>\n      <p className=\"relative mt-3 max-w-sm text-center text-sm text-muted-foreground\">\n        A floor of lines rolling toward you. Tilt, cell size and speed are props.\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/background/retro-grid"
+  },
+  {
+    "name": "magnetic",
+    "title": "Magnetic",
+    "description": "Pulls a button or icon toward the pointer on a spring when the cursor comes close.",
+    "category": "cursor",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "cursor",
+      "button",
+      "spring"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The element to pull, usually a button or an icon link."
+      },
+      {
+        "name": "strength",
+        "type": "number",
+        "default": "0.35",
+        "description": "Share of the pointer's offset the child follows, from 0 to 1."
+      },
+      {
+        "name": "radius",
+        "type": "number",
+        "default": "60",
+        "description": "Pixels around the child where the pull starts."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the pull off. It is also off on touch devices and under reduced motion."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "magnetic.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ArrowUpRight, GitBranch, Mail, Send } from 'lucide-react'\nimport { Magnetic } from './magnetic'\n\nconst icons = [\n  { label: 'Source', Icon: GitBranch },\n  { label: 'Email', Icon: Mail },\n  { label: 'Message', Icon: Send },\n]\n\nconst focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring'\n\nexport default function MagneticDemo() {\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col items-center gap-12 text-center\">\n      <div className=\"space-y-3\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move your cursor close</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Have a project in mind?</h2>\n      </div>\n\n      <Magnetic strength={0.3} radius={80}>\n        <a\n          href=\"#\"\n          className={`group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-shadow hover:shadow-primary/35 ${focusRing}`}\n        >\n          Start a conversation\n          <ArrowUpRight\n            className=\"size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5\"\n            aria-hidden\n          />\n        </a>\n      </Magnetic>\n\n      <div className=\"flex items-center gap-4\">\n        {icons.map(({ label, Icon }) => (\n          <Magnetic key={label} strength={0.5} radius={40}>\n            <a\n              href=\"#\"\n              aria-label={label}\n              className={`grid size-12 place-items-center rounded-full border bg-card text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground ${focusRing}`}\n            >\n              <Icon className=\"size-5\" aria-hidden />\n            </a>\n          </Magnetic>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/cursor/magnetic"
+  },
+  {
+    "name": "spotlight",
+    "title": "Spotlight",
+    "description": "A soft primary-tinted light that follows the pointer across a card, with an optional glow on the nearest edge.",
+    "category": "cursor",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "cursor",
+      "card",
+      "glow"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content of the surface."
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "default": "420",
+        "description": "Diameter of the light in pixels."
+      },
+      {
+        "name": "intensity",
+        "type": "number",
+        "default": "0.16",
+        "description": "Strength of the light, from 0 to 1."
+      },
+      {
+        "name": "border",
+        "type": "boolean",
+        "default": "true",
+        "description": "Also lights the edge nearest the pointer, even from a neighbouring card."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the light off. On touch devices and under reduced motion it rests at the top instead."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the surface. Rounded corners are inherited by the light."
+      }
+    ],
+    "files": [
+      "spotlight.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Command, Cpu, Gauge, Layers, ShieldCheck, Zap } from 'lucide-react'\nimport { Spotlight } from './spotlight'\n\nconst features = [\n  { Icon: Zap, title: 'Instant', body: 'Under 50 ms from keypress to paint.' },\n  { Icon: Layers, title: 'Composable', body: 'Small pieces that stack cleanly.' },\n  { Icon: ShieldCheck, title: 'Accessible', body: 'Keyboard first, screen reader tested.' },\n  { Icon: Command, title: 'Shortcuts', body: 'Every action one chord away.' },\n  { Icon: Gauge, title: 'Measured', body: 'Budgets enforced on every build.' },\n  { Icon: Cpu, title: 'Lightweight', body: 'No runtime beyond React and Motion.' },\n]\n\nexport default function SpotlightDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move across the grid</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Built for the details</h2>\n      </div>\n      <div className=\"grid grid-cols-2 gap-3 sm:grid-cols-3\">\n        {features.map(({ Icon, title, body }) => (\n          <Spotlight key={title} className=\"rounded-xl border bg-card p-5\">\n            <Icon className=\"size-5 text-primary\" aria-hidden />\n            <h3 className=\"mt-6 text-sm font-medium text-card-foreground\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </Spotlight>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/cursor/spotlight"
+  },
+  {
+    "name": "bento-grid",
+    "title": "Bento Grid",
+    "description": "Container-responsive bento grid with cards that lift on hover, move their artwork and follow the pointer with a soft glow.",
+    "category": "blocks",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [],
+    "tags": [
+      "grid",
+      "features",
+      "cards"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "BentoGrid: BentoCard elements."
+      },
+      {
+        "name": "columns",
+        "type": "2 | 3 | 4",
+        "default": "3",
+        "description": "BentoGrid: columns on wide containers. One column below 672px of container width."
+      },
+      {
+        "name": "rowHeight",
+        "type": "string",
+        "default": "'13rem'",
+        "description": "BentoGrid: minimum height of one grid row, any CSS length."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'div'",
+        "description": "BentoGrid: element for the grid."
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "description": "BentoCard: heading, also the accessible name of the link or button."
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "description": "BentoCard: short copy under the title."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "description": "BentoCard: small icon above the title."
+      },
+      {
+        "name": "visual",
+        "type": "ReactNode",
+        "description": "BentoCard: decorative artwork behind the content. Use group-hover/bento: classes inside it to react to hover."
+      },
+      {
+        "name": "colSpan",
+        "type": "1 | 2 | 3 | 4",
+        "default": "1",
+        "description": "BentoCard: columns spanned on wide containers, clamped to the grid's column count."
+      },
+      {
+        "name": "rowSpan",
+        "type": "1 | 2 | 3",
+        "default": "1",
+        "description": "BentoCard: rows spanned on wide containers."
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "description": "BentoCard: makes the whole card a link."
+      },
+      {
+        "name": "onClick",
+        "type": "() => void",
+        "description": "BentoCard: makes the whole card a button when there is no href."
+      },
+      {
+        "name": "cta",
+        "type": "ReactNode",
+        "description": "BentoCard: small call to action under the copy, shown on interactive cards only."
+      },
+      {
+        "name": "titleAs",
+        "type": "ElementType",
+        "default": "'h3'",
+        "description": "BentoCard: element for the heading."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the grid or the card."
+      }
+    ],
+    "files": [
+      "bento-grid.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Accessibility, Braces, Keyboard, Moon, Palette, Terminal } from 'lucide-react'\nimport { BentoCard, BentoGrid } from './bento-grid'\n\nconst tileShades = ['bg-primary', 'bg-primary/60', 'bg-primary/25', 'bg-muted', 'bg-primary/40', 'bg-primary/80', 'bg-muted', 'bg-primary/15']\n\nfunction Mosaic() {\n  return (\n    <div className=\"absolute inset-0 flex flex-wrap content-start gap-1.5 p-5\">\n      {Array.from({ length: 96 }, (_, i) => (\n        <span\n          key={i}\n          style={{ transitionDelay: `${(i % 24) * 15}ms` }}\n          className={`size-5 rounded-[4px] transition-transform duration-500 motion-safe:group-hover/bento:-translate-y-1 ${tileShades[(i * 5 + (i >> 3)) % tileShades.length]}`}\n        />\n      ))}\n    </div>\n  )\n}\n\nfunction Keycaps() {\n  const key = 'flex h-9 items-center justify-center rounded-lg border border-border bg-background font-mono text-xs text-muted-foreground shadow-[0_2px_0_0] shadow-border transition-transform duration-300'\n  return (\n    <div className=\"absolute inset-x-5 top-6 grid grid-cols-3 gap-2\">\n      <span className={`${key} col-span-2`}>Tab</span>\n      <span className={key}>Esc</span>\n      <span className={key}>⇧</span>\n      <span className={`${key} border-primary/50 text-primary motion-safe:group-hover/bento:translate-y-0.5 motion-safe:group-hover/bento:shadow-none`}>\n        ↵\n      </span>\n      <span className={key}>⌥</span>\n      <span className={`${key} col-span-3`}>Space</span>\n      <span className={key}>←</span>\n      <span className={key}>↓</span>\n      <span className={key}>→</span>\n    </div>\n  )\n}\n\nfunction TerminalLines() {\n  return (\n    <div className=\"absolute inset-x-5 top-5 space-y-1.5 rounded-lg border border-border bg-background/80 p-3 font-mono text-[11px] leading-none text-muted-foreground\">\n      <p>\n        <span className=\"text-primary\">$</span> npx shadcn add mozaik/bento-grid\n      </p>\n      <p className=\"transition-opacity duration-500 group-hover/bento:text-foreground\">✓ bento-grid.tsx</p>\n    </div>\n  )\n}\n\nfunction Wave() {\n  return (\n    <svg viewBox=\"0 0 200 60\" fill=\"none\" className=\"absolute inset-x-5 top-6 h-14 w-[calc(100%-2.5rem)]\" preserveAspectRatio=\"none\">\n      <path\n        d=\"M0 30 C 20 5, 40 5, 60 30 S 100 55, 120 30 S 160 5, 200 30\"\n        className=\"stroke-primary/70 transition-opacity duration-500 group-hover/bento:opacity-0\"\n        strokeWidth=\"2\"\n      />\n      <path\n        d=\"M0 30 H 200\"\n        className=\"stroke-foreground/40 opacity-0 transition-opacity duration-500 group-hover/bento:opacity-100\"\n        strokeWidth=\"2\"\n        strokeDasharray=\"4 6\"\n      />\n    </svg>\n  )\n}\n\nfunction Eclipse() {\n  return (\n    <div className=\"absolute right-6 top-3 size-16\">\n      <span className=\"absolute inset-0 rounded-full bg-primary/80 blur-[1px]\" />\n      <span className=\"absolute inset-0 translate-x-3 -translate-y-1.5 rounded-full bg-card transition-transform duration-700 ease-out motion-safe:group-hover/bento:translate-x-6\" />\n    </div>\n  )\n}\n\nfunction CodeLines() {\n  const line = 'h-2 rounded-full'\n  return (\n    <div className=\"absolute inset-x-5 top-6 space-y-2.5 font-mono\">\n      <div className=\"flex gap-2\">\n        <span className={`${line} w-12 bg-primary/70`} />\n        <span className={`${line} w-24 bg-foreground/50`} />\n        <span className={`${line} w-6 bg-muted-foreground/40`} />\n      </div>\n      <div className=\"flex gap-2 pl-6\">\n        <span className={`${line} w-16 bg-foreground/30`} />\n        <span className={`${line} w-28 bg-primary/40 transition-[width] duration-500 motion-safe:group-hover/bento:w-40`} />\n      </div>\n      <div className=\"flex gap-2 pl-6\">\n        <span className={`${line} w-20 bg-foreground/30`} />\n        <span className={`${line} w-14 bg-muted-foreground/40`} />\n      </div>\n      <span className={`${line} block w-4 bg-muted-foreground/40`} />\n    </div>\n  )\n}\n\nexport default function BentoGridDemo() {\n  return (\n    <div className=\"w-full max-w-4xl\">\n      <BentoGrid rowHeight=\"11rem\">\n        <BentoCard\n          colSpan={2}\n          icon={<Palette />}\n          title=\"Tokens, not hex\"\n          description=\"Every color comes from your theme, so blocks follow light and dark.\"\n          visual={<Mosaic />}\n          href=\"#\"\n        />\n        <BentoCard\n          rowSpan={2}\n          icon={<Keyboard />}\n          title=\"Keyboard first\"\n          description=\"Real links and buttons, visible focus rings, sensible tab order.\"\n          visual={<Keycaps />}\n          href=\"#\"\n          cta=\"Try it\"\n        />\n        <BentoCard icon={<Terminal />} title=\"One command\" description=\"Install straight into your repo.\" visual={<TerminalLines />} href=\"#\" />\n        <BentoCard icon={<Accessibility />} title=\"Reduced motion\" description=\"Calm, static frames on request.\" visual={<Wave />} href=\"#\" />\n        <BentoCard icon={<Moon />} title=\"Dark by default\" description=\"Tuned for dark, fine in light.\" visual={<Eclipse />} href=\"#\" />\n        <BentoCard\n          colSpan={2}\n          icon={<Braces />}\n          title=\"Typed props\"\n          description=\"Strict TypeScript and one shared API across every component.\"\n          visual={<CodeLines />}\n          href=\"#\"\n        />\n      </BentoGrid>\n    </div>\n  )\n}\n",
+    "path": "registry/blocks/bento-grid"
+  },
+  {
+    "name": "hero-section",
+    "title": "Hero Section",
+    "description": "Landing hero with an eyebrow pill, headline, copy, two calls to action and an optional media slot, revealed in a soft stagger.",
+    "category": "blocks",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "landing",
+      "hero",
+      "cta"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The headline. Labels the section for assistive tech."
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "description": "Supporting copy under the headline."
+      },
+      {
+        "name": "eyebrow",
+        "type": "ReactNode",
+        "description": "Small pill above the headline, e.g. \"New · v1.0\"."
+      },
+      {
+        "name": "primaryAction",
+        "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+        "description": "Filled call to action. A link when href is set, a button otherwise."
+      },
+      {
+        "name": "secondaryAction",
+        "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+        "description": "Outlined call to action next to the primary one."
+      },
+      {
+        "name": "media",
+        "type": "ReactNode",
+        "description": "Image, video or mock-up. Beside the copy when align is 'left', below it when 'center'."
+      },
+      {
+        "name": "align",
+        "type": "'center' | 'left'",
+        "default": "'center'",
+        "description": "Text alignment and layout."
+      },
+      {
+        "name": "titleAs",
+        "type": "ElementType",
+        "default": "'h1'",
+        "description": "Element for the headline."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'section'",
+        "description": "Element for the root."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.6",
+        "description": "Seconds each piece takes to fade in."
+      },
+      {
+        "name": "stagger",
+        "type": "number",
+        "default": "0.08",
+        "description": "Seconds between pieces."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the first piece."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the entrance animation off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "hero-section.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ArrowRight } from 'lucide-react'\nimport { HeroSection } from './hero-section'\n\n// Mosaic tiles for the mock window: opacity steps of the primary token.\nconst tiles = [\n  'bg-primary', 'bg-primary/40', 'bg-muted', 'bg-primary/15', 'bg-primary/70', 'bg-muted', 'bg-primary/25', 'bg-primary/55',\n  'bg-muted', 'bg-primary/80', 'bg-primary/20', 'bg-primary/45', 'bg-muted', 'bg-primary/30', 'bg-primary', 'bg-primary/10',\n  'bg-primary/50', 'bg-muted', 'bg-primary/65', 'bg-primary/15', 'bg-primary/35', 'bg-primary/90', 'bg-muted', 'bg-primary/40',\n]\n\nfunction ProductWindow() {\n  return (\n    <div aria-hidden className=\"relative\">\n      <div className=\"pointer-events-none absolute -inset-8 rounded-[2rem] bg-primary/10 blur-3xl\" />\n      <div className=\"relative overflow-hidden rounded-xl border border-border bg-card shadow-2xl shadow-foreground/5\">\n        <div className=\"flex items-center gap-1.5 border-b border-border px-4 py-3\">\n          <span className=\"size-2.5 rounded-full bg-muted-foreground/30\" />\n          <span className=\"size-2.5 rounded-full bg-muted-foreground/30\" />\n          <span className=\"size-2.5 rounded-full bg-muted-foreground/30\" />\n          <span className=\"ml-3 h-2 w-28 rounded-full bg-muted\" />\n        </div>\n        <div className=\"grid grid-cols-[5.5rem_1fr] gap-4 p-4\">\n          <div className=\"space-y-2.5 pt-1\">\n            <span className=\"block h-2 w-14 rounded-full bg-foreground/70\" />\n            <span className=\"block h-2 w-16 rounded-full bg-muted\" />\n            <span className=\"block h-2 w-12 rounded-full bg-muted\" />\n            <span className=\"block h-2 w-[3.75rem] rounded-full bg-primary/60\" />\n            <span className=\"block h-2 w-10 rounded-full bg-muted\" />\n          </div>\n          <div className=\"space-y-3\">\n            <div className=\"grid grid-cols-8 gap-1.5\">\n              {tiles.map((c, i) => (\n                <span key={i} className={`aspect-square rounded-[4px] ${c}`} />\n              ))}\n            </div>\n            <div className=\"flex items-center justify-between rounded-lg border border-border bg-background px-3 py-2 font-mono text-[11px] text-muted-foreground\">\n              <span>\n                <span className=\"text-primary\">$</span> npx shadcn add mozaik/hero-section\n              </span>\n              <span className=\"hidden text-foreground/60 @sm:inline\">done</span>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport default function HeroSectionDemo() {\n  return (\n    <div className=\"w-full max-w-5xl\">\n      <HeroSection\n        align=\"left\"\n        eyebrow=\"New · v1.0 is live\"\n        title={\n          <>\n            Components that <span className=\"text-primary\">fit together</span>\n          </>\n        }\n        description=\"Mozaik is a growing set of React components in one design language. Add them with one command and own every line.\"\n        primaryAction={{\n          label: (\n            <>\n              Get started <ArrowRight className=\"size-4\" aria-hidden />\n            </>\n          ),\n          href: '#',\n        }}\n        secondaryAction={{ label: 'Browse components', href: '#' }}\n        media={<ProductWindow />}\n      />\n    </div>\n  )\n}\n",
+    "path": "registry/blocks/hero-section"
+  },
+  {
+    "name": "address-chip",
+    "title": "Address Chip",
+    "description": "A compact EVM address with a generated blockie-style avatar, copy button, ENS label and explorer link.",
+    "category": "onchain",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "address",
+      "wallet",
+      "copy"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "address",
+        "type": "string",
+        "required": true,
+        "description": "The EVM address, 0x-prefixed."
+      },
+      {
+        "name": "chars",
+        "type": "number",
+        "default": "4",
+        "description": "Characters kept on each side of the ellipsis."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "description": "Display name such as an ENS name. The short address moves next to it."
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "description": "Explorer link for the address. Opens in a new tab."
+      },
+      {
+        "name": "copyable",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows the copy button."
+      },
+      {
+        "name": "avatar",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows the generated avatar."
+      },
+      {
+        "name": "onCopy",
+        "type": "(address: string) => void",
+        "description": "Called after the address lands on the clipboard."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "address-chip.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ArrowRight } from 'lucide-react'\nimport { AddressChip } from './address-chip'\n\n// Made-up addresses for the demo.\nconst transfers = [\n  {\n    from: { address: '0x33cEb14560bd33b977Ada347Daa646D53418F12D', label: 'mozaik.eth' },\n    to: { address: '0xBf38e418004a7f37b709a2ac6b392f0986470c30' },\n    amount: '2.40 ETH',\n  },\n  {\n    from: { address: '0x2c9E054777108e030220c01aBefCcf4373faB57F' },\n    to: { address: '0x9baFb72f91b8789582615B6908429433f0d7707C', label: 'atlas.eth' },\n    amount: '1,250 USDC',\n  },\n  {\n    from: { address: '0x392B4d7cfFcaD51F11007Ab30606d59f0C0e6796', label: 'orbit.eth' },\n    to: { address: '0x1d3Ee4Cb1365556C2c4bf6adD137bcA43De92211' },\n    amount: '0.75 ETH',\n  },\n]\n\nconst explorer = (address: string) => `https://etherscan.io/address/${address}`\n\nexport default function AddressChipDemo() {\n  return (\n    <div className=\"w-[min(92vw,620px)] space-y-6\">\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <AddressChip address=\"0x33cEb14560bd33b977Ada347Daa646D53418F12D\" label=\"mozaik.eth\" href={explorer('0x33cEb14560bd33b977Ada347Daa646D53418F12D')} />\n        <AddressChip address=\"0xBf38e418004a7f37b709a2ac6b392f0986470c30\" chars={6} />\n        <AddressChip address=\"0xnot-an-address\" />\n      </div>\n\n      <div className=\"rounded-2xl border bg-card text-card-foreground shadow-sm\">\n        <div className=\"flex items-center justify-between border-b px-5 py-3 text-sm\">\n          <span className=\"font-medium\">Recent transfers</span>\n          <span className=\"text-muted-foreground\">Last 24h</span>\n        </div>\n        <ul className=\"divide-y\">\n          {transfers.map((t, i) => (\n            <li key={i} className=\"flex flex-wrap items-center gap-3 px-5 py-3.5\">\n              <AddressChip {...t.from} href={explorer(t.from.address)} />\n              <ArrowRight aria-hidden className=\"size-4 text-muted-foreground\" />\n              <AddressChip {...t.to} href={explorer(t.to.address)} />\n              <span className=\"ml-auto font-mono text-sm tabular-nums\">{t.amount}</span>\n            </li>\n          ))}\n        </ul>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/address-chip"
+  },
+  {
+    "name": "price-ticker",
+    "title": "Price Ticker",
+    "description": "A price that rolls its digits on every update, flashes green or red, and shows a percent change badge.",
+    "category": "onchain",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "price",
+      "digits",
+      "live"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": "Current price."
+      },
+      {
+        "name": "previousValue",
+        "type": "number",
+        "description": "Reference for the change badge (e.g. the 24h open). Defaults to the previously shown value."
+      },
+      {
+        "name": "currency",
+        "type": "string",
+        "description": "ISO currency code, e.g. 'USD'. Leave empty for a plain number."
+      },
+      {
+        "name": "format",
+        "type": "Intl.NumberFormatOptions",
+        "description": "Extra Intl.NumberFormat options. They override currency and decimals."
+      },
+      {
+        "name": "decimals",
+        "type": "number",
+        "default": "2",
+        "description": "Fraction digits."
+      },
+      {
+        "name": "locale",
+        "type": "string",
+        "default": "'en-US'",
+        "description": "BCP 47 locale for formatting."
+      },
+      {
+        "name": "showChange",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows the percent change badge."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "description": "Accessible name, e.g. 'ETH price'."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.6",
+        "description": "Seconds for the digit roll."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "price-ticker.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { PriceTicker } from './price-ticker'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\ninterface Market {\n  symbol: string\n  name: string\n  open: number\n  price: number\n  decimals: number\n}\n\nconst START: Market[] = [\n  { symbol: 'ETH', name: 'Ether', open: 3412.18, price: 3468.42, decimals: 2 },\n  { symbol: 'BTC', name: 'Bitcoin', open: 98240.5, price: 97615.3, decimals: 2 },\n  { symbol: 'SOL', name: 'Solana', open: 182.44, price: 186.91, decimals: 2 },\n  { symbol: 'ARB', name: 'Arbitrum', open: 0.8421, price: 0.8377, decimals: 4 },\n]\n\n// A small random walk so the demo keeps ticking.\nconst step = (m: Market): Market => {\n  const drift = (Math.random() - 0.48) * 0.006\n  const price = Number((m.price * (1 + drift)).toFixed(m.decimals))\n  return { ...m, price }\n}\n\nexport default function PriceTickerDemo() {\n  const reduced = usePrefersReducedMotion()\n  const [markets, setMarkets] = useState(START)\n\n  useEffect(() => {\n    if (reduced) return\n    const id = setInterval(() => {\n      setMarkets((list) => list.map((m, i) => (i === 0 || Math.random() > 0.45 ? step(m) : m)))\n    }, 2200)\n    return () => clearInterval(id)\n  }, [reduced])\n\n  const [lead, ...rest] = markets\n\n  return (\n    <div className=\"w-[min(92vw,560px)] rounded-2xl border bg-card p-6 text-card-foreground shadow-sm\">\n      <div className=\"flex items-center justify-between text-sm text-muted-foreground\">\n        <span className=\"font-medium text-foreground\">\n          {lead.symbol}\n          <span className=\"text-muted-foreground\"> / USD</span>\n        </span>\n        <span>24h change</span>\n      </div>\n      <PriceTicker\n        value={lead.price}\n        previousValue={lead.open}\n        currency=\"USD\"\n        label={`${lead.name} price`}\n        className=\"mt-3 text-5xl font-semibold tracking-tight\"\n      />\n\n      <ul className=\"mt-6 divide-y border-t\">\n        {rest.map((m) => (\n          <li key={m.symbol} className=\"flex items-center justify-between py-3\">\n            <span className=\"flex items-center gap-3\">\n              <span className=\"grid size-8 place-items-center rounded-full bg-muted font-mono text-[11px] font-semibold\">\n                {m.symbol}\n              </span>\n              <span className=\"text-sm font-medium\">{m.name}</span>\n            </span>\n            <PriceTicker\n              value={m.price}\n              previousValue={m.open}\n              currency=\"USD\"\n              decimals={m.decimals}\n              label={`${m.name} price`}\n              className=\"text-base font-medium\"\n            />\n          </li>\n        ))}\n      </ul>\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/price-ticker"
+  },
+  {
+    "name": "radar-badge",
+    "title": "Radar Badge",
+    "description": "A live-monitoring badge: a tiny radar sweep with spreading rings next to a label, in live, scanning, idle and alert states.",
+    "category": "onchain",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "status",
+      "live",
+      "badge"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "status",
+        "type": "'live' | 'scanning' | 'idle' | 'alert'",
+        "default": "'live'",
+        "description": "What the watcher is doing. Sets the color and the motion."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "description": "Text next to the radar. Defaults to the status name."
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md'",
+        "default": "'md'",
+        "description": "Badge size."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "radar-badge.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { BellRing, Check } from 'lucide-react'\nimport { useState } from 'react'\nimport { RadarBadge, type RadarStatus } from './radar-badge'\n\ninterface Watcher {\n  name: string\n  detail: string\n  status: RadarStatus\n  label?: string\n}\n\nconst WATCHERS: Watcher[] = [\n  { name: 'Whale wallets', detail: '42 addresses · mainnet', status: 'live' },\n  { name: 'Bridge contracts', detail: 'Base, Arbitrum, Optimism', status: 'scanning', label: 'Scanning' },\n  { name: 'Airdrop claims', detail: 'Paused since Monday', status: 'idle', label: 'Paused' },\n]\n\nexport default function RadarBadgeDemo() {\n  const [signals, setSignals] = useState(0)\n\n  const treasury: Watcher =\n    signals > 0\n      ? { name: 'Treasury multisig', detail: 'Unusual outflow detected', status: 'alert', label: `${signals} signal${signals > 1 ? 's' : ''}` }\n      : { name: 'Treasury multisig', detail: '3 of 5 signers · Safe', status: 'live' }\n\n  const button =\n    'inline-flex h-8 items-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'\n\n  return (\n    <div className=\"w-[min(92vw,560px)] space-y-6\">\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <RadarBadge status=\"live\" />\n        <RadarBadge status=\"scanning\" />\n        <RadarBadge status=\"alert\" label=\"3 signals\" />\n        <RadarBadge status=\"idle\" />\n      </div>\n\n      <div className=\"rounded-2xl border bg-card text-card-foreground shadow-sm\">\n        <div className=\"flex items-center justify-between border-b px-5 py-3\">\n          <span className=\"text-sm font-medium\">Watchers</span>\n          <RadarBadge size=\"sm\" status={signals > 0 ? 'alert' : 'live'} label={signals > 0 ? 'Attention' : 'All clear'} />\n        </div>\n        <ul className=\"divide-y\">\n          {[treasury, ...WATCHERS].map((w) => (\n            <li key={w.name} className=\"flex items-center justify-between gap-4 px-5 py-3\">\n              <div className=\"min-w-0\">\n                <p className=\"text-sm font-medium\">{w.name}</p>\n                <p className=\"truncate text-xs text-muted-foreground\">{w.detail}</p>\n              </div>\n              <RadarBadge size=\"sm\" status={w.status} label={w.label} />\n            </li>\n          ))}\n        </ul>\n        <div className=\"flex gap-2 border-t px-5 py-3\">\n          <button type=\"button\" className={button} onClick={() => setSignals((s) => s + 1)}>\n            <BellRing aria-hidden className=\"size-3.5\" />\n            Simulate signal\n          </button>\n          <button type=\"button\" className={button} disabled={signals === 0} onClick={() => setSignals(0)}>\n            <Check aria-hidden className=\"size-3.5\" />\n            Resolve\n          </button>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/radar-badge"
+  },
+  {
+    "name": "tx-steps",
+    "title": "Transaction Steps",
+    "description": "Step-by-step transaction status (Approve, Sign, Broadcast, Confirmed) with a spinning active step, checkmarks and error state.",
+    "category": "onchain",
+    "layer": "A",
+    "source": "original",
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "stepper",
+      "transaction",
+      "status"
+    ],
+    "props": [
+      {
+        "name": "steps",
+        "type": "{ label: string; description?: string; status: 'pending' | 'active' | 'done' | 'error' }[]",
+        "required": true,
+        "description": "The steps in order, each with its own status."
+      },
+      {
+        "name": "orientation",
+        "type": "'vertical' | 'horizontal'",
+        "default": "'vertical'",
+        "description": "Stack the steps or lay them out in a row."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Transaction progress'",
+        "description": "Accessible name for the list."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "tx-steps.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { RotateCcw, TriangleAlert } from 'lucide-react'\nimport { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { TxSteps, type TxStep } from './tx-steps'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nconst BASE = [\n  { label: 'Approve', description: 'Allow the router to spend USDC' },\n  { label: 'Sign', description: 'Confirm the swap in your wallet' },\n  { label: 'Broadcast', description: 'Sent to the network' },\n  { label: 'Confirmed', description: 'Included in block 21,408,117' },\n]\n\nconst toSteps = (active: number, failed: boolean): TxStep[] =>\n  BASE.map((s, i) => ({\n    ...s,\n    status: i < active ? 'done' : i === active ? (failed ? 'error' : 'active') : 'pending',\n    ...(failed && i === active ? { description: 'Rejected in wallet. Try again.' } : {}),\n  }))\n\nexport default function TxStepsDemo() {\n  const reduced = usePrefersReducedMotion()\n  // Under reduced motion the demo holds on the second step and waits for clicks.\n  const [active, setActive] = useState(1)\n  const [failed, setFailed] = useState(false)\n  const [orientation, setOrientation] = useState<'vertical' | 'horizontal'>('horizontal')\n\n  useEffect(() => {\n    if (reduced || failed) return\n    const id = setTimeout(() => setActive((a) => (a >= BASE.length ? 0 : a + 1)), active >= BASE.length ? 2600 : 1700)\n    return () => clearTimeout(id)\n  }, [active, failed, reduced])\n\n  const steps = toSteps(active, failed)\n  const finished = active >= BASE.length\n\n  const button =\n    'inline-flex h-8 items-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'\n\n  return (\n    <div className=\"w-[min(92vw,680px)] rounded-2xl border bg-card p-6 text-card-foreground shadow-sm\">\n      <div className=\"mb-6 flex flex-wrap items-center justify-between gap-3\">\n        <div>\n          <p className=\"text-sm font-medium\">Swap 1,250 USDC → 0.36 ETH</p>\n          <p className=\"text-xs text-muted-foreground\">\n            {failed ? 'Transaction failed' : finished ? 'Swap complete' : `Step ${active + 1} of ${BASE.length}`}\n          </p>\n        </div>\n        <div role=\"radiogroup\" aria-label=\"Layout\" className=\"inline-flex rounded-md border bg-muted p-0.5 text-xs\">\n          {(['horizontal', 'vertical'] as const).map((o) => (\n            <button\n              key={o}\n              type=\"button\"\n              role=\"radio\"\n              aria-checked={orientation === o}\n              onClick={() => setOrientation(o)}\n              className=\"rounded px-2.5 py-1 font-medium capitalize text-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring aria-checked:bg-background aria-checked:text-foreground aria-checked:shadow-sm\"\n            >\n              {o}\n            </button>\n          ))}\n        </div>\n      </div>\n\n      <TxSteps steps={steps} orientation={orientation} className={orientation === 'vertical' ? 'mx-auto max-w-sm' : undefined} />\n\n      <div className=\"mt-6 flex flex-wrap gap-2 border-t pt-4\">\n        <button type=\"button\" className={button} disabled={failed || finished} onClick={() => setActive((a) => a + 1)}>\n          Next step\n        </button>\n        <button type=\"button\" className={button} disabled={failed || finished} onClick={() => setFailed(true)}>\n          <TriangleAlert aria-hidden className=\"size-3.5\" />\n          Fail current\n        </button>\n        <button\n          type=\"button\"\n          className={button}\n          onClick={() => {\n            setFailed(false)\n            setActive(0)\n          }}\n        >\n          <RotateCcw aria-hidden className=\"size-3.5\" />\n          Restart\n        </button>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/tx-steps"
+  },
+  {
+    "name": "direction-aware-tabs",
+    "title": "Direction Aware Tabs",
+    "description": "Tabs whose panel slides in from the side you are moving towards, with a sliding pill and an animated panel height.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/direction-aware-tabs.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "tabs",
+      "slide",
+      "spring"
+    ],
+    "props": [
+      {
+        "name": "tabs",
+        "type": "DirectionAwareTab[]",
+        "required": true,
+        "description": "The tabs, in order: { id, label, content }."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "description": "Id of the tab that is open first. Defaults to the first tab."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(id: string) => void",
+        "description": "Called with the new tab id whenever the selection changes."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.4",
+        "description": "Seconds the slide and height change take."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the slide animation off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "direction-aware-tabs.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { DirectionAwareTabs } from './direction-aware-tabs'\n\nconst Panel = ({ title, body, tiles }: { title: string; body: string; tiles: number }) => (\n  <div className=\"rounded-xl border border-border bg-card p-5 text-card-foreground\">\n    <h3 className=\"text-lg font-semibold tracking-tight\">{title}</h3>\n    <p className=\"mt-1 max-w-md text-sm text-muted-foreground\">{body}</p>\n    <div className=\"mt-4 flex gap-2\">\n      {Array.from({ length: tiles }, (_, i) => (\n        <div key={i} className=\"h-16 flex-1 rounded-lg bg-linear-to-br from-primary/30 to-muted\" />\n      ))}\n    </div>\n  </div>\n)\n\nexport default function DirectionAwareTabsDemo() {\n  return (\n    <div className=\"w-[480px] max-w-full\">\n      <DirectionAwareTabs\n        tabs={[\n          { id: 'overview', label: 'Overview', content: <Panel title=\"Overview\" body=\"A short summary. Move to a tab on the right and the panel slides in from the right.\" tiles={2} /> },\n          { id: 'activity', label: 'Activity', content: <Panel title=\"Activity\" body=\"This panel is taller. The container animates its height instead of jumping.\" tiles={4} /> },\n          { id: 'settings', label: 'Settings', content: <Panel title=\"Settings\" body=\"Go back left and the motion reverses. Arrow keys, Home and End work too.\" tiles={1} /> },\n        ]}\n      />\n    </div>\n  )\n}\n",
+    "path": "registry/interactive/direction-aware-tabs"
+  },
+  {
+    "name": "dock",
+    "title": "Dock",
+    "description": "A row of icons that swell as the pointer approaches, macOS style. Stays at rest on touch and under reduced motion.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "dock",
+      "hover",
+      "navigation"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "DockIcon elements. Each one should wrap a link or a button."
+      },
+      {
+        "name": "iconSize",
+        "type": "number",
+        "default": "40",
+        "description": "Resting size of each icon in pixels."
+      },
+      {
+        "name": "iconMagnification",
+        "type": "number",
+        "default": "64",
+        "description": "Size of the icon under the pointer in pixels."
+      },
+      {
+        "name": "iconDistance",
+        "type": "number",
+        "default": "140",
+        "description": "Distance in pixels over which the magnification fades out."
+      },
+      {
+        "name": "direction",
+        "type": "'top' | 'middle' | 'bottom'",
+        "default": "'bottom'",
+        "description": "Which edge the icons grow from."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the magnification off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the dock."
+      }
+    ],
+    "files": [
+      "dock.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { FolderOpen, Home, Mail, Search, Settings, Terminal } from 'lucide-react'\nimport type { ReactNode } from 'react'\nimport { Dock, DockIcon } from './dock'\n\nconst items: { label: string; icon: ReactNode }[] = [\n  { label: 'Home', icon: <Home /> },\n  { label: 'Search', icon: <Search /> },\n  { label: 'Files', icon: <FolderOpen /> },\n  { label: 'Terminal', icon: <Terminal /> },\n  { label: 'Mail', icon: <Mail /> },\n  { label: 'Settings', icon: <Settings /> },\n]\n\nexport default function DockDemo() {\n  return (\n    <div className=\"flex h-56 w-[min(40rem,90vw)] flex-col items-center justify-end gap-6\">\n      <p className=\"text-sm text-muted-foreground\">Move the pointer along the dock.</p>\n      <Dock aria-label=\"Application dock\">\n        {items.map((item) => (\n          <DockIcon key={item.label}>\n            <button\n              type=\"button\"\n              aria-label={item.label}\n              className=\"grid size-full place-items-center rounded-full bg-secondary text-secondary-foreground transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&>svg]:size-1/2\"\n            >\n              {item.icon}\n            </button>\n          </DockIcon>\n        ))}\n      </Dock>\n    </div>\n  )\n}\n",
+    "path": "registry/interactive/dock"
+  },
+  {
+    "name": "family-button",
+    "title": "Family Button",
+    "description": "A square button that springs open into a panel and collapses back. The toggle rotates from plus to close.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/family-button.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "expand",
+      "panel",
+      "spring"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "Content shown inside the expanded panel."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Toggle panel'",
+        "description": "Accessible name of the toggle button."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "default": "false",
+        "description": "Whether the panel starts open."
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "description": "Controlled open state."
+      },
+      {
+        "name": "onOpenChange",
+        "type": "(open: boolean) => void",
+        "description": "Called when the panel opens or closes."
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "default": "220",
+        "description": "Width of the open panel in pixels."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "default": "260",
+        "description": "Height of the open panel in pixels."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.35",
+        "description": "Seconds the expand and collapse take."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the button off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "family-button.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Mail, Send, Share2, Star } from 'lucide-react'\nimport { FamilyButton } from './family-button'\n\nconst actions = [\n  { icon: Send, label: 'Send' },\n  { icon: Share2, label: 'Share' },\n  { icon: Star, label: 'Save' },\n  { icon: Mail, label: 'Email' },\n]\n\nexport default function FamilyButtonDemo() {\n  return (\n    <div className=\"grid h-[320px] place-items-center\">\n      <FamilyButton label=\"Quick actions\">\n        <p className=\"mb-3 text-xs font-medium tracking-wide text-muted-foreground uppercase\">Quick actions</p>\n        <ul className=\"grid grid-cols-2 gap-2\">\n          {actions.map(({ icon: Icon, label }) => (\n            <li key={label}>\n              <button\n                type=\"button\"\n                className=\"flex w-full flex-col items-center gap-1.5 rounded-xl border border-border bg-background/50 py-3 text-xs outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring\"\n              >\n                <Icon className=\"size-4\" aria-hidden />\n                {label}\n              </button>\n            </li>\n          ))}\n        </ul>\n      </FamilyButton>\n    </div>\n  )\n}\n",
+    "path": "registry/interactive/family-button"
+  },
+  {
+    "name": "hover-swap-card",
+    "title": "Hover Swap Card",
+    "description": "A card that swaps its title and visual and lifts the media on hover or keyboard focus. Pure CSS transitions.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/card/creative-hover-card.tsx"
+    },
+    "dependencies": [],
+    "tags": [
+      "card",
+      "hover",
+      "swap"
+    ],
+    "props": [
+      {
+        "name": "badge",
+        "type": "string",
+        "description": "Small pill above the title."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "description": "Title at rest. Screen readers read this one."
+      },
+      {
+        "name": "hoverTitle",
+        "type": "string",
+        "description": "Title that crossfades in on hover or focus."
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "description": "Body text."
+      },
+      {
+        "name": "media",
+        "type": "ReactNode",
+        "required": true,
+        "description": "Visual shown at rest."
+      },
+      {
+        "name": "hoverMedia",
+        "type": "ReactNode",
+        "description": "Visual that crossfades in on hover or focus."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.5",
+        "description": "Seconds the swap takes."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "hover-swap-card.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { HoverSwapCard } from './hover-swap-card'\n\nconst Bars = ({ heights, accent }: { heights: number[]; accent?: boolean }) => (\n  <div className=\"flex h-full items-end gap-2 px-6 pb-0\">\n    {heights.map((h, i) => (\n      <div\n        key={i}\n        style={{ height: `${h}%` }}\n        className={`flex-1 rounded-t-md ${accent ? 'bg-linear-to-t from-primary/70 to-primary/20' : 'bg-linear-to-t from-muted-foreground/30 to-muted-foreground/5'}`}\n      />\n    ))}\n  </div>\n)\n\nexport default function HoverSwapCardDemo() {\n  return (\n    <div className=\"flex flex-wrap items-start justify-center gap-5\">\n      <HoverSwapCard\n        badge=\"Analytics\"\n        title=\"Subscriber reports\"\n        hoverTitle=\"Subscriber highlights\"\n        description=\"Hover to bring the trend into focus.\"\n        media={<Bars heights={[30, 42, 36, 48, 40, 52, 46]} />}\n        hoverMedia={<Bars accent heights={[28, 44, 52, 66, 74, 86, 96]} />}\n      />\n      <HoverSwapCard\n        badge=\"Security\"\n        title=\"Quiet by default\"\n        hoverTitle=\"Loud when it matters\"\n        description=\"Tab to it and the same swap plays.\"\n        media={<Bars heights={[50, 50, 48, 52, 50, 49, 51]} />}\n        hoverMedia={<Bars accent heights={[20, 35, 90, 40, 25, 70, 30]} />}\n        className=\"hidden sm:block\"\n      />\n    </div>\n  )\n}\n",
+    "path": "registry/interactive/hover-swap-card"
+  },
+  {
+    "name": "shift-card",
+    "title": "Shift Card",
+    "description": "A card whose bottom panel grows over the middle content on hover, focus or click, swapping what the top shows.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/shift-card.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "card",
+      "hover",
+      "reveal"
+    ],
+    "props": [
+      {
+        "name": "topContent",
+        "type": "ReactNode",
+        "description": "Always visible at the top."
+      },
+      {
+        "name": "topRevealContent",
+        "type": "ReactNode",
+        "description": "Fades in below topContent while the card is expanded."
+      },
+      {
+        "name": "middleContent",
+        "type": "ReactNode",
+        "description": "Centre content that fades out while the card is expanded."
+      },
+      {
+        "name": "bottomContent",
+        "type": "ReactNode",
+        "description": "Bottom panel. A peek stays visible at rest and the rest opens on hover, focus or click."
+      },
+      {
+        "name": "collapsedHeight",
+        "type": "number",
+        "default": "44",
+        "description": "Height in pixels of the bottom peek at rest."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.3",
+        "description": "Seconds the panel takes to open."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Keeps the card closed."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "shift-card.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ShiftCard } from './shift-card'\n\nexport default function ShiftCardDemo() {\n  return (\n    <ShiftCard\n      topContent={\n        <div className=\"flex items-center justify-between\">\n          <span className=\"rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-medium text-primary\">Pro plan</span>\n          <span className=\"text-xs text-muted-foreground\">Renews May 4</span>\n        </div>\n      }\n      topRevealContent={<p className=\"mt-3 text-xl font-semibold tracking-tight\">Usage this month</p>}\n      middleContent={\n        <div className=\"text-center\">\n          <p className=\"text-5xl font-semibold tracking-tight\">$24</p>\n          <p className=\"mt-1 text-muted-foreground\">per month</p>\n        </div>\n      }\n      bottomContent={\n        <div className=\"space-y-2\">\n          <p className=\"font-medium\">Billing details</p>\n          <dl className=\"space-y-1.5 text-muted-foreground\">\n            {[\n              ['Seats', '4 of 5 used'],\n              ['Storage', '38 GB of 100 GB'],\n              ['API calls', '12.4k of 50k'],\n              ['Next invoice', 'May 4, 2026'],\n            ].map(([k, v]) => (\n              <div key={k} className=\"flex justify-between\">\n                <dt>{k}</dt>\n                <dd className=\"text-foreground\">{v}</dd>\n              </div>\n            ))}\n          </dl>\n        </div>\n      }\n    />\n  )\n}\n",
+    "path": "registry/interactive/shift-card"
+  },
+  {
+    "name": "shimmer-button",
+    "title": "Shimmer Button",
+    "description": "A button with a light that circles its edge. Stops when disabled or under reduced motion.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/shimmer-button.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "button",
+      "shimmer",
+      "cta"
+    ],
+    "props": [
+      {
+        "name": "shimmerColor",
+        "type": "string",
+        "default": "'var(--primary)'",
+        "description": "Color of the light that circles the edge. Any CSS color."
+      },
+      {
+        "name": "shimmerSize",
+        "type": "number",
+        "default": "2",
+        "description": "Thickness of the lit edge in pixels."
+      },
+      {
+        "name": "background",
+        "type": "string",
+        "default": "'var(--card)'",
+        "description": "Fill of the button. Any CSS color or gradient."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "3",
+        "description": "Seconds for the light to circle the button once."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables the button and stops the shimmer."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the button."
+      }
+    ],
+    "files": [
+      "shimmer-button.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ArrowRight, Sparkles } from 'lucide-react'\nimport { ShimmerButton } from './shimmer-button'\n\nexport default function ShimmerButtonDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <ShimmerButton className=\"px-8 py-4 text-base\">\n        <Sparkles aria-hidden className=\"size-4 text-primary\" />\n        Shimmer button\n        <ArrowRight aria-hidden className=\"size-4 transition-transform group-hover:translate-x-0.5\" />\n      </ShimmerButton>\n      <div className=\"flex items-center gap-4\">\n        <ShimmerButton shimmerColor=\"var(--foreground)\" duration={4}>\n          Neutral light\n        </ShimmerButton>\n        <ShimmerButton disabled>Disabled</ShimmerButton>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/interactive/shimmer-button"
+  },
+  {
+    "name": "slide-text-button",
+    "title": "Slide Text Button",
+    "description": "A button whose label slides up and is replaced by a second label on hover or keyboard focus. Renders as a button or a link.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-text-button.tsx"
+    },
+    "dependencies": [],
+    "tags": [
+      "button",
+      "hover",
+      "label"
+    ],
+    "props": [
+      {
+        "name": "text",
+        "type": "string",
+        "required": true,
+        "description": "Label shown at rest. Screen readers read this one."
+      },
+      {
+        "name": "hoverText",
+        "type": "string",
+        "description": "Label that slides in on hover or focus. Defaults to text."
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "description": "Renders a link instead of a button."
+      },
+      {
+        "name": "variant",
+        "type": "'solid' | 'ghost'",
+        "default": "'solid'",
+        "description": "Visual style."
+      },
+      {
+        "name": "as",
+        "type": "ElementType",
+        "description": "Element to render. Defaults to a when href is set, else button."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.25",
+        "description": "Seconds the slide takes."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the button off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "slide-text-button.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { SlideTextButton } from './slide-text-button'\n\nexport default function SlideTextButtonDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        <SlideTextButton text=\"Browse components\" hoverText=\"Open the gallery\" />\n        <SlideTextButton variant=\"ghost\" text=\"Read the docs\" hoverText=\"Start reading\" />\n      </div>\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        <SlideTextButton href=\"#install\" text=\"npx shadcn add\" hoverText=\"Copy command\" variant=\"ghost\" className=\"font-mono\" />\n        <SlideTextButton text=\"Unavailable\" disabled />\n      </div>\n      <p className=\"text-sm text-muted-foreground\">Hover or tab to a button to swap its label.</p>\n    </div>\n  )\n}\n",
+    "path": "registry/interactive/slide-text-button"
+  },
+  {
+    "name": "texture-card",
+    "title": "Texture Card",
+    "description": "A card framed by nested hairline borders for a machined, tactile edge. Ships header, title, description, content, footer and separator parts.",
+    "category": "interactive",
+    "layer": "B",
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/texture-card.tsx"
+    },
+    "dependencies": [],
+    "tags": [
+      "card",
+      "border",
+      "surface"
+    ],
+    "props": [
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'div'",
+        "description": "Element to render."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Card content. Compose with TextureCardHeader, TextureCardTitle, TextureCardDescription, TextureCardContent, TextureCardFooter and TextureSeparator."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the outer frame."
+      }
+    ],
+    "files": [
+      "texture-card.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ArrowUpRight, Layers } from 'lucide-react'\nimport {\n  TextureCard,\n  TextureCardContent,\n  TextureCardDescription,\n  TextureCardFooter,\n  TextureCardHeader,\n  TextureCardTitle,\n  TextureSeparator,\n} from './texture-card'\n\nexport default function TextureCardDemo() {\n  return (\n    <TextureCard className=\"w-[360px] max-w-full\">\n      <TextureCardHeader>\n        <div className=\"mb-2 grid size-10 place-items-center rounded-xl border border-border bg-background text-foreground shadow-sm\">\n          <Layers className=\"size-5\" aria-hidden />\n        </div>\n        <TextureCardTitle>Layered surfaces</TextureCardTitle>\n        <TextureCardDescription>Five hairline borders give the card a milled, tactile edge.</TextureCardDescription>\n      </TextureCardHeader>\n      <TextureCardContent>\n        <ul className=\"space-y-2 text-sm\">\n          {['Tokens only, no palette colors', 'Radius follows --radius', 'Works in light and dark'].map((t) => (\n            <li key={t} className=\"flex items-center gap-2\">\n              <span className=\"size-1.5 rounded-full bg-primary\" aria-hidden />\n              {t}\n            </li>\n          ))}\n        </ul>\n      </TextureCardContent>\n      <TextureSeparator />\n      <TextureCardFooter>\n        <span className=\"text-xs\">Updated today</span>\n        <a\n          href=\"#\"\n          className=\"inline-flex items-center gap-1 rounded-md text-sm font-medium text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring\"\n        >\n          Open <ArrowUpRight className=\"size-4\" aria-hidden />\n        </a>\n      </TextureCardFooter>\n    </TextureCard>\n  )\n}\n",
+    "path": "registry/interactive/texture-card"
+  },
+  {
+    "name": "animated-list",
+    "title": "Animated List",
+    "description": "Adds its children one at a time, newest on top, with a springy push. Shows everything at once under reduced motion.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-list.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "list",
+      "feed",
+      "notifications"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The items. Each needs a stable key. The newest item appears on top."
+      },
+      {
+        "name": "interval",
+        "type": "number",
+        "default": "1.2",
+        "description": "Seconds between one item appearing and the next."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds before the first item appears."
+      },
+      {
+        "name": "loop",
+        "type": "boolean",
+        "default": "false",
+        "description": "Start over after the last item, instead of stopping."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows every item at once with no animation."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the list."
+      }
+    ],
+    "files": [
+      "animated-list.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Bell, GitCommitHorizontal, MessageSquare, Rocket, Star } from 'lucide-react'\nimport type { ReactNode } from 'react'\nimport { AnimatedList } from './animated-list'\n\nconst events: { icon: ReactNode; title: string; body: string; time: string }[] = [\n  { icon: <Rocket />, title: 'Deployed to production', body: 'mozaik-site, 14 seconds ago', time: '14s' },\n  { icon: <Star />, title: 'New star', body: 'Someone liked your registry', time: '1m' },\n  { icon: <MessageSquare />, title: 'New comment', body: 'The easing on the dock feels great', time: '3m' },\n  { icon: <GitCommitHorizontal />, title: 'Commit pushed', body: 'Tighten the marquee loop', time: '8m' },\n  { icon: <Bell />, title: 'Build finished', body: 'All checks passed', time: '12m' },\n]\n\nexport default function AnimatedListDemo() {\n  return (\n    <div className=\"h-[22rem] w-[min(26rem,90vw)] overflow-hidden [mask-image:linear-gradient(to_bottom,black_75%,transparent)]\">\n      <AnimatedList interval={1.1} loop>\n        {events.map((e) => (\n          <div\n            key={e.title}\n            className=\"flex items-center gap-3 rounded-xl border border-border bg-card p-3 text-card-foreground\"\n          >\n            <span\n              aria-hidden\n              className=\"grid size-10 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary [&>svg]:size-5\"\n            >\n              {e.icon}\n            </span>\n            <div className=\"min-w-0 flex-1\">\n              <p className=\"truncate text-sm font-medium\">{e.title}</p>\n              <p className=\"truncate text-xs text-muted-foreground\">{e.body}</p>\n            </div>\n            <span className=\"text-xs text-muted-foreground\">{e.time}</span>\n          </div>\n        ))}\n      </AnimatedList>\n    </div>\n  )\n}\n",
+    "path": "registry/layout/animated-list"
+  },
+  {
+    "name": "drag-carousel",
+    "title": "Drag Carousel",
+    "description": "A free-scrolling row of slides with elastic drag, plus arrow-key and button stepping.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-drag-sliding-carousel.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "carousel",
+      "drag",
+      "slider"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "The slides. Each child becomes one slide."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Carousel'",
+        "description": "Accessible name of the carousel."
+      },
+      {
+        "name": "gap",
+        "type": "number",
+        "default": "16",
+        "description": "Gap between slides in pixels."
+      },
+      {
+        "name": "slideWidth",
+        "type": "string",
+        "default": "'18rem'",
+        "description": "Width of every slide, any CSS length."
+      },
+      {
+        "name": "elasticity",
+        "type": "number",
+        "default": "0.2",
+        "description": "How far the track stretches past its ends while dragging, from 0 to 1."
+      },
+      {
+        "name": "controls",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows previous and next buttons."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns dragging and the buttons off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "drag-carousel.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { DragCarousel } from './drag-carousel'\n\nconst slides = [\n  ['01', 'Foundations', 'from-primary/40 to-muted'],\n  ['02', 'Surfaces', 'from-muted-foreground/30 to-card'],\n  ['03', 'Motion', 'from-primary/25 to-secondary'],\n  ['04', 'Layouts', 'from-foreground/15 to-muted'],\n  ['05', 'Forms', 'from-primary/35 to-card'],\n  ['06', 'Feedback', 'from-muted-foreground/25 to-secondary'],\n]\n\nexport default function DragCarouselDemo() {\n  return (\n    <div className=\"w-[760px] max-w-full\">\n      <DragCarousel label=\"Component categories\" slideWidth=\"15rem\">\n        {slides.map(([n, title, tone]) => (\n          <div key={n} className={`flex h-64 flex-col justify-between rounded-xl border border-border bg-linear-to-br p-5 ${tone}`}>\n            <span className=\"font-mono text-xs text-muted-foreground\">{n}</span>\n            <span className=\"text-2xl font-semibold tracking-tight text-foreground\">{title}</span>\n          </div>\n        ))}\n      </DragCarousel>\n      <p className=\"mt-2 text-sm text-muted-foreground\">Drag, use the buttons, or focus and press the arrow keys.</p>\n    </div>\n  )\n}\n",
+    "path": "registry/layout/drag-carousel"
+  },
+  {
+    "name": "image-accordion",
+    "title": "Image Accordion",
+    "description": "A row of image panels where one is wide and the rest are slim. The open panel follows hover, focus or click and reveals its title.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/accordion/image-hover.tsx"
+    },
+    "dependencies": [],
+    "tags": [
+      "accordion",
+      "gallery",
+      "hover"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "ImageAccordionItem[]",
+        "required": true,
+        "description": "The panels, left to right: { id, title, description?, media }."
+      },
+      {
+        "name": "defaultIndex",
+        "type": "number",
+        "default": "0",
+        "description": "Index of the panel that is open first."
+      },
+      {
+        "name": "trigger",
+        "type": "'hover' | 'click'",
+        "default": "'hover'",
+        "description": "What opens a panel. Focus and click always work."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "default": "380",
+        "description": "Height of the strip in pixels."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.5",
+        "description": "Seconds the panels take to resize."
+      },
+      {
+        "name": "onIndexChange",
+        "type": "(index: number) => void",
+        "description": "Called with the new index when a different panel opens."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "image-accordion.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Compass, Mountain, Snowflake, Sunrise, Waves } from 'lucide-react'\nimport { ImageAccordion, type ImageAccordionItem } from './image-accordion'\n\nconst tones = [\n  'from-primary/50 via-primary/15 to-muted',\n  'from-muted-foreground/35 via-muted to-card',\n  'from-primary/30 via-muted to-secondary',\n  'from-foreground/20 via-muted to-card',\n  'from-primary/40 via-secondary to-muted',\n]\nconst icons = [Mountain, Snowflake, Sunrise, Waves, Compass]\nconst copy: [string, string][] = [\n  ['Misty ridge', 'Cloud settles in the valley before sunrise.'],\n  ['Winter trail', 'Fresh snow on a quiet, empty path.'],\n  ['First light', 'The first hour of colour on the east face.'],\n  ['Still water', 'A lake that holds the whole skyline.'],\n  ['Way home', 'The last switchback before the cabin.'],\n]\n\nconst items: ImageAccordionItem[] = copy.map(([title, description], i) => {\n  const Icon = icons[i]\n  return {\n    id: title,\n    title,\n    description,\n    media: (\n      <div className={`grid size-full place-items-center bg-linear-to-br ${tones[i]}`}>\n        <Icon className=\"size-8 text-foreground/40\" aria-hidden />\n      </div>\n    ),\n  }\n})\n\nexport default function ImageAccordionDemo() {\n  return (\n    <div className=\"w-[760px] max-w-full\">\n      <ImageAccordion items={items} defaultIndex={2} height={360} />\n    </div>\n  )\n}\n",
+    "path": "registry/layout/image-accordion"
+  },
+  {
+    "name": "marquee",
+    "title": "Marquee",
+    "description": "Endless horizontal or vertical loop of any content, with pause on hover and a still frame under reduced motion.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "loop",
+      "logos",
+      "scroll"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "Content to loop."
+      },
+      {
+        "name": "reverse",
+        "type": "boolean",
+        "default": "false",
+        "description": "Run the loop in the opposite direction."
+      },
+      {
+        "name": "pauseOnHover",
+        "type": "boolean",
+        "default": "false",
+        "description": "Pause while the pointer or keyboard focus is inside."
+      },
+      {
+        "name": "vertical",
+        "type": "boolean",
+        "default": "false",
+        "description": "Scroll vertically instead of horizontally."
+      },
+      {
+        "name": "repeat",
+        "type": "number",
+        "default": "4",
+        "description": "How many copies of the content to render. Raise it if the content is short."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "40",
+        "description": "Seconds for one full loop."
+      },
+      {
+        "name": "gap",
+        "type": "string",
+        "default": "'1rem'",
+        "description": "Space between items and between copies, any CSS length."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Stops the loop and shows the content still."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "marquee.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Marquee } from './marquee'\n\nconst quotes = [\n  ['Ship it', 'The detail is in the easing.'],\n  ['Quiet motion', 'Nothing moves without a reason.'],\n  ['Tokens first', 'One palette, every component.'],\n  ['Copy and own', 'Installed straight into your repo.'],\n  ['Accessible', 'Reduced motion is a first-class state.'],\n  ['Tiny API', 'Duration, delay, className. That is it.'],\n]\n\nfunction Card({ title, body }: { title: string; body: string }) {\n  return (\n    <figure className=\"w-60 shrink-0 rounded-xl border border-border bg-card p-4 text-card-foreground\">\n      <figcaption className=\"text-sm font-medium\">{title}</figcaption>\n      <blockquote className=\"mt-1 text-sm text-muted-foreground\">{body}</blockquote>\n    </figure>\n  )\n}\n\nexport default function MarqueeDemo() {\n  return (\n    <div className=\"relative flex w-[min(52rem,90vw)] flex-col gap-4 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]\">\n      <Marquee pauseOnHover duration={36} repeat={3}>\n        {quotes.map(([t, b]) => (\n          <Card key={t} title={t} body={b} />\n        ))}\n      </Marquee>\n      <Marquee reverse pauseOnHover duration={44} repeat={3}>\n        {[...quotes].reverse().map(([t, b]) => (\n          <Card key={t} title={t} body={b} />\n        ))}\n      </Marquee>\n    </div>\n  )\n}\n",
+    "path": "registry/layout/marquee"
+  },
+  {
+    "name": "orbiting-circles",
+    "title": "Orbiting Circles",
+    "description": "Spreads its children around a ring and walks them around it. Items stay upright and rest under reduced motion.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/orbiting-circles.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "orbit",
+      "icons",
+      "hero"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "The things that orbit. They are spread evenly around the circle."
+      },
+      {
+        "name": "reverse",
+        "type": "boolean",
+        "default": "false",
+        "description": "Run the orbit counter-clockwise."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "20",
+        "description": "Seconds for one full lap."
+      },
+      {
+        "name": "delay",
+        "type": "number",
+        "default": "0",
+        "description": "Seconds to wait before the orbit starts."
+      },
+      {
+        "name": "radius",
+        "type": "number",
+        "default": "160",
+        "description": "Radius of the orbit in pixels."
+      },
+      {
+        "name": "path",
+        "type": "boolean",
+        "default": "true",
+        "description": "Draw the orbit as a thin ring."
+      },
+      {
+        "name": "iconSize",
+        "type": "number",
+        "default": "30",
+        "description": "Width and height of each orbiting slot in pixels."
+      },
+      {
+        "name": "speed",
+        "type": "number",
+        "default": "1",
+        "description": "Speed multiplier applied to duration."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Stops the orbit and shows the items at rest."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for each orbiting slot."
+      }
+    ],
+    "files": [
+      "orbiting-circles.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Braces, Cpu, Database, Globe, Palette, Zap } from 'lucide-react'\nimport { OrbitingCircles } from './orbiting-circles'\n\nconst iconClass = 'size-full rounded-full border border-border bg-card p-1.5 text-card-foreground'\n\nexport default function OrbitingCirclesDemo() {\n  return (\n    <div className=\"relative flex h-[26rem] w-[min(34rem,90vw)] items-center justify-center overflow-hidden rounded-2xl border border-border bg-background\">\n      <div className=\"grid size-16 place-items-center rounded-full bg-primary text-primary-foreground\">\n        <Zap aria-label=\"Mozaik\" className=\"size-7\" />\n      </div>\n      <OrbitingCircles iconSize={40} radius={90} duration={18}>\n        <Cpu aria-hidden className={iconClass} />\n        <Database aria-hidden className={iconClass} />\n        <Globe aria-hidden className={iconClass} />\n      </OrbitingCircles>\n      <OrbitingCircles iconSize={36} radius={150} duration={26} reverse>\n        <Braces aria-hidden className={iconClass} />\n        <Palette aria-hidden className={iconClass} />\n        <Cpu aria-hidden className={iconClass} />\n        <Database aria-hidden className={iconClass} />\n      </OrbitingCircles>\n    </div>\n  )\n}\n",
+    "path": "registry/layout/orbiting-circles"
+  },
+  {
+    "name": "smooth-accordion",
+    "title": "Smooth Accordion",
+    "description": "A stack of disclosures with panels that grow to their content, single or multiple mode, and full keyboard navigation.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/accordion.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "accordion",
+      "disclosure",
+      "faq"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "SmoothAccordionItem[]",
+        "required": true,
+        "description": "The items, top to bottom: { id, title, content }."
+      },
+      {
+        "name": "type",
+        "type": "'single' | 'multiple'",
+        "default": "'single'",
+        "description": "single keeps one item open, multiple lets several stay open."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string[]",
+        "default": "[]",
+        "description": "Ids of the items that are open first."
+      },
+      {
+        "name": "collapsible",
+        "type": "boolean",
+        "default": "true",
+        "description": "Lets the open item in single mode be closed again."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: string[]) => void",
+        "description": "Called with the open ids whenever they change."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.3",
+        "description": "Seconds the open and close take."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns every header off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "smooth-accordion.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { SmoothAccordion } from './smooth-accordion'\n\nconst items = [\n  {\n    id: 'what',\n    title: 'What is Mozaik?',\n    content: 'A registry of small, hand-finished React components. Install one with a single shadcn command and own the source.',\n  },\n  {\n    id: 'install',\n    title: 'How do I install a component?',\n    content: 'Run npx shadcn add with the component URL. The file lands in your project, ready to edit.',\n  },\n  {\n    id: 'motion',\n    title: 'Does it respect reduced motion?',\n    content: 'Yes. Every animation turns into a calm, static frame when the user prefers reduced motion.',\n  },\n  {\n    id: 'keys',\n    title: 'Can I use it with the keyboard?',\n    content: 'Headers are real buttons. Use Tab, Enter and Space, or the arrow keys, Home and End to move between them.',\n  },\n]\n\nexport default function SmoothAccordionDemo() {\n  return (\n    <div className=\"w-[520px] max-w-full\">\n      <SmoothAccordion items={items} defaultValue={['what']} />\n    </div>\n  )\n}\n",
+    "path": "registry/layout/smooth-accordion"
+  },
+  {
+    "name": "terminal",
+    "title": "Terminal",
+    "description": "A terminal window that plays its lines in sequence: typed commands and fading output. Shows everything at once under reduced motion.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/terminal.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "terminal",
+      "cli",
+      "typing"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "required": true,
+        "description": "TerminalLine and TerminalTyping elements, in the order they should appear."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "description": "Text in the title bar."
+      },
+      {
+        "name": "sequence",
+        "type": "boolean",
+        "default": "true",
+        "description": "Play the lines one after another. When off, each line runs on its own delay."
+      },
+      {
+        "name": "startOnView",
+        "type": "boolean",
+        "default": "true",
+        "description": "Wait until the terminal scrolls into view."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows every line in full with no animation."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the window."
+      }
+    ],
+    "files": [
+      "terminal.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { Terminal, TerminalLine, TerminalTyping } from './terminal'\n\nexport default function TerminalDemo() {\n  return (\n    <Terminal title=\"~/mozaik-site\" className=\"h-80\" startOnView={false}>\n      <TerminalTyping>$ npx shadcn add @mozaik/terminal</TerminalTyping>\n      <TerminalLine className=\"text-muted-foreground\">Checking registry...</TerminalLine>\n      <TerminalLine className=\"text-success\">✔ Registry found</TerminalLine>\n      <TerminalLine className=\"text-success\">✔ Installed terminal.tsx</TerminalLine>\n      <TerminalLine className=\"text-success\">✔ Installed @/lib/utils</TerminalLine>\n      <TerminalLine delay={0.3} className=\"text-muted-foreground\">\n        Done in 1.2s. Import it and ship.\n      </TerminalLine>\n      <TerminalTyping delay={0.4}>$ npm run dev</TerminalTyping>\n    </Terminal>\n  )\n}\n",
+    "path": "registry/layout/terminal"
+  },
+  {
+    "name": "thumbnail-carousel",
+    "title": "Thumbnail Carousel",
+    "description": "A swipeable slide with a thumbnail strip underneath. The active thumbnail widens and the strip glides to centre it.",
+    "category": "layout",
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-moveable-thumnbails.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "carousel",
+      "gallery",
+      "thumbnails"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "ThumbnailCarouselItem[]",
+        "required": true,
+        "description": "The slides: { id, title, media, thumb? }."
+      },
+      {
+        "name": "defaultIndex",
+        "type": "number",
+        "default": "0",
+        "description": "Index of the slide shown first."
+      },
+      {
+        "name": "onIndexChange",
+        "type": "(index: number) => void",
+        "description": "Called with the new index when the slide changes."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "default": "320",
+        "description": "Height of the main slide in pixels."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Gallery'",
+        "description": "Accessible name of the carousel."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns dragging and the buttons off."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "thumbnail-carousel.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ThumbnailCarousel, type ThumbnailCarouselItem } from './thumbnail-carousel'\n\nconst tones = [\n  'from-primary/50 to-muted',\n  'from-muted-foreground/35 to-card',\n  'from-primary/30 to-secondary',\n  'from-foreground/20 to-muted',\n  'from-primary/40 to-card',\n  'from-muted-foreground/25 to-secondary',\n  'from-primary/25 to-muted',\n]\nconst titles = ['Dawn', 'Ridge', 'Meadow', 'Lake', 'Pine', 'Dusk', 'Night']\n\nconst items: ThumbnailCarouselItem[] = titles.map((title, i) => ({\n  id: title,\n  title,\n  media: (\n    <div className={`flex size-full items-end bg-linear-to-br p-6 ${tones[i]}`}>\n      <span className=\"text-3xl font-semibold tracking-tight text-foreground\">{title}</span>\n    </div>\n  ),\n  thumb: <div className={`size-full bg-linear-to-br ${tones[i]}`} />,\n}))\n\nexport default function ThumbnailCarouselDemo() {\n  return (\n    <div className=\"w-[640px] max-w-full\">\n      <ThumbnailCarousel items={items} height={300} label=\"Trail photos\" />\n    </div>\n  )\n}\n",
+    "path": "registry/layout/thumbnail-carousel"
+  },
+  {
+    "name": "progress-ring",
+    "title": "Progress Ring",
+    "description": "A determinate ring that eases to its value and counts up in the middle.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/others/progress-ring-card.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "progress",
+      "ring",
+      "svg"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "required": true,
+        "description": "Progress from 0 to 100."
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "default": "112",
+        "description": "Outer diameter in pixels."
+      },
+      {
+        "name": "strokeWidth",
+        "type": "number",
+        "default": "8",
+        "description": "Stroke width in pixels."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Progress'",
+        "description": "Accessible name of the progress bar."
+      },
+      {
+        "name": "showValue",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows the percentage in the middle when no children are given."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.9",
+        "description": "Seconds the ring takes to catch up with a new value."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Replaces the percentage in the middle."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "progress-ring.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { ProgressRing } from './progress-ring'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nconst STEPS = [18, 46, 73, 100]\n\nexport default function ProgressRingDemo() {\n  const [step, setStep] = useState(0)\n  const reduced = usePrefersReducedMotion()\n\n  useEffect(() => {\n    if (reduced) return\n    const id = window.setInterval(() => setStep((s) => (s + 1) % STEPS.length), 2600)\n    return () => window.clearInterval(id)\n  }, [reduced])\n\n  return (\n    <div className=\"flex items-center gap-12\">\n      <ProgressRing value={STEPS[step]} size={160} strokeWidth={10} label=\"Upload progress\" />\n      <div className=\"flex flex-col gap-4\">\n        <ProgressRing value={64} size={64} strokeWidth={5} label=\"Storage used\" />\n        <ProgressRing value={100} size={64} strokeWidth={5} label=\"Setup complete\">\n          <span aria-hidden className=\"text-lg text-primary\">\n            ✓\n          </span>\n        </ProgressRing>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/progress-ring"
+  },
+  {
+    "name": "ring-spinner",
+    "title": "Ring Spinner",
+    "description": "A minimal indeterminate ring in three sizes that takes its color from the surrounding text.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/spinner/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "spinner",
+      "loading",
+      "status"
+    ],
+    "props": [
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "default": "'md'",
+        "description": "Diameter and stroke weight."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Loading'",
+        "description": "Accessible name announced to screen readers."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.8",
+        "description": "Seconds per turn."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element. Set a text color to recolor the ring."
+      }
+    ],
+    "files": [
+      "ring-spinner.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { RingSpinner } from './ring-spinner'\n\nexport default function RingSpinnerDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <div className=\"flex items-end gap-8\">\n        <RingSpinner size=\"sm\" />\n        <RingSpinner size=\"md\" />\n        <RingSpinner size=\"lg\" />\n      </div>\n      <div className=\"inline-flex items-center gap-3 rounded-full border bg-card px-5 py-2.5 text-sm text-muted-foreground\">\n        <RingSpinner size=\"sm\" className=\"text-primary\" label=\"Syncing\" />\n        Syncing your workspace\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/ring-spinner"
+  },
+  {
+    "name": "scroll-progress",
+    "title": "Scroll Progress",
+    "description": "A thin bar that fills as you scroll the page or any scroll container.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/scroll-progress.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "scroll",
+      "progress",
+      "reading"
+    ],
+    "props": [
+      {
+        "name": "container",
+        "type": "RefObject<HTMLElement | null>",
+        "description": "Scrollable element to track. Defaults to the page."
+      },
+      {
+        "name": "smooth",
+        "type": "boolean",
+        "default": "true",
+        "description": "Smooth the bar with a spring instead of following the scroll exactly."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Hides the bar."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Position and size. Defaults to a thin bar fixed to the top of the viewport."
+      }
+    ],
+    "files": [
+      "scroll-progress.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useRef } from 'react'\nimport { ScrollProgress } from './scroll-progress'\n\nconst paragraphs = [\n  'Scroll this panel. The bar at the top fills as you move through the text, and empties when you scroll back.',\n  'It follows a scroll container you hand it, or the whole page when you hand it nothing. Pass a className to move it to the bottom or to make it thicker.',\n  'The bar is purely visual. Screen readers already know where you are on the page, so it is hidden from them.',\n  'A spring smooths short jumps. Turn it off with smooth={false} if you want the bar to track the scroll position exactly.',\n  'Keep the content going so there is something to scroll through. Nothing here matters beyond the length.',\n  'Almost there. A little more text, then the bar closes up on the right edge.',\n  'And that is the end of the panel.',\n]\n\nexport default function ScrollProgressDemo() {\n  const ref = useRef<HTMLDivElement>(null)\n  return (\n    <div className=\"relative h-[22rem] w-[min(34rem,90vw)] overflow-hidden rounded-2xl border border-border bg-card\">\n      <div className=\"absolute inset-x-0 top-0 z-10 h-1 bg-muted\" />\n      <ScrollProgress container={ref} className=\"absolute z-20 h-1\" />\n      <div ref={ref} tabIndex={0} aria-label=\"Scrollable article\" className=\"h-full overflow-y-auto p-8 pt-10 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring\">\n        <h3 className=\"text-2xl font-semibold tracking-tight text-card-foreground\">Reading progress</h3>\n        {paragraphs.map((p) => (\n          <p key={p} className=\"mt-5 text-sm leading-relaxed text-muted-foreground\">\n            {p}\n          </p>\n        ))}\n        {paragraphs.map((p) => (\n          <p key={`b-${p}`} className=\"mt-5 text-sm leading-relaxed text-muted-foreground\">\n            {p}\n          </p>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/scroll-progress"
+  },
+  {
+    "name": "shimmer-skeleton",
+    "title": "Shimmer Skeleton",
+    "description": "A placeholder block with a soft light sweeping across it. Wrap real content and it keeps the exact size.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/content-skeleton/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "skeleton",
+      "loading",
+      "placeholder"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content to stand in for. While loading it keeps its layout but is hidden."
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows the skeleton. When false the children render as they are."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Loading'",
+        "description": "Accessible name announced while loading."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.6",
+        "description": "Seconds one shimmer sweep takes."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Turns the shimmer off and keeps a still placeholder."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Without children, size the block with classes such as h-4 w-40."
+      }
+    ],
+    "files": [
+      "shimmer-skeleton.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { ShimmerSkeleton } from './shimmer-skeleton'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport default function ShimmerSkeletonDemo() {\n  const [loading, setLoading] = useState(true)\n  const reduced = usePrefersReducedMotion()\n\n  useEffect(() => {\n    if (reduced) return\n    const id = window.setInterval(() => setLoading((v) => !v), 4000)\n    return () => window.clearInterval(id)\n  }, [reduced])\n\n  return (\n    <div className=\"w-full max-w-sm rounded-xl border bg-card p-5 text-card-foreground\">\n      <div className=\"flex items-center gap-4\">\n        <ShimmerSkeleton loading={loading} label=\"Loading avatar\" className=\"size-12 rounded-full\">\n          <div className=\"grid size-12 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground\">\n            MZ\n          </div>\n        </ShimmerSkeleton>\n        <div className=\"flex flex-1 flex-col gap-2\">\n          <ShimmerSkeleton loading={loading} label=\"Loading name\" className=\"w-32\">\n            <p className=\"text-sm font-medium\">Mozaik Studio</p>\n          </ShimmerSkeleton>\n          <ShimmerSkeleton loading={loading} label=\"Loading role\" className=\"w-24\">\n            <p className=\"text-xs text-muted-foreground\">Design engineer</p>\n          </ShimmerSkeleton>\n        </div>\n      </div>\n      <div className=\"mt-5 flex flex-col gap-2\">\n        <ShimmerSkeleton loading={loading} className=\"h-3 w-full\" />\n        <ShimmerSkeleton loading={loading} className=\"h-3 w-11/12\" />\n        <ShimmerSkeleton loading={loading} className=\"h-3 w-2/3\" />\n        {loading ? null : (\n          <p className=\"text-sm text-muted-foreground\">\n            Loaded. The placeholders above keep the layout from jumping.\n          </p>\n        )}\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/shimmer-skeleton"
+  },
+  {
+    "name": "thinking-loader",
+    "title": "Thinking Loader",
+    "description": "A calm waiting indicator in three shapes (dots, bar, grid) that share one tempo and never fake progress.",
+    "category": "feedback",
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-loader/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "tags": [
+      "loader",
+      "status",
+      "dots"
+    ],
+    "props": [
+      {
+        "name": "variant",
+        "type": "'dots' | 'bar' | 'grid'",
+        "default": "'dots'",
+        "description": "Shape of the indicator."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Thinking'",
+        "description": "Text shown before the indicator, also announced to screen readers."
+      },
+      {
+        "name": "showElapsed",
+        "type": "boolean",
+        "default": "false",
+        "description": "Adds a live elapsed-seconds counter. Hidden under reduced motion."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.2",
+        "description": "Seconds one cycle takes. All variants share it."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "thinking-loader.tsx"
+    ],
+    "status": "stable",
+    "demo": "import { ThinkingLoader } from './thinking-loader'\n\nexport default function ThinkingLoaderDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <div className=\"flex flex-col gap-5 rounded-xl border bg-card px-8 py-6\">\n        <ThinkingLoader label=\"Thinking\" variant=\"dots\" />\n        <ThinkingLoader label=\"Searching the web\" variant=\"bar\" />\n        <ThinkingLoader label=\"Reading 12 files\" variant=\"grid\" />\n      </div>\n      <ThinkingLoader label=\"Generating\" variant=\"dots\" showElapsed className=\"text-base text-foreground\" />\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/thinking-loader"
+  }
+]

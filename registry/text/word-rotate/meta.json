@@ -1,0 +1,19 @@
+{
+  "name": "word-rotate",
+  "title": "Word Rotate",
+  "description": "Swaps one word for the next with a short slide and fade. Screen readers get the whole list once.",
+  "category": "text",
+  "layer": "B",
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/word-rotate.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["words", "headline", "loop"],
+  "props": [
+    { "name": "words", "type": "string[]", "required": true, "description": "Words to cycle through, in order." },
+    { "name": "interval", "type": "number", "default": "2.5", "description": "Seconds each word stays on screen." },
+    { "name": "duration", "type": "number", "default": "0.3", "description": "Seconds each swap takes." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds before the first swap is counted." },
+    { "name": "as", "type": "ElementType", "default": "'span'", "description": "Element to render." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Shows the first word only." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

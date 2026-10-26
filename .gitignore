@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+.DS_Store
+.obsidian/
+playwright-report/
+test-results/
+coverage/
+*.tsbuildinfo
+.gate/
+
+# Yerel çalışma notları: public repoya girmez
+wiki/
+CLAUDE.md
+.claude/
+
+# Her build'de üretilen ara dosya (yayın public/r'de)
+/registry.json

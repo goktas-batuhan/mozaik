@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "price-ticker",
+  "title": "Price Ticker",
+  "description": "A price that rolls its digits on every update, flashes green or red, and shows a percent change badge.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/onchain/price-ticker/price-ticker.tsx",
+      "content": "import { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useMemo, useRef, useState } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface PriceTickerProps {\n  /** Current price. */\n  value: number\n  /** Reference for the change badge (e.g. the 24h open). Defaults to the previously shown value. */\n  previousValue?: number\n  /** ISO currency code, e.g. 'USD'. Leave empty for a plain number. */\n  currency?: string\n  /** Extra Intl.NumberFormat options. They override `currency` and `decimals`. */\n  format?: Intl.NumberFormatOptions\n  /** Fraction digits. */\n  decimals?: number\n  /** BCP 47 locale for formatting. */\n  locale?: string\n  /** Shows the percent change badge. */\n  showChange?: boolean\n  /** Accessible name, e.g. 'ETH price'. */\n  label?: string\n  /** Seconds for the digit roll. */\n  duration?: number\n  className?: string\n}\n\ntype Direction = 'up' | 'down' | null\n\nconst DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']\n\n/** A price that rolls its digits and flashes green or red when it changes. */\nexport function PriceTicker({\n  value,\n  previousValue,\n  currency,\n  format,\n  decimals = 2,\n  locale = 'en-US',\n  showChange = true,\n  label,\n  duration = 0.6,\n  className,\n}: PriceTickerProps) {\n  const reduced = usePrefersReducedMotion()\n\n  // The last value we showed, kept as derived state so the badge has a reference.\n  const [shown, setShown] = useState(value)\n  const [last, setLast] = useState<number | undefined>(undefined)\n  if (value !== shown) {\n    setLast(shown)\n    setShown(value)\n  }\n\n  const [flash, setFlash] = useState<Direction>(null)\n  const prevRef = useRef(value)\n  useEffect(() => {\n    const prev = prevRef.current\n    prevRef.current = value\n    if (prev === value || reduced) return\n    setFlash(value > prev ? 'up' : 'down')\n    const id = setTimeout(() => setFlash(null), 900)\n    return () => clearTimeout(id)\n  }, [value, reduced])\n\n  const formatter = useMemo(\n    () =>\n      new Intl.NumberFormat(locale, {\n        ...(currency ? { style: 'currency', currency } : {}),\n        minimumFractionDigits: decimals,\n        maximumFractionDigits: decimals,\n        ...format,\n      }),\n    [locale, currency, decimals, format],\n  )\n  const percent = useMemo(\n    () =>\n      new Intl.NumberFormat(locale, {\n        style: 'percent',\n        signDisplay: 'exceptZero',\n        minimumFractionDigits: 2,\n        maximumFractionDigits: 2,\n      }),\n    [locale],\n  )\n\n  const text = formatter.format(value)\n  const reference = previousValue ?? last\n  const change = reference !== undefined && reference !== 0 ? (value - reference) / Math.abs(reference) : undefined\n  const trend: Direction = change === undefined || change === 0 ? null : change > 0 ? 'up' : 'down'\n  const changeText = change !== undefined ? percent.format(change) : undefined\n\n  const chars = Array.from(text)\n  const flashTone = flash === 'up' ? 'text-[var(--success)]' : flash === 'down' ? 'text-destructive' : undefined\n\n  return (\n    <span\n      aria-live=\"polite\"\n      aria-atomic=\"true\"\n      className={cn('inline-flex items-center gap-3 tabular-nums', className)}\n    >\n      <span className=\"sr-only\">\n        {label ? `${label}: ` : ''}\n        {text}\n        {showChange && changeText ? `, ${changeText}` : ''}\n      </span>\n\n      <span aria-hidden className=\"relative inline-flex\">\n        <span\n          className={cn(\n            'pointer-events-none absolute -inset-x-1.5 -inset-y-0.5 rounded-md transition-opacity duration-700',\n            flash === 'up' && 'bg-[var(--success)]/15',\n            flash === 'down' && 'bg-destructive/15',\n            flash ? 'opacity-100 duration-75' : 'opacity-0',\n          )}\n        />\n        <span\n          className={cn(\n            'relative inline-flex whitespace-pre leading-[1.15] transition-colors',\n            flash ? 'duration-75' : 'duration-700',\n            flashTone,\n          )}\n        >\n          {reduced\n            ? text\n            : chars.map((char, i) => {\n                // Key from the right so a digit keeps its column when the number grows.\n                const key = chars.length - i\n                const digit = DIGITS.indexOf(char)\n                if (digit === -1) return <span key={`c${key}`}>{char}</span>\n                return (\n                  <span key={`d${key}`} className=\"relative inline-block h-[1.15em] overflow-hidden leading-[1.15]\">\n                    <motion.span\n                      className=\"flex flex-col\"\n                      initial={false}\n                      animate={{ y: `${-digit * 10}%` }}\n                      transition={{ duration, ease: [0.22, 1, 0.36, 1] }}\n                    >\n                      {DIGITS.map((d) => (\n                        <span key={d}>{d}</span>\n                      ))}\n                    </motion.span>\n                  </span>\n                )\n              })}\n        </span>\n      </span>\n\n      {showChange && changeText && (\n        <span\n          aria-hidden\n          data-trend={trend ?? 'flat'}\n          className={cn(\n            'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium leading-5',\n            trend === 'up' && 'bg-[var(--success)]/12 text-[var(--success)]',\n            trend === 'down' && 'bg-destructive/12 text-destructive',\n            trend === null && 'bg-muted text-muted-foreground',\n          )}\n        >\n          {trend && (\n            <svg viewBox=\"0 0 10 10\" className={cn('size-2.5', trend === 'down' && 'rotate-180')} fill=\"currentColor\">\n              <path d=\"M5 1.5 9 8H1z\" />\n            </svg>\n          )}\n          {changeText}\n        </span>\n      )}\n    </span>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "cssVars": {
+    "light": {
+      "success": "oklch(0.6 0.15 155)"
+    },
+    "dark": {
+      "success": "oklch(0.72 0.15 155)"
+    }
+  },
+  "meta": {
+    "layer": "A",
+    "source": "original",
+    "status": "stable"
+  },
+  "categories": [
+    "onchain"
+  ],
+  "type": "registry:component"
+}

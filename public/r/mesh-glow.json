@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mesh-glow",
+  "title": "Mesh Glow",
+  "description": "Soft blurred glows over a fine grid with a calm vignette. Drifts slowly, or holds still.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/background/mesh-glow/mesh-glow.tsx",
+      "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/background-gradient/dark-midnight-mesh-background.tsx\nimport { motion, useInView, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useRef } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface MeshGlowProps {\n  /** Lets the glows drift slowly. Off, or under reduced motion, they hold still. */\n  animated?: boolean\n  /** Seconds one drift cycle takes. */\n  duration?: number\n  /** Overall strength of the glows, from 0 to 1. */\n  intensity?: number\n  className?: string\n}\n\nconst BLOBS = [\n  { cls: '-top-[18%] -left-[10%] h-[60%] w-[55%] bg-primary/40', move: { x: [0, 60, 0], y: [0, 30, 0] } },\n  { cls: 'top-[10%] -right-[12%] h-[50%] w-[48%] bg-success/30', move: { x: [0, -50, 0], y: [0, 40, 0] } },\n  { cls: '-bottom-[20%] left-[24%] h-[52%] w-[50%] bg-foreground/15', move: { x: [0, 40, 0], y: [0, -40, 0] } },\n]\n\n/** Soft blurred glows over a fine grid, with a vignette that keeps the edges calm. Place it behind content. */\nexport function MeshGlow({ animated = true, duration = 24, intensity = 1, className }: MeshGlowProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref)\n  const drift = animated && !reduced && inView\n\n  return (\n    <div ref={ref} aria-hidden className={cn('pointer-events-none absolute inset-0 overflow-hidden', className)}>\n      <div className=\"absolute -inset-8 blur-3xl\" style={{ opacity: intensity }}>\n        {BLOBS.map((blob, i) => (\n          <motion.div\n            key={i}\n            className={cn('absolute rounded-full', blob.cls)}\n            animate={drift ? blob.move : { x: 0, y: 0 }}\n            transition={\n              drift\n                ? { duration: duration + i * 4, ease: 'easeInOut', repeat: Infinity }\n                : { duration: 0 }\n            }\n          />\n        ))}\n      </div>\n      <div\n        className=\"absolute inset-0 opacity-70\"\n        style={{\n          backgroundImage:\n            'linear-gradient(to right, color-mix(in oklab, var(--foreground) 7%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 7%, transparent) 1px, transparent 1px)',\n          backgroundSize: '28px 28px',\n          maskImage: 'radial-gradient(ellipse at center, black 20%, transparent 75%)',\n          WebkitMaskImage: 'radial-gradient(ellipse at center, black 20%, transparent 75%)',\n        }}\n      />\n      <div\n        className=\"absolute inset-0\"\n        style={{\n          backgroundImage:\n            'radial-gradient(circle at center, transparent 55%, color-mix(in oklab, var(--background) 70%, transparent) 100%)',\n        }}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-gradient/dark-midnight-mesh-background.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "background"
+  ],
+  "type": "registry:component"
+}

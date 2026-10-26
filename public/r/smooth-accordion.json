@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "smooth-accordion",
+  "title": "Smooth Accordion",
+  "description": "A stack of disclosures with panels that grow to their content, single or multiple mode, and full keyboard navigation.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/layout/smooth-accordion/smooth-accordion.tsx",
+      "content": "// Source: ui-layouts/uilayouts (MIT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/accordion.tsx\nimport { AnimatePresence, motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface SmoothAccordionItem {\n  /** Unique id of the item. */\n  id: string\n  /** Header text. */\n  title: ReactNode\n  /** Panel content. */\n  content: ReactNode\n}\n\nexport interface SmoothAccordionProps {\n  /** The items, top to bottom. */\n  items: SmoothAccordionItem[]\n  /** `single` keeps one item open, `multiple` lets several stay open. */\n  type?: 'single' | 'multiple'\n  /** Ids of the items that are open first. */\n  defaultValue?: string[]\n  /** Lets the open item in `single` mode be closed again. */\n  collapsible?: boolean\n  /** Called with the open ids whenever they change. */\n  onValueChange?: (value: string[]) => void\n  /** Seconds the open and close take. */\n  duration?: number\n  /** Turns every header off. */\n  disabled?: boolean\n  /** Extra classes for the root element. */\n  className?: string\n}\n\n/** A stack of disclosures. Panels grow and shrink to their content and headers respond to arrow keys. */\nexport function SmoothAccordion({\n  items,\n  type = 'single',\n  defaultValue = [],\n  collapsible = true,\n  onValueChange,\n  duration = 0.3,\n  disabled = false,\n  className,\n}: SmoothAccordionProps) {\n  const uid = useId()\n  const reduced = usePrefersReducedMotion()\n  const [value, setValue] = useState<string[]>(defaultValue)\n  const headers = useRef<(HTMLButtonElement | null)[]>([])\n\n  const toggle = (id: string) => {\n    const isOpen = value.includes(id)\n    let next: string[]\n    if (type === 'multiple') next = isOpen ? value.filter((v) => v !== id) : [...value, id]\n    else next = isOpen ? (collapsible ? [] : value) : [id]\n    setValue(next)\n    onValueChange?.(next)\n  }\n\n  const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>, i: number) => {\n    const last = items.length - 1\n    const to = e.key === 'ArrowDown' ? (i === last ? 0 : i + 1) : e.key === 'ArrowUp' ? (i === 0 ? last : i - 1) : e.key === 'Home' ? 0 : e.key === 'End' ? last : -1\n    if (to < 0) return\n    e.preventDefault()\n    headers.current[to]?.focus()\n  }\n\n  return (\n    <div className={cn('w-full divide-y divide-border rounded-xl border border-border bg-card', className)}>\n      {items.map((item, i) => {\n        const open = value.includes(item.id)\n        return (\n          <div key={item.id}>\n            <h3>\n              <button\n                ref={(el) => {\n                  headers.current[i] = el\n                }}\n                type=\"button\"\n                id={`${uid}-h-${item.id}`}\n                aria-expanded={open}\n                aria-controls={`${uid}-p-${item.id}`}\n                disabled={disabled}\n                onClick={() => toggle(item.id)}\n                onKeyDown={(e) => onKeyDown(e, i)}\n                className=\"flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-medium text-card-foreground outline-none transition-colors hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50\"\n              >\n                {item.title}\n                <svg\n                  viewBox=\"0 0 24 24\"\n                  fill=\"none\"\n                  stroke=\"currentColor\"\n                  strokeWidth=\"2\"\n                  strokeLinecap=\"round\"\n                  strokeLinejoin=\"round\"\n                  aria-hidden\n                  className={cn('size-4 shrink-0 text-muted-foreground transition-transform duration-300 motion-reduce:transition-none', open && 'rotate-180')}\n                >\n                  <path d=\"M6 9l6 6 6-6\" />\n                </svg>\n              </button>\n            </h3>\n            <AnimatePresence initial={false}>\n              {open && (\n                <motion.div\n                  key=\"panel\"\n                  id={`${uid}-p-${item.id}`}\n                  role=\"region\"\n                  aria-labelledby={`${uid}-h-${item.id}`}\n                  initial={{ height: 0, opacity: 0 }}\n                  animate={{ height: 'auto', opacity: 1 }}\n                  exit={{ height: 0, opacity: 0 }}\n                  transition={reduced ? { duration: 0 } : { duration, ease: [0.32, 0.72, 0, 1] }}\n                  className=\"overflow-hidden\"\n                >\n                  <div className=\"px-5 pb-4 text-sm leading-relaxed text-muted-foreground\">{item.content}</div>\n                </motion.div>\n              )}\n            </AnimatePresence>\n          </div>\n        )\n      })}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/accordion.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "layout"
+  ],
+  "type": "registry:component"
+}

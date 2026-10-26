@@ -1,0 +1,19 @@
+{
+  "name": "dock",
+  "title": "Dock",
+  "description": "A row of icons that swell as the pointer approaches, macOS style. Stays at rest on touch and under reduced motion.",
+  "category": "interactive",
+  "layer": "B",
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["dock", "hover", "navigation"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "required": true, "description": "DockIcon elements. Each one should wrap a link or a button." },
+    { "name": "iconSize", "type": "number", "default": "40", "description": "Resting size of each icon in pixels." },
+    { "name": "iconMagnification", "type": "number", "default": "64", "description": "Size of the icon under the pointer in pixels." },
+    { "name": "iconDistance", "type": "number", "default": "140", "description": "Distance in pixels over which the magnification fades out." },
+    { "name": "direction", "type": "'top' | 'middle' | 'bottom'", "default": "'bottom'", "description": "Which edge the icons grow from." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the magnification off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the dock." }
+  ]
+}

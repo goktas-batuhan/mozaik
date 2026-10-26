@@ -1,0 +1,16 @@
+{
+  "name": "scroll-progress",
+  "title": "Scroll Progress",
+  "description": "A thin bar that fills as you scroll the page or any scroll container.",
+  "category": "feedback",
+  "layer": "B",
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/scroll-progress.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["scroll", "progress", "reading"],
+  "props": [
+    { "name": "container", "type": "RefObject<HTMLElement | null>", "description": "Scrollable element to track. Defaults to the page." },
+    { "name": "smooth", "type": "boolean", "default": "true", "description": "Smooth the bar with a spring instead of following the scroll exactly." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Hides the bar." },
+    { "name": "className", "type": "string", "description": "Position and size. Defaults to a thin bar fixed to the top of the viewport." }
+  ]
+}

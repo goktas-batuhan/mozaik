@@ -1,0 +1,24 @@
+{
+  "name": "address-chip",
+  "title": "Address Chip",
+  "description": "A compact EVM address with a generated blockie-style avatar, copy button, ENS label and explorer link.",
+  "category": "onchain",
+  "layer": "A",
+  "source": "original",
+  "dependencies": ["motion"],
+  "tags": ["address", "wallet", "copy"],
+  "cssVars": {
+    "light": { "success": "oklch(0.6 0.15 155)" },
+    "dark": { "success": "oklch(0.72 0.15 155)" }
+  },
+  "props": [
+    { "name": "address", "type": "string", "required": true, "description": "The EVM address, 0x-prefixed." },
+    { "name": "chars", "type": "number", "default": "4", "description": "Characters kept on each side of the ellipsis." },
+    { "name": "label", "type": "string", "description": "Display name such as an ENS name. The short address moves next to it." },
+    { "name": "href", "type": "string", "description": "Explorer link for the address. Opens in a new tab." },
+    { "name": "copyable", "type": "boolean", "default": "true", "description": "Shows the copy button." },
+    { "name": "avatar", "type": "boolean", "default": "true", "description": "Shows the generated avatar." },
+    { "name": "onCopy", "type": "(address: string) => void", "description": "Called after the address lands on the clipboard." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

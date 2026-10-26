@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-swap-card",
+  "title": "Hover Swap Card",
+  "description": "A card that swaps its title and visual and lifts the media on hover or keyboard focus. Pure CSS transitions.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/interactive/hover-swap-card/hover-swap-card.tsx",
+      "content": "// Source: ui-layouts/uilayouts (MIT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/card/creative-hover-card.tsx\nimport type { ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface HoverSwapCardProps {\n  /** Small pill above the title. */\n  badge?: string\n  /** Title at rest. Screen readers read this one. */\n  title: string\n  /** Title that crossfades in on hover or focus. */\n  hoverTitle?: string\n  /** Body text. */\n  description?: string\n  /** Visual shown at rest. */\n  media: ReactNode\n  /** Visual that crossfades in on hover or focus. */\n  hoverMedia?: ReactNode\n  /** Seconds the swap takes. */\n  duration?: number\n  /** Extra classes for the root element. */\n  className?: string\n}\n\n/** A card that swaps its title and visual and lifts the media on hover or keyboard focus. */\nexport function HoverSwapCard({\n  badge,\n  title,\n  hoverTitle,\n  description,\n  media,\n  hoverMedia,\n  duration = 0.5,\n  className,\n}: HoverSwapCardProps) {\n  const fade = 'transition-opacity ease-in-out motion-reduce:transition-none'\n  return (\n    <article\n      tabIndex={0}\n      style={{ transitionDuration: `${duration}s` }}\n      className={cn(\n        'group relative w-[320px] max-w-full overflow-hidden rounded-2xl border border-border bg-linear-to-t from-card to-background outline-none transition-colors hover:border-primary/40 focus-visible:border-primary/40 focus-visible:ring-2 focus-visible:ring-ring motion-reduce:transition-none',\n        className,\n      )}\n    >\n      <div className=\"px-6 pt-5 pb-4\">\n        {badge && (\n          <span className=\"inline-block rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground transition-colors duration-500 group-hover:bg-primary group-hover:text-primary-foreground group-focus-visible:bg-primary group-focus-visible:text-primary-foreground motion-reduce:transition-none\">\n            {badge}\n          </span>\n        )}\n        <h3 className=\"mt-3 grid text-lg font-semibold text-card-foreground\">\n          <span\n            style={{ transitionDuration: `${duration}s` }}\n            className={cn('col-start-1 row-start-1', fade, hoverTitle && 'group-hover:opacity-0 group-focus-visible:opacity-0')}\n          >\n            {title}\n          </span>\n          {hoverTitle && (\n            <span\n              aria-hidden\n              style={{ transitionDuration: `${duration}s` }}\n              className={cn('col-start-1 row-start-1 opacity-0', fade, 'group-hover:opacity-100 group-focus-visible:opacity-100')}\n            >\n              {hoverTitle}\n            </span>\n          )}\n        </h3>\n        {description && <p className=\"mt-1 text-sm text-muted-foreground\">{description}</p>}\n      </div>\n\n      <div\n        style={{ transitionDuration: `${duration}s` }}\n        className=\"relative aspect-[4/3] transition-transform ease-in-out group-hover:-translate-y-2 group-focus-visible:-translate-y-2 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0\"\n      >\n        <div\n          style={{ transitionDuration: `${duration}s` }}\n          className={cn('absolute inset-0', hoverMedia && 'group-hover:opacity-0 group-focus-visible:opacity-0', fade)}\n        >\n          {media}\n        </div>\n        {hoverMedia && (\n          <div\n            aria-hidden\n            style={{ transitionDuration: `${duration}s` }}\n            className={cn('absolute inset-0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100', fade)}\n          >\n            {hoverMedia}\n          </div>\n        )}\n      </div>\n    </article>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/card/creative-hover-card.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "interactive"
+  ],
+  "type": "registry:component"
+}

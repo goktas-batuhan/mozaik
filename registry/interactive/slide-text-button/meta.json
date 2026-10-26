@@ -1,0 +1,24 @@
+{
+  "name": "slide-text-button",
+  "title": "Slide Text Button",
+  "description": "A button whose label slides up and is replaced by a second label on hover or keyboard focus. Renders as a button or a link.",
+  "category": "interactive",
+  "layer": "B",
+  "source": {
+    "repo": "kokonut-labs/kokonutui",
+    "license": "MIT",
+    "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-text-button.tsx"
+  },
+  "dependencies": [],
+  "tags": ["button", "hover", "label"],
+  "props": [
+    { "name": "text", "type": "string", "required": true, "description": "Label shown at rest. Screen readers read this one." },
+    { "name": "hoverText", "type": "string", "description": "Label that slides in on hover or focus. Defaults to text." },
+    { "name": "href", "type": "string", "description": "Renders a link instead of a button." },
+    { "name": "variant", "type": "'solid' | 'ghost'", "default": "'solid'", "description": "Visual style." },
+    { "name": "as", "type": "ElementType", "description": "Element to render. Defaults to a when href is set, else button." },
+    { "name": "duration", "type": "number", "default": "0.25", "description": "Seconds the slide takes." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the button off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

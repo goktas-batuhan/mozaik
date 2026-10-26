@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ring-spinner",
+  "title": "Ring Spinner",
+  "description": "A minimal indeterminate ring in three sizes that takes its color from the surrounding text.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/ring-spinner/ring-spinner.tsx",
+      "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/spinner/index.tsx\nimport { motion, useInView, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useRef } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport type RingSpinnerSize = 'sm' | 'md' | 'lg'\n\nexport interface RingSpinnerProps {\n  /** Diameter and stroke weight. */\n  size?: RingSpinnerSize\n  /** Accessible name announced to screen readers. */\n  label?: string\n  /** Seconds per turn. */\n  duration?: number\n  className?: string\n}\n\nconst SIZE: Record<RingSpinnerSize, string> = {\n  sm: 'size-3 border-[1.5px]',\n  md: 'size-5 border-2',\n  lg: 'size-8 border-[3px]',\n}\n\n/** An indeterminate ring. Under reduced motion it holds still as an open arc. */\nexport function RingSpinner({ size = 'md', label = 'Loading', duration = 0.8, className }: RingSpinnerProps) {\n  const ref = useRef<HTMLSpanElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref)\n  const spinning = !reduced && inView\n\n  return (\n    <span\n      ref={ref}\n      role=\"status\"\n      aria-label={label}\n      className={cn('inline-flex shrink-0 text-foreground', className)}\n    >\n      <motion.span\n        aria-hidden\n        className={cn('inline-block rounded-full border-current/20 border-t-current', SIZE[size])}\n        animate={spinning ? { rotate: 360 } : { rotate: 0 }}\n        transition={spinning ? { duration, ease: 'linear', repeat: Infinity } : { duration: 0 }}\n      />\n    </span>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/spinner/index.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "feedback"
+  ],
+  "type": "registry:component"
+}

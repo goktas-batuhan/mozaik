@@ -1,0 +1,19 @@
+{
+  "name": "wave-text",
+  "title": "Wave Text",
+  "description": "A gentle wave rolls through the letters, each one a beat behind its neighbour.",
+  "category": "text",
+  "layer": "B",
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wave-text/index.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["wave", "letters", "loop"],
+  "props": [
+    { "name": "text", "type": "string", "required": true, "description": "The text. Screen readers read it as one string." },
+    { "name": "as", "type": "ElementType", "default": "'span'", "description": "Element to render." },
+    { "name": "amplitude", "type": "number", "default": "8", "description": "How far each letter rises, in pixels." },
+    { "name": "duration", "type": "number", "default": "1.4", "description": "Seconds one wave cycle takes." },
+    { "name": "stagger", "type": "number", "default": "0.06", "description": "Seconds between neighbouring letters." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the animation off and renders plain text." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

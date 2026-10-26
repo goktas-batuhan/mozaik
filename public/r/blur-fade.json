@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-fade",
+  "title": "Blur Fade",
+  "description": "Fades content in out of a blur, from any direction, on mount or when it scrolls into view.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/text/blur-fade/blur-fade.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/blur-fade.tsx\nimport { motion, useInView, useReducedMotion, useReducedMotionConfig, type HTMLMotionProps, type UseInViewOptions } from 'motion/react'\nimport { useRef, type ReactNode } from 'react'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface BlurFadeProps\n  extends Omit<HTMLMotionProps<'div'>, 'children' | 'initial' | 'animate' | 'exit' | 'variants' | 'transition'> {\n  children: ReactNode\n  /** Seconds the fade takes. */\n  duration?: number\n  /** Seconds to wait before the fade starts. */\n  delay?: number\n  /** Pixels the content travels while it fades in. */\n  offset?: number\n  /** Direction the content moves while it appears. */\n  direction?: 'up' | 'down' | 'left' | 'right'\n  /** Blur radius in pixels at the start. */\n  blur?: number\n  /** Wait until the content scrolls into view. */\n  inView?: boolean\n  /** Margin around the viewport used by inView. */\n  inViewMargin?: UseInViewOptions['margin']\n  /** Shows the content right away, with no animation. */\n  disabled?: boolean\n  className?: string\n}\n\n/** Fades content in out of a blur, from any direction. */\nexport function BlurFade({\n  children,\n  duration = 0.4,\n  delay = 0,\n  offset = 8,\n  direction = 'up',\n  blur = 6,\n  inView = false,\n  inViewMargin = '-50px',\n  disabled = false,\n  className,\n  ...props\n}: BlurFadeProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const seen = useInView(ref, { once: true, margin: inViewMargin })\n\n  if (disabled || reduced) {\n    return (\n      <div ref={ref} className={className}>\n        {children}\n      </div>\n    )\n  }\n\n  const horizontal = direction === 'left' || direction === 'right'\n  const from = direction === 'up' || direction === 'left' ? offset : -offset\n  const axis = horizontal ? 'x' : 'y'\n  const visible = !inView || seen\n\n  return (\n    <motion.div\n      {...props}\n      ref={ref}\n      className={className}\n      initial={{ opacity: 0, filter: `blur(${blur}px)`, [axis]: from }}\n      animate={\n        visible\n          ? { opacity: 1, filter: 'blur(0px)', [axis]: 0 }\n          : { opacity: 0, filter: `blur(${blur}px)`, [axis]: from }\n      }\n      transition={{ duration, delay: 0.04 + delay, ease: 'easeOut' }}\n    >\n      {children}\n    </motion.div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/blur-fade.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "text"
+  ],
+  "type": "registry:component"
+}

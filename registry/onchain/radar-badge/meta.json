@@ -1,0 +1,20 @@
+{
+  "name": "radar-badge",
+  "title": "Radar Badge",
+  "description": "A live-monitoring badge: a tiny radar sweep with spreading rings next to a label, in live, scanning, idle and alert states.",
+  "category": "onchain",
+  "layer": "A",
+  "source": "original",
+  "dependencies": ["motion"],
+  "tags": ["status", "live", "badge"],
+  "cssVars": {
+    "light": { "success": "oklch(0.6 0.15 155)" },
+    "dark": { "success": "oklch(0.72 0.15 155)" }
+  },
+  "props": [
+    { "name": "status", "type": "'live' | 'scanning' | 'idle' | 'alert'", "default": "'live'", "description": "What the watcher is doing. Sets the color and the motion." },
+    { "name": "label", "type": "string", "description": "Text next to the radar. Defaults to the status name." },
+    { "name": "size", "type": "'sm' | 'md'", "default": "'md'", "description": "Badge size." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-skeleton",
+  "title": "Shimmer Skeleton",
+  "description": "A placeholder block with a soft light sweeping across it. Wrap real content and it keeps the exact size.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/shimmer-skeleton/shimmer-skeleton.tsx",
+      "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/content-skeleton/index.tsx\nimport { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport type { ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface ShimmerSkeletonProps {\n  /** Content to stand in for. While loading it keeps its layout but is hidden. */\n  children?: ReactNode\n  /** Shows the skeleton. When false the children render as they are. */\n  loading?: boolean\n  /** Accessible name announced while loading. */\n  label?: string\n  /** Seconds one shimmer sweep takes. */\n  duration?: number\n  /** Turns the shimmer off and keeps a still placeholder. */\n  disabled?: boolean\n  /** Without children, size the block with classes such as `h-4 w-40`. */\n  className?: string\n}\n\n/** A placeholder block with a soft light sweeping across it. Wrap real content to keep its exact size. */\nexport function ShimmerSkeleton({\n  children,\n  loading = true,\n  label = 'Loading',\n  duration = 1.6,\n  disabled = false,\n  className,\n}: ShimmerSkeletonProps) {\n  const reduced = usePrefersReducedMotion()\n\n  if (!loading) return <>{children}</>\n\n  const still = disabled || reduced\n\n  return (\n    <div\n      role=\"status\"\n      aria-busy=\"true\"\n      aria-label={label}\n      className={cn('relative overflow-hidden rounded-md bg-muted', !children && 'min-h-4', className)}\n    >\n      {children ? (\n        <div aria-hidden className=\"invisible\">\n          {children}\n        </div>\n      ) : null}\n      {still ? null : (\n        <motion.div\n          aria-hidden\n          className=\"pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-foreground/10 to-transparent\"\n          initial={{ x: '0%' }}\n          animate={{ x: '400%' }}\n          transition={{ duration, ease: 'easeInOut', repeat: Infinity, repeatDelay: 0.2 }}\n        />\n      )}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/content-skeleton/index.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "feedback"
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "mesh-glow",
+  "title": "Mesh Glow",
+  "description": "Soft blurred glows over a fine grid with a calm vignette. Drifts slowly, or holds still.",
+  "category": "background",
+  "layer": "B",
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-gradient/dark-midnight-mesh-background.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["gradient", "glow", "ambient"],
+  "props": [
+    { "name": "animated", "type": "boolean", "default": "true", "description": "Lets the glows drift slowly. Off, or under reduced motion, they hold still." },
+    { "name": "duration", "type": "number", "default": "24", "description": "Seconds one drift cycle takes." },
+    { "name": "intensity", "type": "number", "default": "1", "description": "Overall strength of the glows, from 0 to 1." },
+    { "name": "className", "type": "string", "description": "Extra classes for the layer. Place it absolutely behind your content." }
+  ]
+}

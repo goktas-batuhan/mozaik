@@ -1,0 +1,22 @@
+{
+  "name": "blur-fade",
+  "title": "Blur Fade",
+  "description": "Fades content in out of a blur, from any direction, on mount or when it scrolls into view.",
+  "category": "text",
+  "layer": "B",
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/blur-fade.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["fade", "blur", "entrance"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "required": true, "description": "Content to reveal." },
+    { "name": "duration", "type": "number", "default": "0.4", "description": "Seconds the fade takes." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds to wait before the fade starts." },
+    { "name": "offset", "type": "number", "default": "8", "description": "Pixels the content travels while it fades in." },
+    { "name": "direction", "type": "'up' | 'down' | 'left' | 'right'", "default": "'up'", "description": "Direction the content moves while it appears." },
+    { "name": "blur", "type": "number", "default": "6", "description": "Blur radius in pixels at the start." },
+    { "name": "inView", "type": "boolean", "default": "false", "description": "Wait until the content scrolls into view." },
+    { "name": "inViewMargin", "type": "string", "default": "'-50px'", "description": "Margin around the viewport used by inView." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Shows the content right away, with no animation." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." }
+  ]
+}

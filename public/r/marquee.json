@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "title": "Marquee",
+  "description": "Endless horizontal or vertical loop of any content, with pause on hover and a still frame under reduced motion.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/layout/marquee/marquee.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx\nimport { motion, useAnimationFrame, useInView, useMotionValue, useReducedMotion, useReducedMotionConfig, useTransform } from 'motion/react'\nimport { useRef, useState, type ComponentPropsWithoutRef, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface MarqueeProps extends Omit<ComponentPropsWithoutRef<'div'>, 'children'> {\n  /** Content to loop. */\n  children: ReactNode\n  /** Run the loop in the opposite direction. */\n  reverse?: boolean\n  /** Pause while the pointer or keyboard focus is inside. */\n  pauseOnHover?: boolean\n  /** Scroll vertically instead of horizontally. */\n  vertical?: boolean\n  /** How many copies of the content to render. Raise it if the content is short. */\n  repeat?: number\n  /** Seconds for one full loop. */\n  duration?: number\n  /** Space between items and between copies, any CSS length. */\n  gap?: string\n  /** Stops the loop and shows the content still. */\n  disabled?: boolean\n  className?: string\n}\n\n/** Endless loop of content. Copies after the first are hidden from assistive tech. */\nexport function Marquee({\n  children,\n  reverse = false,\n  pauseOnHover = false,\n  vertical = false,\n  repeat = 4,\n  duration = 40,\n  gap = '1rem',\n  disabled = false,\n  className,\n  ...props\n}: MarqueeProps) {\n  const ref = useRef<HTMLDivElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const inView = useInView(ref)\n  const [paused, setPaused] = useState(false)\n  const progress = useMotionValue(0)\n  const still = disabled || !!reduced\n\n  useAnimationFrame((_, delta) => {\n    if (still || paused || !inView) return\n    const step = (delta / (duration * 1000)) * 100\n    const next = progress.get() + (reverse ? -step : step)\n    progress.set(((next % 100) + 100) % 100)\n  })\n\n  const transform = useTransform(progress, (p) => {\n    const shift = `calc(${-p}% - ${p / 100} * ${gap})`\n    return vertical ? `translateY(${shift})` : `translateX(${shift})`\n  })\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      style={{ gap, ...props.style }}\n      className={cn('flex overflow-hidden', vertical ? 'flex-col' : 'flex-row', className)}\n      onPointerEnter={pauseOnHover ? () => setPaused(true) : undefined}\n      onPointerLeave={pauseOnHover ? () => setPaused(false) : undefined}\n      onFocus={pauseOnHover ? () => setPaused(true) : undefined}\n      onBlur={pauseOnHover ? () => setPaused(false) : undefined}\n    >\n      {Array.from({ length: Math.max(1, repeat) }, (_, i) => (\n        <motion.div\n          key={i}\n          aria-hidden={i > 0 ? true : undefined}\n          inert={i > 0 ? true : undefined}\n          style={{ transform, gap }}\n          className={cn('flex shrink-0 justify-around', vertical ? 'flex-col' : 'flex-row')}\n        >\n          {children}\n        </motion.div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "layout"
+  ],
+  "type": "registry:component"
+}

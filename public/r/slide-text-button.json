@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-text-button",
+  "title": "Slide Text Button",
+  "description": "A button whose label slides up and is replaced by a second label on hover or keyboard focus. Renders as a button or a link.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/interactive/slide-text-button/slide-text-button.tsx",
+      "content": "// Source: kokonut-labs/kokonutui (MIT) — https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-text-button.tsx\nimport type { ComponentPropsWithoutRef, ElementType } from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface SlideTextButtonProps extends ComponentPropsWithoutRef<'button'> {\n  /** Label shown at rest. Screen readers read this one. */\n  text: string\n  /** Label that slides in on hover or focus. Defaults to `text`. */\n  hoverText?: string\n  /** Renders a link instead of a button. */\n  href?: string\n  /** Visual style. */\n  variant?: 'solid' | 'ghost'\n  /** Element to render. Defaults to `a` when `href` is set, else `button`. */\n  as?: ElementType\n  /** Seconds the slide takes. */\n  duration?: number\n  /** Turns the button off. */\n  disabled?: boolean\n  /** Extra classes for the root element. */\n  className?: string\n}\n\n/** A button whose label slides up and is replaced by a second label on hover or keyboard focus. */\nexport function SlideTextButton({\n  text,\n  hoverText,\n  href,\n  variant = 'solid',\n  as,\n  duration = 0.25,\n  disabled = false,\n  className,\n  style,\n  ...props\n}: SlideTextButtonProps) {\n  const Tag: ElementType = as ?? (href ? 'a' : 'button')\n  const swap = hoverText ?? text\n  const reveal = 'group-hover:-translate-y-full group-focus-visible:-translate-y-full motion-reduce:group-hover:translate-y-0 motion-reduce:group-focus-visible:translate-y-0'\n\n  return (\n    <Tag\n      href={href}\n      disabled={Tag === 'button' ? disabled : undefined}\n      aria-disabled={disabled || undefined}\n      style={{ ...style, ['--slide-duration' as string]: `${duration}s` }}\n      className={cn(\n        'group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-lg px-6 text-sm font-medium outline-none transition-[background-color,scale] duration-150 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.97] motion-reduce:active:scale-100',\n        variant === 'solid'\n          ? 'bg-primary text-primary-foreground hover:bg-primary/90'\n          : 'border border-border text-foreground hover:bg-accent',\n        disabled && 'pointer-events-none opacity-50',\n        className,\n      )}\n      {...props}\n    >\n      <span\n        className={cn(\n          'grid justify-items-center transition-transform duration-(--slide-duration) ease-[cubic-bezier(0.77,0,0.175,1)] motion-reduce:transition-none',\n          reveal,\n        )}\n      >\n        <span className=\"col-start-1 row-start-1\">{text}</span>\n        <span aria-hidden className=\"col-start-1 row-start-1 translate-y-full\">\n          {swap}\n        </span>\n      </span>\n    </Tag>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-text-button.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "interactive"
+  ],
+  "type": "registry:component"
+}

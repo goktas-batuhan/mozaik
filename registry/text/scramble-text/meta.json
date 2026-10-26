@@ -1,0 +1,20 @@
+{
+  "name": "scramble-text",
+  "title": "Scramble Text",
+  "description": "Letters cycle through random glyphs and decode into the real text, on mount, hover or scroll into view.",
+  "category": "text",
+  "layer": "A",
+  "source": "original",
+  "dependencies": ["motion"],
+  "tags": ["decode", "letters", "hover"],
+  "props": [
+    { "name": "text", "type": "string", "required": true, "description": "The text. Screen readers read it as one string." },
+    { "name": "as", "type": "ElementType", "default": "'span'", "description": "Element to render." },
+    { "name": "trigger", "type": "'mount' | 'hover' | 'in-view'", "default": "'mount'", "description": "When the text decodes." },
+    { "name": "duration", "type": "number", "default": "0.9", "description": "Seconds until the last letter settles." },
+    { "name": "delay", "type": "number", "default": "0", "description": "Seconds of pure noise before the first letter settles." },
+    { "name": "characters", "type": "string", "default": "'A-Z 0-9 #%&*+=<>/?'", "description": "Glyph set the letters cycle through. Whitespace is ignored." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the animation off and renders plain text." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element. A monospace font gives the steadiest look." }
+  ]
+}

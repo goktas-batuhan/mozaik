@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-ring",
+  "title": "Progress Ring",
+  "description": "A determinate ring that eases to its value and counts up in the middle.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/progress-ring/progress-ring.tsx",
+      "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/others/progress-ring-card.tsx\nimport { animate, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useRef, useState, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface ProgressRingProps {\n  /** Progress from 0 to 100. */\n  value: number\n  /** Outer diameter in pixels. */\n  size?: number\n  /** Stroke width in pixels. */\n  strokeWidth?: number\n  /** Accessible name of the progress bar. */\n  label?: string\n  /** Shows the percentage in the middle when no children are given. */\n  showValue?: boolean\n  /** Seconds the ring takes to catch up with a new value. */\n  duration?: number\n  /** Replaces the percentage in the middle. */\n  children?: ReactNode\n  className?: string\n}\n\n/** A determinate ring that eases to its value and counts up in the middle. */\nexport function ProgressRing({\n  value,\n  size = 112,\n  strokeWidth = 8,\n  label = 'Progress',\n  showValue = true,\n  duration = 0.9,\n  children,\n  className,\n}: ProgressRingProps) {\n  const reduced = usePrefersReducedMotion()\n  const target = Math.min(100, Math.max(0, value))\n  const [shown, setShown] = useState(reduced ? target : 0)\n  const from = useRef(shown)\n\n  useEffect(() => {\n    if (reduced) {\n      from.current = target\n      setShown(target)\n      return\n    }\n    const controls = animate(from.current, target, {\n      duration,\n      ease: [0.16, 1, 0.3, 1],\n      onUpdate: (v) => {\n        from.current = v\n        setShown(v)\n      },\n    })\n    return () => controls.stop()\n  }, [target, duration, reduced])\n\n  const radius = (size - strokeWidth) / 2\n  const circumference = 2 * Math.PI * radius\n\n  return (\n    <div\n      role=\"progressbar\"\n      aria-label={label}\n      aria-valuemin={0}\n      aria-valuemax={100}\n      aria-valuenow={Math.round(target)}\n      className={cn('relative inline-grid place-items-center', className)}\n      style={{ width: size, height: size }}\n    >\n      <svg aria-hidden width={size} height={size} viewBox={`0 0 ${size} ${size}`} className=\"-rotate-90\">\n        <circle\n          cx={size / 2}\n          cy={size / 2}\n          r={radius}\n          fill=\"none\"\n          strokeWidth={strokeWidth}\n          className=\"stroke-muted\"\n        />\n        <circle\n          cx={size / 2}\n          cy={size / 2}\n          r={radius}\n          fill=\"none\"\n          strokeWidth={strokeWidth}\n          strokeLinecap=\"round\"\n          strokeDasharray={circumference}\n          strokeDashoffset={circumference * (1 - shown / 100)}\n          className=\"stroke-primary\"\n        />\n      </svg>\n      {children ?? (showValue ? (\n        <span aria-hidden className=\"absolute text-xl font-semibold tabular-nums text-foreground\">\n          {Math.round(shown)}%\n        </span>\n      ) : null)}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/others/progress-ring-card.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "feedback"
+  ],
+  "type": "registry:component"
+}

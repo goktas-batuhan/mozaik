@@ -1,0 +1,17 @@
+{
+  "name": "diagonal-hatch",
+  "title": "Diagonal Hatch",
+  "description": "Fine diagonal hatching that fades towards the edges, like a sketch shaded with a ruler.",
+  "category": "background",
+  "layer": "B",
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/diagonal-box-pattern.tsx" },
+  "dependencies": [],
+  "tags": ["hatch", "pattern", "static"],
+  "props": [
+    { "name": "spacing", "type": "number", "default": "10", "description": "Distance between hatch lines, in pixels." },
+    { "name": "angle", "type": "number", "default": "45", "description": "Direction of the lines in degrees." },
+    { "name": "strength", "type": "number", "default": "9", "description": "Line strength as a percentage of the foreground color." },
+    { "name": "fade", "type": "boolean", "default": "true", "description": "Fades the hatch out towards the edges." },
+    { "name": "className", "type": "string", "description": "Extra classes for the layer. Place it absolutely behind your content." }
+  ]
+}

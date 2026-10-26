@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-button",
+  "title": "Shimmer Button",
+  "description": "A button with a light that circles its edge. Stops when disabled or under reduced motion.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/interactive/shimmer-button/shimmer-button.tsx",
+      "content": "// Source: magicuidesign/magicui (MIT) — https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/shimmer-button.tsx\nimport { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport type { ComponentPropsWithoutRef, CSSProperties, Ref } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport interface ShimmerButtonProps extends ComponentPropsWithoutRef<'button'> {\n  /** Color of the light that circles the edge. Any CSS color; defaults to the primary token. */\n  shimmerColor?: string\n  /** Thickness of the lit edge in pixels. */\n  shimmerSize?: number\n  /** Fill of the button. Any CSS color or gradient; defaults to the card token. */\n  background?: string\n  /** Seconds for the light to circle the button once. */\n  duration?: number\n  /** Disables the button and stops the shimmer. */\n  disabled?: boolean\n  ref?: Ref<HTMLButtonElement>\n}\n\n/** A button with a light that circles its edge. */\nexport function ShimmerButton({\n  shimmerColor = 'var(--primary)',\n  shimmerSize = 2,\n  background = 'var(--card)',\n  duration = 3,\n  disabled = false,\n  className,\n  children,\n  type = 'button',\n  ref,\n  ...props\n}: ShimmerButtonProps) {\n  const reduced = usePrefersReducedMotion()\n  const still = disabled || !!reduced\n\n  return (\n    <button\n      {...props}\n      ref={ref}\n      type={type}\n      disabled={disabled}\n      style={\n        {\n          '--shimmer-color': shimmerColor,\n          '--shimmer-bg': background,\n          '--shimmer-size': `${shimmerSize}px`,\n          ...props.style,\n        } as CSSProperties\n      }\n      className={cn(\n        'group relative isolate inline-flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-full border border-border px-6 py-3 text-sm font-medium whitespace-nowrap text-card-foreground',\n        'transition-transform duration-300 ease-out active:translate-y-px',\n        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',\n        'disabled:pointer-events-none disabled:opacity-50',\n        className,\n      )}\n    >\n      {/* light */}\n      <span aria-hidden className=\"absolute inset-0 -z-20 overflow-hidden rounded-[inherit]\">\n        <motion.span\n          className=\"absolute top-1/2 left-1/2 aspect-square w-[300%] [background:conic-gradient(from_0deg,transparent_0deg,transparent_240deg,var(--shimmer-color)_330deg,transparent_360deg)]\"\n          style={{ x: '-50%', y: '-50%' }}\n          animate={still ? undefined : { rotate: 360 }}\n          transition={{ duration, ease: 'linear', repeat: Infinity }}\n        />\n      </span>\n      {/* fill, inset so only the edge stays lit */}\n      <span\n        aria-hidden\n        className=\"absolute inset-(--shimmer-size) -z-10 rounded-[inherit] [background:var(--shimmer-bg)]\"\n      />\n      {/* soft top highlight */}\n      <span\n        aria-hidden\n        className=\"absolute inset-(--shimmer-size) -z-10 rounded-[inherit] bg-linear-to-b from-foreground/10 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-100\"\n      />\n      {children}\n    </button>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "magicuidesign/magicui",
+      "license": "MIT",
+      "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/shimmer-button.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "interactive"
+  ],
+  "type": "registry:component"
+}

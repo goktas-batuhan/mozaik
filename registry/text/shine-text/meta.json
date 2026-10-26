@@ -1,0 +1,19 @@
+{
+  "name": "shine-text",
+  "title": "Shine Text",
+  "description": "A band of light glides across the text on a loop, like polished metal catching a lamp.",
+  "category": "text",
+  "layer": "B",
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/shine-text/index.tsx" },
+  "dependencies": ["motion"],
+  "tags": ["shine", "gradient", "loop"],
+  "props": [
+    { "name": "children", "type": "string", "required": true, "description": "The text to light up." },
+    { "name": "duration", "type": "number", "default": "2.5", "description": "Seconds one sweep takes." },
+    { "name": "delay", "type": "number", "default": "0.6", "description": "Seconds to rest between sweeps." },
+    { "name": "baseColor", "type": "string", "default": "'var(--muted-foreground)'", "description": "Resting text color. Any CSS color." },
+    { "name": "shineColor", "type": "string", "default": "'var(--foreground)'", "description": "Color of the moving highlight. Any CSS color." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the animation off and renders calm static text." },
+    { "name": "className", "type": "string", "description": "Extra classes for the text element." }
+  ]
+}

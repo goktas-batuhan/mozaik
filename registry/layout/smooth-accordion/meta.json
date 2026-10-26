@@ -1,0 +1,24 @@
+{
+  "name": "smooth-accordion",
+  "title": "Smooth Accordion",
+  "description": "A stack of disclosures with panels that grow to their content, single or multiple mode, and full keyboard navigation.",
+  "category": "layout",
+  "layer": "B",
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/accordion.tsx"
+  },
+  "dependencies": ["motion"],
+  "tags": ["accordion", "disclosure", "faq"],
+  "props": [
+    { "name": "items", "type": "SmoothAccordionItem[]", "required": true, "description": "The items, top to bottom: { id, title, content }." },
+    { "name": "type", "type": "'single' | 'multiple'", "default": "'single'", "description": "single keeps one item open, multiple lets several stay open." },
+    { "name": "defaultValue", "type": "string[]", "default": "[]", "description": "Ids of the items that are open first." },
+    { "name": "collapsible", "type": "boolean", "default": "true", "description": "Lets the open item in single mode be closed again." },
+    { "name": "onValueChange", "type": "(value: string[]) => void", "description": "Called with the open ids whenever they change." },
+    { "name": "duration", "type": "number", "default": "0.3", "description": "Seconds the open and close take." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns every header off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

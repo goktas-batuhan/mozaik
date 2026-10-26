@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "texture-card",
+  "title": "Texture Card",
+  "description": "A card framed by nested hairline borders for a machined, tactile edge. Ships header, title, description, content, footer and separator parts.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/interactive/texture-card/texture-card.tsx",
+      "content": "// Source: nolly-studio/cult-ui (MIT) — https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/texture-card.tsx\nimport type { ComponentPropsWithoutRef, ElementType } from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface TextureCardProps extends ComponentPropsWithoutRef<'div'> {\n  /** Element to render. */\n  as?: ElementType\n}\n\n/** A card framed by five nested hairline borders that read as a machined bezel. */\nexport function TextureCard({ as: Tag = 'div', className, children, ...props }: TextureCardProps) {\n  return (\n    <Tag\n      className={cn('rounded-[var(--radius)] border border-foreground/10 bg-card shadow-sm', className)}\n      {...props}\n    >\n      <div className=\"rounded-[calc(var(--radius)-1px)] border border-foreground/5 p-px\">\n        <div className=\"rounded-[calc(var(--radius)-2px)] border border-background/60 dark:border-foreground/5\">\n          <div className=\"rounded-[calc(var(--radius)-3px)] border border-foreground/10 p-px\">\n            <div className=\"rounded-[calc(var(--radius)-4px)] border border-background/60 bg-linear-to-b from-card to-secondary/50 text-muted-foreground dark:border-foreground/10\">\n              {children}\n            </div>\n          </div>\n        </div>\n      </div>\n    </Tag>\n  )\n}\n\nexport function TextureCardHeader({ className, ...props }: ComponentPropsWithoutRef<'div'>) {\n  return <div className={cn('flex flex-col gap-1 px-6 pt-6', className)} {...props} />\n}\n\nexport function TextureCardTitle({ className, ...props }: ComponentPropsWithoutRef<'h3'>) {\n  return <h3 className={cn('text-lg leading-tight font-semibold text-card-foreground', className)} {...props} />\n}\n\nexport function TextureCardDescription({ className, ...props }: ComponentPropsWithoutRef<'p'>) {\n  return <p className={cn('text-sm text-muted-foreground', className)} {...props} />\n}\n\nexport function TextureCardContent({ className, ...props }: ComponentPropsWithoutRef<'div'>) {\n  return <div className={cn('px-6 py-4', className)} {...props} />\n}\n\nexport function TextureCardFooter({ className, ...props }: ComponentPropsWithoutRef<'div'>) {\n  return <div className={cn('flex items-center justify-between gap-2 px-6 py-4', className)} {...props} />\n}\n\n/** A recessed one-pixel divider that matches the card bezel. */\nexport function TextureSeparator({ className, ...props }: ComponentPropsWithoutRef<'div'>) {\n  return (\n    <div\n      role=\"separator\"\n      className={cn('border-t border-foreground/10 border-b border-b-background/60 dark:border-b-foreground/5', className)}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/texture-card.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "interactive"
+  ],
+  "type": "registry:component"
+}

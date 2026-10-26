@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-accordion",
+  "title": "Image Accordion",
+  "description": "A row of image panels where one is wide and the rest are slim. The open panel follows hover, focus or click and reveals its title.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/layout/image-accordion/image-accordion.tsx",
+      "content": "// Source: ui-layouts/uilayouts (MIT) — https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/accordion/image-hover.tsx\nimport { useState, type KeyboardEvent, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface ImageAccordionItem {\n  /** Unique id of the panel. */\n  id: string\n  /** Heading shown when the panel is open. */\n  title: string\n  /** Short text under the heading. */\n  description?: string\n  /** Visual that fills the panel: an image, gradient or any element. */\n  media: ReactNode\n}\n\nexport interface ImageAccordionProps {\n  /** The panels, left to right. */\n  items: ImageAccordionItem[]\n  /** Index of the panel that is open first. */\n  defaultIndex?: number\n  /** What opens a panel. Focus and click always work. */\n  trigger?: 'hover' | 'click'\n  /** Height of the strip in pixels. */\n  height?: number\n  /** Seconds the panels take to resize. */\n  duration?: number\n  /** Called with the new index when a different panel opens. */\n  onIndexChange?: (index: number) => void\n  /** Extra classes for the root element. */\n  className?: string\n}\n\n/** A row of panels where one is wide and the rest are slim. The open one follows hover, focus or click. */\nexport function ImageAccordion({\n  items,\n  defaultIndex = 0,\n  trigger = 'hover',\n  height = 380,\n  duration = 0.5,\n  onIndexChange,\n  className,\n}: ImageAccordionProps) {\n  const [index, setIndex] = useState(defaultIndex)\n\n  const open = (i: number) => {\n    if (i === index) return\n    setIndex(i)\n    onIndexChange?.(i)\n  }\n\n  const onKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {\n    const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0\n    if (!dir) return\n    e.preventDefault()\n    const next = (index + dir + items.length) % items.length\n    open(next)\n    e.currentTarget.querySelectorAll<HTMLButtonElement>('button')[next]?.focus()\n  }\n\n  return (\n    <ul\n      onKeyDown={onKeyDown}\n      style={{ height, transitionDuration: `${duration}s` }}\n      className={cn('flex w-full gap-1.5', className)}\n    >\n      {items.map((item, i) => {\n        const active = i === index\n        return (\n          <li\n            key={item.id}\n            style={{ transitionDuration: `${duration}s` }}\n            className={cn(\n              'relative min-w-0 overflow-hidden rounded-xl border border-border transition-[flex-grow] ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none',\n              active ? 'grow-[8]' : 'grow',\n              'basis-0',\n            )}\n          >\n            <button\n              type=\"button\"\n              aria-expanded={active}\n              onClick={() => open(i)}\n              onFocus={() => open(i)}\n              onPointerEnter={(e) => trigger === 'hover' && e.pointerType === 'mouse' && open(i)}\n              className=\"absolute inset-0 block size-full text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring\"\n            >\n              <span className=\"absolute inset-0\" aria-hidden={!active}>\n                {item.media}\n              </span>\n              <span\n                className={cn(\n                  'absolute inset-0 bg-linear-to-t from-background/80 via-background/10 to-transparent transition-opacity motion-reduce:transition-none',\n                  active ? 'opacity-100' : 'opacity-0',\n                )}\n                aria-hidden\n              />\n              <span\n                className={cn(\n                  'absolute inset-x-0 bottom-0 block p-4 transition-[opacity,translate] duration-300 motion-reduce:transition-none',\n                  active ? 'translate-y-0 opacity-100 delay-200' : 'translate-y-2 opacity-0',\n                )}\n              >\n                <span className=\"block text-xl font-semibold tracking-tight whitespace-nowrap text-foreground\">{item.title}</span>\n                {item.description && (\n                  <span className=\"mt-1 block max-w-sm text-sm leading-snug text-muted-foreground\">{item.description}</span>\n                )}\n              </span>\n              {!active && <span className=\"sr-only\">{item.title}</span>}\n            </button>\n          </li>\n        )\n      })}\n    </ul>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "layer": "B",
+    "source": {
+      "repo": "ui-layouts/uilayouts",
+      "license": "MIT",
+      "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/accordion/image-hover.tsx"
+    },
+    "status": "stable"
+  },
+  "categories": [
+    "layout"
+  ],
+  "type": "registry:component"
+}
