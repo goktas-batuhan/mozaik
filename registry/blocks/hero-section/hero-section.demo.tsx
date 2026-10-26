@@ -35,7 +35,7 @@ function ProductWindow() {
             </div>
             <div className="flex items-center justify-between rounded-lg border border-border bg-background px-3 py-2 font-mono text-[11px] text-muted-foreground">
               <span>
-                <span className="text-primary">$</span> npx shadcn add mozaik/hero-section
+                <span className="text-primary">$</span> npm install motion
               </span>
               <span className="hidden text-foreground/60 @sm:inline">done</span>
             </div>

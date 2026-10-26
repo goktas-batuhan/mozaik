@@ -40,9 +40,9 @@ function TerminalLines() {
   return (
     <div className="absolute inset-x-5 top-5 space-y-1.5 rounded-lg border border-border bg-background/80 p-3 font-mono text-[11px] leading-none text-muted-foreground">
       <p>
-        <span className="text-primary">$</span> npx shadcn add mozaik/bento-grid
+        <span className="text-primary">$</span> npm install motion
       </p>
-      <p className="transition-opacity duration-500 group-hover/bento:text-foreground">✓ bento-grid.tsx</p>
+      <p className="transition-opacity duration-500 group-hover/bento:text-foreground">✓ pasted bento-grid.tsx</p>
     </div>
   )
 }
@@ -117,7 +117,7 @@ export default function BentoGridDemo() {
           href="#"
           cta="Try it"
         />
-        <BentoCard icon={<Terminal />} title="One command" description="Install straight into your repo." visual={<TerminalLines />} href="#" />
+        <BentoCard icon={<Terminal />} title="One file" description="Copy it straight into your repo." visual={<TerminalLines />} href="#" />
         <BentoCard icon={<Accessibility />} title="Reduced motion" description="Calm, static frames on request." visual={<Wave />} href="#" />
         <BentoCard icon={<Moon />} title="Dark by default" description="Tuned for dark, fine in light." visual={<Eclipse />} href="#" />
         <BentoCard

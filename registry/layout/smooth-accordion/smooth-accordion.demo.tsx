@@ -4,12 +4,12 @@ const items = [
   {
     id: 'what',
     title: 'What is Mozaik?',
-    content: 'A registry of small, hand-finished React components. Install one with a single shadcn command and own the source.',
+    content: 'A collection of small, hand-finished React components. Copy one into your project and own the source.',
   },
   {
     id: 'install',
-    title: 'How do I install a component?',
-    content: 'Run npx shadcn add with the component URL. The file lands in your project, ready to edit.',
+    title: 'How do I add a component?',
+    content: 'Copy the source from its page and install the npm packages it lists. The file is yours to edit.',
   },
   {
     id: 'motion',

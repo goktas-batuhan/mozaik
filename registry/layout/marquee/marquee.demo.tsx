@@ -4,7 +4,7 @@ const quotes = [
   ['Ship it', 'The detail is in the easing.'],
   ['Quiet motion', 'Nothing moves without a reason.'],
   ['Tokens first', 'One palette, every component.'],
-  ['Copy and own', 'Installed straight into your repo.'],
+  ['Copy and own', 'Pasted straight into your repo.'],
   ['Accessible', 'Reduced motion is a first-class state.'],
   ['Tiny API', 'Duration, delay, className. That is it.'],
 ]
