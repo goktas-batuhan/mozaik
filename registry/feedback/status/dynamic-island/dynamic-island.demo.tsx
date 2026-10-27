@@ -1,25 +1,20 @@
 import { useState } from 'react'
-import { DynamicIsland, DynamicIslandView } from './dynamic-island'
+import { DynamicIsland, DynamicIslandView, type DynamicIslandProps } from './dynamic-island'
 
 const views = ['call', 'timer', 'music'] as const
 
 const btn =
   'rounded-full border border-border bg-card px-3 py-1.5 text-sm text-card-foreground outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring aria-pressed:bg-primary aria-pressed:text-primary-foreground'
 
-export default function DynamicIslandDemo() {
-  const [view, setView] = useState<string | null>(null)
+const compact = (
+  <>
+    <span aria-hidden className="size-2 rounded-full bg-success" />
+    <span>Mozaik</span>
+  </>
+)
 
-  return (
-    <div className="flex min-h-64 w-[min(28rem,90vw)] flex-col items-center gap-8">
-      <DynamicIsland
-        view={view}
-        compact={
-          <>
-            <span aria-hidden className="size-2 rounded-full bg-success" />
-            <span>Mozaik</span>
-          </>
-        }
-      >
+const islandViews = (
+  <>
         <DynamicIslandView id="call" className="gap-4">
           <span
             aria-hidden
@@ -40,6 +35,16 @@ export default function DynamicIslandDemo() {
           <p className="text-sm font-medium">Now playing</p>
           <p className="text-xs opacity-60">Tessellate, Mozaik Quartet</p>
         </DynamicIslandView>
+  </>
+)
+
+export default function DynamicIslandDemo() {
+  const [view, setView] = useState<string | null>(null)
+
+  return (
+    <div className="flex min-h-64 w-[min(28rem,90vw)] flex-col items-center gap-8">
+      <DynamicIsland view={view} compact={compact}>
+        {islandViews}
       </DynamicIsland>
       <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="Island view">
         <button type="button" className={btn} aria-pressed={view === null} onClick={() => setView(null)}>
@@ -51,6 +56,16 @@ export default function DynamicIslandDemo() {
           </button>
         ))}
       </div>
+    </div>
+  )
+}
+
+export function VariantPreview(props: Omit<DynamicIslandProps, 'children' | 'compact'>) {
+  return (
+    <div className="flex min-h-64 w-[min(28rem,90vw)] flex-col items-center gap-8">
+      <DynamicIsland compact={compact} {...props}>
+        {islandViews}
+      </DynamicIsland>
     </div>
   )
 }

@@ -34,7 +34,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/blur-fade.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -68,7 +68,7 @@
           "url": "https://github.com/starc007/ui-components/blob/main/components/motion/chromatic-text-reveal.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -98,7 +98,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -132,7 +132,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/typing-animation.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -166,7 +166,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/morphing-text.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -200,7 +200,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/word-rotate.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -234,7 +234,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/number-ticker.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -264,7 +264,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -296,7 +296,7 @@
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/split-flap-text.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -326,7 +326,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -428,7 +428,7 @@
           "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wave-text/index.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -492,7 +492,7 @@
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/halftone-background.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -526,7 +526,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/meteors.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -560,7 +560,7 @@
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/topo-background.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -592,7 +592,7 @@
           "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/diagonal-box-pattern.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -622,7 +622,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -654,7 +654,7 @@
           "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-pattern/graph-paper-pattern.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -689,7 +689,7 @@
           "note": "Rebuilt in CSS 3D (upstream is WebGL)."
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -719,7 +719,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -753,7 +753,7 @@
           "url": "https://github.com/bidyut10/opensourceui/blob/main/components/background-gradient/dark-midnight-mesh-background.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -787,7 +787,7 @@
           "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/cursor-image-trail/index.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -821,7 +821,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/smooth-cursor.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -851,7 +851,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -881,7 +881,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -915,7 +915,7 @@
           "url": "https://github.com/starc007/ui-components/blob/main/components/motion/tilt-card.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -949,7 +949,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/cool-mode.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -983,7 +983,7 @@
           "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/family-button.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -1017,7 +1017,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/shimmer-button.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1049,7 +1049,7 @@
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-text-button.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -1083,7 +1083,7 @@
           "url": "https://github.com/starc007/ui-components/blob/main/components/motion/hold-action-button.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1225,7 +1225,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/border-beam.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1291,7 +1291,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/dock.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1359,7 +1359,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/lens.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1391,7 +1391,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/progressive-blur.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1425,7 +1425,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-list.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1459,7 +1459,7 @@
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-drag-sliding-carousel.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1491,7 +1491,7 @@
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/accordion/image-hover.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -1525,7 +1525,7 @@
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/registry/components/carousel/framer/framer-moveable-thumnbails.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1559,7 +1559,7 @@
           "url": "https://github.com/ui-layouts/uilayouts/blob/main/apps/ui-layout/components/ui/accordion.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1593,7 +1593,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/marquee.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1627,7 +1627,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/orbiting-circles.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1689,7 +1689,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1757,7 +1757,7 @@
           "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/spinner/index.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1825,7 +1825,7 @@
           "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/content-skeleton/index.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1859,7 +1859,7 @@
           "url": "https://github.com/bidyut10/opensourceui/blob/main/components/others/progress-ring-card.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1961,7 +1961,7 @@
           "url": "https://github.com/starc007/ui-components/blob/main/components/motion/dynamic-island.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -1999,7 +1999,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -2033,7 +2033,7 @@
           "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-reasoning/index.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -2075,7 +2075,7 @@
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/ai-tool-approval.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 3
       }
     },
     {
@@ -2117,7 +2117,7 @@
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/uptime-card.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -2151,7 +2151,7 @@
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/terminal.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -2193,7 +2193,7 @@
           "url": "https://github.com/starc007/ui-components/blob/main/components/charts/order-book.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -2231,7 +2231,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -2269,7 +2269,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 1
       }
     },
     {
@@ -2311,7 +2311,7 @@
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/receipt-printer.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -2341,7 +2341,7 @@
         "layer": "component",
         "source": "original",
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {
@@ -2383,7 +2383,7 @@
           "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/amount-pad.tsx"
         },
         "status": "stable",
-        "variants": 0
+        "variants": 2
       }
     },
     {

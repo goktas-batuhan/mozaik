@@ -63,6 +63,7 @@ export const variants: { name: string; title: string; description: string; props
 ```
 
 - The preview is the component itself with `props` spread on it, so `props` must be complete enough to render and JSON-friendly (strings, numbers, booleans, arrays, plain objects).
+- If the component needs JSX content (children, icons, slides), the demo file may also export `VariantPreview`: a component that takes the variant props and supplies that content, e.g. `export function VariantPreview(props: DockProps) { return <Dock {...props}>{icons}</Dock> }`. Previews and smoke tests then render `VariantPreview` instead of the bare component. The props stay JSON-friendly.
 - `name` is kebab-case and unique within the component. The playground opens it at `?c=<name>&v=<variant>`.
 - A variant must look or behave clearly differently. Colour-only changes are not variants.
 

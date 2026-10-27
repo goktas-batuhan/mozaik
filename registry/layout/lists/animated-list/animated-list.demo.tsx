@@ -1,6 +1,6 @@
 import { Bell, GitCommitHorizontal, MessageSquare, Rocket, Star } from 'lucide-react'
 import type { ReactNode } from 'react'
-import { AnimatedList } from './animated-list'
+import { AnimatedList, type AnimatedListProps } from './animated-list'
 
 const events: { icon: ReactNode; title: string; body: string; time: string }[] = [
   { icon: <Rocket />, title: 'Deployed to production', body: 'mozaik-site, 14 seconds ago', time: '14s' },
@@ -10,10 +10,10 @@ const events: { icon: ReactNode; title: string; body: string; time: string }[] =
   { icon: <Bell />, title: 'Build finished', body: 'All checks passed', time: '12m' },
 ]
 
-export default function AnimatedListDemo() {
+function Events(props: Omit<AnimatedListProps, 'children'>) {
   return (
     <div className="h-[22rem] w-[min(26rem,90vw)] overflow-hidden [mask-image:linear-gradient(to_bottom,black_75%,transparent)]">
-      <AnimatedList interval={1.1} loop>
+      <AnimatedList {...props}>
         {events.map((e) => (
           <div
             key={e.title}
@@ -35,4 +35,12 @@ export default function AnimatedListDemo() {
       </AnimatedList>
     </div>
   )
+}
+
+export default function AnimatedListDemo() {
+  return <Events interval={1.1} loop />
+}
+
+export function VariantPreview(props: Omit<AnimatedListProps, 'children'>) {
+  return <Events {...props} />
 }

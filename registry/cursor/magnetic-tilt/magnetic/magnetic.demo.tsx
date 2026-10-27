@@ -1,5 +1,5 @@
 import { ArrowUpRight, GitBranch, Mail, Send } from 'lucide-react'
-import { Magnetic } from './magnetic'
+import { Magnetic, type MagneticProps } from './magnetic'
 
 const icons = [
   { label: 'Source', Icon: GitBranch },
@@ -44,5 +44,19 @@ export default function MagneticDemo() {
         ))}
       </div>
     </div>
+  )
+}
+
+export function VariantPreview(props: Omit<MagneticProps, 'children'>) {
+  return (
+    <Magnetic {...props}>
+      <a
+        href="#"
+        className={`group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 ${focusRing}`}
+      >
+        Start a conversation
+        <ArrowUpRight className="size-4" aria-hidden />
+      </a>
+    </Magnetic>
   )
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AIReasoning } from './ai-reasoning'
+import { AIReasoning, type AIReasoningProps } from './ai-reasoning'
 
 /** The stream only runs when the visitor asks for it, so the demo is still on load. */
 export default function AIReasoningDemo() {
@@ -26,6 +26,17 @@ export default function AIReasoningDemo() {
       >
         {streaming ? 'Reasoning…' : 'Replay reasoning'}
       </button>
+    </div>
+  )
+}
+
+export function VariantPreview(props: Omit<AIReasoningProps, 'children'>) {
+  return (
+    <div className="w-[min(26rem,90vw)] rounded-xl border border-border bg-card p-5 text-card-foreground">
+      <AIReasoning {...props}>
+        <p>The question asks for the cheapest route that still arrives before noon.</p>
+        <p className="mt-2">Train A is 12 minutes faster but costs twice as much. Train B arrives at 11:40, inside the limit.</p>
+      </AIReasoning>
     </div>
   )
 }

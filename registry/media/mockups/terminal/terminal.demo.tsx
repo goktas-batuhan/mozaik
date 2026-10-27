@@ -1,8 +1,8 @@
-import { Terminal, TerminalLine, TerminalTyping } from './terminal'
+import { Terminal, TerminalLine, TerminalTyping, type TerminalProps } from './terminal'
 
-export default function TerminalDemo() {
+function Lines() {
   return (
-    <Terminal title="~/mozaik-site" className="h-80" startOnView={false}>
+    <>
       <TerminalTyping>$ npm install motion</TerminalTyping>
       <TerminalLine className="text-muted-foreground">added 1 package in 1.1s</TerminalLine>
       <TerminalLine className="text-success">✔ Pasted terminal.tsx into src/components</TerminalLine>
@@ -12,6 +12,22 @@ export default function TerminalDemo() {
         Done in 1.2s. Import it and ship.
       </TerminalLine>
       <TerminalTyping delay={0.4}>$ npm run dev</TerminalTyping>
+    </>
+  )
+}
+
+export default function TerminalDemo() {
+  return (
+    <Terminal title="~/mozaik-site" className="h-80" startOnView={false}>
+      <Lines />
+    </Terminal>
+  )
+}
+
+export function VariantPreview(props: Omit<TerminalProps, 'children'>) {
+  return (
+    <Terminal {...props}>
+      <Lines />
     </Terminal>
   )
 }

@@ -1,13 +1,25 @@
 import { Command, Cpu, Gauge, Layers, ShieldCheck, Zap } from 'lucide-react'
-import { Spotlight } from './spotlight'
+import { Spotlight, type SpotlightProps } from './spotlight'
 
 const features = [
   { Icon: Zap, title: 'Instant', body: 'Under 50 ms from keypress to paint.' },
-  { Icon: Layers, title: 'Composable', body: 'Small pieces that stack cleanly.' },
-  { Icon: ShieldCheck, title: 'Accessible', body: 'Keyboard first, screen reader tested.' },
+  {
+    Icon: Layers,
+    title: 'Composable',
+    body: 'Small pieces that stack cleanly.',
+  },
+  {
+    Icon: ShieldCheck,
+    title: 'Accessible',
+    body: 'Keyboard first, screen reader tested.',
+  },
   { Icon: Command, title: 'Shortcuts', body: 'Every action one chord away.' },
   { Icon: Gauge, title: 'Measured', body: 'Budgets enforced on every build.' },
-  { Icon: Cpu, title: 'Lightweight', body: 'No runtime beyond React and Motion.' },
+  {
+    Icon: Cpu,
+    title: 'Lightweight',
+    body: 'No runtime beyond React and Motion.',
+  },
 ]
 
 export default function SpotlightDemo() {
@@ -26,6 +38,20 @@ export default function SpotlightDemo() {
           </Spotlight>
         ))}
       </div>
+    </div>
+  )
+}
+
+export function VariantPreview(props: Omit<SpotlightProps, 'children'>) {
+  return (
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {features.map(({ Icon, title, body }) => (
+        <Spotlight key={title} className="rounded-xl border bg-card p-5" {...props}>
+          <Icon className="size-5 text-primary" aria-hidden />
+          <h3 className="mt-6 text-sm font-medium text-card-foreground">{title}</h3>
+          <p className="mt-1 text-sm leading-snug text-muted-foreground">{body}</p>
+        </Spotlight>
+      ))}
     </div>
   )
 }

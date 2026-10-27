@@ -1,6 +1,6 @@
 import { useReducedMotion, useReducedMotionConfig } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { OrderBook, type OrderBookLevel } from './order-book'
+import { OrderBook, type OrderBookLevel, type OrderBookProps } from './order-book'
 
 /** OS setting, or forced on with <MotionConfig reducedMotion="always">. */
 function usePrefersReducedMotion() {
@@ -36,6 +36,14 @@ export default function OrderBookDemo() {
   return (
     <div className="w-[min(92vw,460px)]">
       <OrderBook bids={book.bids} asks={book.asks} levels={6} baseSymbol="ETH" quoteSymbol="USDC" lastPrice={MID} />
+    </div>
+  )
+}
+
+export function VariantPreview(props: OrderBookProps) {
+  return (
+    <div className="w-[min(92vw,460px)]">
+      <OrderBook {...props} />
     </div>
   )
 }

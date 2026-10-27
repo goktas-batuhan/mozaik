@@ -1,5 +1,5 @@
 import { ArrowRight, Sparkles } from 'lucide-react'
-import { ShimmerButton } from './shimmer-button'
+import { ShimmerButton, type ShimmerButtonProps } from './shimmer-button'
 
 export default function ShimmerButtonDemo() {
   return (
@@ -16,5 +16,13 @@ export default function ShimmerButtonDemo() {
         <ShimmerButton disabled>Disabled</ShimmerButton>
       </div>
     </div>
+  )
+}
+
+export function VariantPreview(props: Omit<ShimmerButtonProps, 'children'>) {
+  return (
+    <ShimmerButton className="px-8 py-4 text-base" {...props}>
+      Shimmer button
+    </ShimmerButton>
   )
 }

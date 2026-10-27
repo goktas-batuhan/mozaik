@@ -1,7 +1,7 @@
 import { Suspense, lazy, type ComponentType } from 'react'
 
 // Her öğe: registry/<group>/<shelf>/<ad>/ ya da blocks/<bölüm>/<raf>/<ad>/
-const demoModules = import.meta.glob<{ default: ComponentType }>(['/registry/*/*/*/*.demo.tsx', '/blocks/*/*/*/*.demo.tsx'])
+const demoModules = import.meta.glob<{ default: ComponentType; VariantPreview?: ComponentType<Record<string, unknown>> }>(['/registry/*/*/*/*.demo.tsx', '/blocks/*/*/*/*.demo.tsx'])
 const variantModules = import.meta.glob<{ variants: Variant[] }>(['/registry/*/*/*/variants.ts', '/blocks/*/*/*/variants.ts'], {
   eager: true,
 })
@@ -24,13 +24,15 @@ const exportName = (name: string) => name.replace(/(^|-)(\w)/g, (_, __, c: strin
 const demos = Object.fromEntries(Object.entries(demoModules).map(([path, load]) => [nameOf(path), lazy(load)]))
 const variants = Object.fromEntries(Object.entries(variantModules).map(([path, mod]) => [nameOf(path), mod.variants]))
 
-/** Varyant önizlemesi: component'in kendisi, varyantın prop setiyle. */
+/** Varyant önizlemesi: component'in kendisi, varyantın prop setiyle. İçeriği JSX olan component'te
+ * demo dosyası `VariantPreview` verir; prop setini alır, içeriği (çocuklar, ikonlar) kendisi ekler. */
 function variantPreview(name: string, variant: Variant) {
   const load = Object.entries(componentModules).find(([path]) => path.endsWith(`/${name}/${name}.tsx`))?.[1]
+  const loadDemo = Object.entries(demoModules).find(([path]) => path.endsWith(`/${name}/${name}.demo.tsx`))?.[1]
   if (!load) return null
   return lazy(async () => {
-    const Component = (await load())[exportName(name)]
-    return { default: () => <Component {...variant.props} /> }
+    const Preview = (await loadDemo?.())?.VariantPreview ?? (await load())[exportName(name)]
+    return { default: () => <Preview {...variant.props} /> }
   })
 }
 

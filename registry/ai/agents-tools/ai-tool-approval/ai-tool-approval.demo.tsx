@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AIToolApproval, type ToolDecision } from './ai-tool-approval'
+import { AIToolApproval, type AIToolApprovalProps, type ToolDecision } from './ai-tool-approval'
 
 const CALLS = [
   {
@@ -45,6 +45,14 @@ export default function AIToolApprovalDemo() {
           Next call
         </button>
       )}
+    </div>
+  )
+}
+
+export function VariantPreview(props: AIToolApprovalProps) {
+  return (
+    <div className="w-[min(92vw,440px)]">
+      <AIToolApproval {...props} />
     </div>
   )
 }

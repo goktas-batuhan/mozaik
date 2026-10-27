@@ -1,4 +1,4 @@
-import { ThumbnailCarousel, type ThumbnailCarouselItem } from './thumbnail-carousel'
+import { ThumbnailCarousel, type ThumbnailCarouselItem, type ThumbnailCarouselProps } from './thumbnail-carousel'
 
 const tones = [
   'from-primary/50 to-muted',
@@ -26,6 +26,14 @@ export default function ThumbnailCarouselDemo() {
   return (
     <div className="w-[640px] max-w-full">
       <ThumbnailCarousel items={items} height={300} label="Trail photos" />
+    </div>
+  )
+}
+
+export function VariantPreview(props: Omit<ThumbnailCarouselProps, 'items'>) {
+  return (
+    <div className="w-[640px] max-w-full">
+      <ThumbnailCarousel items={items} {...props} />
     </div>
   )
 }

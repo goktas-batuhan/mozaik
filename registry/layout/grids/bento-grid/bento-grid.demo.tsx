@@ -1,5 +1,5 @@
 import { Accessibility, Braces, Keyboard, Moon, Palette, Terminal } from 'lucide-react'
-import { BentoCard, BentoGrid } from './bento-grid'
+import { BentoCard, BentoGrid, type BentoGridProps } from './bento-grid'
 
 const tileShades = ['bg-primary', 'bg-primary/60', 'bg-primary/25', 'bg-muted', 'bg-primary/40', 'bg-primary/80', 'bg-muted', 'bg-primary/15']
 
@@ -96,10 +96,9 @@ function CodeLines() {
   )
 }
 
-export default function BentoGridDemo() {
+function Cards() {
   return (
-    <div className="w-full max-w-4xl">
-      <BentoGrid rowHeight="11rem">
+    <>
         <BentoCard
           colSpan={2}
           icon={<Palette />}
@@ -128,6 +127,25 @@ export default function BentoGridDemo() {
           visual={<CodeLines />}
           href="#"
         />
+      </>
+  )
+}
+
+export default function BentoGridDemo() {
+  return (
+    <div className="w-full max-w-4xl">
+      <BentoGrid rowHeight="11rem">
+        <Cards />
+      </BentoGrid>
+    </div>
+  )
+}
+
+export function VariantPreview(props: Omit<BentoGridProps, 'children'>) {
+  return (
+    <div className="w-full max-w-4xl">
+      <BentoGrid {...props}>
+        <Cards />
       </BentoGrid>
     </div>
   )

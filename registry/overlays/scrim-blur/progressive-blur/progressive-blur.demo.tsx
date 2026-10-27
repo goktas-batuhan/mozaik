@@ -1,4 +1,5 @@
-import { ProgressiveBlur } from './progressive-blur'
+import type { ReactNode } from 'react'
+import { ProgressiveBlur, type ProgressiveBlurProps } from './progressive-blur'
 
 const rows = [
   'Browse the gallery',
@@ -13,7 +14,7 @@ const rows = [
   'Share the demo',
 ]
 
-export default function ProgressiveBlurDemo() {
+function List({ children }: { children: ReactNode }) {
   return (
     <div className="relative h-[22rem] w-[min(24rem,90vw)] overflow-hidden rounded-2xl border border-border bg-background">
       <div className="h-full overflow-y-auto p-4" tabIndex={0} role="region" aria-label="Scrollable list">
@@ -31,7 +32,23 @@ export default function ProgressiveBlurDemo() {
           ))}
         </ul>
       </div>
-      <ProgressiveBlur position="both" height="5rem" />
+      {children}
     </div>
+  )
+}
+
+export default function ProgressiveBlurDemo() {
+  return (
+    <List>
+      <ProgressiveBlur position="both" height="5rem" />
+    </List>
+  )
+}
+
+export function VariantPreview(props: ProgressiveBlurProps) {
+  return (
+    <List>
+      <ProgressiveBlur {...props} />
+    </List>
   )
 }

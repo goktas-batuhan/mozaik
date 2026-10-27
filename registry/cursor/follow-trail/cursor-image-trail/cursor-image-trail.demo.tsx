@@ -1,5 +1,5 @@
 import { Compass, Mountain, Snowflake, Sunrise, Waves } from 'lucide-react'
-import { CursorImageTrail } from './cursor-image-trail'
+import { CursorImageTrail, type CursorImageTrailProps } from './cursor-image-trail'
 
 const tones = [
   'from-primary/50 via-primary/15 to-muted',
@@ -26,6 +26,18 @@ export default function CursorImageTrailDemo() {
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">Move across the panel</p>
         <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Leave a trail</h2>
       </div>
+    </CursorImageTrail>
+  )
+}
+
+export function VariantPreview(props: Omit<CursorImageTrailProps, 'items' | 'children'>) {
+  return (
+    <CursorImageTrail
+      items={items}
+      className="grid h-[380px] w-[760px] max-w-full place-items-center rounded-2xl border bg-card"
+      {...props}
+    >
+      <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Leave a trail</h2>
     </CursorImageTrail>
   )
 }

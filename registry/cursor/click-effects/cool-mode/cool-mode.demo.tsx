@@ -1,4 +1,4 @@
-import { CoolMode } from './cool-mode'
+import { CoolMode, type CoolModeProps } from './cool-mode'
 
 const button =
   'rounded-full px-7 py-4 text-base font-medium shadow-lg transition-transform active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring'
@@ -22,6 +22,19 @@ export default function CoolModeDemo() {
           </button>
         </CoolMode>
       </div>
+    </div>
+  )
+}
+
+export function VariantPreview(props: Omit<CoolModeProps, 'children'>) {
+  return (
+    <div className="grid place-items-center gap-4 text-center">
+      <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">Press and hold</p>
+      <CoolMode {...props}>
+        <button type="button" className={`${button} bg-primary text-primary-foreground shadow-primary/20`}>
+          Celebrate
+        </button>
+      </CoolMode>
     </div>
   )
 }

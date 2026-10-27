@@ -1,6 +1,7 @@
-import { BorderBeam } from './border-beam'
+import type { ReactNode } from 'react'
+import { BorderBeam, type BorderBeamProps } from './border-beam'
 
-export default function BorderBeamDemo() {
+function PlanCard({ children }: { children: ReactNode }) {
   return (
     <div className="relative w-[min(26rem,90vw)] overflow-hidden rounded-2xl border border-border bg-card p-8 text-card-foreground">
       <p className="text-xs font-medium tracking-widest text-muted-foreground uppercase">Pro plan</p>
@@ -14,8 +15,24 @@ export default function BorderBeamDemo() {
       >
         Get started
       </button>
+      {children}
+    </div>
+  )
+}
+
+export default function BorderBeamDemo() {
+  return (
+    <PlanCard>
       <BorderBeam size={120} duration={7} />
       <BorderBeam size={120} duration={7} delay={3.5} colorFrom="var(--foreground)" colorTo="var(--primary)" />
-    </div>
+    </PlanCard>
+  )
+}
+
+export function VariantPreview(props: BorderBeamProps) {
+  return (
+    <PlanCard>
+      <BorderBeam {...props} />
+    </PlanCard>
   )
 }

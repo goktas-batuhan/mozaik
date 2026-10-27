@@ -90,7 +90,34 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "slide-in",
+        "title": "Slide in",
+        "description": "Slides in from the left over a long distance while it fades.",
+        "props": {
+          "children": "Sliding in from the side",
+          "direction": "left",
+          "offset": 48,
+          "duration": 0.8,
+          "className": "text-4xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "heavy-blur",
+        "title": "Heavy blur",
+        "description": "Resolves from a very strong blur with no movement.",
+        "props": {
+          "children": "Out of focus, then sharp",
+          "blur": 28,
+          "offset": 0,
+          "duration": 1.4,
+          "className": "text-4xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { BlurFade } from './blur-fade'\n\nexport default function BlurFadeDemo() {\n  return (\n    <div className=\"flex w-[min(40rem,90vw)] flex-col items-center gap-4 text-center\">\n      <BlurFade delay={0.1}>\n        <p className=\"text-xs font-medium tracking-widest text-muted-foreground uppercase\">Introducing</p>\n      </BlurFade>\n      <BlurFade delay={0.25} duration={0.6} blur={10}>\n        <h2 className=\"text-5xl font-semibold tracking-tight\">Blur, then clarity</h2>\n      </BlurFade>\n      <BlurFade delay={0.45}>\n        <p className=\"max-w-md text-muted-foreground\">\n          Stagger a few of these with <code className=\"rounded bg-muted px-1.5 py-0.5 text-sm\">delay</code> and a page\n          assembles itself in order.\n        </p>\n      </BlurFade>\n      <BlurFade delay={0.65} direction=\"left\">\n        <a\n          href=\"#start\"\n          className=\"mt-2 inline-block rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n        >\n          Get started\n        </a>\n      </BlurFade>\n    </div>\n  )\n}\n",
     "path": "registry/text/reveal/blur-fade"
   },
@@ -173,7 +200,25 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "play-once",
+        "title": "Play once",
+        "description": "Paints each word in a single time and stops on the last one.",
+        "props": {
+          "prefix": "Design that feels",
+          "words": [
+            "effortless",
+            "considered",
+            "alive"
+          ],
+          "loop": false,
+          "duration": 1.4,
+          "className": "text-5xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { ChromaticTextReveal } from './chromatic-text-reveal'\n\nexport default function ChromaticTextRevealDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6 text-center\">\n      <ChromaticTextReveal\n        prefix=\"Design that feels\"\n        words={['effortless', 'considered', 'alive']}\n        className=\"text-5xl font-semibold tracking-tight\"\n      />\n      <p className=\"max-w-md text-sm text-muted-foreground\">\n        Each word is painted in by a soft colored edge, then makes room for the next.\n      </p>\n    </div>\n  )\n}\n",
     "path": "registry/text/reveal/chromatic-text-reveal"
   },
@@ -265,7 +310,34 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "letters",
+        "title": "Letters",
+        "description": "Reveals the text one letter at a time instead of word by word.",
+        "props": {
+          "text": "Every letter lands on its own.",
+          "split": "chars",
+          "trigger": "mount",
+          "as": "h2",
+          "className": "text-5xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "sharp-words",
+        "title": "Sharp words",
+        "description": "Words rise out of a mask with no blur at all.",
+        "props": {
+          "text": "Clean edges from the very first frame.",
+          "blur": 0,
+          "trigger": "mount",
+          "as": "h2",
+          "className": "text-5xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { RotateCcw } from 'lucide-react'\nimport { useState } from 'react'\nimport { SplitReveal } from './split-reveal'\n\nexport default function SplitRevealDemo() {\n  const [run, setRun] = useState(0)\n\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col items-start gap-8\">\n      <div key={run} className=\"flex flex-col gap-5\">\n        <SplitReveal\n          text=\"CHAPTER 01 / MOTION\"\n          split=\"chars\"\n          trigger=\"mount\"\n          duration={0.6}\n          className=\"font-mono text-xs tracking-[0.3em] text-primary\"\n        />\n        <SplitReveal\n          as=\"h2\"\n          text=\"Interfaces that feel considered, down to the very last frame.\"\n          trigger=\"mount\"\n          delay={0.15}\n          className=\"text-4xl font-semibold leading-[1.1] tracking-tight text-balance sm:text-5xl\"\n        />\n        <SplitReveal\n          text=\"Every word rises out of its own mask and sharpens as it lands. Split by words for headlines, by letters for labels.\"\n          trigger=\"mount\"\n          delay={0.6}\n          stagger={0.02}\n          blur={4}\n          className=\"max-w-xl text-base leading-relaxed text-muted-foreground\"\n        />\n      </div>\n\n      <button\n        type=\"button\"\n        onClick={() => setRun((r) => r + 1)}\n        className=\"inline-flex items-center gap-2 rounded-full border bg-card px-4 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n      >\n        <RotateCcw className=\"size-3.5\" aria-hidden />\n        Replay\n      </button>\n    </div>\n  )\n}\n",
     "path": "registry/text/reveal/split-reveal"
   },
@@ -375,7 +447,38 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "block-cursor",
+        "title": "Block cursor",
+        "description": "Types and deletes several phrases with a solid terminal block cursor.",
+        "props": {
+          "words": [
+            "npx shadcn add",
+            "npm run dev",
+            "git push"
+          ],
+          "loop": true,
+          "cursorStyle": "block",
+          "startOnView": false,
+          "className": "font-mono text-4xl font-semibold"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "quick-no-cursor",
+        "title": "Quick, no cursor",
+        "description": "Types one line very fast with the cursor hidden.",
+        "props": {
+          "children": "Typed in a blink, with no cursor in sight.",
+          "duration": 0.015,
+          "showCursor": false,
+          "startOnView": false,
+          "className": "text-2xl"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { TypingAnimation } from './typing-animation'\n\nexport default function TypingAnimationDemo() {\n  return (\n    <div className=\"flex w-[min(40rem,90vw)] flex-col items-center gap-6 text-center\">\n      <p className=\"text-xs font-medium tracking-widest text-muted-foreground uppercase\">Now typing</p>\n      <h2 className=\"min-h-[1.2em] text-5xl font-semibold tracking-tight\">\n        <TypingAnimation\n          startOnView={false}\n          loop\n          pause={1.4}\n          words={['Design systems', 'Motion that behaves', 'Components you own']}\n        />\n      </h2>\n      <p className=\"text-muted-foreground\">\n        <TypingAnimation startOnView={false} delay={0.4} duration={0.03} cursorStyle=\"underscore\">\n          One sentence, typed once, left alone afterwards.\n        </TypingAnimation>\n      </p>\n    </div>\n  )\n}\n",
     "path": "registry/text/reveal/typing-animation"
   },
@@ -453,7 +556,24 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "slow-morph",
+        "title": "Slow morph",
+        "description": "Long, gentle morphs that linger between words.",
+        "props": {
+          "words": [
+            "Calm",
+            "Clear",
+            "Crafted"
+          ],
+          "interval": 2.5,
+          "duration": 1.8,
+          "className": "text-6xl font-bold tracking-tight sm:text-8xl"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { MorphingText } from './morphing-text'\n\nexport default function MorphingTextDemo() {\n  return (\n    <MorphingText\n      words={['Mozaik', 'Motion', 'Craft', 'Detail']}\n      className=\"text-6xl font-bold tracking-tight sm:text-8xl\"\n    />\n  )\n}\n",
     "path": "registry/text/rotate-morph/morphing-text"
   },
@@ -530,7 +650,27 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "rapid",
+        "title": "Rapid",
+        "description": "Swaps words every second with a snappy transition.",
+        "props": {
+          "words": [
+            "fast",
+            "bold",
+            "quick",
+            "sharp",
+            "live"
+          ],
+          "interval": 1,
+          "duration": 0.2,
+          "as": "h2",
+          "className": "text-5xl font-semibold tracking-tight text-primary"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { WordRotate } from './word-rotate'\n\nexport default function WordRotateDemo() {\n  return (\n    <h2 className=\"flex items-baseline gap-3 text-5xl font-semibold tracking-tight\">\n      <span>Build something</span>\n      <WordRotate words={['calm', 'sharp', 'useful', 'yours']} className=\"text-primary\" />\n    </h2>\n  )\n}\n",
     "path": "registry/text/rotate-morph/word-rotate"
   },
@@ -620,7 +760,34 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "countdown",
+        "title": "Countdown",
+        "description": "Counts down from the value to a lower start number.",
+        "props": {
+          "value": 100,
+          "startValue": 0,
+          "direction": "down",
+          "duration": 3,
+          "className": "text-6xl font-semibold tabular-nums"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "currency",
+        "title": "Currency",
+        "description": "A slow count to a two-decimal amount with German number formatting.",
+        "props": {
+          "value": 12489.5,
+          "decimalPlaces": 2,
+          "locale": "de-DE",
+          "duration": 3,
+          "className": "text-6xl font-semibold tabular-nums"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { NumberTicker } from './number-ticker'\n\nconst stats = [\n  { value: 120, suffix: '+', label: 'Components' },\n  { value: 99.9, suffix: '%', label: 'Uptime', decimals: 1 },\n  { value: 48210, suffix: '', label: 'Installs' },\n]\n\nexport default function NumberTickerDemo() {\n  return (\n    <div className=\"grid w-[min(48rem,90vw)] grid-cols-3 divide-x divide-border rounded-2xl border border-border bg-card\">\n      {stats.map((s, i) => (\n        <div key={s.label} className=\"flex flex-col items-center gap-1 px-4 py-10\">\n          <p className=\"text-4xl font-semibold tracking-tight text-card-foreground sm:text-5xl\">\n            <NumberTicker value={s.value} decimalPlaces={s.decimals ?? 0} delay={i * 0.15} />\n            <span className=\"text-primary\">{s.suffix}</span>\n          </p>\n          <p className=\"text-sm text-muted-foreground\">{s.label}</p>\n        </div>\n      ))}\n    </div>\n  )\n}\n",
     "path": "registry/text/counter/number-ticker"
   },
@@ -699,7 +866,20 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "on-mount",
+        "title": "On mount",
+        "description": "Rolls the letters once as soon as the text appears.",
+        "props": {
+          "text": "Rolling into view",
+          "trigger": "mount",
+          "as": "h2",
+          "className": "text-5xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { RollingText } from './rolling-text'\n\nexport default function RollingTextDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6 text-center\">\n      <RollingText\n        as=\"h2\"\n        text=\"Hover to roll\"\n        className=\"text-5xl font-semibold tracking-tight\"\n      />\n      <a\n        href=\"#\"\n        className=\"group rounded-full border px-5 py-2 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-2\"\n      >\n        <RollingText text=\"Get started\" />\n      </a>\n    </div>\n  )\n}\n",
     "path": "registry/text/counter/rolling-text"
   },
@@ -785,7 +965,25 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "rapid-board",
+        "title": "Rapid board",
+        "description": "A departures board that flips quickly through city names.",
+        "props": {
+          "words": [
+            "Berlin",
+            "Tokyo",
+            "Lisbon",
+            "Oslo"
+          ],
+          "interval": 1.2,
+          "duration": 0.2,
+          "className": "text-4xl sm:text-6xl"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { SplitFlapText } from './split-flap-text'\n\nexport default function SplitFlapTextDemo() {\n  return (\n    <SplitFlapText\n      words={['Now boarding', 'Gate 12', 'On time', 'Last call']}\n      className=\"text-4xl sm:text-6xl\"\n    />\n  )\n}\n",
     "path": "registry/text/counter/split-flap-text"
   },
@@ -865,7 +1063,33 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "hover-decode",
+        "title": "Hover decode",
+        "description": "Scrambles and decodes the text each time you hover it.",
+        "props": {
+          "text": "Hover to decode",
+          "trigger": "hover",
+          "as": "h2",
+          "className": "font-mono text-5xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "binary",
+        "title": "Binary",
+        "description": "A slow decode through zeros and ones only.",
+        "props": {
+          "text": "SIGNAL ACQUIRED",
+          "characters": "01",
+          "duration": 2.4,
+          "as": "h2",
+          "className": "font-mono text-5xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { RotateCcw } from 'lucide-react'\nimport { useState } from 'react'\nimport { ScrambleText } from './scramble-text'\n\nconst links = ['Work', 'Writing', 'Contact']\n\nexport default function ScrambleTextDemo() {\n  const [run, setRun] = useState(0)\n\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col items-center gap-10 text-center\">\n      <div key={run} className=\"flex flex-col items-center gap-4\">\n        <ScrambleText\n          text=\"// incoming transmission\"\n          delay={0.1}\n          duration={0.8}\n          className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\"\n        />\n        <ScrambleText\n          as=\"h2\"\n          text=\"SIGNAL ACQUIRED\"\n          delay={0.3}\n          duration={1.4}\n          className=\"font-mono text-5xl font-semibold tracking-tight sm:text-6xl\"\n        />\n        <ScrambleText\n          as=\"p\"\n          text=\"Encrypted end to end. Readable only by you.\"\n          characters=\"01\"\n          delay={0.6}\n          duration={1.2}\n          className=\"font-mono text-sm text-muted-foreground\"\n        />\n      </div>\n\n      <nav aria-label=\"Demo links\" className=\"flex flex-wrap justify-center gap-2\">\n        {links.map((label) => (\n          <a\n            key={label}\n            href=\"#\"\n            className=\"rounded-full border bg-card px-4 py-1.5 font-mono text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n          >\n            <ScrambleText text={label} trigger=\"hover\" duration={0.45} />\n          </a>\n        ))}\n      </nav>\n\n      <button\n        type=\"button\"\n        onClick={() => setRun((r) => r + 1)}\n        className=\"inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n      >\n        <RotateCcw className=\"size-3.5\" aria-hidden />\n        Replay\n      </button>\n    </div>\n  )\n}\n",
     "path": "registry/text/effect/scramble-text"
   },
@@ -1107,7 +1331,22 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "big-wave",
+        "title": "Big wave",
+        "description": "Tall, quick swells that travel across each letter.",
+        "props": {
+          "text": "Make some waves",
+          "amplitude": 18,
+          "duration": 1.1,
+          "stagger": 0.1,
+          "as": "h2",
+          "className": "text-6xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { WaveText } from './wave-text'\n\nexport default function WaveTextDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6 text-center\">\n      <WaveText as=\"h2\" text=\"Ride the wave\" className=\"text-6xl font-semibold tracking-tight\" />\n      <WaveText\n        text=\"Every letter moves a little later than the last\"\n        amplitude={5}\n        duration={1.8}\n        className=\"text-lg text-muted-foreground\"\n      />\n    </div>\n  )\n}\n",
     "path": "registry/text/effect/wave-text"
   },
@@ -1235,7 +1474,31 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "coarse-newsprint",
+        "title": "Coarse newsprint",
+        "description": "Big, widely spaced dots at a shallow screen angle, like cheap newsprint.",
+        "props": {
+          "cell": 20,
+          "angle": 15,
+          "children": "Extra, extra"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "fine-still",
+        "title": "Fine and still",
+        "description": "A tight, fine screen with the light held in place.",
+        "props": {
+          "cell": 5,
+          "speed": 0,
+          "interactive": false,
+          "children": "Fine screen"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { HalftoneBackground } from './halftone-background'\n\nexport default function HalftoneBackgroundDemo() {\n  return (\n    <HalftoneBackground className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-center justify-end rounded-2xl border px-8 pb-10 text-center sm:items-start sm:justify-center sm:pb-0 sm:pl-14 sm:text-left\">\n      <h2 className=\"max-w-sm text-5xl font-semibold tracking-tight text-balance\">Printed in dots</h2>\n      <p className=\"mt-4 max-w-sm text-base text-muted-foreground text-pretty\">\n        A halftone screen where the size of every dot is the amount of ink. The light circles\n        the sphere on its own; move your cursor to take it for a walk.\n      </p>\n    </HalftoneBackground>\n  )\n}\n",
     "path": "registry/backgrounds/canvas/halftone-background"
   },
@@ -1325,7 +1588,34 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "shower",
+        "title": "Shower",
+        "description": "A dense, fast shower of short meteors.",
+        "props": {
+          "number": 60,
+          "minDuration": 1.2,
+          "maxDuration": 2.5,
+          "distance": 400,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "slanted",
+        "title": "Slanted",
+        "description": "A few slow meteors leaning right instead of left.",
+        "props": {
+          "number": 8,
+          "angle": -35,
+          "minDuration": 5,
+          "maxDuration": 9,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { Meteors } from './meteors'\n\nexport default function MeteorsDemo() {\n  return (\n    <div className=\"relative flex h-[26rem] w-[min(48rem,90vw)] flex-col items-center justify-center overflow-hidden rounded-2xl border border-border bg-card\">\n      <Meteors number={26} distance={560} />\n      <p className=\"relative text-xs font-medium tracking-widest text-muted-foreground uppercase\">Night shift</p>\n      <h3 className=\"relative mt-3 text-4xl font-semibold tracking-tight text-card-foreground\">Quiet sky, busy build</h3>\n      <p className=\"relative mt-2 max-w-sm text-center text-sm text-muted-foreground\">\n        Meteors fill whatever box you put them in, and stay behind your content.\n      </p>\n    </div>\n  )\n}\n",
     "path": "registry/backgrounds/canvas/meteors"
   },
@@ -1397,7 +1687,32 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "dense-contours",
+        "title": "Dense contours",
+        "description": "Closely packed contour lines on a different terrain.",
+        "props": {
+          "interval": 0.025,
+          "seed": 7,
+          "children": "Dense map"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "still-relief",
+        "title": "Still relief",
+        "description": "Widely spaced contours on frozen terrain that ignores the cursor.",
+        "props": {
+          "interval": 0.18,
+          "speed": 0,
+          "interactive": false,
+          "seed": 3,
+          "children": "Still relief"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { TopoBackground } from './topo-background'\n\nexport default function TopoBackgroundDemo() {\n  return (\n    <TopoBackground className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-center justify-center rounded-2xl border px-8 text-center\">\n      <h2 className=\"max-w-xl text-5xl font-semibold tracking-tight text-balance\">Find your footing</h2>\n      <p className=\"mt-4 max-w-md text-base text-muted-foreground text-pretty\">\n        A living contour map. The terrain drifts on its own; move your cursor to raise a hill\n        and watch the lines bend around it.\n      </p>\n    </TopoBackground>\n  )\n}\n",
     "path": "registry/backgrounds/canvas/topo-background"
   },
@@ -1459,7 +1774,32 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "left-lean",
+        "title": "Left lean",
+        "description": "Tight lines leaning left that run to the edges without fading.",
+        "props": {
+          "angle": 135,
+          "spacing": 6,
+          "strength": 18,
+          "fade": false,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border bg-background"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "wide-bold",
+        "title": "Wide and bold",
+        "description": "Widely spaced, heavy lines.",
+        "props": {
+          "spacing": 28,
+          "strength": 30,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border bg-background"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { DiagonalHatch } from './diagonal-hatch'\n\nexport default function DiagonalHatchDemo() {\n  return (\n    <div className=\"relative isolate grid h-[420px] w-[820px] max-w-full place-items-center overflow-hidden rounded-2xl border bg-background\">\n      <DiagonalHatch />\n      <div className=\"relative rounded-xl border bg-card px-8 py-6 text-center shadow-sm\">\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Shaded, not shouting</h2>\n        <p className=\"mt-2 max-w-xs text-sm text-muted-foreground\">\n          A quiet texture that gives flat surfaces some grain.\n        </p>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/backgrounds/pattern/diagonal-hatch"
   },
@@ -1538,7 +1878,36 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "dense-flat",
+        "title": "Dense and flat",
+        "description": "Tight, fine dots across the whole box, with no fade, glow or grain.",
+        "props": {
+          "gap": 12,
+          "dotSize": 1.5,
+          "fade": false,
+          "glow": false,
+          "noise": false,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border",
+          "children": "Dense grid"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "big-glow",
+        "title": "Big glow",
+        "description": "Large, sparse dots with a wide cursor glow.",
+        "props": {
+          "gap": 40,
+          "dotSize": 4,
+          "glowRadius": 260,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border",
+          "children": "Move over me"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { MousePointer2 } from 'lucide-react'\nimport { DotGrid } from './dot-grid'\n\nexport default function DotGridDemo() {\n  return (\n    <DotGrid className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-center justify-center rounded-2xl border px-8 text-center\">\n      <span className=\"inline-flex items-center gap-1.5 rounded-full border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground\">\n        <MousePointer2 aria-hidden className=\"size-3.5\" />\n        Move your cursor\n      </span>\n      <h2 className=\"mt-6 max-w-xl text-5xl font-semibold tracking-tight text-balance\">\n        Every pixel on the grid\n      </h2>\n      <p className=\"mt-4 max-w-md text-base text-muted-foreground text-pretty\">\n        A quiet dot pattern with a fine grain. The dots near your pointer warm up and\n        grow; the edges fade into the page.\n      </p>\n    </DotGrid>\n  )\n}\n",
     "path": "registry/backgrounds/pattern/dot-grid"
   },
@@ -1594,7 +1963,32 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "fine-plain",
+        "title": "Fine and plain",
+        "description": "Small squares with no major lines and no fade.",
+        "props": {
+          "size": 12,
+          "majorEvery": 0,
+          "fade": "none",
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border bg-background"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "blueprint-fade",
+        "title": "Large fading down",
+        "description": "Large squares with a strong line every four cells, fading out towards the bottom.",
+        "props": {
+          "size": 40,
+          "majorEvery": 4,
+          "fade": "vertical",
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border bg-background"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { GraphPaper } from './graph-paper'\n\nexport default function GraphPaperDemo() {\n  return (\n    <div className=\"relative isolate grid h-[420px] w-[820px] max-w-full place-items-center overflow-hidden rounded-2xl border bg-background\">\n      <GraphPaper />\n      <div className=\"relative text-center\">\n        <p className=\"text-sm font-medium uppercase tracking-widest text-muted-foreground\">Blueprint</p>\n        <h2 className=\"mt-2 text-5xl font-semibold tracking-tight\">Plotted to the pixel</h2>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/backgrounds/pattern/graph-paper"
   },
@@ -1667,7 +2061,32 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "steep-slow",
+        "title": "Steep and slow",
+        "description": "A steeply tilted floor of large cells rolling slowly.",
+        "props": {
+          "angle": 80,
+          "cellSize": 100,
+          "duration": 40,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border bg-background"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "flat-fast",
+        "title": "Flat and fast",
+        "description": "A shallow tilt of small cells rushing past.",
+        "props": {
+          "angle": 35,
+          "cellSize": 32,
+          "duration": 6,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border bg-background"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { RetroGrid } from './retro-grid'\n\nexport default function RetroGridDemo() {\n  return (\n    <div className=\"relative flex h-[26rem] w-[min(48rem,90vw)] flex-col items-center justify-center overflow-hidden rounded-2xl border border-border bg-background\">\n      <RetroGrid />\n      <p className=\"relative text-xs font-medium tracking-widest text-primary uppercase\">Perspective</p>\n      <h3 className=\"relative mt-3 bg-linear-to-b from-foreground to-foreground/50 bg-clip-text text-5xl font-semibold tracking-tight text-transparent\">\n        Grid to the horizon\n      </h3>\n      <p className=\"relative mt-3 max-w-sm text-center text-sm text-muted-foreground\">\n        A floor of lines rolling toward you. Tilt, cell size and speed are props.\n      </p>\n    </div>\n  )\n}\n",
     "path": "registry/backgrounds/pattern/retro-grid"
   },
@@ -1723,7 +2142,30 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "vivid-fast",
+        "title": "Vivid and fast",
+        "description": "A bright aurora sweeping at three times the speed.",
+        "props": {
+          "intensity": 1,
+          "speed": 3,
+          "children": "Northern lights"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "faint-still",
+        "title": "Faint and still",
+        "description": "A barely-there aurora held perfectly still.",
+        "props": {
+          "intensity": 0.25,
+          "speed": 0,
+          "children": "Quiet sky"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { ArrowRight } from 'lucide-react'\nimport { AuroraBackground } from './aurora-background'\n\nexport default function AuroraBackgroundDemo() {\n  return (\n    <AuroraBackground className=\"flex h-[500px] w-[min(900px,calc(100vw-4rem))] flex-col items-center justify-center rounded-2xl border px-8 text-center\">\n      <span className=\"rounded-full border bg-background/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur\">\n        Now in public beta\n      </span>\n      <h2 className=\"mt-6 max-w-xl text-5xl font-semibold tracking-tight text-balance\">\n        Ship interfaces that feel alive\n      </h2>\n      <p className=\"mt-4 max-w-md text-base text-muted-foreground text-pretty\">\n        A slow, soft aurora that stays out of the way of your content and rests when\n        nobody is looking.\n      </p>\n      <div className=\"mt-8 flex items-center gap-3\">\n        <a\n          href=\"#\"\n          className=\"inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2\"\n        >\n          Get started <ArrowRight aria-hidden className=\"size-4\" />\n        </a>\n        <a\n          href=\"#\"\n          className=\"rounded-full border bg-background/60 px-5 py-2.5 text-sm font-medium backdrop-blur transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2\"\n        >\n          Read the docs\n        </a>\n      </div>\n    </AuroraBackground>\n  )\n}\n",
     "path": "registry/backgrounds/gradient/aurora-background"
   },
@@ -1782,7 +2224,29 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "still-glow",
+        "title": "Still glow",
+        "description": "The glows held in place with no drift.",
+        "props": {
+          "animated": false,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border bg-background"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "fast-faint",
+        "title": "Fast and faint",
+        "description": "Dim glows that drift in a quick six-second cycle.",
+        "props": {
+          "duration": 6,
+          "intensity": 0.4,
+          "className": "relative h-64 w-[28rem] max-w-full overflow-hidden rounded-xl border bg-background"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { MeshGlow } from './mesh-glow'\n\nexport default function MeshGlowDemo() {\n  return (\n    <div className=\"relative isolate grid h-[420px] w-[820px] max-w-full place-items-center overflow-hidden rounded-2xl border bg-background\">\n      <MeshGlow />\n      <div className=\"relative text-center\">\n        <p className=\"text-sm font-medium uppercase tracking-widest text-muted-foreground\">Ambient</p>\n        <h2 className=\"mt-2 text-5xl font-semibold tracking-tight\">Light with no source</h2>\n        <p className=\"mx-auto mt-3 max-w-sm text-sm text-muted-foreground\">\n          Three slow glows, a faint grid and a vignette. Nothing to read, everything to feel.\n        </p>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/backgrounds/gradient/mesh-glow"
   },
@@ -1877,8 +2341,33 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Compass, Mountain, Snowflake, Sunrise, Waves } from 'lucide-react'\nimport { CursorImageTrail } from './cursor-image-trail'\n\nconst tones = [\n  'from-primary/50 via-primary/15 to-muted',\n  'from-muted-foreground/35 via-muted to-card',\n  'from-primary/30 via-muted to-secondary',\n  'from-foreground/20 via-muted to-card',\n  'from-primary/40 via-secondary to-muted',\n]\nconst icons = [Mountain, Snowflake, Sunrise, Waves, Compass]\n\nconst items = icons.map((Icon, i) => (\n  <div key={i} className={`grid size-full place-items-center border border-border bg-linear-to-br ${tones[i]}`}>\n    <Icon className=\"size-8 text-foreground/50\" aria-hidden />\n  </div>\n))\n\nexport default function CursorImageTrailDemo() {\n  return (\n    <CursorImageTrail\n      items={items}\n      className=\"grid h-[380px] w-[760px] max-w-full place-items-center rounded-2xl border bg-card\"\n    >\n      <div className=\"space-y-3 text-center\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move across the panel</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Leave a trail</h2>\n      </div>\n    </CursorImageTrail>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "dense-small",
+        "title": "Dense and small",
+        "description": "Small, unrotated tiles drop every few pixels and vanish quickly.",
+        "props": {
+          "distance": 40,
+          "itemSize": 56,
+          "duration": 0.4,
+          "rotate": 0
+        },
+        "status": "stable"
+      },
+      {
+        "name": "big-lazy",
+        "title": "Big and lazy",
+        "description": "Large, tilted tiles are spaced far apart and linger for over a second.",
+        "props": {
+          "distance": 160,
+          "itemSize": 160,
+          "duration": 1.2,
+          "rotate": 30
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Compass, Mountain, Snowflake, Sunrise, Waves } from 'lucide-react'\nimport { CursorImageTrail, type CursorImageTrailProps } from './cursor-image-trail'\n\nconst tones = [\n  'from-primary/50 via-primary/15 to-muted',\n  'from-muted-foreground/35 via-muted to-card',\n  'from-primary/30 via-muted to-secondary',\n  'from-foreground/20 via-muted to-card',\n  'from-primary/40 via-secondary to-muted',\n]\nconst icons = [Mountain, Snowflake, Sunrise, Waves, Compass]\n\nconst items = icons.map((Icon, i) => (\n  <div key={i} className={`grid size-full place-items-center border border-border bg-linear-to-br ${tones[i]}`}>\n    <Icon className=\"size-8 text-foreground/50\" aria-hidden />\n  </div>\n))\n\nexport default function CursorImageTrailDemo() {\n  return (\n    <CursorImageTrail\n      items={items}\n      className=\"grid h-[380px] w-[760px] max-w-full place-items-center rounded-2xl border bg-card\"\n    >\n      <div className=\"space-y-3 text-center\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move across the panel</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Leave a trail</h2>\n      </div>\n    </CursorImageTrail>\n  )\n}\n\nexport function VariantPreview(props: Omit<CursorImageTrailProps, 'items' | 'children'>) {\n  return (\n    <CursorImageTrail\n      items={items}\n      className=\"grid h-[380px] w-[760px] max-w-full place-items-center rounded-2xl border bg-card\"\n      {...props}\n    >\n      <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Leave a trail</h2>\n    </CursorImageTrail>\n  )\n}\n",
     "path": "registry/cursor/follow-trail/cursor-image-trail"
   },
   {
@@ -1946,8 +2435,29 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { SmoothCursor } from './smooth-cursor'\n\nconst cards = [\n  { title: 'Calm', body: 'The pointer glides instead of snapping.' },\n  { title: 'Aware', body: 'It turns toward the way you are moving.' },\n  { title: 'Scoped', body: 'The system cursor returns outside this area.' },\n]\n\nexport default function SmoothCursorDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move inside the box</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">A cursor with some weight</h2>\n      </div>\n      <SmoothCursor className=\"grid grid-cols-1 gap-3 overflow-hidden rounded-2xl border bg-card p-6 sm:grid-cols-3\">\n        {cards.map(({ title, body }) => (\n          <div key={title} className=\"rounded-xl border bg-background p-5\">\n            <h3 className=\"text-sm font-medium\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </div>\n        ))}\n      </SmoothCursor>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "floaty",
+        "title": "Floaty",
+        "description": "A loose spring makes the cursor drift behind the pointer.",
+        "props": {
+          "stiffness": 120,
+          "damping": 20
+        },
+        "status": "stable"
+      },
+      {
+        "name": "snappy",
+        "title": "Snappy",
+        "description": "A stiff, heavily damped spring keeps the cursor almost glued to the pointer.",
+        "props": {
+          "stiffness": 900,
+          "damping": 60
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { SmoothCursor, type SmoothCursorProps } from './smooth-cursor'\n\nconst cards = [\n  { title: 'Calm', body: 'The pointer glides instead of snapping.' },\n  { title: 'Aware', body: 'It turns toward the way you are moving.' },\n  { title: 'Scoped', body: 'The system cursor returns outside this area.' },\n]\n\nexport default function SmoothCursorDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move inside the box</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">A cursor with some weight</h2>\n      </div>\n      <SmoothCursor className=\"grid grid-cols-1 gap-3 overflow-hidden rounded-2xl border bg-card p-6 sm:grid-cols-3\">\n        {cards.map(({ title, body }) => (\n          <div key={title} className=\"rounded-xl border bg-background p-5\">\n            <h3 className=\"text-sm font-medium\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </div>\n        ))}\n      </SmoothCursor>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<SmoothCursorProps, 'children' | 'cursor'>) {\n  return (\n    <SmoothCursor\n      className=\"grid w-[min(48rem,90vw)] grid-cols-1 gap-3 overflow-hidden rounded-2xl border bg-card p-6 sm:grid-cols-3\"\n      {...props}\n    >\n      {cards.map(({ title, body }) => (\n        <div key={title} className=\"rounded-xl border bg-background p-5\">\n          <h3 className=\"text-sm font-medium\">{title}</h3>\n          <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n        </div>\n      ))}\n    </SmoothCursor>\n  )\n}\n",
     "path": "registry/cursor/follow-trail/smooth-cursor"
   },
   {
@@ -2013,8 +2523,30 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Command, Cpu, Gauge, Layers, ShieldCheck, Zap } from 'lucide-react'\nimport { Spotlight } from './spotlight'\n\nconst features = [\n  { Icon: Zap, title: 'Instant', body: 'Under 50 ms from keypress to paint.' },\n  { Icon: Layers, title: 'Composable', body: 'Small pieces that stack cleanly.' },\n  { Icon: ShieldCheck, title: 'Accessible', body: 'Keyboard first, screen reader tested.' },\n  { Icon: Command, title: 'Shortcuts', body: 'Every action one chord away.' },\n  { Icon: Gauge, title: 'Measured', body: 'Budgets enforced on every build.' },\n  { Icon: Cpu, title: 'Lightweight', body: 'No runtime beyond React and Motion.' },\n]\n\nexport default function SpotlightDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move across the grid</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Built for the details</h2>\n      </div>\n      <div className=\"grid grid-cols-2 gap-3 sm:grid-cols-3\">\n        {features.map(({ Icon, title, body }) => (\n          <Spotlight key={title} className=\"rounded-xl border bg-card p-5\">\n            <Icon className=\"size-5 text-primary\" aria-hidden />\n            <h3 className=\"mt-6 text-sm font-medium text-card-foreground\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </Spotlight>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "wide-glow",
+        "title": "Wide glow",
+        "description": "A huge, brighter glow that washes across the whole card.",
+        "props": {
+          "size": 800,
+          "intensity": 0.3
+        },
+        "status": "stable"
+      },
+      {
+        "name": "tight-beam",
+        "title": "Tight beam",
+        "description": "A small, bright spot with no border highlight.",
+        "props": {
+          "size": 160,
+          "intensity": 0.3,
+          "border": false
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Command, Cpu, Gauge, Layers, ShieldCheck, Zap } from 'lucide-react'\nimport { Spotlight, type SpotlightProps } from './spotlight'\n\nconst features = [\n  { Icon: Zap, title: 'Instant', body: 'Under 50 ms from keypress to paint.' },\n  {\n    Icon: Layers,\n    title: 'Composable',\n    body: 'Small pieces that stack cleanly.',\n  },\n  {\n    Icon: ShieldCheck,\n    title: 'Accessible',\n    body: 'Keyboard first, screen reader tested.',\n  },\n  { Icon: Command, title: 'Shortcuts', body: 'Every action one chord away.' },\n  { Icon: Gauge, title: 'Measured', body: 'Budgets enforced on every build.' },\n  {\n    Icon: Cpu,\n    title: 'Lightweight',\n    body: 'No runtime beyond React and Motion.',\n  },\n]\n\nexport default function SpotlightDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move across the grid</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Built for the details</h2>\n      </div>\n      <div className=\"grid grid-cols-2 gap-3 sm:grid-cols-3\">\n        {features.map(({ Icon, title, body }) => (\n          <Spotlight key={title} className=\"rounded-xl border bg-card p-5\">\n            <Icon className=\"size-5 text-primary\" aria-hidden />\n            <h3 className=\"mt-6 text-sm font-medium text-card-foreground\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </Spotlight>\n        ))}\n      </div>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<SpotlightProps, 'children'>) {\n  return (\n    <div className=\"grid grid-cols-2 gap-3 sm:grid-cols-3\">\n      {features.map(({ Icon, title, body }) => (\n        <Spotlight key={title} className=\"rounded-xl border bg-card p-5\" {...props}>\n          <Icon className=\"size-5 text-primary\" aria-hidden />\n          <h3 className=\"mt-6 text-sm font-medium text-card-foreground\">{title}</h3>\n          <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n        </Spotlight>\n      ))}\n    </div>\n  )\n}\n",
     "path": "registry/cursor/follow-trail/spotlight"
   },
   {
@@ -2075,8 +2607,19 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { ArrowUpRight, GitBranch, Mail, Send } from 'lucide-react'\nimport { Magnetic } from './magnetic'\n\nconst icons = [\n  { label: 'Source', Icon: GitBranch },\n  { label: 'Email', Icon: Mail },\n  { label: 'Message', Icon: Send },\n]\n\nconst focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring'\n\nexport default function MagneticDemo() {\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col items-center gap-12 text-center\">\n      <div className=\"space-y-3\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move your cursor close</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Have a project in mind?</h2>\n      </div>\n\n      <Magnetic strength={0.3} radius={80}>\n        <a\n          href=\"#\"\n          className={`group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-shadow hover:shadow-primary/35 ${focusRing}`}\n        >\n          Start a conversation\n          <ArrowUpRight\n            className=\"size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5\"\n            aria-hidden\n          />\n        </a>\n      </Magnetic>\n\n      <div className=\"flex items-center gap-4\">\n        {icons.map(({ label, Icon }) => (\n          <Magnetic key={label} strength={0.5} radius={40}>\n            <a\n              href=\"#\"\n              aria-label={label}\n              className={`grid size-12 place-items-center rounded-full border bg-card text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground ${focusRing}`}\n            >\n              <Icon className=\"size-5\" aria-hidden />\n            </a>\n          </Magnetic>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "strong-pull",
+        "title": "Strong pull",
+        "description": "The element is drawn most of the way to the pointer from far away.",
+        "props": {
+          "strength": 0.8,
+          "radius": 160
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { ArrowUpRight, GitBranch, Mail, Send } from 'lucide-react'\nimport { Magnetic, type MagneticProps } from './magnetic'\n\nconst icons = [\n  { label: 'Source', Icon: GitBranch },\n  { label: 'Email', Icon: Mail },\n  { label: 'Message', Icon: Send },\n]\n\nconst focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring'\n\nexport default function MagneticDemo() {\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col items-center gap-12 text-center\">\n      <div className=\"space-y-3\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Move your cursor close</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Have a project in mind?</h2>\n      </div>\n\n      <Magnetic strength={0.3} radius={80}>\n        <a\n          href=\"#\"\n          className={`group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-shadow hover:shadow-primary/35 ${focusRing}`}\n        >\n          Start a conversation\n          <ArrowUpRight\n            className=\"size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5\"\n            aria-hidden\n          />\n        </a>\n      </Magnetic>\n\n      <div className=\"flex items-center gap-4\">\n        {icons.map(({ label, Icon }) => (\n          <Magnetic key={label} strength={0.5} radius={40}>\n            <a\n              href=\"#\"\n              aria-label={label}\n              className={`grid size-12 place-items-center rounded-full border bg-card text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground ${focusRing}`}\n            >\n              <Icon className=\"size-5\" aria-hidden />\n            </a>\n          </Magnetic>\n        ))}\n      </div>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<MagneticProps, 'children'>) {\n  return (\n    <Magnetic {...props}>\n      <a\n        href=\"#\"\n        className={`group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-lg shadow-primary/20 ${focusRing}`}\n      >\n        Start a conversation\n        <ArrowUpRight className=\"size-4\" aria-hidden />\n      </a>\n    </Magnetic>\n  )\n}\n",
     "path": "registry/cursor/magnetic-tilt/magnetic"
   },
   {
@@ -2140,8 +2683,27 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Gauge, Layers, ShieldCheck } from 'lucide-react'\nimport { TiltCard } from './tilt-card'\n\nconst cards = [\n  { Icon: Layers, title: 'Depth', body: 'The card leans toward the pointer.' },\n  { Icon: Gauge, title: 'Springy', body: 'It settles back the moment you leave.' },\n  { Icon: ShieldCheck, title: 'Considerate', body: 'Flat on touch screens and under reduced motion.' },\n]\n\nexport default function TiltCardDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Hover a card</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Cards with a little weight</h2>\n      </div>\n      <div className=\"grid grid-cols-1 gap-4 sm:grid-cols-3\">\n        {cards.map(({ Icon, title, body }) => (\n          <TiltCard key={title} className=\"border bg-card p-6\">\n            <Icon className=\"size-5 text-primary\" aria-hidden />\n            <h3 className=\"mt-8 text-sm font-medium text-card-foreground\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </TiltCard>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "steep",
+        "title": "Steep",
+        "description": "The card leans up to 28 degrees toward the pointer.",
+        "props": {
+          "max": 28
+        },
+        "status": "stable"
+      },
+      {
+        "name": "no-glare",
+        "title": "No glare",
+        "description": "The card tilts without the highlight following the pointer.",
+        "props": {
+          "glare": false
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Gauge, Layers, ShieldCheck } from 'lucide-react'\nimport { TiltCard, type TiltCardProps } from './tilt-card'\n\nconst cards = [\n  { Icon: Layers, title: 'Depth', body: 'The card leans toward the pointer.' },\n  {\n    Icon: Gauge,\n    title: 'Springy',\n    body: 'It settles back the moment you leave.',\n  },\n  {\n    Icon: ShieldCheck,\n    title: 'Considerate',\n    body: 'Flat on touch screens and under reduced motion.',\n  },\n]\n\nexport default function TiltCardDemo() {\n  return (\n    <div className=\"flex w-full max-w-3xl flex-col gap-6\">\n      <div className=\"space-y-2\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Hover a card</p>\n        <h2 className=\"text-3xl font-semibold tracking-tight\">Cards with a little weight</h2>\n      </div>\n      <div className=\"grid grid-cols-1 gap-4 sm:grid-cols-3\">\n        {cards.map(({ Icon, title, body }) => (\n          <TiltCard key={title} className=\"border bg-card p-6\">\n            <Icon className=\"size-5 text-primary\" aria-hidden />\n            <h3 className=\"mt-8 text-sm font-medium text-card-foreground\">{title}</h3>\n            <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n          </TiltCard>\n        ))}\n      </div>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<TiltCardProps, 'children'>) {\n  const { Icon, title, body } = cards[0]\n  return (\n    <TiltCard className=\"w-72 border bg-card p-6\" {...props}>\n      <Icon className=\"size-5 text-primary\" aria-hidden />\n      <h3 className=\"mt-8 text-sm font-medium text-card-foreground\">{title}</h3>\n      <p className=\"mt-1 text-sm leading-snug text-muted-foreground\">{body}</p>\n    </TiltCard>\n  )\n}\n",
     "path": "registry/cursor/magnetic-tilt/tilt-card"
   },
   {
@@ -2216,8 +2778,32 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { CoolMode } from './cool-mode'\n\nconst button =\n  'rounded-full px-7 py-4 text-base font-medium shadow-lg transition-transform active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring'\n\nexport default function CoolModeDemo() {\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col items-center gap-10 text-center\">\n      <div className=\"space-y-3\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Press and hold</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Make it a little louder</h2>\n      </div>\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        <CoolMode>\n          <button type=\"button\" className={`${button} bg-primary text-primary-foreground shadow-primary/20`}>\n            Celebrate\n          </button>\n        </CoolMode>\n        <CoolMode particle=\"✨\" size={20} count={30}>\n          <button type=\"button\" className={`${button} border bg-card text-card-foreground`}>\n            Sparkles\n          </button>\n        </CoolMode>\n      </div>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "confetti",
+        "title": "Confetti",
+        "description": "A big burst of party-popper emoji flies out on each press.",
+        "props": {
+          "particle": "🎉",
+          "size": 24,
+          "count": 90,
+          "speed": 1.5
+        },
+        "status": "stable"
+      },
+      {
+        "name": "gentle",
+        "title": "Gentle",
+        "description": "Only a few small circles drift out slowly.",
+        "props": {
+          "size": 8,
+          "count": 12,
+          "speed": 0.5
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { CoolMode, type CoolModeProps } from './cool-mode'\n\nconst button =\n  'rounded-full px-7 py-4 text-base font-medium shadow-lg transition-transform active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring'\n\nexport default function CoolModeDemo() {\n  return (\n    <div className=\"flex w-full max-w-2xl flex-col items-center gap-10 text-center\">\n      <div className=\"space-y-3\">\n        <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Press and hold</p>\n        <h2 className=\"text-4xl font-semibold tracking-tight sm:text-5xl\">Make it a little louder</h2>\n      </div>\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        <CoolMode>\n          <button type=\"button\" className={`${button} bg-primary text-primary-foreground shadow-primary/20`}>\n            Celebrate\n          </button>\n        </CoolMode>\n        <CoolMode particle=\"✨\" size={20} count={30}>\n          <button type=\"button\" className={`${button} border bg-card text-card-foreground`}>\n            Sparkles\n          </button>\n        </CoolMode>\n      </div>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<CoolModeProps, 'children'>) {\n  return (\n    <div className=\"grid place-items-center gap-4 text-center\">\n      <p className=\"font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground\">Press and hold</p>\n      <CoolMode {...props}>\n        <button type=\"button\" className={`${button} bg-primary text-primary-foreground shadow-primary/20`}>\n          Celebrate\n        </button>\n      </CoolMode>\n    </div>\n  )\n}\n",
     "path": "registry/cursor/click-effects/cool-mode"
   },
   {
@@ -2310,8 +2896,21 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Mail, Send, Share2, Star } from 'lucide-react'\nimport { FamilyButton } from './family-button'\n\nconst actions = [\n  { icon: Send, label: 'Send' },\n  { icon: Share2, label: 'Share' },\n  { icon: Star, label: 'Save' },\n  { icon: Mail, label: 'Email' },\n]\n\nexport default function FamilyButtonDemo() {\n  return (\n    <div className=\"grid h-[320px] place-items-center\">\n      <FamilyButton label=\"Quick actions\">\n        <p className=\"mb-3 text-xs font-medium tracking-wide text-muted-foreground uppercase\">Quick actions</p>\n        <ul className=\"grid grid-cols-2 gap-2\">\n          {actions.map(({ icon: Icon, label }) => (\n            <li key={label}>\n              <button\n                type=\"button\"\n                className=\"flex w-full flex-col items-center gap-1.5 rounded-xl border border-border bg-background/50 py-3 text-xs outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring\"\n              >\n                <Icon className=\"size-4\" aria-hidden />\n                {label}\n              </button>\n            </li>\n          ))}\n        </ul>\n      </FamilyButton>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "open-wide",
+        "title": "Open and wide",
+        "description": "Starts open with a wider, shorter panel so the actions sit in a roomier tray.",
+        "props": {
+          "label": "Quick actions",
+          "defaultOpen": true,
+          "width": 340,
+          "height": 180
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Mail, Send, Share2, Star } from 'lucide-react'\nimport { FamilyButton, type FamilyButtonProps } from './family-button'\n\nconst actions = [\n  { icon: Send, label: 'Send' },\n  { icon: Share2, label: 'Share' },\n  { icon: Star, label: 'Save' },\n  { icon: Mail, label: 'Email' },\n]\n\nfunction Actions() {\n  return (\n    <>\n      <p className=\"mb-3 text-xs font-medium tracking-wide text-muted-foreground uppercase\">Quick actions</p>\n      <ul className=\"grid grid-cols-2 gap-2\">\n        {actions.map(({ icon: Icon, label }) => (\n          <li key={label}>\n            <button\n              type=\"button\"\n              className=\"flex w-full flex-col items-center gap-1.5 rounded-xl border border-border bg-background/50 py-3 text-xs outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring\"\n            >\n              <Icon className=\"size-4\" aria-hidden />\n              {label}\n            </button>\n          </li>\n        ))}\n      </ul>\n    </>\n  )\n}\n\nexport default function FamilyButtonDemo() {\n  return (\n    <div className=\"grid h-[320px] place-items-center\">\n      <FamilyButton label=\"Quick actions\">\n        <Actions />\n      </FamilyButton>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<FamilyButtonProps, 'children'>) {\n  return (\n    <div className=\"grid h-[320px] place-items-center\">\n      <FamilyButton label=\"Quick actions\" {...props}>\n        <Actions />\n      </FamilyButton>\n    </div>\n  )\n}\n",
     "path": "registry/buttons/animated/family-button"
   },
   {
@@ -2383,8 +2982,29 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { ArrowRight, Sparkles } from 'lucide-react'\nimport { ShimmerButton } from './shimmer-button'\n\nexport default function ShimmerButtonDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <ShimmerButton className=\"px-8 py-4 text-base\">\n        <Sparkles aria-hidden className=\"size-4 text-primary\" />\n        Shimmer button\n        <ArrowRight aria-hidden className=\"size-4 transition-transform group-hover:translate-x-0.5\" />\n      </ShimmerButton>\n      <div className=\"flex items-center gap-4\">\n        <ShimmerButton shimmerColor=\"var(--foreground)\" duration={4}>\n          Neutral light\n        </ShimmerButton>\n        <ShimmerButton disabled>Disabled</ShimmerButton>\n      </div>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "wide-slow",
+        "title": "Wide and slow",
+        "description": "A thick band of light that takes eight seconds to circle the button.",
+        "props": {
+          "shimmerSize": 5,
+          "duration": 8
+        },
+        "status": "stable"
+      },
+      {
+        "name": "quick-glint",
+        "title": "Quick glint",
+        "description": "A thin, fast glint that loops every second.",
+        "props": {
+          "shimmerSize": 1,
+          "duration": 1
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { ArrowRight, Sparkles } from 'lucide-react'\nimport { ShimmerButton, type ShimmerButtonProps } from './shimmer-button'\n\nexport default function ShimmerButtonDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <ShimmerButton className=\"px-8 py-4 text-base\">\n        <Sparkles aria-hidden className=\"size-4 text-primary\" />\n        Shimmer button\n        <ArrowRight aria-hidden className=\"size-4 transition-transform group-hover:translate-x-0.5\" />\n      </ShimmerButton>\n      <div className=\"flex items-center gap-4\">\n        <ShimmerButton shimmerColor=\"var(--foreground)\" duration={4}>\n          Neutral light\n        </ShimmerButton>\n        <ShimmerButton disabled>Disabled</ShimmerButton>\n      </div>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<ShimmerButtonProps, 'children'>) {\n  return (\n    <ShimmerButton className=\"px-8 py-4 text-base\" {...props}>\n      Shimmer button\n    </ShimmerButton>\n  )\n}\n",
     "path": "registry/buttons/animated/shimmer-button"
   },
   {
@@ -2461,7 +3081,19 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "ghost",
+        "title": "Ghost",
+        "description": "A borderless button that slides its label up to reveal the hover text, with no filled background.",
+        "props": {
+          "text": "Read the docs",
+          "hoverText": "Start reading",
+          "variant": "ghost"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { SlideTextButton } from './slide-text-button'\n\nexport default function SlideTextButtonDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        <SlideTextButton text=\"Browse components\" hoverText=\"Open the gallery\" />\n        <SlideTextButton variant=\"ghost\" text=\"Read the docs\" hoverText=\"Start reading\" />\n      </div>\n      <div className=\"flex flex-wrap items-center justify-center gap-4\">\n        <SlideTextButton href=\"#code\" text=\"View the source\" hoverText=\"Copy the code\" variant=\"ghost\" className=\"font-mono\" />\n        <SlideTextButton text=\"Unavailable\" disabled />\n      </div>\n      <p className=\"text-sm text-muted-foreground\">Hover or tab to a button to swap its label.</p>\n    </div>\n  )\n}\n",
     "path": "registry/buttons/animated/slide-text-button"
   },
@@ -2538,7 +3170,32 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "quick-hold",
+        "title": "Quick hold",
+        "description": "Fills and confirms after only half a second of holding.",
+        "props": {
+          "children": "Hold to archive",
+          "duration": 0.5,
+          "holdingLabel": "Archiving...",
+          "completeLabel": "Archived"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "long-hold",
+        "title": "Long hold",
+        "description": "Needs a deliberate four-second press before the action fires.",
+        "props": {
+          "children": "Hold to delete everything",
+          "duration": 4,
+          "holdingLabel": "Keep holding...",
+          "completeLabel": "Deleted"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { useState } from 'react'\nimport { HoldActionButton } from './hold-action-button'\n\nexport default function HoldActionButtonDemo() {\n  const [count, setCount] = useState(0)\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <HoldActionButton duration={1.4} holdingLabel=\"Keep holding...\" completeLabel=\"Deleted\" onComplete={() => setCount((n) => n + 1)}>\n        Hold to delete\n      </HoldActionButton>\n      <p className=\"text-sm text-muted-foreground\">\n        {count === 0 ? 'Press and hold, or hold Space / Enter.' : `Confirmed ${count} time${count === 1 ? '' : 's'}.`}\n      </p>\n      <div className=\"flex items-center gap-4\">\n        <HoldActionButton duration={0.8} className=\"h-12 min-w-40 rounded-full\">\n          Quick hold\n        </HoldActionButton>\n        <HoldActionButton disabled className=\"h-12 min-w-40 rounded-full\">\n          Disabled\n        </HoldActionButton>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/buttons/confirm/hold-action-button"
   },
@@ -2881,8 +3538,31 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { BorderBeam } from './border-beam'\n\nexport default function BorderBeamDemo() {\n  return (\n    <div className=\"relative w-[min(26rem,90vw)] overflow-hidden rounded-2xl border border-border bg-card p-8 text-card-foreground\">\n      <p className=\"text-xs font-medium tracking-widest text-muted-foreground uppercase\">Pro plan</p>\n      <h3 className=\"mt-3 text-3xl font-semibold tracking-tight\">Everything, unlocked</h3>\n      <p className=\"mt-2 text-sm text-muted-foreground\">\n        A single light walks the edge of the card. Nothing else on the page moves.\n      </p>\n      <button\n        type=\"button\"\n        className=\"mt-6 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n      >\n        Get started\n      </button>\n      <BorderBeam size={120} duration={7} />\n      <BorderBeam size={120} duration={7} delay={3.5} colorFrom=\"var(--foreground)\" colorTo=\"var(--primary)\" />\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "bold-fast",
+        "title": "Bold and fast",
+        "description": "A large, thick comet that laps the card edge in three seconds.",
+        "props": {
+          "size": 200,
+          "duration": 3,
+          "borderWidth": 3
+        },
+        "status": "stable"
+      },
+      {
+        "name": "slow-reverse",
+        "title": "Slow reverse",
+        "description": "A small light that drifts counter-clockwise, taking twelve seconds per lap.",
+        "props": {
+          "size": 50,
+          "duration": 12,
+          "reverse": true
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import type { ReactNode } from 'react'\nimport { BorderBeam, type BorderBeamProps } from './border-beam'\n\nfunction PlanCard({ children }: { children: ReactNode }) {\n  return (\n    <div className=\"relative w-[min(26rem,90vw)] overflow-hidden rounded-2xl border border-border bg-card p-8 text-card-foreground\">\n      <p className=\"text-xs font-medium tracking-widest text-muted-foreground uppercase\">Pro plan</p>\n      <h3 className=\"mt-3 text-3xl font-semibold tracking-tight\">Everything, unlocked</h3>\n      <p className=\"mt-2 text-sm text-muted-foreground\">\n        A single light walks the edge of the card. Nothing else on the page moves.\n      </p>\n      <button\n        type=\"button\"\n        className=\"mt-6 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n      >\n        Get started\n      </button>\n      {children}\n    </div>\n  )\n}\n\nexport default function BorderBeamDemo() {\n  return (\n    <PlanCard>\n      <BorderBeam size={120} duration={7} />\n      <BorderBeam size={120} duration={7} delay={3.5} colorFrom=\"var(--foreground)\" colorTo=\"var(--primary)\" />\n    </PlanCard>\n  )\n}\n\nexport function VariantPreview(props: BorderBeamProps) {\n  return (\n    <PlanCard>\n      <BorderBeam {...props} />\n    </PlanCard>\n  )\n}\n",
     "path": "registry/cards/surface/border-beam"
   },
   {
@@ -3009,8 +3689,31 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { FolderOpen, Home, Mail, Search, Settings, Terminal } from 'lucide-react'\nimport type { ReactNode } from 'react'\nimport { Dock, DockIcon } from './dock'\n\nconst items: { label: string; icon: ReactNode }[] = [\n  { label: 'Home', icon: <Home /> },\n  { label: 'Search', icon: <Search /> },\n  { label: 'Files', icon: <FolderOpen /> },\n  { label: 'Terminal', icon: <Terminal /> },\n  { label: 'Mail', icon: <Mail /> },\n  { label: 'Settings', icon: <Settings /> },\n]\n\nexport default function DockDemo() {\n  return (\n    <div className=\"flex h-56 w-[min(40rem,90vw)] flex-col items-center justify-end gap-6\">\n      <p className=\"text-sm text-muted-foreground\">Move the pointer along the dock.</p>\n      <Dock aria-label=\"Application dock\">\n        {items.map((item) => (\n          <DockIcon key={item.label}>\n            <button\n              type=\"button\"\n              aria-label={item.label}\n              className=\"grid size-full place-items-center rounded-full bg-secondary text-secondary-foreground transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&>svg]:size-1/2\"\n            >\n              {item.icon}\n            </button>\n          </DockIcon>\n        ))}\n      </Dock>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "big-swell",
+        "title": "Big swell",
+        "description": "Small resting icons that swell to more than twice their size over a wide reach.",
+        "props": {
+          "iconSize": 32,
+          "iconMagnification": 88,
+          "iconDistance": 220
+        },
+        "status": "stable"
+      },
+      {
+        "name": "centered",
+        "title": "Centered growth",
+        "description": "Icons grow outward from the middle of the dock instead of rising from the bottom edge.",
+        "props": {
+          "direction": "middle",
+          "iconSize": 44,
+          "iconMagnification": 72
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { FolderOpen, Home, Mail, Search, Settings, Terminal } from 'lucide-react'\r\nimport type { ReactNode } from 'react'\r\nimport { Dock, DockIcon, type DockProps } from './dock'\r\n\r\nconst items: { label: string; icon: ReactNode }[] = [\r\n  { label: 'Home', icon: <Home /> },\r\n  { label: 'Search', icon: <Search /> },\r\n  { label: 'Files', icon: <FolderOpen /> },\r\n  { label: 'Terminal', icon: <Terminal /> },\r\n  { label: 'Mail', icon: <Mail /> },\r\n  { label: 'Settings', icon: <Settings /> },\r\n]\r\n\r\nfunction Icons() {\r\n  return (\r\n    <>\r\n      {items.map((item) => (\r\n          <DockIcon key={item.label}>\r\n            <button\r\n              type=\"button\"\r\n              aria-label={item.label}\r\n              className=\"grid size-full place-items-center rounded-full bg-secondary text-secondary-foreground transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring [&>svg]:size-1/2\"\r\n            >\r\n              {item.icon}\r\n            </button>\r\n          </DockIcon>\r\n        ))}\r\n      </>\r\n  )\r\n}\r\n\r\nexport default function DockDemo() {\r\n  return (\r\n    <div className=\"flex h-56 w-[min(40rem,90vw)] flex-col items-center justify-end gap-6\">\r\n      <p className=\"text-sm text-muted-foreground\">Move the pointer along the dock.</p>\r\n      <Dock aria-label=\"Application dock\">\r\n        <Icons />\r\n      </Dock>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport function VariantPreview(props: Omit<DockProps, 'children'>) {\r\n  return (\r\n    <div className=\"flex h-56 w-[min(40rem,90vw)] flex-col items-center justify-end gap-6\">\r\n      <p className=\"text-sm text-muted-foreground\">Move the pointer along the dock.</p>\r\n      <Dock aria-label=\"Application dock\" {...props}>\r\n        <Icons />\r\n      </Dock>\r\n    </div>\r\n  )\r\n}\r\n",
     "path": "registry/navigation/dock-menus/dock"
   },
   {
@@ -3150,8 +3853,31 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Lens } from './lens'\n\n/** A self-contained card: token gradient, grid pattern and small text worth magnifying. */\nfunction Card() {\n  return (\n    <div className=\"relative h-72 w-96 max-w-full bg-linear-to-br from-primary/30 via-card to-accent p-6 text-card-foreground\">\n      <div\n        aria-hidden\n        className=\"absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:24px_24px]\"\n      />\n      <div className=\"relative flex h-full flex-col justify-between\">\n        <div>\n          <p className=\"text-xs tracking-widest text-muted-foreground uppercase\">Field notes</p>\n          <h3 className=\"mt-2 text-2xl font-semibold\">Fine print, made readable</h3>\n        </div>\n        <p className=\"text-[10px] leading-snug text-muted-foreground\">\n          Move the pointer over the card to magnify it. The lens appears only for a mouse or trackpad; on touch screens and with\n          reduced motion the card is shown as it is.\n        </p>\n        <div className=\"flex items-end gap-1\" aria-hidden>\n          {[40, 64, 28, 80, 52, 70, 36].map((h, i) => (\n            <span key={i} className=\"w-4 rounded-sm bg-primary\" style={{ height: h * 0.5 }} />\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport default function LensDemo() {\n  return (\n    <Lens className=\"border border-border\">\n      <Card />\n    </Lens>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "loupe",
+        "title": "Loupe",
+        "description": "A small lens at triple zoom for reading the finest print.",
+        "props": {
+          "zoomFactor": 3,
+          "lensSize": 120,
+          "className": "border border-border"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "wide-lens",
+        "title": "Wide lens",
+        "description": "A large, gentle lens that covers a third of the card at a mild zoom.",
+        "props": {
+          "zoomFactor": 1.35,
+          "lensSize": 260,
+          "className": "border border-border"
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Lens, type LensProps } from './lens'\n\n/** A self-contained card: token gradient, grid pattern and small text worth magnifying. */\nfunction Card() {\n  return (\n    <div className=\"relative h-72 w-96 max-w-full bg-linear-to-br from-primary/30 via-card to-accent p-6 text-card-foreground\">\n      <div\n        aria-hidden\n        className=\"absolute inset-0 opacity-60 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:24px_24px]\"\n      />\n      <div className=\"relative flex h-full flex-col justify-between\">\n        <div>\n          <p className=\"text-xs tracking-widest text-muted-foreground uppercase\">Field notes</p>\n          <h3 className=\"mt-2 text-2xl font-semibold\">Fine print, made readable</h3>\n        </div>\n        <p className=\"text-[10px] leading-snug text-muted-foreground\">\n          Move the pointer over the card to magnify it. The lens appears only for a mouse or trackpad; on touch screens and with\n          reduced motion the card is shown as it is.\n        </p>\n        <div className=\"flex items-end gap-1\" aria-hidden>\n          {[40, 64, 28, 80, 52, 70, 36].map((h, i) => (\n            <span key={i} className=\"w-4 rounded-sm bg-primary\" style={{ height: h * 0.5 }} />\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n\nexport default function LensDemo() {\n  return (\n    <Lens className=\"border border-border\">\n      <Card />\n    </Lens>\n  )\n}\n\nexport function VariantPreview(props: Omit<LensProps, 'children'>) {\n  return (\n    <Lens {...props}>\n      <Card />\n    </Lens>\n  )\n}\n",
     "path": "registry/overlays/lightbox-lens/lens"
   },
   {
@@ -3208,8 +3934,29 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { ProgressiveBlur } from './progressive-blur'\n\nconst rows = [\n  'Browse the gallery',\n  'Pick a component',\n  'Copy the source',\n  'Tune the props',\n  'Check reduced motion',\n  'Ship it',\n  'Write the changelog',\n  'Tag a release',\n  'Open the docs',\n  'Share the demo',\n]\n\nexport default function ProgressiveBlurDemo() {\n  return (\n    <div className=\"relative h-[22rem] w-[min(24rem,90vw)] overflow-hidden rounded-2xl border border-border bg-background\">\n      <div className=\"h-full overflow-y-auto p-4\" tabIndex={0} role=\"region\" aria-label=\"Scrollable list\">\n        <ul className=\"flex flex-col gap-3\">\n          {rows.map((r, i) => (\n            <li\n              key={r}\n              className=\"flex items-center gap-3 rounded-xl border border-border bg-card p-3 text-card-foreground\"\n            >\n              <span className=\"grid size-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-sm font-medium text-primary\">\n                {i + 1}\n              </span>\n              <span className=\"text-sm font-medium\">{r}</span>\n            </li>\n          ))}\n        </ul>\n      </div>\n      <ProgressiveBlur position=\"both\" height=\"5rem\" />\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "top-fade",
+        "title": "Top edge",
+        "description": "Blurs only the top edge, as under a sticky header.",
+        "props": {
+          "position": "top",
+          "height": "5rem"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "deep-bottom",
+        "title": "Deep bottom",
+        "description": "A tall bottom blur that fades about a third of the list into haze.",
+        "props": {
+          "position": "bottom",
+          "height": "9rem"
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import type { ReactNode } from 'react'\nimport { ProgressiveBlur, type ProgressiveBlurProps } from './progressive-blur'\n\nconst rows = [\n  'Browse the gallery',\n  'Pick a component',\n  'Copy the source',\n  'Tune the props',\n  'Check reduced motion',\n  'Ship it',\n  'Write the changelog',\n  'Tag a release',\n  'Open the docs',\n  'Share the demo',\n]\n\nfunction List({ children }: { children: ReactNode }) {\n  return (\n    <div className=\"relative h-[22rem] w-[min(24rem,90vw)] overflow-hidden rounded-2xl border border-border bg-background\">\n      <div className=\"h-full overflow-y-auto p-4\" tabIndex={0} role=\"region\" aria-label=\"Scrollable list\">\n        <ul className=\"flex flex-col gap-3\">\n          {rows.map((r, i) => (\n            <li\n              key={r}\n              className=\"flex items-center gap-3 rounded-xl border border-border bg-card p-3 text-card-foreground\"\n            >\n              <span className=\"grid size-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-sm font-medium text-primary\">\n                {i + 1}\n              </span>\n              <span className=\"text-sm font-medium\">{r}</span>\n            </li>\n          ))}\n        </ul>\n      </div>\n      {children}\n    </div>\n  )\n}\n\nexport default function ProgressiveBlurDemo() {\n  return (\n    <List>\n      <ProgressiveBlur position=\"both\" height=\"5rem\" />\n    </List>\n  )\n}\n\nexport function VariantPreview(props: ProgressiveBlurProps) {\n  return (\n    <List>\n      <ProgressiveBlur {...props} />\n    </List>\n  )\n}\n",
     "path": "registry/overlays/scrim-blur/progressive-blur"
   },
   {
@@ -3280,8 +4027,30 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Bell, GitCommitHorizontal, MessageSquare, Rocket, Star } from 'lucide-react'\nimport type { ReactNode } from 'react'\nimport { AnimatedList } from './animated-list'\n\nconst events: { icon: ReactNode; title: string; body: string; time: string }[] = [\n  { icon: <Rocket />, title: 'Deployed to production', body: 'mozaik-site, 14 seconds ago', time: '14s' },\n  { icon: <Star />, title: 'New star', body: 'Someone liked your registry', time: '1m' },\n  { icon: <MessageSquare />, title: 'New comment', body: 'The easing on the dock feels great', time: '3m' },\n  { icon: <GitCommitHorizontal />, title: 'Commit pushed', body: 'Tighten the marquee loop', time: '8m' },\n  { icon: <Bell />, title: 'Build finished', body: 'All checks passed', time: '12m' },\n]\n\nexport default function AnimatedListDemo() {\n  return (\n    <div className=\"h-[22rem] w-[min(26rem,90vw)] overflow-hidden [mask-image:linear-gradient(to_bottom,black_75%,transparent)]\">\n      <AnimatedList interval={1.1} loop>\n        {events.map((e) => (\n          <div\n            key={e.title}\n            className=\"flex items-center gap-3 rounded-xl border border-border bg-card p-3 text-card-foreground\"\n          >\n            <span\n              aria-hidden\n              className=\"grid size-10 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary [&>svg]:size-5\"\n            >\n              {e.icon}\n            </span>\n            <div className=\"min-w-0 flex-1\">\n              <p className=\"truncate text-sm font-medium\">{e.title}</p>\n              <p className=\"truncate text-xs text-muted-foreground\">{e.body}</p>\n            </div>\n            <span className=\"text-xs text-muted-foreground\">{e.time}</span>\n          </div>\n        ))}\n      </AnimatedList>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "rapid",
+        "title": "Rapid feed",
+        "description": "Items arrive about three times faster and the feed keeps looping.",
+        "props": {
+          "interval": 0.4,
+          "loop": true
+        },
+        "status": "stable"
+      },
+      {
+        "name": "play-once",
+        "title": "Play once",
+        "description": "Items arrive after a short delay and the list stops on the last one instead of looping.",
+        "props": {
+          "interval": 1.1,
+          "delay": 0.8,
+          "loop": false
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Bell, GitCommitHorizontal, MessageSquare, Rocket, Star } from 'lucide-react'\r\nimport type { ReactNode } from 'react'\r\nimport { AnimatedList, type AnimatedListProps } from './animated-list'\r\n\r\nconst events: { icon: ReactNode; title: string; body: string; time: string }[] = [\r\n  { icon: <Rocket />, title: 'Deployed to production', body: 'mozaik-site, 14 seconds ago', time: '14s' },\r\n  { icon: <Star />, title: 'New star', body: 'Someone liked your registry', time: '1m' },\r\n  { icon: <MessageSquare />, title: 'New comment', body: 'The easing on the dock feels great', time: '3m' },\r\n  { icon: <GitCommitHorizontal />, title: 'Commit pushed', body: 'Tighten the marquee loop', time: '8m' },\r\n  { icon: <Bell />, title: 'Build finished', body: 'All checks passed', time: '12m' },\r\n]\r\n\r\nfunction Events(props: Omit<AnimatedListProps, 'children'>) {\r\n  return (\r\n    <div className=\"h-[22rem] w-[min(26rem,90vw)] overflow-hidden [mask-image:linear-gradient(to_bottom,black_75%,transparent)]\">\r\n      <AnimatedList {...props}>\r\n        {events.map((e) => (\r\n          <div\r\n            key={e.title}\r\n            className=\"flex items-center gap-3 rounded-xl border border-border bg-card p-3 text-card-foreground\"\r\n          >\r\n            <span\r\n              aria-hidden\r\n              className=\"grid size-10 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary [&>svg]:size-5\"\r\n            >\r\n              {e.icon}\r\n            </span>\r\n            <div className=\"min-w-0 flex-1\">\r\n              <p className=\"truncate text-sm font-medium\">{e.title}</p>\r\n              <p className=\"truncate text-xs text-muted-foreground\">{e.body}</p>\r\n            </div>\r\n            <span className=\"text-xs text-muted-foreground\">{e.time}</span>\r\n          </div>\r\n        ))}\r\n      </AnimatedList>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default function AnimatedListDemo() {\r\n  return <Events interval={1.1} loop />\r\n}\r\n\r\nexport function VariantPreview(props: Omit<AnimatedListProps, 'children'>) {\r\n  return <Events {...props} />\r\n}\r\n",
     "path": "registry/layout/lists/animated-list"
   },
   {
@@ -3363,8 +4132,33 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { DragCarousel } from './drag-carousel'\n\nconst slides = [\n  ['01', 'Foundations', 'from-primary/40 to-muted'],\n  ['02', 'Surfaces', 'from-muted-foreground/30 to-card'],\n  ['03', 'Motion', 'from-primary/25 to-secondary'],\n  ['04', 'Layouts', 'from-foreground/15 to-muted'],\n  ['05', 'Forms', 'from-primary/35 to-card'],\n  ['06', 'Feedback', 'from-muted-foreground/25 to-secondary'],\n]\n\nexport default function DragCarouselDemo() {\n  return (\n    <div className=\"w-[760px] max-w-full\">\n      <DragCarousel label=\"Component categories\" slideWidth=\"15rem\">\n        {slides.map(([n, title, tone]) => (\n          <div key={n} className={`flex h-64 flex-col justify-between rounded-xl border border-border bg-linear-to-br p-5 ${tone}`}>\n            <span className=\"font-mono text-xs text-muted-foreground\">{n}</span>\n            <span className=\"text-2xl font-semibold tracking-tight text-foreground\">{title}</span>\n          </div>\n        ))}\n      </DragCarousel>\n      <p className=\"mt-2 text-sm text-muted-foreground\">Drag, use the buttons, or focus and press the arrow keys.</p>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "peek-strip",
+        "title": "Peek strip",
+        "description": "Narrow, tightly packed slides with no buttons, so the row is moved by dragging alone.",
+        "props": {
+          "label": "Component categories",
+          "slideWidth": "9rem",
+          "gap": 8,
+          "controls": false,
+          "elasticity": 0.4
+        },
+        "status": "stable"
+      },
+      {
+        "name": "wide-slides",
+        "title": "Wide slides",
+        "description": "Large slides with generous gaps, so only one and a half fit in view.",
+        "props": {
+          "label": "Component categories",
+          "slideWidth": "26rem",
+          "gap": 24
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { DragCarousel, type DragCarouselProps } from './drag-carousel'\n\nconst slides = [\n  ['01', 'Foundations', 'from-primary/40 to-muted'],\n  ['02', 'Surfaces', 'from-muted-foreground/30 to-card'],\n  ['03', 'Motion', 'from-primary/25 to-secondary'],\n  ['04', 'Layouts', 'from-foreground/15 to-muted'],\n  ['05', 'Forms', 'from-primary/35 to-card'],\n  ['06', 'Feedback', 'from-muted-foreground/25 to-secondary'],\n]\n\nexport default function DragCarouselDemo() {\n  return (\n    <div className=\"w-[760px] max-w-full\">\n      <DragCarousel label=\"Component categories\" slideWidth=\"15rem\">\n        {slides.map(([n, title, tone]) => (\n          <div key={n} className={`flex h-64 flex-col justify-between rounded-xl border border-border bg-linear-to-br p-5 ${tone}`}>\n            <span className=\"font-mono text-xs text-muted-foreground\">{n}</span>\n            <span className=\"text-2xl font-semibold tracking-tight text-foreground\">{title}</span>\n          </div>\n        ))}\n      </DragCarousel>\n      <p className=\"mt-2 text-sm text-muted-foreground\">Drag, use the buttons, or focus and press the arrow keys.</p>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<DragCarouselProps, 'children'>) {\n  return (\n    <div className=\"w-[760px] max-w-full\">\n      <DragCarousel label=\"Component categories\" {...props}>\n        {slides.map(([n, title, tone]) => (\n          <div key={n} className={`flex h-64 flex-col justify-between rounded-xl border border-border bg-linear-to-br p-5 ${tone}`}>\n            <span className=\"font-mono text-xs text-muted-foreground\">{n}</span>\n            <span className=\"text-2xl font-semibold tracking-tight text-foreground\">{title}</span>\n          </div>\n        ))}\n      </DragCarousel>\n    </div>\n  )\n}\n",
     "path": "registry/layout/carousels/drag-carousel"
   },
   {
@@ -3438,8 +4232,19 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Compass, Mountain, Snowflake, Sunrise, Waves } from 'lucide-react'\nimport { ImageAccordion, type ImageAccordionItem } from './image-accordion'\n\nconst tones = [\n  'from-primary/50 via-primary/15 to-muted',\n  'from-muted-foreground/35 via-muted to-card',\n  'from-primary/30 via-muted to-secondary',\n  'from-foreground/20 via-muted to-card',\n  'from-primary/40 via-secondary to-muted',\n]\nconst icons = [Mountain, Snowflake, Sunrise, Waves, Compass]\nconst copy: [string, string][] = [\n  ['Misty ridge', 'Cloud settles in the valley before sunrise.'],\n  ['Winter trail', 'Fresh snow on a quiet, empty path.'],\n  ['First light', 'The first hour of colour on the east face.'],\n  ['Still water', 'A lake that holds the whole skyline.'],\n  ['Way home', 'The last switchback before the cabin.'],\n]\n\nconst items: ImageAccordionItem[] = copy.map(([title, description], i) => {\n  const Icon = icons[i]\n  return {\n    id: title,\n    title,\n    description,\n    media: (\n      <div className={`grid size-full place-items-center bg-linear-to-br ${tones[i]}`}>\n        <Icon className=\"size-8 text-foreground/40\" aria-hidden />\n      </div>\n    ),\n  }\n})\n\nexport default function ImageAccordionDemo() {\n  return (\n    <div className=\"w-[760px] max-w-full\">\n      <ImageAccordion items={items} defaultIndex={2} height={360} />\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "click",
+        "title": "Click to open",
+        "description": "Panels open only on click or focus, so a passing pointer changes nothing.",
+        "props": {
+          "trigger": "click",
+          "height": 280
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Compass, Mountain, Snowflake, Sunrise, Waves } from 'lucide-react'\nimport { ImageAccordion, type ImageAccordionItem, type ImageAccordionProps } from './image-accordion'\n\nconst tones = [\n  'from-primary/50 via-primary/15 to-muted',\n  'from-muted-foreground/35 via-muted to-card',\n  'from-primary/30 via-muted to-secondary',\n  'from-foreground/20 via-muted to-card',\n  'from-primary/40 via-secondary to-muted',\n]\nconst icons = [Mountain, Snowflake, Sunrise, Waves, Compass]\nconst copy: [string, string][] = [\n  ['Misty ridge', 'Cloud settles in the valley before sunrise.'],\n  ['Winter trail', 'Fresh snow on a quiet, empty path.'],\n  ['First light', 'The first hour of colour on the east face.'],\n  ['Still water', 'A lake that holds the whole skyline.'],\n  ['Way home', 'The last switchback before the cabin.'],\n]\n\nconst items: ImageAccordionItem[] = copy.map(([title, description], i) => {\n  const Icon = icons[i]\n  return {\n    id: title,\n    title,\n    description,\n    media: (\n      <div className={`grid size-full place-items-center bg-linear-to-br ${tones[i]}`}>\n        <Icon className=\"size-8 text-foreground/40\" aria-hidden />\n      </div>\n    ),\n  }\n})\n\nexport default function ImageAccordionDemo() {\n  return (\n    <div className=\"w-[760px] max-w-full\">\n      <ImageAccordion items={items} defaultIndex={2} height={360} />\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<ImageAccordionProps, 'items'>) {\n  return (\n    <div className=\"w-[760px] max-w-full\">\n      <ImageAccordion {...props} items={items} />\n    </div>\n  )\n}\n",
     "path": "registry/layout/carousels/image-accordion"
   },
   {
@@ -3514,8 +4319,30 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { ThumbnailCarousel, type ThumbnailCarouselItem } from './thumbnail-carousel'\n\nconst tones = [\n  'from-primary/50 to-muted',\n  'from-muted-foreground/35 to-card',\n  'from-primary/30 to-secondary',\n  'from-foreground/20 to-muted',\n  'from-primary/40 to-card',\n  'from-muted-foreground/25 to-secondary',\n  'from-primary/25 to-muted',\n]\nconst titles = ['Dawn', 'Ridge', 'Meadow', 'Lake', 'Pine', 'Dusk', 'Night']\n\nconst items: ThumbnailCarouselItem[] = titles.map((title, i) => ({\n  id: title,\n  title,\n  media: (\n    <div className={`flex size-full items-end bg-linear-to-br p-6 ${tones[i]}`}>\n      <span className=\"text-3xl font-semibold tracking-tight text-foreground\">{title}</span>\n    </div>\n  ),\n  thumb: <div className={`size-full bg-linear-to-br ${tones[i]}`} />,\n}))\n\nexport default function ThumbnailCarouselDemo() {\n  return (\n    <div className=\"w-[640px] max-w-full\">\n      <ThumbnailCarousel items={items} height={300} label=\"Trail photos\" />\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "banner",
+        "title": "Banner",
+        "description": "A low, wide slide above the thumbnail strip, like a hero banner.",
+        "props": {
+          "height": 150,
+          "label": "Trail photos"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "tall",
+        "title": "Tall",
+        "description": "A tall slide that gives each photo a portrait-like frame.",
+        "props": {
+          "height": 460,
+          "label": "Trail photos",
+          "defaultIndex": 3
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { ThumbnailCarousel, type ThumbnailCarouselItem, type ThumbnailCarouselProps } from './thumbnail-carousel'\n\nconst tones = [\n  'from-primary/50 to-muted',\n  'from-muted-foreground/35 to-card',\n  'from-primary/30 to-secondary',\n  'from-foreground/20 to-muted',\n  'from-primary/40 to-card',\n  'from-muted-foreground/25 to-secondary',\n  'from-primary/25 to-muted',\n]\nconst titles = ['Dawn', 'Ridge', 'Meadow', 'Lake', 'Pine', 'Dusk', 'Night']\n\nconst items: ThumbnailCarouselItem[] = titles.map((title, i) => ({\n  id: title,\n  title,\n  media: (\n    <div className={`flex size-full items-end bg-linear-to-br p-6 ${tones[i]}`}>\n      <span className=\"text-3xl font-semibold tracking-tight text-foreground\">{title}</span>\n    </div>\n  ),\n  thumb: <div className={`size-full bg-linear-to-br ${tones[i]}`} />,\n}))\n\nexport default function ThumbnailCarouselDemo() {\n  return (\n    <div className=\"w-[640px] max-w-full\">\n      <ThumbnailCarousel items={items} height={300} label=\"Trail photos\" />\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<ThumbnailCarouselProps, 'items'>) {\n  return (\n    <div className=\"w-[640px] max-w-full\">\n      <ThumbnailCarousel items={items} {...props} />\n    </div>\n  )\n}\n",
     "path": "registry/layout/carousels/thumbnail-carousel"
   },
   {
@@ -3596,7 +4423,68 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "multiple",
+        "title": "Multiple open",
+        "description": "Several panels can stay open at once, two of them open first.",
+        "props": {
+          "items": [
+            {
+              "id": "what",
+              "title": "What is Mozaik?",
+              "content": "A collection of small, hand-finished React components. Copy one into your project and own the source."
+            },
+            {
+              "id": "install",
+              "title": "How do I add a component?",
+              "content": "Copy the source from its page and install the npm packages it lists. The file is yours to edit."
+            },
+            {
+              "id": "motion",
+              "title": "Does it respect reduced motion?",
+              "content": "Yes. Every animation turns into a calm, static frame when the user prefers reduced motion."
+            }
+          ],
+          "type": "multiple",
+          "defaultValue": [
+            "what",
+            "motion"
+          ]
+        },
+        "status": "stable"
+      },
+      {
+        "name": "always-open",
+        "title": "Always open",
+        "description": "One panel is always open, so the open header cannot be closed again.",
+        "props": {
+          "items": [
+            {
+              "id": "what",
+              "title": "What is Mozaik?",
+              "content": "A collection of small, hand-finished React components. Copy one into your project and own the source."
+            },
+            {
+              "id": "install",
+              "title": "How do I add a component?",
+              "content": "Copy the source from its page and install the npm packages it lists. The file is yours to edit."
+            },
+            {
+              "id": "motion",
+              "title": "Does it respect reduced motion?",
+              "content": "Yes. Every animation turns into a calm, static frame when the user prefers reduced motion."
+            }
+          ],
+          "type": "single",
+          "collapsible": false,
+          "defaultValue": [
+            "install"
+          ]
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { SmoothAccordion } from './smooth-accordion'\n\nconst items = [\n  {\n    id: 'what',\n    title: 'What is Mozaik?',\n    content: 'A collection of small, hand-finished React components. Copy one into your project and own the source.',\n  },\n  {\n    id: 'install',\n    title: 'How do I add a component?',\n    content: 'Copy the source from its page and install the npm packages it lists. The file is yours to edit.',\n  },\n  {\n    id: 'motion',\n    title: 'Does it respect reduced motion?',\n    content: 'Yes. Every animation turns into a calm, static frame when the user prefers reduced motion.',\n  },\n  {\n    id: 'keys',\n    title: 'Can I use it with the keyboard?',\n    content: 'Headers are real buttons. Use Tab, Enter and Space, or the arrow keys, Home and End to move between them.',\n  },\n]\n\nexport default function SmoothAccordionDemo() {\n  return (\n    <div className=\"w-[520px] max-w-full\">\n      <SmoothAccordion items={items} defaultValue={['what']} />\n    </div>\n  )\n}\n",
     "path": "registry/layout/accordions/smooth-accordion"
   },
@@ -3686,7 +4574,35 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "vertical",
+        "title": "Vertical",
+        "description": "The text loop scrolls upward inside a fixed-height box.",
+        "props": {
+          "vertical": true,
+          "repeat": 3,
+          "duration": 14,
+          "className": "h-48 w-64 max-w-full",
+          "children": "Copy it. Paste it. Own it."
+        },
+        "status": "stable"
+      },
+      {
+        "name": "reverse",
+        "title": "Reverse",
+        "description": "The text loop runs left to right and pauses on hover.",
+        "props": {
+          "reverse": true,
+          "pauseOnHover": true,
+          "repeat": 4,
+          "duration": 20,
+          "className": "w-[28rem] max-w-full",
+          "children": "Quiet motion. Tokens first. Reduced motion is a first-class state."
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { Marquee } from './marquee'\n\nconst quotes = [\n  ['Ship it', 'The detail is in the easing.'],\n  ['Quiet motion', 'Nothing moves without a reason.'],\n  ['Tokens first', 'One palette, every component.'],\n  ['Copy and own', 'Pasted straight into your repo.'],\n  ['Accessible', 'Reduced motion is a first-class state.'],\n  ['Tiny API', 'Duration, delay, className. That is it.'],\n]\n\nfunction Card({ title, body }: { title: string; body: string }) {\n  return (\n    <figure className=\"w-60 shrink-0 rounded-xl border border-border bg-card p-4 text-card-foreground\">\n      <figcaption className=\"text-sm font-medium\">{title}</figcaption>\n      <blockquote className=\"mt-1 text-sm text-muted-foreground\">{body}</blockquote>\n    </figure>\n  )\n}\n\nexport default function MarqueeDemo() {\n  return (\n    <div className=\"relative flex w-[min(52rem,90vw)] flex-col gap-4 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]\">\n      <Marquee pauseOnHover duration={36} repeat={3}>\n        {quotes.map(([t, b]) => (\n          <Card key={t} title={t} body={b} />\n        ))}\n      </Marquee>\n      <Marquee reverse pauseOnHover duration={44} repeat={3}>\n        {[...quotes].reverse().map(([t, b]) => (\n          <Card key={t} title={t} body={b} />\n        ))}\n      </Marquee>\n    </div>\n  )\n}\n",
     "path": "registry/layout/marquee/marquee"
   },
@@ -3782,8 +4698,33 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Braces, Cpu, Database, Globe, Palette, Zap } from 'lucide-react'\nimport { OrbitingCircles } from './orbiting-circles'\n\nconst iconClass = 'size-full rounded-full border border-border bg-card p-1.5 text-card-foreground'\n\nexport default function OrbitingCirclesDemo() {\n  return (\n    <div className=\"relative flex h-[26rem] w-[min(34rem,90vw)] items-center justify-center overflow-hidden rounded-2xl border border-border bg-background\">\n      <div className=\"grid size-16 place-items-center rounded-full bg-primary text-primary-foreground\">\n        <Zap aria-label=\"Mozaik\" className=\"size-7\" />\n      </div>\n      <OrbitingCircles iconSize={40} radius={90} duration={18}>\n        <Cpu aria-hidden className={iconClass} />\n        <Database aria-hidden className={iconClass} />\n        <Globe aria-hidden className={iconClass} />\n      </OrbitingCircles>\n      <OrbitingCircles iconSize={36} radius={150} duration={26} reverse>\n        <Braces aria-hidden className={iconClass} />\n        <Palette aria-hidden className={iconClass} />\n        <Cpu aria-hidden className={iconClass} />\n        <Database aria-hidden className={iconClass} />\n      </OrbitingCircles>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "counter-clockwise",
+        "title": "Counter-clockwise",
+        "description": "One ring of icons that circles against the clock on a tight orbit.",
+        "props": {
+          "reverse": true,
+          "radius": 110,
+          "iconSize": 40,
+          "duration": 20
+        },
+        "status": "stable"
+      },
+      {
+        "name": "fast-swarm",
+        "title": "Fast swarm",
+        "description": "Small icons race around a wide orbit with no ring drawn, about three times faster.",
+        "props": {
+          "path": false,
+          "radius": 150,
+          "iconSize": 28,
+          "duration": 6
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Braces, Cpu, Database, Globe, Palette, Zap } from 'lucide-react'\r\nimport { OrbitingCircles, type OrbitingCirclesProps } from './orbiting-circles'\r\n\r\nconst iconClass = 'size-full rounded-full border border-border bg-card p-1.5 text-card-foreground'\r\n\r\nexport default function OrbitingCirclesDemo() {\r\n  return (\r\n    <div className=\"relative flex h-[26rem] w-[min(34rem,90vw)] items-center justify-center overflow-hidden rounded-2xl border border-border bg-background\">\r\n      <div className=\"grid size-16 place-items-center rounded-full bg-primary text-primary-foreground\">\r\n        <Zap aria-label=\"Mozaik\" className=\"size-7\" />\r\n      </div>\r\n      <OrbitingCircles iconSize={40} radius={90} duration={18}>\r\n        <Cpu aria-hidden className={iconClass} />\r\n        <Database aria-hidden className={iconClass} />\r\n        <Globe aria-hidden className={iconClass} />\r\n      </OrbitingCircles>\r\n      <OrbitingCircles iconSize={36} radius={150} duration={26} reverse>\r\n        <Braces aria-hidden className={iconClass} />\r\n        <Palette aria-hidden className={iconClass} />\r\n        <Cpu aria-hidden className={iconClass} />\r\n        <Database aria-hidden className={iconClass} />\r\n      </OrbitingCircles>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport function VariantPreview(props: Omit<OrbitingCirclesProps, 'children'>) {\r\n  return (\r\n    <div className=\"relative flex h-[26rem] w-[min(34rem,90vw)] items-center justify-center overflow-hidden rounded-2xl border border-border bg-background\">\r\n      <div className=\"grid size-16 place-items-center rounded-full bg-primary text-primary-foreground\">\r\n        <Zap aria-label=\"Mozaik\" className=\"size-7\" />\r\n      </div>\r\n      <OrbitingCircles {...props}>\r\n        <Cpu aria-hidden className={iconClass} />\r\n        <Database aria-hidden className={iconClass} />\r\n        <Globe aria-hidden className={iconClass} />\r\n        <Braces aria-hidden className={iconClass} />\r\n        <Palette aria-hidden className={iconClass} />\r\n      </OrbitingCircles>\r\n    </div>\r\n  )\r\n}\r\n",
     "path": "registry/layout/marquee/orbiting-circles"
   },
   {
@@ -4024,8 +4965,29 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Accessibility, Braces, Keyboard, Moon, Palette, Terminal } from 'lucide-react'\nimport { BentoCard, BentoGrid } from './bento-grid'\n\nconst tileShades = ['bg-primary', 'bg-primary/60', 'bg-primary/25', 'bg-muted', 'bg-primary/40', 'bg-primary/80', 'bg-muted', 'bg-primary/15']\n\nfunction Mosaic() {\n  return (\n    <div className=\"absolute inset-0 flex flex-wrap content-start gap-1.5 p-5\">\n      {Array.from({ length: 96 }, (_, i) => (\n        <span\n          key={i}\n          style={{ transitionDelay: `${(i % 24) * 15}ms` }}\n          className={`size-5 rounded-[4px] transition-transform duration-500 motion-safe:group-hover/bento:-translate-y-1 ${tileShades[(i * 5 + (i >> 3)) % tileShades.length]}`}\n        />\n      ))}\n    </div>\n  )\n}\n\nfunction Keycaps() {\n  const key = 'flex h-9 items-center justify-center rounded-lg border border-border bg-background font-mono text-xs text-muted-foreground shadow-[0_2px_0_0] shadow-border transition-transform duration-300'\n  return (\n    <div className=\"absolute inset-x-5 top-6 grid grid-cols-3 gap-2\">\n      <span className={`${key} col-span-2`}>Tab</span>\n      <span className={key}>Esc</span>\n      <span className={key}>⇧</span>\n      <span className={`${key} border-primary/50 text-primary motion-safe:group-hover/bento:translate-y-0.5 motion-safe:group-hover/bento:shadow-none`}>\n        ↵\n      </span>\n      <span className={key}>⌥</span>\n      <span className={`${key} col-span-3`}>Space</span>\n      <span className={key}>←</span>\n      <span className={key}>↓</span>\n      <span className={key}>→</span>\n    </div>\n  )\n}\n\nfunction TerminalLines() {\n  return (\n    <div className=\"absolute inset-x-5 top-5 space-y-1.5 rounded-lg border border-border bg-background/80 p-3 font-mono text-[11px] leading-none text-muted-foreground\">\n      <p>\n        <span className=\"text-primary\">$</span> npm install motion\n      </p>\n      <p className=\"transition-opacity duration-500 group-hover/bento:text-foreground\">✓ pasted bento-grid.tsx</p>\n    </div>\n  )\n}\n\nfunction Wave() {\n  return (\n    <svg viewBox=\"0 0 200 60\" fill=\"none\" className=\"absolute inset-x-5 top-6 h-14 w-[calc(100%-2.5rem)]\" preserveAspectRatio=\"none\">\n      <path\n        d=\"M0 30 C 20 5, 40 5, 60 30 S 100 55, 120 30 S 160 5, 200 30\"\n        className=\"stroke-primary/70 transition-opacity duration-500 group-hover/bento:opacity-0\"\n        strokeWidth=\"2\"\n      />\n      <path\n        d=\"M0 30 H 200\"\n        className=\"stroke-foreground/40 opacity-0 transition-opacity duration-500 group-hover/bento:opacity-100\"\n        strokeWidth=\"2\"\n        strokeDasharray=\"4 6\"\n      />\n    </svg>\n  )\n}\n\nfunction Eclipse() {\n  return (\n    <div className=\"absolute right-6 top-3 size-16\">\n      <span className=\"absolute inset-0 rounded-full bg-primary/80 blur-[1px]\" />\n      <span className=\"absolute inset-0 translate-x-3 -translate-y-1.5 rounded-full bg-card transition-transform duration-700 ease-out motion-safe:group-hover/bento:translate-x-6\" />\n    </div>\n  )\n}\n\nfunction CodeLines() {\n  const line = 'h-2 rounded-full'\n  return (\n    <div className=\"absolute inset-x-5 top-6 space-y-2.5 font-mono\">\n      <div className=\"flex gap-2\">\n        <span className={`${line} w-12 bg-primary/70`} />\n        <span className={`${line} w-24 bg-foreground/50`} />\n        <span className={`${line} w-6 bg-muted-foreground/40`} />\n      </div>\n      <div className=\"flex gap-2 pl-6\">\n        <span className={`${line} w-16 bg-foreground/30`} />\n        <span className={`${line} w-28 bg-primary/40 transition-[width] duration-500 motion-safe:group-hover/bento:w-40`} />\n      </div>\n      <div className=\"flex gap-2 pl-6\">\n        <span className={`${line} w-20 bg-foreground/30`} />\n        <span className={`${line} w-14 bg-muted-foreground/40`} />\n      </div>\n      <span className={`${line} block w-4 bg-muted-foreground/40`} />\n    </div>\n  )\n}\n\nexport default function BentoGridDemo() {\n  return (\n    <div className=\"w-full max-w-4xl\">\n      <BentoGrid rowHeight=\"11rem\">\n        <BentoCard\n          colSpan={2}\n          icon={<Palette />}\n          title=\"Tokens, not hex\"\n          description=\"Every color comes from your theme, so blocks follow light and dark.\"\n          visual={<Mosaic />}\n          href=\"#\"\n        />\n        <BentoCard\n          rowSpan={2}\n          icon={<Keyboard />}\n          title=\"Keyboard first\"\n          description=\"Real links and buttons, visible focus rings, sensible tab order.\"\n          visual={<Keycaps />}\n          href=\"#\"\n          cta=\"Try it\"\n        />\n        <BentoCard icon={<Terminal />} title=\"One file\" description=\"Copy it straight into your repo.\" visual={<TerminalLines />} href=\"#\" />\n        <BentoCard icon={<Accessibility />} title=\"Reduced motion\" description=\"Calm, static frames on request.\" visual={<Wave />} href=\"#\" />\n        <BentoCard icon={<Moon />} title=\"Dark by default\" description=\"Tuned for dark, fine in light.\" visual={<Eclipse />} href=\"#\" />\n        <BentoCard\n          colSpan={2}\n          icon={<Braces />}\n          title=\"Typed props\"\n          description=\"Strict TypeScript and one shared API across every component.\"\n          visual={<CodeLines />}\n          href=\"#\"\n        />\n      </BentoGrid>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "two-columns",
+        "title": "Two columns",
+        "description": "A wider two-column grid with tall rows, so each tile gets room for its artwork.",
+        "props": {
+          "columns": 2,
+          "rowHeight": "14rem"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "four-columns",
+        "title": "Four columns",
+        "description": "A dense four-column grid with short rows that packs the same tiles into a tighter mosaic.",
+        "props": {
+          "columns": 4,
+          "rowHeight": "8rem"
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Accessibility, Braces, Keyboard, Moon, Palette, Terminal } from 'lucide-react'\r\nimport { BentoCard, BentoGrid, type BentoGridProps } from './bento-grid'\r\n\r\nconst tileShades = ['bg-primary', 'bg-primary/60', 'bg-primary/25', 'bg-muted', 'bg-primary/40', 'bg-primary/80', 'bg-muted', 'bg-primary/15']\r\n\r\nfunction Mosaic() {\r\n  return (\r\n    <div className=\"absolute inset-0 flex flex-wrap content-start gap-1.5 p-5\">\r\n      {Array.from({ length: 96 }, (_, i) => (\r\n        <span\r\n          key={i}\r\n          style={{ transitionDelay: `${(i % 24) * 15}ms` }}\r\n          className={`size-5 rounded-[4px] transition-transform duration-500 motion-safe:group-hover/bento:-translate-y-1 ${tileShades[(i * 5 + (i >> 3)) % tileShades.length]}`}\r\n        />\r\n      ))}\r\n    </div>\r\n  )\r\n}\r\n\r\nfunction Keycaps() {\r\n  const key = 'flex h-9 items-center justify-center rounded-lg border border-border bg-background font-mono text-xs text-muted-foreground shadow-[0_2px_0_0] shadow-border transition-transform duration-300'\r\n  return (\r\n    <div className=\"absolute inset-x-5 top-6 grid grid-cols-3 gap-2\">\r\n      <span className={`${key} col-span-2`}>Tab</span>\r\n      <span className={key}>Esc</span>\r\n      <span className={key}>⇧</span>\r\n      <span className={`${key} border-primary/50 text-primary motion-safe:group-hover/bento:translate-y-0.5 motion-safe:group-hover/bento:shadow-none`}>\r\n        ↵\r\n      </span>\r\n      <span className={key}>⌥</span>\r\n      <span className={`${key} col-span-3`}>Space</span>\r\n      <span className={key}>←</span>\r\n      <span className={key}>↓</span>\r\n      <span className={key}>→</span>\r\n    </div>\r\n  )\r\n}\r\n\r\nfunction TerminalLines() {\r\n  return (\r\n    <div className=\"absolute inset-x-5 top-5 space-y-1.5 rounded-lg border border-border bg-background/80 p-3 font-mono text-[11px] leading-none text-muted-foreground\">\r\n      <p>\r\n        <span className=\"text-primary\">$</span> npm install motion\r\n      </p>\r\n      <p className=\"transition-opacity duration-500 group-hover/bento:text-foreground\">✓ pasted bento-grid.tsx</p>\r\n    </div>\r\n  )\r\n}\r\n\r\nfunction Wave() {\r\n  return (\r\n    <svg viewBox=\"0 0 200 60\" fill=\"none\" className=\"absolute inset-x-5 top-6 h-14 w-[calc(100%-2.5rem)]\" preserveAspectRatio=\"none\">\r\n      <path\r\n        d=\"M0 30 C 20 5, 40 5, 60 30 S 100 55, 120 30 S 160 5, 200 30\"\r\n        className=\"stroke-primary/70 transition-opacity duration-500 group-hover/bento:opacity-0\"\r\n        strokeWidth=\"2\"\r\n      />\r\n      <path\r\n        d=\"M0 30 H 200\"\r\n        className=\"stroke-foreground/40 opacity-0 transition-opacity duration-500 group-hover/bento:opacity-100\"\r\n        strokeWidth=\"2\"\r\n        strokeDasharray=\"4 6\"\r\n      />\r\n    </svg>\r\n  )\r\n}\r\n\r\nfunction Eclipse() {\r\n  return (\r\n    <div className=\"absolute right-6 top-3 size-16\">\r\n      <span className=\"absolute inset-0 rounded-full bg-primary/80 blur-[1px]\" />\r\n      <span className=\"absolute inset-0 translate-x-3 -translate-y-1.5 rounded-full bg-card transition-transform duration-700 ease-out motion-safe:group-hover/bento:translate-x-6\" />\r\n    </div>\r\n  )\r\n}\r\n\r\nfunction CodeLines() {\r\n  const line = 'h-2 rounded-full'\r\n  return (\r\n    <div className=\"absolute inset-x-5 top-6 space-y-2.5 font-mono\">\r\n      <div className=\"flex gap-2\">\r\n        <span className={`${line} w-12 bg-primary/70`} />\r\n        <span className={`${line} w-24 bg-foreground/50`} />\r\n        <span className={`${line} w-6 bg-muted-foreground/40`} />\r\n      </div>\r\n      <div className=\"flex gap-2 pl-6\">\r\n        <span className={`${line} w-16 bg-foreground/30`} />\r\n        <span className={`${line} w-28 bg-primary/40 transition-[width] duration-500 motion-safe:group-hover/bento:w-40`} />\r\n      </div>\r\n      <div className=\"flex gap-2 pl-6\">\r\n        <span className={`${line} w-20 bg-foreground/30`} />\r\n        <span className={`${line} w-14 bg-muted-foreground/40`} />\r\n      </div>\r\n      <span className={`${line} block w-4 bg-muted-foreground/40`} />\r\n    </div>\r\n  )\r\n}\r\n\r\nfunction Cards() {\r\n  return (\r\n    <>\r\n        <BentoCard\r\n          colSpan={2}\r\n          icon={<Palette />}\r\n          title=\"Tokens, not hex\"\r\n          description=\"Every color comes from your theme, so blocks follow light and dark.\"\r\n          visual={<Mosaic />}\r\n          href=\"#\"\r\n        />\r\n        <BentoCard\r\n          rowSpan={2}\r\n          icon={<Keyboard />}\r\n          title=\"Keyboard first\"\r\n          description=\"Real links and buttons, visible focus rings, sensible tab order.\"\r\n          visual={<Keycaps />}\r\n          href=\"#\"\r\n          cta=\"Try it\"\r\n        />\r\n        <BentoCard icon={<Terminal />} title=\"One file\" description=\"Copy it straight into your repo.\" visual={<TerminalLines />} href=\"#\" />\r\n        <BentoCard icon={<Accessibility />} title=\"Reduced motion\" description=\"Calm, static frames on request.\" visual={<Wave />} href=\"#\" />\r\n        <BentoCard icon={<Moon />} title=\"Dark by default\" description=\"Tuned for dark, fine in light.\" visual={<Eclipse />} href=\"#\" />\r\n        <BentoCard\r\n          colSpan={2}\r\n          icon={<Braces />}\r\n          title=\"Typed props\"\r\n          description=\"Strict TypeScript and one shared API across every component.\"\r\n          visual={<CodeLines />}\r\n          href=\"#\"\r\n        />\r\n      </>\r\n  )\r\n}\r\n\r\nexport default function BentoGridDemo() {\r\n  return (\r\n    <div className=\"w-full max-w-4xl\">\r\n      <BentoGrid rowHeight=\"11rem\">\r\n        <Cards />\r\n      </BentoGrid>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport function VariantPreview(props: Omit<BentoGridProps, 'children'>) {\r\n  return (\r\n    <div className=\"w-full max-w-4xl\">\r\n      <BentoGrid {...props}>\r\n        <Cards />\r\n      </BentoGrid>\r\n    </div>\r\n  )\r\n}\r\n",
     "path": "registry/layout/grids/bento-grid"
   },
   {
@@ -4141,7 +5103,29 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "small",
+        "title": "Small",
+        "description": "A tiny ring with a fine stroke that fits inline next to text.",
+        "props": {
+          "size": "sm",
+          "label": "Syncing"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "large-slow",
+        "title": "Large, slow",
+        "description": "A large thick ring that turns slowly and calmly.",
+        "props": {
+          "size": "lg",
+          "duration": 1.8,
+          "label": "Loading"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { RingSpinner } from './ring-spinner'\n\nexport default function RingSpinnerDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <div className=\"flex items-end gap-8\">\n        <RingSpinner size=\"sm\" />\n        <RingSpinner size=\"md\" />\n        <RingSpinner size=\"lg\" />\n      </div>\n      <div className=\"inline-flex items-center gap-3 rounded-full border bg-card px-5 py-2.5 text-sm text-muted-foreground\">\n        <RingSpinner size=\"sm\" className=\"text-primary\" label=\"Syncing\" />\n        Syncing your workspace\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/feedback/loaders/ring-spinner"
   },
@@ -4308,7 +5292,29 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "avatar",
+        "title": "Avatar",
+        "description": "A round placeholder with a light sweep, sized for a profile picture.",
+        "props": {
+          "className": "size-16 rounded-full",
+          "label": "Loading avatar"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "card",
+        "title": "Card",
+        "description": "A large rounded block that stands in for an image or card.",
+        "props": {
+          "className": "h-40 w-72 max-w-full rounded-xl",
+          "duration": 2.4,
+          "label": "Loading card"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { ShimmerSkeleton } from './shimmer-skeleton'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nexport default function ShimmerSkeletonDemo() {\n  const [loading, setLoading] = useState(true)\n  const reduced = usePrefersReducedMotion()\n\n  useEffect(() => {\n    if (reduced) return\n    const id = window.setInterval(() => setLoading((v) => !v), 4000)\n    return () => window.clearInterval(id)\n  }, [reduced])\n\n  return (\n    <div className=\"w-full max-w-sm rounded-xl border bg-card p-5 text-card-foreground\">\n      <div className=\"flex items-center gap-4\">\n        <ShimmerSkeleton loading={loading} label=\"Loading avatar\" className=\"size-12 rounded-full\">\n          <div className=\"grid size-12 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground\">\n            MZ\n          </div>\n        </ShimmerSkeleton>\n        <div className=\"flex flex-1 flex-col gap-2\">\n          <ShimmerSkeleton loading={loading} label=\"Loading name\" className=\"w-32\">\n            <p className=\"text-sm font-medium\">Mozaik Studio</p>\n          </ShimmerSkeleton>\n          <ShimmerSkeleton loading={loading} label=\"Loading role\" className=\"w-24\">\n            <p className=\"text-xs text-muted-foreground\">Design engineer</p>\n          </ShimmerSkeleton>\n        </div>\n      </div>\n      <div className=\"mt-5 flex flex-col gap-2\">\n        <ShimmerSkeleton loading={loading} className=\"h-3 w-full\" />\n        <ShimmerSkeleton loading={loading} className=\"h-3 w-11/12\" />\n        <ShimmerSkeleton loading={loading} className=\"h-3 w-2/3\" />\n        {loading ? null : (\n          <p className=\"text-sm text-muted-foreground\">\n            Loaded. The placeholders above keep the layout from jumping.\n          </p>\n        )}\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/feedback/skeletons/shimmer-skeleton"
   },
@@ -4391,7 +5397,33 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "thin-large",
+        "title": "Thin, large",
+        "description": "A large ring with a hairline stroke and the percentage in the middle.",
+        "props": {
+          "value": 72,
+          "size": 176,
+          "strokeWidth": 4,
+          "label": "Upload progress"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "compact",
+        "title": "Compact",
+        "description": "A small bold ring with no number, for dense layouts.",
+        "props": {
+          "value": 64,
+          "size": 56,
+          "strokeWidth": 7,
+          "showValue": false,
+          "label": "Storage used"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { ProgressRing } from './progress-ring'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nconst STEPS = [18, 46, 73, 100]\n\nexport default function ProgressRingDemo() {\n  const [step, setStep] = useState(0)\n  const reduced = usePrefersReducedMotion()\n\n  useEffect(() => {\n    if (reduced) return\n    const id = window.setInterval(() => setStep((s) => (s + 1) % STEPS.length), 2600)\n    return () => window.clearInterval(id)\n  }, [reduced])\n\n  return (\n    <div className=\"flex items-center gap-12\">\n      <ProgressRing value={STEPS[step]} size={160} strokeWidth={10} label=\"Upload progress\" />\n      <div className=\"flex flex-col gap-4\">\n        <ProgressRing value={64} size={64} strokeWidth={5} label=\"Storage used\" />\n        <ProgressRing value={100} size={64} strokeWidth={5} label=\"Setup complete\">\n          <span aria-hidden className=\"text-lg text-primary\">\n            ✓\n          </span>\n        </ProgressRing>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/feedback/progress/progress-ring"
   },
@@ -4593,8 +5625,28 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { useState } from 'react'\nimport { DynamicIsland, DynamicIslandView } from './dynamic-island'\n\nconst views = ['call', 'timer', 'music'] as const\n\nconst btn =\n  'rounded-full border border-border bg-card px-3 py-1.5 text-sm text-card-foreground outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring aria-pressed:bg-primary aria-pressed:text-primary-foreground'\n\nexport default function DynamicIslandDemo() {\n  const [view, setView] = useState<string | null>(null)\n\n  return (\n    <div className=\"flex min-h-64 w-[min(28rem,90vw)] flex-col items-center gap-8\">\n      <DynamicIsland\n        view={view}\n        compact={\n          <>\n            <span aria-hidden className=\"size-2 rounded-full bg-success\" />\n            <span>Mozaik</span>\n          </>\n        }\n      >\n        <DynamicIslandView id=\"call\" className=\"gap-4\">\n          <span\n            aria-hidden\n            className=\"grid size-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground\"\n          >\n            AK\n          </span>\n          <div className=\"min-w-32\">\n            <p className=\"text-sm font-medium\">Ada Kaya</p>\n            <p className=\"text-xs opacity-60\">Incoming call</p>\n          </div>\n        </DynamicIslandView>\n        <DynamicIslandView id=\"timer\" className=\"gap-4\">\n          <p className=\"text-3xl font-semibold tabular-nums\">04:32</p>\n          <p className=\"text-xs opacity-60\">Focus session</p>\n        </DynamicIslandView>\n        <DynamicIslandView id=\"music\" className=\"flex-col gap-1 px-10\">\n          <p className=\"text-sm font-medium\">Now playing</p>\n          <p className=\"text-xs opacity-60\">Tessellate, Mozaik Quartet</p>\n        </DynamicIslandView>\n      </DynamicIsland>\n      <div className=\"flex flex-wrap justify-center gap-2\" role=\"group\" aria-label=\"Island view\">\n        <button type=\"button\" className={btn} aria-pressed={view === null} onClick={() => setView(null)}>\n          Compact\n        </button>\n        {views.map((v) => (\n          <button key={v} type=\"button\" className={btn} aria-pressed={view === v} onClick={() => setView(v)}>\n            {v[0].toUpperCase() + v.slice(1)}\n          </button>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "incoming-call",
+        "title": "Incoming call",
+        "description": "The island sits open on a caller card with an avatar and a two-line label.",
+        "props": {
+          "view": "call"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "timer",
+        "title": "Timer",
+        "description": "The island sits open on a large tabular countdown with a caption below.",
+        "props": {
+          "view": "timer",
+          "duration": 0.5
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { useState } from 'react'\r\nimport { DynamicIsland, DynamicIslandView, type DynamicIslandProps } from './dynamic-island'\r\n\r\nconst views = ['call', 'timer', 'music'] as const\r\n\r\nconst btn =\r\n  'rounded-full border border-border bg-card px-3 py-1.5 text-sm text-card-foreground outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring aria-pressed:bg-primary aria-pressed:text-primary-foreground'\r\n\r\nconst compact = (\r\n  <>\r\n    <span aria-hidden className=\"size-2 rounded-full bg-success\" />\r\n    <span>Mozaik</span>\r\n  </>\r\n)\r\n\r\nconst islandViews = (\r\n  <>\r\n        <DynamicIslandView id=\"call\" className=\"gap-4\">\r\n          <span\r\n            aria-hidden\r\n            className=\"grid size-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground\"\r\n          >\r\n            AK\r\n          </span>\r\n          <div className=\"min-w-32\">\r\n            <p className=\"text-sm font-medium\">Ada Kaya</p>\r\n            <p className=\"text-xs opacity-60\">Incoming call</p>\r\n          </div>\r\n        </DynamicIslandView>\r\n        <DynamicIslandView id=\"timer\" className=\"gap-4\">\r\n          <p className=\"text-3xl font-semibold tabular-nums\">04:32</p>\r\n          <p className=\"text-xs opacity-60\">Focus session</p>\r\n        </DynamicIslandView>\r\n        <DynamicIslandView id=\"music\" className=\"flex-col gap-1 px-10\">\r\n          <p className=\"text-sm font-medium\">Now playing</p>\r\n          <p className=\"text-xs opacity-60\">Tessellate, Mozaik Quartet</p>\r\n        </DynamicIslandView>\r\n  </>\r\n)\r\n\r\nexport default function DynamicIslandDemo() {\r\n  const [view, setView] = useState<string | null>(null)\r\n\r\n  return (\r\n    <div className=\"flex min-h-64 w-[min(28rem,90vw)] flex-col items-center gap-8\">\r\n      <DynamicIsland view={view} compact={compact}>\r\n        {islandViews}\r\n      </DynamicIsland>\r\n      <div className=\"flex flex-wrap justify-center gap-2\" role=\"group\" aria-label=\"Island view\">\r\n        <button type=\"button\" className={btn} aria-pressed={view === null} onClick={() => setView(null)}>\r\n          Compact\r\n        </button>\r\n        {views.map((v) => (\r\n          <button key={v} type=\"button\" className={btn} aria-pressed={view === v} onClick={() => setView(v)}>\r\n            {v[0].toUpperCase() + v.slice(1)}\r\n          </button>\r\n        ))}\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport function VariantPreview(props: Omit<DynamicIslandProps, 'children' | 'compact'>) {\r\n  return (\r\n    <div className=\"flex min-h-64 w-[min(28rem,90vw)] flex-col items-center gap-8\">\r\n      <DynamicIsland compact={compact} {...props}>\r\n        {islandViews}\r\n      </DynamicIsland>\r\n    </div>\r\n  )\r\n}\r\n",
     "path": "registry/feedback/status/dynamic-island"
   },
   {
@@ -4657,7 +5709,27 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "scanning",
+        "title": "Scanning",
+        "description": "A fast sweep without rings, in the primary color.",
+        "props": {
+          "status": "scanning"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "alert",
+        "title": "Alert",
+        "description": "A red radar with a quick sweep and rings, for when something needs attention.",
+        "props": {
+          "status": "alert",
+          "label": "3 signals"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { BellRing, Check } from 'lucide-react'\nimport { useState } from 'react'\nimport { RadarBadge, type RadarStatus } from './radar-badge'\n\ninterface Watcher {\n  name: string\n  detail: string\n  status: RadarStatus\n  label?: string\n}\n\nconst WATCHERS: Watcher[] = [\n  { name: 'Whale wallets', detail: '42 addresses · mainnet', status: 'live' },\n  { name: 'Bridge contracts', detail: 'Base, Arbitrum, Optimism', status: 'scanning', label: 'Scanning' },\n  { name: 'Airdrop claims', detail: 'Paused since Monday', status: 'idle', label: 'Paused' },\n]\n\nexport default function RadarBadgeDemo() {\n  const [signals, setSignals] = useState(0)\n\n  const treasury: Watcher =\n    signals > 0\n      ? { name: 'Treasury multisig', detail: 'Unusual outflow detected', status: 'alert', label: `${signals} signal${signals > 1 ? 's' : ''}` }\n      : { name: 'Treasury multisig', detail: '3 of 5 signers · Safe', status: 'live' }\n\n  const button =\n    'inline-flex h-8 items-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'\n\n  return (\n    <div className=\"w-[min(92vw,560px)] space-y-6\">\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <RadarBadge status=\"live\" />\n        <RadarBadge status=\"scanning\" />\n        <RadarBadge status=\"alert\" label=\"3 signals\" />\n        <RadarBadge status=\"idle\" />\n      </div>\n\n      <div className=\"rounded-2xl border bg-card text-card-foreground shadow-sm\">\n        <div className=\"flex items-center justify-between border-b px-5 py-3\">\n          <span className=\"text-sm font-medium\">Watchers</span>\n          <RadarBadge size=\"sm\" status={signals > 0 ? 'alert' : 'live'} label={signals > 0 ? 'Attention' : 'All clear'} />\n        </div>\n        <ul className=\"divide-y\">\n          {[treasury, ...WATCHERS].map((w) => (\n            <li key={w.name} className=\"flex items-center justify-between gap-4 px-5 py-3\">\n              <div className=\"min-w-0\">\n                <p className=\"text-sm font-medium\">{w.name}</p>\n                <p className=\"truncate text-xs text-muted-foreground\">{w.detail}</p>\n              </div>\n              <RadarBadge size=\"sm\" status={w.status} label={w.label} />\n            </li>\n          ))}\n        </ul>\n        <div className=\"flex gap-2 border-t px-5 py-3\">\n          <button type=\"button\" className={button} onClick={() => setSignals((s) => s + 1)}>\n            <BellRing aria-hidden className=\"size-3.5\" />\n            Simulate signal\n          </button>\n          <button type=\"button\" className={button} disabled={signals === 0} onClick={() => setSignals(0)}>\n            <Check aria-hidden className=\"size-3.5\" />\n            Resolve\n          </button>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/feedback/status/radar-badge"
   },
@@ -4727,8 +5799,30 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { useEffect, useState } from 'react'\nimport { AIReasoning } from './ai-reasoning'\n\n/** The stream only runs when the visitor asks for it, so the demo is still on load. */\nexport default function AIReasoningDemo() {\n  const [streaming, setStreaming] = useState(false)\n\n  useEffect(() => {\n    if (!streaming) return\n    const id = window.setTimeout(() => setStreaming(false), 3000)\n    return () => window.clearTimeout(id)\n  }, [streaming])\n\n  return (\n    <div className=\"flex w-[min(26rem,90vw)] flex-col gap-4 rounded-xl border border-border bg-card p-5 text-card-foreground\">\n      <AIReasoning isStreaming={streaming} defaultOpen duration={4.2}>\n        <p>The question asks for the cheapest route that still arrives before noon.</p>\n        <p className=\"mt-2\">Train A is 12 minutes faster but costs twice as much. Train B arrives at 11:40, inside the limit.</p>\n      </AIReasoning>\n      <p className=\"text-sm\">Take train B: it arrives at 11:40 and costs half as much.</p>\n      <button\n        type=\"button\"\n        disabled={streaming}\n        onClick={() => setStreaming(true)}\n        className=\"w-fit rounded-md border border-border px-3 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50\"\n      >\n        {streaming ? 'Reasoning…' : 'Replay reasoning'}\n      </button>\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "streaming",
+        "title": "Streaming",
+        "description": "Open and shimmering while the model is still reasoning.",
+        "props": {
+          "isStreaming": true,
+          "defaultOpen": true
+        },
+        "status": "stable"
+      },
+      {
+        "name": "collapsed",
+        "title": "Collapsed",
+        "description": "A finished trace folded down to its one-line summary.",
+        "props": {
+          "isStreaming": false,
+          "defaultOpen": false,
+          "duration": 4.2
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { useEffect, useState } from 'react'\nimport { AIReasoning, type AIReasoningProps } from './ai-reasoning'\n\n/** The stream only runs when the visitor asks for it, so the demo is still on load. */\nexport default function AIReasoningDemo() {\n  const [streaming, setStreaming] = useState(false)\n\n  useEffect(() => {\n    if (!streaming) return\n    const id = window.setTimeout(() => setStreaming(false), 3000)\n    return () => window.clearTimeout(id)\n  }, [streaming])\n\n  return (\n    <div className=\"flex w-[min(26rem,90vw)] flex-col gap-4 rounded-xl border border-border bg-card p-5 text-card-foreground\">\n      <AIReasoning isStreaming={streaming} defaultOpen duration={4.2}>\n        <p>The question asks for the cheapest route that still arrives before noon.</p>\n        <p className=\"mt-2\">Train A is 12 minutes faster but costs twice as much. Train B arrives at 11:40, inside the limit.</p>\n      </AIReasoning>\n      <p className=\"text-sm\">Take train B: it arrives at 11:40 and costs half as much.</p>\n      <button\n        type=\"button\"\n        disabled={streaming}\n        onClick={() => setStreaming(true)}\n        className=\"w-fit rounded-md border border-border px-3 py-1.5 text-sm outline-none transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50\"\n      >\n        {streaming ? 'Reasoning…' : 'Replay reasoning'}\n      </button>\n    </div>\n  )\n}\n\nexport function VariantPreview(props: Omit<AIReasoningProps, 'children'>) {\n  return (\n    <div className=\"w-[min(26rem,90vw)] rounded-xl border border-border bg-card p-5 text-card-foreground\">\n      <AIReasoning {...props}>\n        <p>The question asks for the cheapest route that still arrives before noon.</p>\n        <p className=\"mt-2\">Train A is 12 minutes faster but costs twice as much. Train B arrives at 11:40, inside the limit.</p>\n      </AIReasoning>\n    </div>\n  )\n}\n",
     "path": "registry/ai/reasoning/ai-reasoning"
   },
   {
@@ -4857,8 +5951,53 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { useState } from 'react'\nimport { AIToolApproval, type ToolDecision } from './ai-tool-approval'\n\nconst CALLS = [\n  {\n    id: 'test',\n    tool: 'bash',\n    title: 'Run a command',\n    input: 'npm test -- checkout',\n    reason: 'Check the checkout tests before changing the form.',\n  },\n  {\n    id: 'clean',\n    tool: 'bash',\n    title: 'Run a command',\n    input: 'rm -rf .next && npm run build',\n    reason: 'Clear the stale build cache, then rebuild.',\n    destructive: true,\n  },\n]\n\nexport default function AIToolApprovalDemo() {\n  const [index, setIndex] = useState(0)\n  const [decision, setDecision] = useState<ToolDecision>('pending')\n  const call = CALLS[index]\n\n  return (\n    <div className=\"flex w-[min(92vw,440px)] flex-col items-stretch gap-3\">\n      <AIToolApproval\n        key={call.id}\n        {...call}\n        decision={decision}\n        onApprove={() => setDecision('approved')}\n        onDeny={() => setDecision('denied')}\n      />\n      {decision !== 'pending' && (\n        <button\n          type=\"button\"\n          onClick={() => {\n            setDecision('pending')\n            setIndex((i) => (i + 1) % CALLS.length)\n          }}\n          className=\"self-end rounded-md px-2 py-1 text-xs text-muted-foreground outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring\"\n        >\n          Next call\n        </button>\n      )}\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "approved",
+        "title": "Approved",
+        "description": "The settled state after the reader approves the command.",
+        "props": {
+          "tool": "bash",
+          "title": "Run a command",
+          "input": "npm test -- checkout",
+          "reason": "Check the checkout tests before changing the form.",
+          "decision": "approved"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "denied",
+        "title": "Denied",
+        "description": "The settled state after the reader denies a risky command.",
+        "props": {
+          "tool": "bash",
+          "title": "Run a command",
+          "input": "rm -rf .next && npm run build",
+          "reason": "Clear the stale build cache, then rebuild.",
+          "destructive": true,
+          "decision": "denied"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "field-list",
+        "title": "Field list",
+        "description": "A structured call whose input shows as labelled fields instead of a command.",
+        "props": {
+          "tool": "write_file",
+          "title": "Write a file",
+          "input": {
+            "path": "src/checkout/form.tsx",
+            "mode": "overwrite",
+            "lines": 84,
+            "backup": true
+          },
+          "reason": "Apply the validation fix to the checkout form."
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { useState } from 'react'\nimport { AIToolApproval, type AIToolApprovalProps, type ToolDecision } from './ai-tool-approval'\n\nconst CALLS = [\n  {\n    id: 'test',\n    tool: 'bash',\n    title: 'Run a command',\n    input: 'npm test -- checkout',\n    reason: 'Check the checkout tests before changing the form.',\n  },\n  {\n    id: 'clean',\n    tool: 'bash',\n    title: 'Run a command',\n    input: 'rm -rf .next && npm run build',\n    reason: 'Clear the stale build cache, then rebuild.',\n    destructive: true,\n  },\n]\n\nexport default function AIToolApprovalDemo() {\n  const [index, setIndex] = useState(0)\n  const [decision, setDecision] = useState<ToolDecision>('pending')\n  const call = CALLS[index]\n\n  return (\n    <div className=\"flex w-[min(92vw,440px)] flex-col items-stretch gap-3\">\n      <AIToolApproval\n        key={call.id}\n        {...call}\n        decision={decision}\n        onApprove={() => setDecision('approved')}\n        onDeny={() => setDecision('denied')}\n      />\n      {decision !== 'pending' && (\n        <button\n          type=\"button\"\n          onClick={() => {\n            setDecision('pending')\n            setIndex((i) => (i + 1) % CALLS.length)\n          }}\n          className=\"self-end rounded-md px-2 py-1 text-xs text-muted-foreground outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring\"\n        >\n          Next call\n        </button>\n      )}\n    </div>\n  )\n}\n\nexport function VariantPreview(props: AIToolApprovalProps) {\n  return (\n    <div className=\"w-[min(92vw,440px)]\">\n      <AIToolApproval {...props} />\n    </div>\n  )\n}\n",
     "path": "registry/ai/agents-tools/ai-tool-approval"
   },
   {
@@ -4943,7 +6082,189 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "two-weeks",
+        "title": "Two weeks",
+        "description": "Fourteen wide bars per service for a short, readable window.",
+        "props": {
+          "title": "Last 14 days",
+          "endDate": "2026-10-14",
+          "services": [
+            {
+              "name": "API",
+              "history": [
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "degraded",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up"
+              ],
+              "incidents": [
+                {
+                  "day": 6,
+                  "title": "Elevated error rates on writes",
+                  "minutes": 18
+                }
+              ]
+            },
+            {
+              "name": "Dashboard",
+              "history": [
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up"
+              ]
+            }
+          ]
+        },
+        "status": "stable"
+      },
+      {
+        "name": "ninety-days",
+        "title": "Ninety days",
+        "description": "A dense strip of ninety thin bars for a long history.",
+        "props": {
+          "title": "Last 90 days",
+          "endDate": "2026-10-14",
+          "services": [
+            {
+              "name": "API",
+              "history": [
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "degraded",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "down",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "degraded",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up",
+                "up"
+              ],
+              "incidents": [
+                {
+                  "day": 14,
+                  "title": "Slow responses in eu-west",
+                  "minutes": 23
+                },
+                {
+                  "day": 41,
+                  "title": "Database failover",
+                  "minutes": 52
+                },
+                {
+                  "day": 77,
+                  "title": "Elevated error rates on writes",
+                  "minutes": 18
+                }
+              ]
+            }
+          ]
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { UptimeCard, type DayStatus, type UptimeService } from './uptime-card'\n\nconst DAYS = 45\n\n/** A history of `up` days with a few marked ones. */\nfunction history(marks: Record<number, DayStatus>, missing = 0): DayStatus[] {\n  return Array.from({ length: DAYS }, (_, i) => (i < missing ? 'none' : (marks[i] ?? 'up')))\n}\n\nconst SERVICES: UptimeService[] = [\n  {\n    name: 'API',\n    history: history({ 12: 'degraded', 31: 'degraded' }),\n    incidents: [\n      { day: 12, title: 'Elevated error rates on writes', minutes: 18 },\n      { day: 31, title: 'Slow responses in eu-west', minutes: 23 },\n    ],\n  },\n  {\n    name: 'Webhooks',\n    history: history({ 27: 'down', 44: 'degraded' }),\n    incidents: [\n      { day: 27, title: 'Deliveries delayed', minutes: 48 },\n      { day: 44, title: 'Retries backing up', minutes: 11 },\n    ],\n  },\n  {\n    name: 'Database',\n    history: history({ 20: 'down' }, 6),\n    incidents: [{ day: 20, title: 'Failover to replica', minutes: 9 }],\n  },\n]\n\nexport default function UptimeCardDemo() {\n  return <UptimeCard services={SERVICES} endDate=\"2026-10-14\" className=\"w-[min(92vw,560px)]\" />\n}\n",
     "path": "registry/data/status-pages/uptime-card"
   },
@@ -5013,8 +6334,21 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { Terminal, TerminalLine, TerminalTyping } from './terminal'\n\nexport default function TerminalDemo() {\n  return (\n    <Terminal title=\"~/mozaik-site\" className=\"h-80\" startOnView={false}>\n      <TerminalTyping>$ npm install motion</TerminalTyping>\n      <TerminalLine className=\"text-muted-foreground\">added 1 package in 1.1s</TerminalLine>\n      <TerminalLine className=\"text-success\">✔ Pasted terminal.tsx into src/components</TerminalLine>\n      <TerminalLine className=\"text-success\">✔ Found @/lib/utils</TerminalLine>\n      <TerminalLine className=\"text-success\">✔ Types check out</TerminalLine>\n      <TerminalLine delay={0.3} className=\"text-muted-foreground\">\n        Done in 1.2s. Import it and ship.\n      </TerminalLine>\n      <TerminalTyping delay={0.4}>$ npm run dev</TerminalTyping>\n    </Terminal>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "parallel",
+        "title": "Parallel lines",
+        "description": "Lines run on their own delays instead of waiting for the one before, so the output lands almost at once.",
+        "props": {
+          "title": "~/mozaik-site",
+          "className": "h-80",
+          "sequence": false,
+          "startOnView": false
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { Terminal, TerminalLine, TerminalTyping, type TerminalProps } from './terminal'\r\n\r\nfunction Lines() {\r\n  return (\r\n    <>\r\n      <TerminalTyping>$ npm install motion</TerminalTyping>\r\n      <TerminalLine className=\"text-muted-foreground\">added 1 package in 1.1s</TerminalLine>\r\n      <TerminalLine className=\"text-success\">✔ Pasted terminal.tsx into src/components</TerminalLine>\r\n      <TerminalLine className=\"text-success\">✔ Found @/lib/utils</TerminalLine>\r\n      <TerminalLine className=\"text-success\">✔ Types check out</TerminalLine>\r\n      <TerminalLine delay={0.3} className=\"text-muted-foreground\">\r\n        Done in 1.2s. Import it and ship.\r\n      </TerminalLine>\r\n      <TerminalTyping delay={0.4}>$ npm run dev</TerminalTyping>\r\n    </>\r\n  )\r\n}\r\n\r\nexport default function TerminalDemo() {\r\n  return (\r\n    <Terminal title=\"~/mozaik-site\" className=\"h-80\" startOnView={false}>\r\n      <Lines />\r\n    </Terminal>\r\n  )\r\n}\r\n\r\nexport function VariantPreview(props: Omit<TerminalProps, 'children'>) {\r\n  return (\r\n    <Terminal {...props}>\r\n      <Lines />\r\n    </Terminal>\r\n  )\r\n}\r\n",
     "path": "registry/media/mockups/terminal"
   },
   {
@@ -5127,8 +6461,89 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
-    "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { OrderBook, type OrderBookLevel } from './order-book'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nconst MID = 3468.4\nconst ladder = (side: 1 | -1, seed: number): OrderBookLevel[] =>\n  Array.from({ length: 8 }, (_, i) => ({\n    price: Number((MID + side * (0.5 + i * 0.75)).toFixed(2)),\n    size: Number((1.2 + ((i * 7 + seed) % 9) * 0.9).toFixed(3)),\n  }))\n\nexport default function OrderBookDemo() {\n  const reduced = usePrefersReducedMotion()\n  const [book, setBook] = useState(() => ({ bids: ladder(-1, 1), asks: ladder(1, 4) }))\n\n  // Simulated feed: a few sizes change every second. It stops under reduced motion.\n  useEffect(() => {\n    if (reduced) return\n    const id = setInterval(() => {\n      setBook((b) => {\n        const bump = (levels: OrderBookLevel[]) =>\n          levels.map((l) => (Math.random() > 0.6 ? { ...l, size: Number(Math.max(0.2, l.size + (Math.random() - 0.5) * 2).toFixed(3)) } : l))\n        return { bids: bump(b.bids), asks: bump(b.asks) }\n      })\n    }, 1000)\n    return () => clearInterval(id)\n  }, [reduced])\n\n  return (\n    <div className=\"w-[min(92vw,460px)]\">\n      <OrderBook bids={book.bids} asks={book.asks} levels={6} baseSymbol=\"ETH\" quoteSymbol=\"USDC\" lastPrice={MID} />\n    </div>\n  )\n}\n",
+    "variants": [
+      {
+        "name": "top-of-book",
+        "title": "Top of book",
+        "description": "Only the three nearest levels on each side, for a compact ticket.",
+        "props": {
+          "bids": [
+            {
+              "price": 3467.9,
+              "size": 2.1
+            },
+            {
+              "price": 3467.15,
+              "size": 8.4
+            },
+            {
+              "price": 3466.4,
+              "size": 6.6
+            },
+            {
+              "price": 3465.65,
+              "size": 4.8
+            },
+            {
+              "price": 3464.9,
+              "size": 3
+            },
+            {
+              "price": 3464.15,
+              "size": 1.2
+            },
+            {
+              "price": 3463.4,
+              "size": 7.5
+            },
+            {
+              "price": 3462.65,
+              "size": 5.7
+            }
+          ],
+          "asks": [
+            {
+              "price": 3468.9,
+              "size": 4.8
+            },
+            {
+              "price": 3469.65,
+              "size": 3
+            },
+            {
+              "price": 3470.4,
+              "size": 1.2
+            },
+            {
+              "price": 3471.15,
+              "size": 7.5
+            },
+            {
+              "price": 3471.9,
+              "size": 5.7
+            },
+            {
+              "price": 3472.65,
+              "size": 3.9
+            },
+            {
+              "price": 3473.4,
+              "size": 2.1
+            },
+            {
+              "price": 3474.15,
+              "size": 8.4
+            }
+          ],
+          "levels": 3,
+          "baseSymbol": "ETH",
+          "quoteSymbol": "USDC",
+          "lastPrice": 3468.4
+        },
+        "status": "stable"
+      }
+    ],
+    "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { OrderBook, type OrderBookLevel, type OrderBookProps } from './order-book'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nconst MID = 3468.4\nconst ladder = (side: 1 | -1, seed: number): OrderBookLevel[] =>\n  Array.from({ length: 8 }, (_, i) => ({\n    price: Number((MID + side * (0.5 + i * 0.75)).toFixed(2)),\n    size: Number((1.2 + ((i * 7 + seed) % 9) * 0.9).toFixed(3)),\n  }))\n\nexport default function OrderBookDemo() {\n  const reduced = usePrefersReducedMotion()\n  const [book, setBook] = useState(() => ({ bids: ladder(-1, 1), asks: ladder(1, 4) }))\n\n  // Simulated feed: a few sizes change every second. It stops under reduced motion.\n  useEffect(() => {\n    if (reduced) return\n    const id = setInterval(() => {\n      setBook((b) => {\n        const bump = (levels: OrderBookLevel[]) =>\n          levels.map((l) => (Math.random() > 0.6 ? { ...l, size: Number(Math.max(0.2, l.size + (Math.random() - 0.5) * 2).toFixed(3)) } : l))\n        return { bids: bump(b.bids), asks: bump(b.asks) }\n      })\n    }, 1000)\n    return () => clearInterval(id)\n  }, [reduced])\n\n  return (\n    <div className=\"w-[min(92vw,460px)]\">\n      <OrderBook bids={book.bids} asks={book.asks} levels={6} baseSymbol=\"ETH\" quoteSymbol=\"USDC\" lastPrice={MID} />\n    </div>\n  )\n}\n\nexport function VariantPreview(props: OrderBookProps) {\n  return (\n    <div className=\"w-[min(92vw,460px)]\">\n      <OrderBook {...props} />\n    </div>\n  )\n}\n",
     "path": "registry/onchain/prices-charts/order-book"
   },
   {
@@ -5223,7 +6638,34 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "falling",
+        "title": "Falling",
+        "description": "A price below its 24h open, so the change badge reads as a loss.",
+        "props": {
+          "value": 97615.3,
+          "previousValue": 98240.5,
+          "currency": "USD",
+          "label": "Bitcoin price",
+          "className": "text-5xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "price-only",
+        "title": "Price only",
+        "description": "Just the rolling digits, with the change badge hidden.",
+        "props": {
+          "value": 3468.42,
+          "currency": "USD",
+          "showChange": false,
+          "label": "Ether price",
+          "className": "text-5xl font-semibold tracking-tight"
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { PriceTicker } from './price-ticker'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\ninterface Market {\n  symbol: string\n  name: string\n  open: number\n  price: number\n  decimals: number\n}\n\nconst START: Market[] = [\n  { symbol: 'ETH', name: 'Ether', open: 3412.18, price: 3468.42, decimals: 2 },\n  { symbol: 'BTC', name: 'Bitcoin', open: 98240.5, price: 97615.3, decimals: 2 },\n  { symbol: 'SOL', name: 'Solana', open: 182.44, price: 186.91, decimals: 2 },\n  { symbol: 'ARB', name: 'Arbitrum', open: 0.8421, price: 0.8377, decimals: 4 },\n]\n\n// A small random walk so the demo keeps ticking.\nconst step = (m: Market): Market => {\n  const drift = (Math.random() - 0.48) * 0.006\n  const price = Number((m.price * (1 + drift)).toFixed(m.decimals))\n  return { ...m, price }\n}\n\nexport default function PriceTickerDemo() {\n  const reduced = usePrefersReducedMotion()\n  const [markets, setMarkets] = useState(START)\n\n  useEffect(() => {\n    if (reduced) return\n    const id = setInterval(() => {\n      setMarkets((list) => list.map((m, i) => (i === 0 || Math.random() > 0.45 ? step(m) : m)))\n    }, 2200)\n    return () => clearInterval(id)\n  }, [reduced])\n\n  const [lead, ...rest] = markets\n\n  return (\n    <div className=\"w-[min(92vw,560px)] rounded-2xl border bg-card p-6 text-card-foreground shadow-sm\">\n      <div className=\"flex items-center justify-between text-sm text-muted-foreground\">\n        <span className=\"font-medium text-foreground\">\n          {lead.symbol}\n          <span className=\"text-muted-foreground\"> / USD</span>\n        </span>\n        <span>24h change</span>\n      </div>\n      <PriceTicker\n        value={lead.price}\n        previousValue={lead.open}\n        currency=\"USD\"\n        label={`${lead.name} price`}\n        className=\"mt-3 text-5xl font-semibold tracking-tight\"\n      />\n\n      <ul className=\"mt-6 divide-y border-t\">\n        {rest.map((m) => (\n          <li key={m.symbol} className=\"flex items-center justify-between py-3\">\n            <span className=\"flex items-center gap-3\">\n              <span className=\"grid size-8 place-items-center rounded-full bg-muted font-mono text-[11px] font-semibold\">\n                {m.symbol}\n              </span>\n              <span className=\"text-sm font-medium\">{m.name}</span>\n            </span>\n            <PriceTicker\n              value={m.price}\n              previousValue={m.open}\n              currency=\"USD\"\n              decimals={m.decimals}\n              label={`${m.name} price`}\n              className=\"text-base font-medium\"\n            />\n          </li>\n        ))}\n      </ul>\n    </div>\n  )\n}\n",
     "path": "registry/onchain/prices-charts/price-ticker"
   },
@@ -5309,7 +6751,19 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "bare",
+        "title": "Bare",
+        "description": "Only the shortened address as plain text, with no avatar and no copy button.",
+        "props": {
+          "address": "0x33cEb14560bd33b977Ada347Daa646D53418F12D",
+          "avatar": false,
+          "copyable": false
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { ArrowRight } from 'lucide-react'\nimport { AddressChip } from './address-chip'\n\n// Made-up addresses for the demo.\nconst transfers = [\n  {\n    from: { address: '0x33cEb14560bd33b977Ada347Daa646D53418F12D', label: 'mozaik.eth' },\n    to: { address: '0xBf38e418004a7f37b709a2ac6b392f0986470c30' },\n    amount: '2.40 ETH',\n  },\n  {\n    from: { address: '0x2c9E054777108e030220c01aBefCcf4373faB57F' },\n    to: { address: '0x9baFb72f91b8789582615B6908429433f0d7707C', label: 'atlas.eth' },\n    amount: '1,250 USDC',\n  },\n  {\n    from: { address: '0x392B4d7cfFcaD51F11007Ab30606d59f0C0e6796', label: 'orbit.eth' },\n    to: { address: '0x1d3Ee4Cb1365556C2c4bf6adD137bcA43De92211' },\n    amount: '0.75 ETH',\n  },\n]\n\nconst explorer = (address: string) => `https://etherscan.io/address/${address}`\n\nexport default function AddressChipDemo() {\n  return (\n    <div className=\"w-[min(92vw,620px)] space-y-6\">\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <AddressChip address=\"0x33cEb14560bd33b977Ada347Daa646D53418F12D\" label=\"mozaik.eth\" href={explorer('0x33cEb14560bd33b977Ada347Daa646D53418F12D')} />\n        <AddressChip address=\"0xBf38e418004a7f37b709a2ac6b392f0986470c30\" chars={6} />\n        <AddressChip address=\"0xnot-an-address\" />\n      </div>\n\n      <div className=\"rounded-2xl border bg-card text-card-foreground shadow-sm\">\n        <div className=\"flex items-center justify-between border-b px-5 py-3 text-sm\">\n          <span className=\"font-medium\">Recent transfers</span>\n          <span className=\"text-muted-foreground\">Last 24h</span>\n        </div>\n        <ul className=\"divide-y\">\n          {transfers.map((t, i) => (\n            <li key={i} className=\"flex flex-wrap items-center gap-3 px-5 py-3.5\">\n              <AddressChip {...t.from} href={explorer(t.from.address)} />\n              <ArrowRight aria-hidden className=\"size-4 text-muted-foreground\" />\n              <AddressChip {...t.to} href={explorer(t.to.address)} />\n              <span className=\"ml-auto font-mono text-sm tabular-nums\">{t.amount}</span>\n            </li>\n          ))}\n        </ul>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/onchain/wallet-address/address-chip"
   },
@@ -5382,7 +6836,47 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "manual-print",
+        "title": "Manual print",
+        "description": "The paper stays in the printer until the Print button is pressed.",
+        "props": {
+          "autoPrint": false,
+          "tx": {
+            "hash": "0x8f3a1c52d9e47b60a1f3c8d25e9b7a4c6d01f2e3b4a5968778695a4b3c2d1e0f",
+            "from": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+            "to": "0x2a9fB1c0E5d3a7C8b4F6e1D2c9A0b3E7f5d4C6B8",
+            "amount": "0.2500",
+            "symbol": "ETH",
+            "fee": "0.00042",
+            "status": "confirmed",
+            "network": "Ethereum",
+            "timestamp": "26 Oct 2026 · 08:42"
+          }
+        },
+        "status": "stable"
+      },
+      {
+        "name": "failed",
+        "title": "Failed",
+        "description": "A receipt for a transaction that failed on chain.",
+        "props": {
+          "tx": {
+            "hash": "0x8f3a1c52d9e47b60a1f3c8d25e9b7a4c6d01f2e3b4a5968778695a4b3c2d1e0f",
+            "from": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+            "to": "0x2a9fB1c0E5d3a7C8b4F6e1D2c9A0b3E7f5d4C6B8",
+            "amount": "0.2500",
+            "symbol": "ETH",
+            "fee": "0.00042",
+            "status": "failed",
+            "network": "Ethereum",
+            "timestamp": "26 Oct 2026 · 08:42"
+          }
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { ReceiptPrinter } from './receipt-printer'\n\nexport default function ReceiptPrinterDemo() {\n  return (\n    <ReceiptPrinter\n      tx={{\n        hash: '0x8f3a1c52d9e47b60a1f3c8d25e9b7a4c6d01f2e3b4a5968778695a4b3c2d1e0f',\n        from: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F',\n        to: '0x2a9fB1c0E5d3a7C8b4F6e1D2c9A0b3E7f5d4C6B8',\n        amount: '0.2500',\n        symbol: 'ETH',\n        fee: '0.00042',\n        status: 'confirmed',\n        network: 'Ethereum',\n        timestamp: '26 Oct 2026 · 08:42',\n      }}\n    />\n  )\n}\n",
     "path": "registry/onchain/transactions/receipt-printer"
   },
@@ -5439,7 +6933,73 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "vertical",
+        "title": "Vertical",
+        "description": "The steps stacked in a column with a connecting line, mid-swap.",
+        "props": {
+          "orientation": "vertical",
+          "label": "Swap progress",
+          "className": "mx-auto w-[min(90vw,24rem)]",
+          "steps": [
+            {
+              "label": "Approve",
+              "description": "Allow the router to spend USDC",
+              "status": "done"
+            },
+            {
+              "label": "Sign",
+              "description": "Confirm the swap in your wallet",
+              "status": "active"
+            },
+            {
+              "label": "Broadcast",
+              "description": "Sent to the network",
+              "status": "pending"
+            },
+            {
+              "label": "Confirmed",
+              "description": "Included in block 21,408,117",
+              "status": "pending"
+            }
+          ]
+        },
+        "status": "stable"
+      },
+      {
+        "name": "failed",
+        "title": "Failed step",
+        "description": "A row of steps where the wallet rejection stops the flow on an error state.",
+        "props": {
+          "label": "Swap progress",
+          "className": "w-[min(92vw,680px)]",
+          "steps": [
+            {
+              "label": "Approve",
+              "description": "Allow the router to spend USDC",
+              "status": "done"
+            },
+            {
+              "label": "Sign",
+              "description": "Rejected in wallet. Try again.",
+              "status": "error"
+            },
+            {
+              "label": "Broadcast",
+              "description": "Sent to the network",
+              "status": "pending"
+            },
+            {
+              "label": "Confirmed",
+              "description": "Included in block 21,408,117",
+              "status": "pending"
+            }
+          ]
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { RotateCcw, TriangleAlert } from 'lucide-react'\nimport { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { TxSteps, type TxStep } from './tx-steps'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\n\nconst BASE = [\n  { label: 'Approve', description: 'Allow the router to spend USDC' },\n  { label: 'Sign', description: 'Confirm the swap in your wallet' },\n  { label: 'Broadcast', description: 'Sent to the network' },\n  { label: 'Confirmed', description: 'Included in block 21,408,117' },\n]\n\nconst toSteps = (active: number, failed: boolean): TxStep[] =>\n  BASE.map((s, i) => ({\n    ...s,\n    status: i < active ? 'done' : i === active ? (failed ? 'error' : 'active') : 'pending',\n    ...(failed && i === active ? { description: 'Rejected in wallet. Try again.' } : {}),\n  }))\n\nexport default function TxStepsDemo() {\n  const reduced = usePrefersReducedMotion()\n  // Under reduced motion the demo holds on the second step and waits for clicks.\n  const [active, setActive] = useState(1)\n  const [failed, setFailed] = useState(false)\n  const [orientation, setOrientation] = useState<'vertical' | 'horizontal'>('horizontal')\n\n  useEffect(() => {\n    if (reduced || failed) return\n    const id = setTimeout(() => setActive((a) => (a >= BASE.length ? 0 : a + 1)), active >= BASE.length ? 2600 : 1700)\n    return () => clearTimeout(id)\n  }, [active, failed, reduced])\n\n  const steps = toSteps(active, failed)\n  const finished = active >= BASE.length\n\n  const button =\n    'inline-flex h-8 items-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'\n\n  return (\n    <div className=\"w-[min(92vw,680px)] rounded-2xl border bg-card p-6 text-card-foreground shadow-sm\">\n      <div className=\"mb-6 flex flex-wrap items-center justify-between gap-3\">\n        <div>\n          <p className=\"text-sm font-medium\">Swap 1,250 USDC → 0.36 ETH</p>\n          <p className=\"text-xs text-muted-foreground\">\n            {failed ? 'Transaction failed' : finished ? 'Swap complete' : `Step ${active + 1} of ${BASE.length}`}\n          </p>\n        </div>\n        <div role=\"radiogroup\" aria-label=\"Layout\" className=\"inline-flex rounded-md border bg-muted p-0.5 text-xs\">\n          {(['horizontal', 'vertical'] as const).map((o) => (\n            <button\n              key={o}\n              type=\"button\"\n              role=\"radio\"\n              aria-checked={orientation === o}\n              onClick={() => setOrientation(o)}\n              className=\"rounded px-2.5 py-1 font-medium capitalize text-muted-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring aria-checked:bg-background aria-checked:text-foreground aria-checked:shadow-sm\"\n            >\n              {o}\n            </button>\n          ))}\n        </div>\n      </div>\n\n      <TxSteps steps={steps} orientation={orientation} className={orientation === 'vertical' ? 'mx-auto max-w-sm' : undefined} />\n\n      <div className=\"mt-6 flex flex-wrap gap-2 border-t pt-4\">\n        <button type=\"button\" className={button} disabled={failed || finished} onClick={() => setActive((a) => a + 1)}>\n          Next step\n        </button>\n        <button type=\"button\" className={button} disabled={failed || finished} onClick={() => setFailed(true)}>\n          <TriangleAlert aria-hidden className=\"size-3.5\" />\n          Fail current\n        </button>\n        <button\n          type=\"button\"\n          className={button}\n          onClick={() => {\n            setFailed(false)\n            setActive(0)\n          }}\n        >\n          <RotateCcw aria-hidden className=\"size-3.5\" />\n          Restart\n        </button>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/onchain/transactions/tx-steps"
   },
@@ -5553,7 +7113,45 @@
     ],
     "status": "stable",
     "added": "2026-10-26",
-    "variants": [],
+    "variants": [
+      {
+        "name": "dollar-prefix",
+        "title": "Dollar prefix",
+        "description": "A currency pad with the symbol in front of the amount and two decimals.",
+        "props": {
+          "symbol": "$",
+          "symbolPosition": "prefix",
+          "decimals": 2,
+          "max": 1000,
+          "balance": 482.5,
+          "presets": [
+            10,
+            50,
+            100
+          ],
+          "actionLabel": "Pay"
+        },
+        "status": "stable"
+      },
+      {
+        "name": "whole-units",
+        "title": "Whole units",
+        "description": "A whole-number pad with no decimal key, for tokens that are not divisible.",
+        "props": {
+          "symbol": "USDC",
+          "symbolPosition": "suffix",
+          "decimals": 0,
+          "max": 5000,
+          "balance": 1250,
+          "presets": [
+            100,
+            500,
+            1000
+          ]
+        },
+        "status": "stable"
+      }
+    ],
     "demo": "import { AmountPad } from './amount-pad'\n\nexport default function AmountPadDemo() {\n  return (\n    <AmountPad symbol=\"ETH\" symbolPosition=\"suffix\" decimals={4} max={5} balance={3.2041} presets={[0.1, 0.5, 1]}>\n      <div className=\"flex items-center gap-3\">\n        <span className=\"flex size-9 items-center justify-center rounded-full bg-muted font-mono text-xs font-medium\">0x</span>\n        <div className=\"min-w-0 leading-tight\">\n          <p className=\"text-xs text-muted-foreground\">Send to</p>\n          <p className=\"truncate font-mono text-sm font-medium\">0x71C7…976F</p>\n        </div>\n      </div>\n    </AmountPad>\n  )\n}\n",
     "path": "registry/onchain/amount-confirm/amount-pad"
   },

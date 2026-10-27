@@ -1,5 +1,5 @@
 import { Compass, Mountain, Snowflake, Sunrise, Waves } from 'lucide-react'
-import { ImageAccordion, type ImageAccordionItem } from './image-accordion'
+import { ImageAccordion, type ImageAccordionItem, type ImageAccordionProps } from './image-accordion'
 
 const tones = [
   'from-primary/50 via-primary/15 to-muted',
@@ -35,6 +35,14 @@ export default function ImageAccordionDemo() {
   return (
     <div className="w-[760px] max-w-full">
       <ImageAccordion items={items} defaultIndex={2} height={360} />
+    </div>
+  )
+}
+
+export function VariantPreview(props: Omit<ImageAccordionProps, 'items'>) {
+  return (
+    <div className="w-[760px] max-w-full">
+      <ImageAccordion {...props} items={items} />
     </div>
   )
 }

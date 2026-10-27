@@ -24,7 +24,7 @@
       "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/slide-text-button.tsx"
     },
     "status": "stable",
-    "variants": 0
+    "variants": 1
   },
   "categories": [
     "buttons",
