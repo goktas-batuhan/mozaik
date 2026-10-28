@@ -1,0 +1,88 @@
+{
+  "name": "features-checklist",
+  "title": "Features Checklist",
+  "description": "Copy and a call to action beside a two-column list of included capabilities, in one rounded panel.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "checklist",
+    "included",
+    "list"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "eyebrow",
+      "type": "ReactNode",
+      "description": "Small label above the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ title: string; description?: ReactNode }[]",
+      "required": true,
+      "description": "What is included. Two columns on wide containers."
+    },
+    {
+      "name": "action",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Call to action under the copy. A link when href is set, a button otherwise."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.4",
+      "description": "Seconds each check takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.04",
+      "description": "Seconds between checks."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "name": "features-numbered",
+  "title": "Features Numbered",
+  "description": "Editorial columns without cards: a rule, an oversized numeral, a title and a line of copy.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "numbered",
+    "editorial",
+    "principles"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy beside the headline."
+    },
+    {
+      "name": "eyebrow",
+      "type": "ReactNode",
+      "description": "Small label above the headline."
+    },
+    {
+      "name": "features",
+      "type": "{ title: string; description: ReactNode }[]",
+      "required": true,
+      "description": "Two to four features, numbered from 01."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.5",
+      "description": "Seconds each column takes to fade in."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

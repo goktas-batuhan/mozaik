@@ -1,0 +1,77 @@
+{
+  "name": "features-steps",
+  "title": "Features Steps",
+  "description": "A numbered vertical timeline: a sticky headline on one side, steps joined by a rail on the other.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "steps",
+    "how it works",
+    "timeline",
+    "process"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "eyebrow",
+      "type": "ReactNode",
+      "description": "Small label above the headline."
+    },
+    {
+      "name": "steps",
+      "type": "{ title: string; description: ReactNode; visual?: ReactNode }[]",
+      "required": true,
+      "description": "Steps in order, numbered from 1."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.5",
+      "description": "Seconds each step takes to fade in."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

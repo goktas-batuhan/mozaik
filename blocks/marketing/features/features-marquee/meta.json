@@ -1,0 +1,86 @@
+{
+  "name": "features-marquee",
+  "title": "Features Marquee",
+  "description": "Rows of small feature chips that drift in alternating directions under a centered headline.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "loop",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "marquee",
+    "chips",
+    "ticker"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "marquee"
+  ],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "features",
+      "type": "{ title: string; description?: string; icon?: ReactNode }[]",
+      "required": true,
+      "description": "Features split over the rows, filled in turn."
+    },
+    {
+      "name": "rows",
+      "type": "1 | 2 | 3",
+      "default": "2",
+      "description": "How many rows of moving chips."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "40",
+      "description": "Seconds for one full loop of a row."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "default": "true",
+      "description": "Pause a row while the pointer or focus is on it."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Stops the motion and shows the chips still."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "name": "features-integrations-beam",
+  "title": "Features Integrations Beam",
+  "description": "Copy beside a hub diagram where beams of light connect tools on both sides to your product.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "loop",
+    "svg",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "integrations",
+    "beam",
+    "connectors"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "animated-beam"
+  ],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "points",
+      "type": "string[]",
+      "description": "Short selling points listed under the copy."
+    },
+    {
+      "name": "sources",
+      "type": "{ label: string; icon: ReactNode }[]",
+      "required": true,
+      "description": "Tools on the left of the hub."
+    },
+    {
+      "name": "targets",
+      "type": "{ label: string; icon: ReactNode }[]",
+      "required": true,
+      "description": "Tools on the right of the hub."
+    },
+    {
+      "name": "hub",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Center of the diagram: your product mark."
+    },
+    {
+      "name": "hubLabel",
+      "type": "string",
+      "default": "Hub",
+      "description": "Name of the hub for assistive tech."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Stops the beams and shows the diagram still."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

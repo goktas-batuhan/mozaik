@@ -1,0 +1,78 @@
+{
+  "name": "features-tabs",
+  "title": "Features Tabs",
+  "description": "Pill tabs where each tab opens a panel with copy, bullets and a visual that slides in from the side you move towards.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "click",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "tabs",
+    "panel",
+    "showcase"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "direction-aware-tabs"
+  ],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "tabs",
+      "type": "{ id: string; label: string; title: string; description: ReactNode; points?: string[]; visual?: ReactNode }[]",
+      "required": true,
+      "description": "One tab per feature."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "Tab selected on first render. Defaults to the first one."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "description": "Seconds the panel takes to switch."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the tab animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

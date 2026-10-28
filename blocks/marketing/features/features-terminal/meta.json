@@ -1,0 +1,80 @@
+{
+  "name": "features-terminal",
+  "title": "Features Terminal",
+  "description": "A feature list beside a terminal that types a command and prints the result.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "type",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "terminal",
+    "cli",
+    "developer"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "terminal"
+  ],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "features",
+      "type": "{ title: string; description: ReactNode }[]",
+      "required": true,
+      "description": "Features listed beside the terminal."
+    },
+    {
+      "name": "lines",
+      "type": "{ text: string; kind?: command | output | success }[]",
+      "required": true,
+      "description": "What the terminal prints, in order."
+    },
+    {
+      "name": "terminalTitle",
+      "type": "string",
+      "default": "~/project",
+      "description": "Text in the terminal title bar."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Shows every line in full, with no typing."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}
