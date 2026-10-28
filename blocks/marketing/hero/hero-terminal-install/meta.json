@@ -1,0 +1,96 @@
+{
+  "name": "hero-terminal-install",
+  "title": "Hero Terminal Install",
+  "description": "Developer hero with a copyable install command beside a terminal that plays the install.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": [
+    "type",
+    "click",
+    "marketing"
+  ],
+  "keywords": [
+    "hero",
+    "developer",
+    "cli",
+    "install",
+    "terminal"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "terminal"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "command",
+      "type": "string",
+      "default": "'npx shadcn add mozaik/shimmer-button'",
+      "description": "Command in the copy box and typed in the terminal."
+    },
+    {
+      "name": "output",
+      "type": "string[]",
+      "description": "Lines printed after the command."
+    },
+    {
+      "name": "terminalTitle",
+      "type": "string",
+      "default": "'~/my-app'",
+      "description": "Text in the terminal's title bar."
+    },
+    {
+      "name": "link",
+      "type": "{ label: ReactNode; href: string }",
+      "description": "Link under the command."
+    },
+    {
+      "name": "onCopy",
+      "type": "(command: string) => void",
+      "description": "Fires after the command is copied."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each piece takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the first piece."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

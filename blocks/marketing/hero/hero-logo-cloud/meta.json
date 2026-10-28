@@ -1,0 +1,96 @@
+{
+  "name": "hero-logo-cloud",
+  "title": "Hero Logo Cloud",
+  "description": "Inverted hero panel with a centered headline, two buttons and a row of customer logos along the bottom.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "hero",
+    "logos",
+    "trust",
+    "customers",
+    "dark"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/hero-section/hero-ai-infrastructure.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "[ReactNode, ReactNode?]",
+      "required": true,
+      "description": "Headline; the optional second line is set in a muted color."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "primaryAction",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Light filled call to action."
+    },
+    {
+      "name": "secondaryAction",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Outlined call to action."
+    },
+    {
+      "name": "logosLabel",
+      "type": "string",
+      "description": "Line above the logo row."
+    },
+    {
+      "name": "logos",
+      "type": "string[]",
+      "description": "Company names, each drawn with a small inline mark."
+    },
+    {
+      "name": "renderLogo",
+      "type": "(name: string, index: number) => ReactNode",
+      "description": "Draws a logo yourself."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each piece takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the first piece."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

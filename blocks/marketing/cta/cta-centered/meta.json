@@ -1,0 +1,80 @@
+{
+  "name": "cta-centered",
+  "title": "CTA Centered",
+  "description": "Closing call to action with a headline and two buttons centered on a soft radial glow.",
+  "group": "marketing",
+  "shelf": "cta",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "cta",
+    "centered",
+    "closing",
+    "buttons"
+  ],
+  "source": {
+    "repo": "educlopez/smoothui",
+    "license": "MIT",
+    "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/ctas/cta-1/index.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "primaryAction",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Filled call to action."
+    },
+    {
+      "name": "secondaryAction",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Outlined call to action."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds the content takes to rise into view."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the entrance starts."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

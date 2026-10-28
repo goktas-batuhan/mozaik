@@ -1,0 +1,89 @@
+{
+  "name": "cta-beam-card",
+  "title": "CTA Beam Card",
+  "description": "Centered card with a light traveling around its border, a perk list and one strong button.",
+  "group": "marketing",
+  "shelf": "cta",
+  "layer": "block",
+  "tags": [
+    "loop",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "cta",
+    "card",
+    "beam",
+    "perks",
+    "trial"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "border-beam"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "perks",
+      "type": "string[]",
+      "description": "Short perks listed with check marks."
+    },
+    {
+      "name": "actionLabel",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Button label."
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "description": "Renders the button as a link."
+    },
+    {
+      "name": "onAction",
+      "type": "() => void",
+      "description": "Click handler."
+    },
+    {
+      "name": "note",
+      "type": "ReactNode",
+      "description": "Small line under the button."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds the content takes to rise into view."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the entrance starts."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

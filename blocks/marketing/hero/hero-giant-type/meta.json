@@ -1,0 +1,96 @@
+{
+  "name": "hero-giant-type",
+  "title": "Hero Giant Type",
+  "description": "Typographic hero: oversized words rise line by line, with a services list and a call to action below.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "hero",
+    "typography",
+    "agency",
+    "studio",
+    "oversized"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/hero-section/hero-digital-success.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "words",
+      "type": "string[]",
+      "required": true,
+      "description": "Headline words, one per line. The last one takes the primary color."
+    },
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "description": "Small label above the headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "services",
+      "type": "string[]",
+      "description": "Short capability chips."
+    },
+    {
+      "name": "actionLabel",
+      "type": "ReactNode",
+      "description": "Call to action label."
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "description": "Renders the call to action as a link."
+    },
+    {
+      "name": "onAction",
+      "type": "() => void",
+      "description": "Click handler for the call to action."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each piece takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the first piece."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

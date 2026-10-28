@@ -1,0 +1,101 @@
+{
+  "name": "hero-phone-split",
+  "title": "Hero Phone Split",
+  "description": "Split hero with copy and buttons beside a phone mock-up that carries two softly floating cards.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": [
+    "loop",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "hero",
+    "mobile",
+    "app",
+    "phone",
+    "mockup"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/hero-section/hero-social-app.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "eyebrow",
+      "type": "ReactNode",
+      "description": "Small pill above the headline."
+    },
+    {
+      "name": "primaryAction",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Filled call to action."
+    },
+    {
+      "name": "secondaryAction",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Outlined call to action."
+    },
+    {
+      "name": "note",
+      "type": "ReactNode",
+      "description": "Small line under the buttons."
+    },
+    {
+      "name": "chips",
+      "type": "[PhoneChip, PhoneChip?]",
+      "description": "Two floating cards beside the phone: label and value."
+    },
+    {
+      "name": "screen",
+      "type": "ReactNode",
+      "description": "Replaces the built-in feed on the phone screen."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each piece takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the first piece."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

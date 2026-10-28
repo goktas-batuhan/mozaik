@@ -1,0 +1,112 @@
+{
+  "name": "hero-prompt-card",
+  "title": "Hero Prompt Card",
+  "description": "Centered hero with a live prompt card: pick a project type and the brief underneath rewrites itself.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": [
+    "click",
+    "ai",
+    "marketing"
+  ],
+  "keywords": [
+    "hero",
+    "ai",
+    "prompt",
+    "choice",
+    "brief"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/hero-section/hero-ai-value-proposition.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "actionLabel",
+      "type": "ReactNode",
+      "description": "Label of the filled call to action."
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "description": "Renders the call to action as a link."
+    },
+    {
+      "name": "socialProof",
+      "type": "{ label: ReactNode; people: string[] }",
+      "description": "Initials and a line of social proof next to the button."
+    },
+    {
+      "name": "question",
+      "type": "string",
+      "default": "'What type of project?'",
+      "description": "Question on the card."
+    },
+    {
+      "name": "options",
+      "type": "string[]",
+      "description": "Choices the visitor can pick from."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "Option selected at the start."
+    },
+    {
+      "name": "onValueChange",
+      "type": "(value: string) => void",
+      "description": "Fires when the choice changes."
+    },
+    {
+      "name": "brief",
+      "type": "(value: string) => string",
+      "description": "Builds the line under the choices from the picked option."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each piece takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the first piece."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

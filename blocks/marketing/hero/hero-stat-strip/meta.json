@@ -1,0 +1,95 @@
+{
+  "name": "hero-stat-strip",
+  "title": "Hero Stat Strip",
+  "description": "Left-aligned hero with a column of counting figures on the right, split by hairlines.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "hero",
+    "stats",
+    "numbers",
+    "counter",
+    "metrics"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "number-ticker"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "eyebrow",
+      "type": "ReactNode",
+      "description": "Small uppercase label above the headline."
+    },
+    {
+      "name": "actionLabel",
+      "type": "ReactNode",
+      "description": "Call to action label."
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "description": "Renders the call to action as a link."
+    },
+    {
+      "name": "onAction",
+      "type": "() => void",
+      "description": "Click handler for the call to action."
+    },
+    {
+      "name": "stats",
+      "type": "HeroStat[]",
+      "required": true,
+      "description": "Figures: value, label, prefix, suffix and decimalPlaces."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each piece takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the first piece."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

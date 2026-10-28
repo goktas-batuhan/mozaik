@@ -1,0 +1,99 @@
+{
+  "name": "hero-email-waitlist",
+  "title": "Hero Email Waitlist",
+  "description": "Centered waitlist hero with one email field, inline validation and a thank-you state.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": [
+    "click",
+    "type",
+    "marketing"
+  ],
+  "keywords": [
+    "hero",
+    "waitlist",
+    "email",
+    "signup",
+    "form"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "eyebrow",
+      "type": "ReactNode",
+      "description": "Small pill above the headline."
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "default": "'you@company.com'",
+      "description": "Input placeholder."
+    },
+    {
+      "name": "submitLabel",
+      "type": "string",
+      "default": "'Join the waitlist'",
+      "description": "Button label."
+    },
+    {
+      "name": "successMessage",
+      "type": "ReactNode",
+      "description": "Shown instead of the form once the email is accepted."
+    },
+    {
+      "name": "footnote",
+      "type": "ReactNode",
+      "description": "Line under the form."
+    },
+    {
+      "name": "onSubmit",
+      "type": "(email: string) => void | Promise<void>",
+      "description": "Called with a valid email. Return a promise to show a pending state."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each piece takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the first piece."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

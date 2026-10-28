@@ -1,0 +1,104 @@
+{
+  "name": "hero-dashboard-peek",
+  "title": "Hero Dashboard Peek",
+  "description": "Centered hero with an announcement pill whose product dashboard rises from the bottom edge and fades under the fold.",
+  "group": "marketing",
+  "shelf": "hero",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "dashboard",
+    "marketing"
+  ],
+  "keywords": [
+    "hero",
+    "dashboard",
+    "finance",
+    "product",
+    "announcement"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/hero-section/hero-financial.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "announcement"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "announcement",
+      "type": "{ tag: string; text: string; href?: string }",
+      "description": "Announcement pill above the headline. A link when href is set."
+    },
+    {
+      "name": "primaryAction",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Filled call to action."
+    },
+    {
+      "name": "secondaryAction",
+      "type": "{ label: ReactNode; href?: string; onClick?: () => void }",
+      "description": "Outlined call to action."
+    },
+    {
+      "name": "kpis",
+      "type": "DashboardKpi[]",
+      "description": "Figures on the mock dashboard's top row: label, value and optional change."
+    },
+    {
+      "name": "bars",
+      "type": "number[]",
+      "description": "Bar heights from 0 to 100 for the mock chart."
+    },
+    {
+      "name": "media",
+      "type": "ReactNode",
+      "description": "Replaces the mock dashboard."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each piece takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.08",
+      "description": "Seconds between pieces."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the first piece."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

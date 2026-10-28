@@ -1,0 +1,88 @@
+{
+  "name": "cta-email-inline",
+  "title": "CTA Email Inline",
+  "description": "Card call to action with copy on the left and an inline email form with validation on the right.",
+  "group": "marketing",
+  "shelf": "cta",
+  "layer": "block",
+  "tags": [
+    "click",
+    "type",
+    "marketing"
+  ],
+  "keywords": [
+    "cta",
+    "newsletter",
+    "email",
+    "subscribe",
+    "form"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy."
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "default": "'you@company.com'",
+      "description": "Input placeholder."
+    },
+    {
+      "name": "submitLabel",
+      "type": "string",
+      "default": "'Subscribe'",
+      "description": "Button label."
+    },
+    {
+      "name": "successMessage",
+      "type": "ReactNode",
+      "description": "Shown in place of the form after a valid email."
+    },
+    {
+      "name": "footnote",
+      "type": "ReactNode",
+      "description": "Small print under the form."
+    },
+    {
+      "name": "onSubmit",
+      "type": "(email: string) => void",
+      "description": "Called with the trimmed email once it passes validation."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds the content takes to rise into view."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the entrance starts."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

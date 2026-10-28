@@ -1,0 +1,80 @@
+{
+  "name": "cta-banner",
+  "title": "CTA Banner",
+  "description": "Slim one-row banner with a short message on the left and a single button on the right.",
+  "group": "marketing",
+  "shelf": "cta",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "cta",
+    "banner",
+    "strip",
+    "compact"
+  ],
+  "source": {
+    "repo": "educlopez/smoothui",
+    "license": "MIT",
+    "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/ctas/cta-3/index.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "The headline."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "One short line of support."
+    },
+    {
+      "name": "actionLabel",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Button label."
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "description": "Renders the button as a link."
+    },
+    {
+      "name": "onAction",
+      "type": "() => void",
+      "description": "Click handler."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds the content takes to rise into view."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the entrance starts."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

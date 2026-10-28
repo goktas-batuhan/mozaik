@@ -1,0 +1,85 @@
+{
+  "name": "cta-marquee-band",
+  "title": "CTA Marquee Band",
+  "description": "Full-width band of oversized phrases scrolling past, with one button underneath.",
+  "group": "marketing",
+  "shelf": "cta",
+  "layer": "block",
+  "tags": [
+    "loop",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "cta",
+    "marquee",
+    "band",
+    "typography",
+    "scroll"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "marquee"
+  ],
+  "props": [
+    {
+      "name": "phrases",
+      "type": "string[]",
+      "required": true,
+      "description": "Phrases that scroll across the band. Read once by screen readers."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "Short line above the button."
+    },
+    {
+      "name": "actionLabel",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Button label."
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "description": "Renders the button as a link."
+    },
+    {
+      "name": "onAction",
+      "type": "() => void",
+      "description": "Click handler."
+    },
+    {
+      "name": "loopDuration",
+      "type": "number",
+      "default": "40",
+      "description": "Seconds for one full loop of the band."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds the content takes to rise into view."
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds before the entrance starts."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}
