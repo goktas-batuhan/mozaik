@@ -1,0 +1,21 @@
+{
+  "name": "sheet-drawer",
+  "title": "Sheet Drawer",
+  "description": "A panel that slides in from the right, left or bottom over a dimmed page, with focus trap and Escape. The bottom sheet drags down to dismiss; no slide under reduced motion.",
+  "group": "overlays",
+  "shelf": "modal-drawer",
+  "layer": "component",
+  "tags": ["click", "drag", "dashboard"],
+  "keywords": ["drawer", "sheet", "sidebar", "panel", "bottom sheet"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "open", "type": "boolean", "description": "Whether the drawer is shown." },
+    { "name": "onOpenChange", "type": "(open: boolean) => void", "description": "Called when the drawer asks to open or close." },
+    { "name": "title", "type": "ReactNode", "description": "Heading and accessible name." },
+    { "name": "description", "type": "ReactNode", "description": "Short explanation under the title." },
+    { "name": "footer", "type": "ReactNode", "description": "Buttons row pinned to the bottom." },
+    { "name": "side", "type": "'right' | 'left' | 'bottom'", "default": "'right'", "description": "Edge the drawer slides in from. The bottom drawer drags down to dismiss." },
+    { "name": "className", "type": "string", "description": "Extra classes for the panel." }
+  ]
+}

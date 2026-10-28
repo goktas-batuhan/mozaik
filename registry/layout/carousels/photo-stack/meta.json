@@ -1,0 +1,17 @@
+{
+  "name": "photo-stack",
+  "title": "Photo Stack",
+  "description": "A deck of cards: tap, press Enter or flick the top card and it goes to the back. Flicking is off under reduced motion.",
+  "group": "layout",
+  "shelf": "carousels",
+  "layer": "component",
+  "tags": ["click", "drag", "css"],
+  "keywords": ["deck", "stack", "cards", "photos", "swipe"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/photo-stack/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "cards", "type": "{ id: string; label: string; content: ReactNode }[]", "description": "Cards from top to bottom." },
+    { "name": "onCycle", "type": "(order: string[]) => void", "description": "Called with the new id order after the top card goes to the back." },
+    { "name": "className", "type": "string", "description": "Size of the deck." }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "scroll-image-reveal",
+  "title": "Scroll Image Reveal",
+  "description": "A frame that opens with a wipe, curtain or circle as it scrolls into view, with counter-parallax inside. Open and still under reduced motion.",
+  "group": "scroll",
+  "shelf": "reveal",
+  "layer": "component",
+  "tags": ["scroll", "css", "marketing"],
+  "keywords": ["image", "mask", "clip", "wipe", "curtain", "gallery"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/scroll-image-reveal/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "mask", "type": "'wipe' | 'curtain' | 'circle'", "default": "'wipe'", "description": "How the frame opens." },
+    { "name": "direction", "type": "'left' | 'right' | 'up' | 'down'", "default": "'left'", "description": "Where the reveal starts. Left/right apply to wipe, up/down to curtain." },
+    { "name": "parallax", "type": "number", "default": "40", "description": "Counter-parallax travel of the content in pixels. 0 turns it off." },
+    { "name": "container", "type": "RefObject<HTMLElement | null>", "description": "Scrollable element that drives the reveal. Defaults to the page." },
+    { "name": "once", "type": "boolean", "default": "false", "description": "Keep the frame open once revealed instead of closing on scroll-up." },
+    { "name": "children", "type": "ReactNode", "description": "Image, video or any content to reveal." },
+    { "name": "className", "type": "string", "description": "Size and rounding of the frame." }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "scroll-velocity-marquee",
+  "title": "Scroll Velocity Marquee",
+  "description": "A marquee that crawls on its own and speeds up or reverses with how fast the page scrolls. Pauses off screen and stays still under reduced motion.",
+  "group": "layout",
+  "shelf": "marquee",
+  "layer": "component",
+  "tags": ["scroll", "loop", "marketing"],
+  "keywords": ["marquee", "ticker", "velocity", "scroll", "text"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/scroll-based-velocity.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "The content to loop." },
+    { "name": "speed", "type": "number", "default": "5", "description": "Resting speed in percent of the content width per second." },
+    { "name": "direction", "type": "1 | -1", "default": "1", "description": "1 runs left, -1 runs right." },
+    { "name": "scrollBoost", "type": "number", "default": "1", "description": "How much scroll speed adds to the marquee. 0 ignores the scroll." },
+    { "name": "container", "type": "RefObject<HTMLElement | null>", "description": "Scrollable element to listen to. Defaults to the page." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

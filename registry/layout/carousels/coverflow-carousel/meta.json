@@ -1,0 +1,22 @@
+{
+  "name": "coverflow-carousel",
+  "title": "Coverflow Carousel",
+  "description": "A 3D coverflow where the centre slide faces front and its neighbours tilt away. Drag, buttons and arrow keys; flat and fading under reduced motion.",
+  "group": "layout",
+  "shelf": "carousels",
+  "layer": "component",
+  "tags": ["drag", "click", "css"],
+  "keywords": ["carousel", "coverflow", "3d", "gallery", "slider"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/coverflow-carousel/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "{ id: string; content: ReactNode }[]", "description": "The slides." },
+    { "name": "defaultIndex", "type": "number", "default": "0", "description": "Slide shown first." },
+    { "name": "onIndexChange", "type": "(index: number) => void", "description": "Called with the new index when the centre slide changes." },
+    { "name": "rotation", "type": "number", "default": "45", "description": "Tilt of the side slides in degrees." },
+    { "name": "spacing", "type": "number", "default": "200", "description": "Distance between slide centres in pixels." },
+    { "name": "loop", "type": "boolean", "default": "false", "description": "Wrap from the last slide to the first." },
+    { "name": "label", "type": "string", "default": "'Coverflow carousel'", "description": "Accessible name of the carousel." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

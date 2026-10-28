@@ -1,0 +1,23 @@
+{
+  "name": "modal-dialog",
+  "title": "Modal Dialog",
+  "description": "A centered modal with focus trap, Escape, scroll lock and focus return, plus an alertdialog mode for confirmations. Fades without motion under reduced motion.",
+  "group": "overlays",
+  "shelf": "modal-drawer",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["modal", "dialog", "alert", "confirm", "popup"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "open", "type": "boolean", "description": "Whether the dialog is shown." },
+    { "name": "onOpenChange", "type": "(open: boolean) => void", "description": "Called when the dialog asks to open or close (Escape, close button, backdrop)." },
+    { "name": "title", "type": "ReactNode", "description": "Heading and accessible name." },
+    { "name": "description", "type": "ReactNode", "description": "Short explanation under the title." },
+    { "name": "footer", "type": "ReactNode", "description": "Buttons row at the bottom. Put data-autofocus on the button that should get focus." },
+    { "name": "size", "type": "'sm' | 'md' | 'lg'", "default": "'md'", "description": "Width of the panel." },
+    { "name": "role", "type": "'dialog' | 'alertdialog'", "default": "'dialog'", "description": "alertdialog ignores clicks on the backdrop." },
+    { "name": "closeOnBackdrop", "type": "boolean", "default": "true", "description": "Close when the backdrop is clicked." },
+    { "name": "className", "type": "string", "description": "Extra classes for the panel." }
+  ]
+}

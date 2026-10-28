@@ -1,0 +1,19 @@
+{
+  "name": "pinned-list",
+  "title": "Pinned List",
+  "description": "A list where any row can be pinned. Pinned rows rise to the top and the others close the gap with a spring; rows jump under reduced motion.",
+  "group": "layout",
+  "shelf": "lists",
+  "layer": "component",
+  "tags": ["click", "dashboard"],
+  "keywords": ["list", "pin", "favorites", "reorder"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/pinned-list/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "{ id: string; title: string; meta?: string; icon?: ReactNode }[]", "description": "The rows, in their natural order." },
+    { "name": "defaultPinned", "type": "string[]", "default": "[]", "description": "Ids pinned at first." },
+    { "name": "maxPinned", "type": "number", "default": "5", "description": "Most rows that can be pinned at once." },
+    { "name": "onPinnedChange", "type": "(ids: string[]) => void", "description": "Called with the pinned ids whenever they change." },
+    { "name": "className", "type": "string", "description": "Extra classes for the list." }
+  ]
+}
