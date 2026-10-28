@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-input",
+  "title": "Search Input",
+  "description": "A search field with a leading icon, a clear button, a hint and an error state.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/navigation/command-search/search-input/search-input.tsx",
+      "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/inputs/search-input.tsx\nimport {\n  useCallback,\n  useEffect,\n  useId,\n  useRef,\n  useState,\n  type ChangeEvent,\n  type ComponentPropsWithoutRef,\n  type Ref,\n} from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface SearchInputProps extends Omit<ComponentPropsWithoutRef<'input'>, 'size' | 'type' | 'onChange'> {\n  /** Accessible label. Visually hidden. */\n  label?: string\n  /** Helper text under the field. Hidden while an error is shown. */\n  hint?: string\n  /** Shows the error state and message. */\n  error?: boolean\n  /** Message shown in the error state. */\n  errorMessage?: string\n  /** Accessible name of the clear button. */\n  clearLabel?: string\n  /** Extra classes for the wrapper around the field. */\n  containerClassName?: string\n  /** Called after the clear button empties the field. */\n  onClear?: () => void\n  /** Called with the new text on every change. */\n  onChange?: (value: string, event: ChangeEvent<HTMLInputElement>) => void\n  ref?: Ref<HTMLInputElement>\n}\n\nfunction SearchIcon() {\n  return (\n    <svg aria-hidden viewBox=\"0 0 24 24\" width={16} height={16} fill=\"none\" stroke=\"currentColor\" strokeWidth={2} strokeLinecap=\"round\" strokeLinejoin=\"round\" className=\"pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-muted-foreground\">\n      <circle cx=\"11\" cy=\"11\" r=\"8\" />\n      <path d=\"m21 21-4.3-4.3\" />\n    </svg>\n  )\n}\n\nfunction ClearIcon() {\n  return (\n    <svg aria-hidden viewBox=\"0 0 24 24\" width={14} height={14} fill=\"none\" stroke=\"currentColor\" strokeWidth={2} strokeLinecap=\"round\" strokeLinejoin=\"round\">\n      <path d=\"M18 6 6 18M6 6l12 12\" />\n    </svg>\n  )\n}\n\n/** A search field with a leading icon, a clear button, a hint and an error state. */\nexport function SearchInput({\n  className,\n  containerClassName,\n  id,\n  label = 'Search',\n  hint,\n  error = false,\n  errorMessage = 'Enter a valid search term.',\n  clearLabel = 'Clear search',\n  disabled,\n  value,\n  defaultValue = '',\n  placeholder = 'Search…',\n  onChange,\n  onClear,\n  ref,\n  ...props\n}: SearchInputProps) {\n  const generatedId = useId()\n  const inputId = id ?? generatedId\n  const hintId = `${inputId}-hint`\n  const errorId = `${inputId}-error`\n  const localRef = useRef<HTMLInputElement | null>(null)\n\n  const isControlled = value !== undefined\n  const [internal, setInternal] = useState(String(defaultValue))\n  const current = isControlled ? String(value) : internal\n  const hasValue = current.length > 0\n\n  const handleChange = useCallback(\n    (event: ChangeEvent<HTMLInputElement>) => {\n      const next = event.target.value\n      if (!isControlled) setInternal(next)\n      onChange?.(next, event)\n    },\n    [isControlled, onChange],\n  )\n\n  const handleClear = useCallback(() => {\n    if (!isControlled) setInternal('')\n    onClear?.()\n    localRef.current?.focus()\n  }, [isControlled, onClear])\n\n  const setRefs = useCallback(\n    (node: HTMLInputElement | null) => {\n      localRef.current = node\n      if (typeof ref === 'function') ref(node)\n      else if (ref) ref.current = node\n    },\n    [ref],\n  )\n\n  // An uncontrolled field follows its form's reset.\n  useEffect(() => {\n    if (isControlled) return\n    const form = localRef.current?.form\n    if (!form) return\n    const handleReset = () => setInternal(String(defaultValue))\n    form.addEventListener('reset', handleReset)\n    return () => form.removeEventListener('reset', handleReset)\n  }, [defaultValue, isControlled])\n\n  return (\n    <div data-slot=\"search-input\" data-error={error || undefined} className={cn('w-full max-w-sm', containerClassName)}>\n      <label htmlFor={inputId} className=\"sr-only\">\n        {label}\n      </label>\n\n      <div className=\"relative\">\n        <SearchIcon />\n        <input\n          {...props}\n          ref={setRefs}\n          id={inputId}\n          type=\"search\"\n          disabled={disabled}\n          value={current}\n          placeholder={placeholder}\n          aria-invalid={error || undefined}\n          aria-describedby={error ? errorId : hint ? hintId : undefined}\n          onChange={handleChange}\n          className={cn(\n            'h-10 w-full rounded-lg border bg-background py-2 pr-10 pl-10 text-sm text-foreground transition-[border-color,background-color] duration-200 outline-none placeholder:text-muted-foreground',\n            'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:cursor-not-allowed disabled:opacity-50',\n            '[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',\n            error ? 'border-destructive focus:border-destructive' : 'border-border focus:border-foreground',\n            className,\n          )}\n        />\n\n        {hasValue && !disabled ? (\n          <button\n            type=\"button\"\n            aria-label={clearLabel}\n            onClick={handleClear}\n            className=\"absolute top-1/2 right-2.5 flex size-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring\"\n          >\n            <ClearIcon />\n          </button>\n        ) : null}\n      </div>\n\n      {error ? (\n        <p id={errorId} role=\"alert\" className=\"mt-1.5 text-xs text-destructive\">\n          {errorMessage}\n        </p>\n      ) : hint ? (\n        <p id={hintId} className=\"mt-1.5 text-xs text-muted-foreground\">\n          {hint}\n        </p>\n      ) : null}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "navigation",
+    "shelf": "command-search",
+    "layer": "component",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/inputs/search-input.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "navigation",
+    "command-search"
+  ],
+  "type": "registry:component"
+}

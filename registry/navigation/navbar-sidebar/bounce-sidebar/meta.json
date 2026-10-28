@@ -1,0 +1,23 @@
+{
+  "name": "bounce-sidebar",
+  "title": "Bounce Sidebar",
+  "description": "A vertical nav with a dot that hops along a curved path to the selected item.",
+  "group": "navigation",
+  "shelf": "navbar-sidebar",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["sidebar", "nav", "menu", "indicator", "spring"],
+  "source": { "repo": "starc007/ui-components", "license": "MIT", "url": "https://github.com/starc007/ui-components/blob/main/components/motion/bounce-sidebar.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "BounceSidebarItem[]", "required": true, "description": "The entries, top to bottom: { id, label, href?, icon?, disabled?, target?, rel? }." },
+    { "name": "value", "type": "string", "description": "Selected item id (controlled)." },
+    { "name": "defaultValue", "type": "string", "description": "Item selected first when uncontrolled. Defaults to the first item." },
+    { "name": "onValueChange", "type": "(value: string) => void", "description": "Called with the item id whenever the selection changes." },
+    { "name": "ariaLabel", "type": "string", "default": "'Sidebar navigation'", "description": "Accessible name of the nav landmark." },
+    { "name": "className", "type": "string", "description": "Extra classes for the nav element." },
+    { "name": "listClassName", "type": "string", "description": "Extra classes for the list." },
+    { "name": "itemClassName", "type": "string", "description": "Extra classes for each item." },
+    { "name": "indicatorClassName", "type": "string", "description": "Extra classes for the bouncing dot." }
+  ]
+}

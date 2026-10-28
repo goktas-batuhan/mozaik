@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "amount-stepper",
+  "title": "Amount Stepper",
+  "description": "Minus, amount and plus in one inline control: decimal steps, min and max, and a ticker label for token amounts.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/onchain/amount-confirm/amount-stepper/amount-stepper.tsx",
+      "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/buttons/quantity-stepper-button.tsx\nimport { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useState, type ComponentPropsWithoutRef } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport interface AmountStepperProps extends Omit<ComponentPropsWithoutRef<'div'>, 'onChange' | 'defaultValue'> {\n  /** Controlled amount. Pair with `onChange`. */\n  value?: number\n  /** Starting amount when uncontrolled. */\n  defaultValue?: number\n  /** Size of one step. Decimals are fine (0.01, 0.5). */\n  step?: number\n  min?: number\n  max?: number\n  /** Ticker or currency shown after the amount, e.g. 'ETH'. */\n  unit?: string\n  /** Fraction digits shown. Defaults to the digits of `step`. */\n  decimals?: number\n  /** Accessible name of the group, e.g. 'Amount to stake'. */\n  label?: string\n  disabled?: boolean\n  onChange?: (value: number) => void\n}\n\nconst digitsOf = (n: number) => {\n  const text = String(n)\n  if (text.includes('e-')) return Number(text.split('e-')[1])\n  return text.split('.')[1]?.length ?? 0\n}\n\nconst MinusIcon = () => (\n  <svg aria-hidden=\"true\" className=\"size-4\" fill=\"none\" stroke=\"currentColor\" strokeLinecap=\"round\" strokeWidth=\"2.5\" viewBox=\"0 0 24 24\">\n    <path d=\"M5 12h14\" />\n  </svg>\n)\nconst PlusIcon = () => (\n  <svg aria-hidden=\"true\" className=\"size-4\" fill=\"none\" stroke=\"currentColor\" strokeLinecap=\"round\" strokeWidth=\"2.5\" viewBox=\"0 0 24 24\">\n    <path d=\"M5 12h14M12 5v14\" />\n  </svg>\n)\n\n/** Minus, amount, plus in one inline control: decimal steps, min/max and a unit label. */\nexport function AmountStepper({\n  value: controlled,\n  defaultValue = 0,\n  step = 1,\n  min = 0,\n  max = 99,\n  unit,\n  decimals,\n  label = 'Amount',\n  disabled = false,\n  onChange,\n  className,\n  ...props\n}: AmountStepperProps) {\n  const reduced = usePrefersReducedMotion()\n  const [internal, setInternal] = useState(defaultValue)\n  const precision = decimals ?? digitsOf(step)\n  // Round to the step's own precision so 0.1 + 0.2 lands on 0.3, not 0.30000000000000004.\n  const clamp = (n: number) => Math.min(max, Math.max(min, Number(n.toFixed(Math.max(precision, digitsOf(step))))))\n  const value = clamp(controlled ?? internal)\n\n  const update = (next: number) => {\n    const clamped = clamp(next)\n    if (clamped === value) return\n    if (controlled === undefined) setInternal(clamped)\n    onChange?.(clamped)\n  }\n\n  const key = cn(\n    'group flex w-10 cursor-pointer items-center justify-center rounded-lg border border-border bg-card text-muted-foreground shadow-sm outline-none',\n    'hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring active:bg-muted',\n    'disabled:cursor-default disabled:border-transparent disabled:bg-transparent disabled:text-muted-foreground/40 disabled:shadow-none',\n    !reduced && 'transition-[color,background-color,transform] duration-200 active:scale-95',\n  )\n\n  return (\n    <div\n      role=\"group\"\n      aria-label={label}\n      data-slot=\"amount-stepper\"\n      className={cn(\n        'inline-flex h-11 select-none items-stretch gap-1 rounded-xl bg-muted p-1 text-sm font-medium text-foreground',\n        disabled && 'opacity-60',\n        className,\n      )}\n      {...props}\n    >\n      <button type=\"button\" aria-label=\"Decrease amount\" disabled={disabled || value <= min} onClick={() => update(value - step)} className={key}>\n        <MinusIcon />\n      </button>\n\n      <output aria-live=\"polite\" className=\"flex min-w-16 items-center justify-center gap-1 px-2 tabular-nums\">\n        <span>{value.toFixed(precision)}</span>\n        {unit ? (\n          <>\n            {' '}\n            <span className=\"text-xs font-normal text-muted-foreground\">{unit}</span>\n          </>\n        ) : null}\n      </output>\n\n      <button type=\"button\" aria-label=\"Increase amount\" disabled={disabled || value >= max} onClick={() => update(value + step)} className={key}>\n        <PlusIcon />\n      </button>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "onchain",
+    "shelf": "amount-confirm",
+    "layer": "component",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/quantity-stepper-button.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "onchain",
+    "amount-confirm"
+  ],
+  "type": "registry:component"
+}

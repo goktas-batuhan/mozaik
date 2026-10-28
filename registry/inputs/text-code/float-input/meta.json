@@ -1,0 +1,24 @@
+{
+  "name": "float-input",
+  "title": "Float Input",
+  "description": "A text field whose label starts inside the box and floats up when you focus or type.",
+  "group": "inputs",
+  "shelf": "text-code",
+  "layer": "component",
+  "tags": ["type", "css"],
+  "keywords": ["input", "floating label", "text field", "form"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/float-input/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "label", "type": "string", "description": "Text of the label. Floats up on focus or when the field has a value." },
+    { "name": "value", "type": "string", "description": "Controlled value." },
+    { "name": "defaultValue", "type": "string", "default": "''", "description": "Initial value when uncontrolled." },
+    { "name": "onChange", "type": "(value: string) => void", "description": "Called with the new text on every change." },
+    { "name": "placeholder", "type": "string", "default": "''", "description": "Shown only once the label has floated." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the field." },
+    { "name": "icon", "type": "ReactNode", "description": "Decorative icon at the start of the field." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." },
+    { "name": "inputClassName", "type": "string", "description": "Extra classes for the input." },
+    { "name": "labelClassName", "type": "string", "description": "Extra classes for the label." }
+  ]
+}

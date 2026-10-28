@@ -1,0 +1,23 @@
+{
+  "name": "swap-panel",
+  "title": "Swap Panel",
+  "description": "A cross-chain swap ticket: pay and receive fields, a token picker with chain filter, a live quote and an optional destination address.",
+  "group": "onchain",
+  "shelf": "transactions",
+  "layer": "component",
+  "tags": ["click", "type", "web3"],
+  "keywords": ["swap", "exchange", "token", "dex", "bridge", "quote"],
+  "source": { "repo": "starc007/ui-components", "license": "MIT", "url": "https://github.com/starc007/ui-components/blob/main/components/motion/swap.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "chains", "type": "SwapChain[]", "required": true, "description": "Chains for the picker filter: id, name, symbol (the mark) and tone (token classes for the dot)." },
+    { "name": "tokens", "type": "SwapToken[]", "required": true, "description": "Tokens to swap between: id, symbol, name, chainId and optional balance, usd, address, popular." },
+    { "name": "defaultFromId", "type": "string", "description": "Token id paid at first. Defaults to the first token." },
+    { "name": "defaultToId", "type": "string", "description": "Token id received at first. Defaults to the second token." },
+    { "name": "fee", "type": "number", "default": "0.42", "description": "Network fee in USD shown in the quote." },
+    { "name": "slippage", "type": "number", "default": "0.5", "description": "Slippage tolerance in percent shown in the quote." },
+    { "name": "eta", "type": "string", "default": "'≈ 24s'", "description": "Estimated time shown in the quote." },
+    { "name": "onSwap", "type": "(request: SwapRequest) => void", "description": "Called when the main button is pressed with a valid amount." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

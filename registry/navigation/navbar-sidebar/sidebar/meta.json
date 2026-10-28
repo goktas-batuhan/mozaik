@@ -1,0 +1,21 @@
+{
+  "name": "sidebar",
+  "title": "Sidebar",
+  "description": "A collapsible app rail that animates between full width and an icon rail, with menu buttons and a trigger.",
+  "group": "navigation",
+  "shelf": "navbar-sidebar",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["sidebar", "rail", "collapse", "nav", "app shell"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/sidebar/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "collapsed", "type": "boolean", "description": "SidebarProvider: collapsed state (controlled)." },
+    { "name": "defaultCollapsed", "type": "boolean", "default": "false", "description": "SidebarProvider: whether it starts collapsed when uncontrolled." },
+    { "name": "onCollapsedChange", "type": "(collapsed: boolean) => void", "description": "SidebarProvider: called with the new state whenever it changes." },
+    { "name": "duration", "type": "number", "default": "0.3", "description": "Sidebar: seconds the width change takes." },
+    { "name": "active", "type": "boolean", "default": "false", "description": "SidebarMenuButton: marks the button as the current page." },
+    { "name": "icon", "type": "ReactNode", "description": "SidebarMenuButton: leading icon. Needed for a usable collapsed rail." },
+    { "name": "className", "type": "string", "description": "Extra classes, accepted by every part." }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "linen-tab-button",
+  "title": "Linen Tab Button",
+  "description": "A button with a woven linen face, dashed stitching and a soft lift on press.",
+  "group": "navigation",
+  "shelf": "tabs",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["button", "linen", "fabric", "tab", "stitch"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/linen-tab-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "default": "'View details'", "description": "Button label." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the button." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}

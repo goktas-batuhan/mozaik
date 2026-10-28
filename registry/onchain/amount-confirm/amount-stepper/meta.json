@@ -1,0 +1,25 @@
+{
+  "name": "amount-stepper",
+  "title": "Amount Stepper",
+  "description": "Minus, amount and plus in one inline control: decimal steps, min and max, and a ticker label for token amounts.",
+  "group": "onchain",
+  "shelf": "amount-confirm",
+  "layer": "component",
+  "tags": ["click", "web3"],
+  "keywords": ["amount", "stepper", "quantity", "input", "token"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/quantity-stepper-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "value", "type": "number", "description": "Controlled amount. Pair with onChange." },
+    { "name": "defaultValue", "type": "number", "default": "0", "description": "Starting amount when uncontrolled." },
+    { "name": "step", "type": "number", "default": "1", "description": "Size of one step. Decimals are fine (0.01, 0.5)." },
+    { "name": "min", "type": "number", "default": "0", "description": "Lowest allowed amount." },
+    { "name": "max", "type": "number", "default": "99", "description": "Highest allowed amount." },
+    { "name": "unit", "type": "string", "description": "Ticker or currency shown after the amount, e.g. 'ETH'." },
+    { "name": "decimals", "type": "number", "description": "Fraction digits shown. Defaults to the digits of step." },
+    { "name": "label", "type": "string", "default": "'Amount'", "description": "Accessible name of the group." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables both keys." },
+    { "name": "onChange", "type": "(value: number) => void", "description": "Called with the new clamped amount." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "search-input",
+  "title": "Search Input",
+  "description": "A search field with a leading icon, a clear button, a hint and an error state.",
+  "group": "navigation",
+  "shelf": "command-search",
+  "layer": "component",
+  "tags": ["type", "click", "css"],
+  "keywords": ["search", "input", "field", "clear"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/inputs/search-input.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "label", "type": "string", "default": "'Search'", "description": "Accessible label. Visually hidden." },
+    { "name": "hint", "type": "string", "description": "Helper text under the field. Hidden while an error is shown." },
+    { "name": "error", "type": "boolean", "default": "false", "description": "Shows the error state and message." },
+    { "name": "errorMessage", "type": "string", "default": "'Enter a valid search term.'", "description": "Message shown in the error state." },
+    { "name": "clearLabel", "type": "string", "default": "'Clear search'", "description": "Accessible name of the clear button." },
+    { "name": "value", "type": "string", "description": "Field text (controlled)." },
+    { "name": "defaultValue", "type": "string", "default": "''", "description": "Initial text when uncontrolled." },
+    { "name": "onChange", "type": "(value: string, event: ChangeEvent<HTMLInputElement>) => void", "description": "Called with the new text on every change." },
+    { "name": "onClear", "type": "() => void", "description": "Called after the clear button empties the field." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the field and hides the clear button." },
+    { "name": "containerClassName", "type": "string", "description": "Extra classes for the wrapper around the field." },
+    { "name": "className", "type": "string", "description": "Extra classes for the input." }
+  ]
+}

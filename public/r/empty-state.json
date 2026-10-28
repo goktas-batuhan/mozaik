@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-state",
+  "title": "Empty State",
+  "description": "A first-run or no-results state: an optional icon, a heading, a supporting sentence and an action.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/status/empty-state/empty-state.tsx",
+      "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/empty/index.tsx\nimport type { ComponentProps, ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\nexport interface EmptyStateProps extends Omit<ComponentProps<'div'>, 'title'> {\n  /** Optional action below the copy, such as a button or a link. */\n  action?: ReactNode\n  /** Supporting sentence. */\n  description?: ReactNode\n  /** Optional icon above the title. Decorative: it is hidden from screen readers. */\n  icon?: ReactNode\n  /** The heading. */\n  title: ReactNode\n}\n\n/** A first-run or no-results state: an optional icon, a heading, a sentence and an action. */\nexport function EmptyState({ action, className, description, icon, title, ...props }: EmptyStateProps) {\n  return (\n    <div\n      data-slot=\"empty-state\"\n      {...props}\n      className={cn('flex w-full flex-col items-center justify-center gap-3 px-6 py-12 text-center', className)}\n    >\n      {icon ? (\n        <div\n          aria-hidden\n          data-slot=\"empty-state-icon\"\n          className=\"mb-1 flex size-12 items-center justify-center rounded-full bg-foreground/5 text-muted-foreground [&_svg]:size-5\"\n        >\n          {icon}\n        </div>\n      ) : null}\n      <div className=\"flex max-w-sm flex-col gap-1.5\">\n        <h3 data-slot=\"empty-state-title\" className=\"text-base leading-snug font-medium text-foreground\">\n          {title}\n        </h3>\n        {description ? (\n          <p data-slot=\"empty-state-description\" className=\"text-sm leading-relaxed text-muted-foreground\">\n            {description}\n          </p>\n        ) : null}\n      </div>\n      {action ? (\n        <div data-slot=\"empty-state-action\" className=\"mt-1\">\n          {action}\n        </div>\n      ) : null}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/empty/index.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "feedback",
+    "status"
+  ],
+  "type": "registry:component"
+}

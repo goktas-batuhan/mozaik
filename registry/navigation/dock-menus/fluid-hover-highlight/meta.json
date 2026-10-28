@@ -1,0 +1,19 @@
+{
+  "name": "fluid-hover-highlight",
+  "title": "Fluid Hover Highlight",
+  "description": "One highlight that glides between list rows under the pointer or keyboard focus instead of blinking on hover.",
+  "group": "navigation",
+  "shelf": "dock-menus",
+  "layer": "component",
+  "tags": ["hover", "css"],
+  "keywords": ["highlight", "hover", "list", "menu", "spring", "glide"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/fluid-hover-highlight/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "rect", "type": "ItemRect | null", "required": true, "description": "Box to highlight in the container's coordinate space. null fades the highlight out." },
+    { "name": "session", "type": "number", "default": "0", "description": "Changes on each pointer enter, so a fresh highlight fades in instead of travelling." },
+    { "name": "from", "type": "ItemRect | null", "description": "Where a fresh highlight fades in from, for example a checked row." },
+    { "name": "transition", "type": "Transition | false", "description": "Positional spring. false snaps with no travel." },
+    { "name": "className", "type": "string", "description": "Radius, colour and z-index of the highlight." }
+  ]
+}

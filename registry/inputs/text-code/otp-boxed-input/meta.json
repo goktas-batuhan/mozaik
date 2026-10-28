@@ -1,0 +1,29 @@
+{
+  "name": "otp-boxed-input",
+  "title": "OTP Boxed Input",
+  "description": "A one-time-code field of separate boxes with paste, arrow-key navigation, error state and a resend countdown.",
+  "group": "inputs",
+  "shelf": "text-code",
+  "layer": "component",
+  "tags": ["type", "click", "css"],
+  "keywords": ["otp", "verification code", "pin", "2fa", "boxes"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/otp/otp-boxed-input.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "length", "type": "number", "default": "6", "description": "Number of boxes." },
+    { "name": "value", "type": "string", "description": "Controlled code." },
+    { "name": "defaultValue", "type": "string", "default": "''", "description": "Initial code when uncontrolled." },
+    { "name": "onChange", "type": "(value: string) => void", "description": "Called with the sanitized code on every edit." },
+    { "name": "onComplete", "type": "(value: string) => void", "description": "Called once when every box is filled." },
+    { "name": "inputMode", "type": "'numeric' | 'alphanumeric'", "default": "'numeric'", "description": "Digits only, or letters and digits (upper-cased)." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables every box and the resend button." },
+    { "name": "autoFocus", "type": "boolean", "default": "false", "description": "Focus the first box on mount." },
+    { "name": "error", "type": "boolean", "default": "false", "description": "Marks the code as wrong and shows errorMessage." },
+    { "name": "label", "type": "string", "default": "'Check your email'", "description": "Heading above the boxes." },
+    { "name": "hint", "type": "string", "description": "Replaces the default 'We sent a code to…' line." },
+    { "name": "destination", "type": "string", "default": "'j•••@example.com'", "description": "Where the code was sent, shown in the default hint." },
+    { "name": "errorMessage", "type": "string", "description": "Text shown under the boxes when error is true." },
+    { "name": "resendCooldown", "type": "number", "default": "30", "description": "Seconds before the resend button unlocks." },
+    { "name": "onResend", "type": "() => void", "description": "Called when the resend button is pressed." }
+  ]
+}

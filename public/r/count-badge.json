@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "count-badge",
+  "title": "Count Badge",
+  "description": "A badge for the corner of an avatar or icon: a dot, a rolling count with a cap, or a presence dot, with an optional pulse.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/status/count-badge/count-badge.tsx",
+      "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/count-badge/index.tsx\nimport { AnimatePresence, motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useRef, type ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport type CountBadgeStatus = 'online' | 'offline' | 'busy' | 'away'\nexport type CountBadgePosition = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'\n\nexport interface CountBadgeProps {\n  /** What the badge sits on: an avatar, an icon, a button. Without it the badge stands alone. */\n  children?: ReactNode\n  className?: string\n  /** The number shown by the `count` variant. */\n  count?: number\n  /** Largest number shown; above it the badge reads `max+`. */\n  max?: number\n  /** Adds a pulsing ring. */\n  ping?: boolean\n  /** Corner of the child the badge sits on. */\n  position?: CountBadgePosition\n  /** Show the `count` variant when the count is 0. */\n  showZero?: boolean\n  /** Presence shown by the `status` variant. */\n  status?: CountBadgeStatus\n  /** A plain dot, a number, or a presence dot. */\n  variant?: 'dot' | 'count' | 'status'\n}\n\nconst STATUS_COLOR: Record<CountBadgeStatus, string> = {\n  online: 'bg-success',\n  offline: 'bg-muted-foreground',\n  busy: 'bg-destructive',\n  away: 'bg-primary',\n}\n\nconst STATUS_NAME: Record<CountBadgeStatus, string> = {\n  online: 'Online',\n  offline: 'Offline',\n  busy: 'Busy',\n  away: 'Away',\n}\n\nconst POSITION: Record<CountBadgePosition, string> = {\n  'bottom-left': '-bottom-1 -left-1',\n  'bottom-right': '-bottom-1 -right-1',\n  'top-left': '-top-1 -left-1',\n  'top-right': '-top-1 -right-1',\n}\n\nfunction AnimatedCount({ value, max, reduced }: { value: number; max: number; reduced: boolean }) {\n  const text = value > max ? `${max}+` : String(value)\n  const prev = useRef(value)\n  const direction = value > prev.current ? 1 : -1\n\n  useEffect(() => {\n    prev.current = value\n  }, [value])\n\n  if (reduced) return <span className=\"leading-none font-medium\">{text}</span>\n\n  return (\n    <span className=\"relative overflow-hidden leading-none font-medium\">\n      <AnimatePresence initial={false} mode=\"popLayout\">\n        <motion.span\n          key={value}\n          className=\"inline-block\"\n          initial={{ opacity: 0, y: direction * 12 }}\n          animate={{ opacity: 1, y: 0 }}\n          exit={{ opacity: 0, y: direction * -12 }}\n          transition={{ type: 'spring', bounce: 0.1, duration: 0.3 }}\n        >\n          {text}\n        </motion.span>\n      </AnimatePresence>\n    </span>\n  )\n}\n\n/** A notification badge for the corner of an avatar or icon: a dot, an animated count, or a presence dot. */\nexport function CountBadge({\n  variant = 'dot',\n  count = 0,\n  max = 99,\n  status = 'online',\n  showZero = false,\n  ping = false,\n  position = 'top-right',\n  children,\n  className,\n}: CountBadgeProps) {\n  const reduced = usePrefersReducedMotion()\n  const visible = variant !== 'count' || count > 0 || showZero\n  const text = count > max ? `${max}+` : String(count)\n  const color = variant === 'status' ? STATUS_COLOR[status] : 'bg-primary'\n\n  const size =\n    variant === 'dot'\n      ? 'size-2.5'\n      : variant === 'status'\n        ? 'size-3'\n        : text.length === 1\n          ? 'size-5 text-xs'\n          : text.length === 2\n            ? 'h-5 min-w-5 px-1 text-xs'\n            : 'h-5 min-w-6 px-1 text-xs'\n\n  const badge = (\n    <AnimatePresence mode=\"wait\">\n      {visible ? (\n        <motion.span\n          data-slot=\"count-badge\"\n          data-variant={variant}\n          className={cn(\n            'absolute flex items-center justify-center rounded-full text-primary-foreground',\n            color,\n            size,\n            POSITION[position],\n            variant === 'status' && 'ring-2 ring-background',\n            className,\n          )}\n          initial={reduced ? { opacity: 1 } : { opacity: 0, scale: 0 }}\n          animate={{ opacity: 1, scale: 1 }}\n          exit={reduced ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, scale: 0, transition: { duration: 0.15 } }}\n          transition={reduced ? { duration: 0 } : { type: 'spring', bounce: 0.2, duration: 0.25 }}\n        >\n          {variant === 'count' && (\n            <>\n              <span aria-hidden>\n                <AnimatedCount value={count} max={max} reduced={reduced} />\n              </span>\n              <span className=\"sr-only\">{text} unread</span>\n            </>\n          )}\n          {variant === 'status' && <span className=\"sr-only\">{STATUS_NAME[status]}</span>}\n          {ping && !reduced && <span aria-hidden className={cn('absolute inset-0 animate-ping rounded-full opacity-75', color)} />}\n        </motion.span>\n      ) : null}\n    </AnimatePresence>\n  )\n\n  return (\n    <span className=\"relative inline-flex\">\n      {children ?? <span className=\"size-4\" />}\n      {badge}\n    </span>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/count-badge/index.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "feedback",
+    "status"
+  ],
+  "type": "registry:component"
+}

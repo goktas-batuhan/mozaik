@@ -3616,6 +3616,1287 @@
     "path": "registry/cards/surface/texture-card"
   },
   {
+    "name": "card-field",
+    "title": "Card Field",
+    "description": "A one-row card input for checkout. The number groups by brand, then slides away to its last four digits to make room for expiry and security code.",
+    "group": "inputs",
+    "shelf": "text-code",
+    "layer": "component",
+    "tags": [
+      "type",
+      "click",
+      "marketing",
+      "motion"
+    ],
+    "keywords": [
+      "credit card",
+      "checkout",
+      "payment",
+      "expiry",
+      "cvc",
+      "luhn"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/card-field.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "amount",
+        "type": "number",
+        "default": "48",
+        "description": "What the pay button charges."
+      },
+      {
+        "name": "currency",
+        "type": "string",
+        "default": "'$'",
+        "description": "Currency symbol shown before the amount."
+      },
+      {
+        "name": "onPay",
+        "type": "(card: CardDetails) => Promise<void> | void",
+        "description": "Called with brand, last4 and MM/YY when Pay is pressed. Return a promise and the button waits for it; reject to decline."
+      },
+      {
+        "name": "testMode",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows a 'Use test card' link that types a test number in for you."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the card."
+      }
+    ],
+    "files": [
+      "card-field.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { CardField } from './card-field'\n\nexport default function CardFieldDemo() {\n  return <CardField amount={48} currency=\"$\" testMode />\n}\n",
+    "path": "registry/inputs/text-code/card-field"
+  },
+  {
+    "name": "float-input",
+    "title": "Float Input",
+    "description": "A text field whose label starts inside the box and floats up when you focus or type.",
+    "group": "inputs",
+    "shelf": "text-code",
+    "layer": "component",
+    "tags": [
+      "type",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "input",
+      "floating label",
+      "text field",
+      "form"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/float-input/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "description": "Text of the label. Floats up on focus or when the field has a value."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "description": "Controlled value."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "default": "''",
+        "description": "Initial value when uncontrolled."
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string) => void",
+        "description": "Called with the new text on every change."
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "default": "''",
+        "description": "Shown only once the label has floated."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables the field."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "description": "Decorative icon at the start of the field."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      },
+      {
+        "name": "inputClassName",
+        "type": "string",
+        "description": "Extra classes for the input."
+      },
+      {
+        "name": "labelClassName",
+        "type": "string",
+        "description": "Extra classes for the label."
+      }
+    ],
+    "files": [
+      "float-input.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { FloatInput } from './float-input'\n\nexport default function FloatInputDemo() {\n  const [email, setEmail] = useState('')\n  return (\n    <div className=\"flex w-72 flex-col gap-8 pt-6\">\n      <FloatInput label=\"Email address\" placeholder=\"you@example.com\" value={email} onChange={setEmail} />\n      <FloatInput label=\"Project name\" defaultValue=\"Mozaik\" />\n      <FloatInput label=\"Disabled\" disabled />\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/text-code/float-input"
+  },
+  {
+    "name": "otp-boxed-input",
+    "title": "OTP Boxed Input",
+    "description": "A one-time-code field of separate boxes with paste, arrow-key navigation, error state and a resend countdown.",
+    "group": "inputs",
+    "shelf": "text-code",
+    "layer": "component",
+    "tags": [
+      "type",
+      "click",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "otp",
+      "verification code",
+      "pin",
+      "2fa",
+      "boxes"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/otp/otp-boxed-input.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "length",
+        "type": "number",
+        "default": "6",
+        "description": "Number of boxes."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "description": "Controlled code."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "default": "''",
+        "description": "Initial code when uncontrolled."
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string) => void",
+        "description": "Called with the sanitized code on every edit."
+      },
+      {
+        "name": "onComplete",
+        "type": "(value: string) => void",
+        "description": "Called once when every box is filled."
+      },
+      {
+        "name": "inputMode",
+        "type": "'numeric' | 'alphanumeric'",
+        "default": "'numeric'",
+        "description": "Digits only, or letters and digits (upper-cased)."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables every box and the resend button."
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean",
+        "default": "false",
+        "description": "Focus the first box on mount."
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "default": "false",
+        "description": "Marks the code as wrong and shows errorMessage."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Check your email'",
+        "description": "Heading above the boxes."
+      },
+      {
+        "name": "hint",
+        "type": "string",
+        "description": "Replaces the default 'We sent a code to…' line."
+      },
+      {
+        "name": "destination",
+        "type": "string",
+        "default": "'j•••@example.com'",
+        "description": "Where the code was sent, shown in the default hint."
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "description": "Text shown under the boxes when error is true."
+      },
+      {
+        "name": "resendCooldown",
+        "type": "number",
+        "default": "30",
+        "description": "Seconds before the resend button unlocks."
+      },
+      {
+        "name": "onResend",
+        "type": "() => void",
+        "description": "Called when the resend button is pressed."
+      }
+    ],
+    "files": [
+      "otp-boxed-input.tsx"
+    ],
+    "status": "beta",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { OtpBoxedInput } from './otp-boxed-input'\n\nexport default function OtpBoxedInputDemo() {\n  const [code, setCode] = useState('')\n  const [verified, setVerified] = useState(false)\n  const wrong = verified && code !== '123456'\n  return (\n    <OtpBoxedInput\n      value={code}\n      error={wrong}\n      onChange={(next) => {\n        setCode(next)\n        setVerified(false)\n      }}\n      onComplete={() => setVerified(true)}\n      destination=\"you@example.com\"\n      resendCooldown={30}\n    />\n  )\n}\n",
+    "path": "registry/inputs/text-code/otp-boxed-input"
+  },
+  {
+    "name": "detent-dial",
+    "title": "Detent Dial",
+    "description": "A rotary knob that clicks from notch to notch, with a swelling tick ring, flick momentum and a rolling readout.",
+    "group": "inputs",
+    "shelf": "sliders-dials",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "svg",
+      "dashboard",
+      "motion"
+    ],
+    "keywords": [
+      "dial",
+      "knob",
+      "rotary",
+      "thermostat",
+      "detent",
+      "slider"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/detent-dial.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Temperature'",
+        "description": "Accessible name, also shown inside the knob."
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "default": "16",
+        "description": "Lowest value."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "30",
+        "description": "Highest value."
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "default": "0.5",
+        "description": "Distance between notches."
+      },
+      {
+        "name": "defaultValue",
+        "type": "number",
+        "default": "21",
+        "description": "Initial value when uncontrolled. Double-clicking the knob returns here."
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Controlled value."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: number) => void",
+        "description": "Called each time the dial crosses into a new notch."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "description": "Formats the readout, the end labels and aria-valuetext."
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "default": "240",
+        "description": "Diameter in pixels."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables dragging, keys and the wheel."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "detent-dial.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { DetentDial } from './detent-dial'\n\nexport default function DetentDialDemo() {\n  const [temp, setTemp] = useState(21)\n  return (\n    <div className=\"flex flex-col items-center gap-2\">\n      <DetentDial label=\"Temperature\" min={16} max={30} step={0.5} value={temp} onValueChange={setTemp} />\n      <p className=\"text-xs text-muted-foreground\">Drag, flick, scroll while focused, or use the arrow keys. Double-click resets.</p>\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/sliders-dials/detent-dial"
+  },
+  {
+    "name": "liquid-slider",
+    "title": "Liquid Slider",
+    "description": "A glass of water you fill by dragging its surface. The liquid sloshes and bubbles; under reduced motion it just rises.",
+    "group": "inputs",
+    "shelf": "sliders-dials",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "svg",
+      "motion"
+    ],
+    "keywords": [
+      "slider",
+      "water",
+      "fluid",
+      "wave",
+      "glass",
+      "physics"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/liquid-slider.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Controlled value."
+      },
+      {
+        "name": "defaultValue",
+        "type": "number",
+        "default": "1250",
+        "description": "Initial value when uncontrolled."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: number) => void",
+        "description": "Called with the new value while dragging or using the keyboard."
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "default": "0",
+        "description": "Value of an empty glass."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "2000",
+        "description": "Value of a full glass."
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "default": "50",
+        "description": "Step the value snaps to."
+      },
+      {
+        "name": "unit",
+        "type": "string",
+        "default": "'ml'",
+        "description": "Shown after the number."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Water today'",
+        "description": "Heading above the readout. Also the accessible name."
+      },
+      {
+        "name": "formatValue",
+        "type": "(value: number) => string",
+        "description": "Formats the readout, the scale and aria-valuetext."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "liquid-slider.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { LiquidSlider } from './liquid-slider'\n\nexport default function LiquidSliderDemo() {\n  const [ml, setMl] = useState(1250)\n  return (\n    <div className=\"flex flex-col items-center gap-3\">\n      <LiquidSlider value={ml} onValueChange={setMl} label=\"Water today\" unit=\"ml\" />\n      <p className=\"text-xs text-muted-foreground\">Drag the surface, or use the arrow keys.</p>\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/sliders-dials/liquid-slider"
+  },
+  {
+    "name": "scrubber",
+    "title": "Scrubber",
+    "description": "A horizontal value scrubber: drag across a labelled track to set a number, with tick marks and a capsule thumb.",
+    "group": "inputs",
+    "shelf": "sliders-dials",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "slider",
+      "scrub",
+      "range",
+      "number input",
+      "value"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/scrubber/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Value'",
+        "description": "Label shown on the left of the track. Also the accessible name."
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Controlled value."
+      },
+      {
+        "name": "defaultValue",
+        "type": "number",
+        "default": "0",
+        "description": "Initial value when uncontrolled."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: number) => void",
+        "description": "Called with the new value while dragging or using the keyboard."
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "default": "0",
+        "description": "Minimum value."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "1",
+        "description": "Maximum value."
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "default": "0.01",
+        "description": "Step increment."
+      },
+      {
+        "name": "decimals",
+        "type": "number",
+        "default": "2",
+        "description": "Decimal places shown in the readout."
+      },
+      {
+        "name": "ticks",
+        "type": "number",
+        "default": "9",
+        "description": "Number of tick marks. 0 hides them."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "scrubber.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { Scrubber } from './scrubber'\n\nexport default function ScrubberDemo() {\n  const [opacity, setOpacity] = useState(0.62)\n  return (\n    <div className=\"flex w-72 flex-col gap-4\">\n      <Scrubber label=\"Opacity\" value={opacity} onValueChange={setOpacity} />\n      <Scrubber label=\"Blur\" min={0} max={40} step={1} decimals={0} defaultValue={12} ticks={7} />\n      <Scrubber label=\"Speed\" min={0.5} max={2} step={0.05} defaultValue={1} ticks={0} />\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/sliders-dials/scrubber"
+  },
+  {
+    "name": "duration-picker",
+    "title": "Duration Picker",
+    "description": "Hours, minutes and seconds as separate segments you type into, step with the keyboard or scrub by dragging, with rolling digits.",
+    "group": "inputs",
+    "shelf": "pickers",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "type",
+      "dashboard",
+      "motion"
+    ],
+    "keywords": [
+      "duration",
+      "time",
+      "timer",
+      "spinbutton",
+      "scrub"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/duration-picker/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Controlled value in seconds."
+      },
+      {
+        "name": "defaultValue",
+        "type": "number",
+        "default": "0",
+        "description": "Initial value in seconds when uncontrolled."
+      },
+      {
+        "name": "onChange",
+        "type": "(value: number) => void",
+        "description": "Called with the new value in seconds on every change."
+      },
+      {
+        "name": "units",
+        "type": "('hours' | 'minutes' | 'seconds')[]",
+        "default": "['hours', 'minutes', 'seconds']",
+        "description": "Which segments to show, most significant first."
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "default": "0",
+        "description": "Minimum total duration in seconds."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "359999",
+        "description": "Maximum total duration in seconds."
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "default": "1",
+        "description": "Amount added per arrow key press, in the focused unit."
+      },
+      {
+        "name": "scrub",
+        "type": "boolean",
+        "default": "true",
+        "description": "Drag a segment sideways to change its value."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables all interaction."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "description": "Visible label above the picker."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "duration-picker.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { DurationPicker, formatDuration } from './duration-picker'\n\nexport default function DurationPickerDemo() {\n  const [seconds, setSeconds] = useState(5400)\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <DurationPicker label=\"Session length\" value={seconds} onChange={setSeconds} />\n      <p className=\"text-sm text-muted-foreground tabular-nums\">\n        Selected: <span className=\"text-foreground\">{formatDuration(seconds)}</span> ({seconds}s)\n      </p>\n      <DurationPicker label=\"Timer (minutes and seconds)\" units={['minutes', 'seconds']} defaultValue={90} max={3599} />\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/pickers/duration-picker"
+  },
+  {
+    "name": "week-strip-calendar",
+    "title": "Week Strip Calendar",
+    "description": "A one-week date strip: step between weeks with the arrows and tap a day to select it.",
+    "group": "inputs",
+    "shelf": "pickers",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "dashboard",
+      "motion"
+    ],
+    "keywords": [
+      "calendar",
+      "date",
+      "week",
+      "strip",
+      "scheduler"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/calender/week-strip-calendar.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "Date",
+        "description": "Controlled selected day."
+      },
+      {
+        "name": "defaultValue",
+        "type": "Date",
+        "default": "today",
+        "description": "Initially selected day when uncontrolled."
+      },
+      {
+        "name": "onChange",
+        "type": "(date: Date) => void",
+        "description": "Called with the picked day at local midnight."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the card."
+      }
+    ],
+    "files": [
+      "week-strip-calendar.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { WeekStripCalendar } from './week-strip-calendar'\n\nexport default function WeekStripCalendarDemo() {\n  const [date, setDate] = useState<Date>(() => new Date())\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <WeekStripCalendar value={date} onChange={setDate} />\n      <p className=\"text-sm text-muted-foreground\">\n        Selected:{' '}\n        <span className=\"text-foreground\">\n          {date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}\n        </span>\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/pickers/week-strip-calendar"
+  },
+  {
+    "name": "wheel-picker",
+    "title": "Wheel Picker",
+    "description": "An iOS-style drum picker: real 3D cylinders you drag, flick, scroll or step with the keyboard.",
+    "group": "inputs",
+    "shelf": "pickers",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "scroll",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "picker",
+      "wheel",
+      "drum",
+      "time picker",
+      "ios",
+      "select"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/wheel-picker.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "columns",
+        "type": "WheelColumn[]",
+        "description": "The wheels, left to right: { id, label, options, loop?, className? }. Defaults to a 12-hour time picker."
+      },
+      {
+        "name": "value",
+        "type": "Record<string, string>",
+        "description": "Controlled selection, keyed by column id."
+      },
+      {
+        "name": "defaultValue",
+        "type": "Record<string, string>",
+        "description": "Initial selection when uncontrolled."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: Record<string, string>) => void",
+        "description": "Called once a wheel comes to rest on a new option."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Time'",
+        "description": "Accessible name for the whole picker."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "wheel-picker.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { WheelPicker } from './wheel-picker'\n\nexport default function WheelPickerDemo() {\n  const [value, setValue] = useState<Record<string, string>>({ hour: '8', minute: '41', period: 'am' })\n  const pad = (n: string) => n.padStart(2, '0')\n  return (\n    <div className=\"flex flex-col items-center gap-3\">\n      <WheelPicker label=\"Alarm time\" value={value} onValueChange={setValue} />\n      <p className=\"text-sm text-muted-foreground tabular-nums\">\n        Alarm set for {Number(value.hour) + 1}:{pad(value.minute)} {value.period?.toUpperCase()}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/pickers/wheel-picker"
+  },
+  {
+    "name": "dimple-switch",
+    "title": "Dimple Switch",
+    "description": "A chunky physical-looking switch: a dimpled knob slides along an inset track.",
+    "group": "inputs",
+    "shelf": "choice",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "switch",
+      "toggle",
+      "checkbox",
+      "skeuomorphic",
+      "setting"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/dimple-switch.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "checked",
+        "type": "boolean",
+        "description": "Controlled state."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean",
+        "default": "false",
+        "description": "Initial state when uncontrolled."
+      },
+      {
+        "name": "onCheckedChange",
+        "type": "(checked: boolean) => void",
+        "description": "Called with the new state."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Enable setting'",
+        "description": "Accessible name of the switch."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables the switch."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the frame."
+      }
+    ],
+    "files": [
+      "dimple-switch.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { DimpleSwitch } from './dimple-switch'\n\nexport default function DimpleSwitchDemo() {\n  const [on, setOn] = useState(true)\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <div className=\"flex items-center gap-4\">\n        <DimpleSwitch label=\"Notifications\" checked={on} onCheckedChange={setOn} />\n        <span className=\"w-28 text-sm text-muted-foreground\">\n          Notifications <span className=\"text-foreground\">{on ? 'on' : 'off'}</span>\n        </span>\n      </div>\n      <div className=\"flex items-center gap-4\">\n        <DimpleSwitch label=\"Disabled option\" disabled />\n        <span className=\"text-sm text-muted-foreground\">Disabled</span>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/choice/dimple-switch"
+  },
+  {
+    "name": "segmented-toggle-button",
+    "title": "Segmented Toggle Button",
+    "description": "An iOS-style segmented control with a pill that slides under the active label.",
+    "group": "inputs",
+    "shelf": "choice",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "segmented",
+      "toggle",
+      "tabs",
+      "switch",
+      "radio",
+      "pill"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/segmented-toggle-button.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "options",
+        "type": "readonly string[]",
+        "default": "['Day', 'Week', 'Month']",
+        "description": "Segment labels, in order."
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Controlled index of the active segment."
+      },
+      {
+        "name": "defaultValue",
+        "type": "number",
+        "default": "0",
+        "description": "Initially active index when uncontrolled."
+      },
+      {
+        "name": "onChange",
+        "type": "(index: number, option: string) => void",
+        "description": "Called with the new index and its label."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables all segments."
+      },
+      {
+        "name": "aria-label",
+        "type": "string",
+        "default": "'Options'",
+        "description": "Accessible name of the group."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the track."
+      }
+    ],
+    "files": [
+      "segmented-toggle-button.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { SegmentedToggleButton } from './segmented-toggle-button'\n\nconst RANGES = ['Day', 'Week', 'Month'] as const\n\nexport default function SegmentedToggleButtonDemo() {\n  const [range, setRange] = useState(1)\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <SegmentedToggleButton aria-label=\"Calendar range\" options={RANGES} value={range} onChange={setRange} />\n      <p className=\"text-sm text-muted-foreground\">\n        Showing the <span className=\"text-foreground\">{RANGES[range].toLowerCase()}</span> view\n      </p>\n      <SegmentedToggleButton aria-label=\"Plan\" options={['Free', 'Pro', 'Team', 'Enterprise']} defaultValue={1} />\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/choice/segmented-toggle-button"
+  },
+  {
+    "name": "tip-selector",
+    "title": "Tip Selector",
+    "description": "A checkout tip picker set on a draggable tape with preset chips, a Round up shortcut and rolling totals.",
+    "group": "inputs",
+    "shelf": "choice",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "click",
+      "marketing",
+      "motion"
+    ],
+    "keywords": [
+      "tip",
+      "checkout",
+      "payment",
+      "slider",
+      "percent",
+      "ruler"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/tip-selector.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "subtotal",
+        "type": "number",
+        "default": "42.6",
+        "description": "The order amount before the tip."
+      },
+      {
+        "name": "recipient",
+        "type": "{ name: string; note?: string }",
+        "default": "{ name: 'Sam', note: 'Your courier · 6 min early' }",
+        "description": "Who the tip goes to."
+      },
+      {
+        "name": "percents",
+        "type": "number[]",
+        "default": "[15, 18, 20]",
+        "description": "Percents marked on the tape and offered as shortcuts."
+      },
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Controlled tip, in percent."
+      },
+      {
+        "name": "defaultValue",
+        "type": "number",
+        "default": "18",
+        "description": "Where the tape starts when uncontrolled, in percent."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "30",
+        "description": "The far end of the tape, in percent."
+      },
+      {
+        "name": "currency",
+        "type": "string",
+        "default": "'$'",
+        "description": "Currency symbol shown before amounts."
+      },
+      {
+        "name": "onChange",
+        "type": "(tip: number, percent: number) => void",
+        "description": "Called when the tip changes, with the tip amount and the percent."
+      },
+      {
+        "name": "onPay",
+        "type": "(total: number) => void",
+        "description": "Called with the total when the order button is pressed."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the card."
+      }
+    ],
+    "files": [
+      "tip-selector.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { TipSelector } from './tip-selector'\n\nexport default function TipSelectorDemo() {\n  const [tip, setTip] = useState(0)\n  return (\n    <div className=\"flex w-full max-w-sm flex-col items-center gap-4\">\n      <TipSelector\n        subtotal={42.6}\n        recipient={{ name: 'Sam', note: 'Your courier · 6 min early' }}\n        onChange={(amount) => setTip(amount)}\n      />\n      <p className=\"text-xs text-muted-foreground\">\n        Last tip reported by <code className=\"text-foreground\">onChange</code>:{' '}\n        <span className=\"text-foreground tabular-nums\">{tip ? `$${tip.toFixed(2)}` : 'none yet'}</span>\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/choice/tip-selector"
+  },
+  {
+    "name": "file-upload",
+    "title": "File Upload",
+    "description": "A drop zone with an upload queue: drop, paste or browse, watch progress per file, cancel or retry. Simulated locally unless you pass onUpload.",
+    "group": "inputs",
+    "shelf": "upload-sign",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "click",
+      "dashboard",
+      "motion"
+    ],
+    "keywords": [
+      "upload",
+      "dropzone",
+      "files",
+      "queue",
+      "progress",
+      "paste"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/file-upload.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "onUpload",
+        "type": "(file: File, helpers: { onProgress: (percent: number) => void; signal: AbortSignal }) => Promise<void>",
+        "description": "Uploads one file. Resolve to finish the row, reject to show an error with Retry. Omit to simulate uploads locally."
+      },
+      {
+        "name": "onUploadSuccess",
+        "type": "(file: File) => void",
+        "description": "Called when one file finishes uploading."
+      },
+      {
+        "name": "onUploadError",
+        "type": "(error: FileError, file: File) => void",
+        "description": "Called for validation errors and failed uploads."
+      },
+      {
+        "name": "onComplete",
+        "type": "(files: File[]) => void",
+        "description": "Called with all uploaded files once nothing is queued or in flight."
+      },
+      {
+        "name": "onFileRemove",
+        "type": "(file: File) => void",
+        "description": "Called when a row is removed, cancelling its upload if needed."
+      },
+      {
+        "name": "acceptedFileTypes",
+        "type": "string[]",
+        "default": "[]",
+        "description": "MIME types, wildcards like image/* or extensions like .pdf. Empty accepts anything."
+      },
+      {
+        "name": "maxFileSize",
+        "type": "number",
+        "default": "5242880",
+        "description": "Maximum size of each file in bytes."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean",
+        "default": "true",
+        "description": "Accept several files at once."
+      },
+      {
+        "name": "maxFiles",
+        "type": "number",
+        "default": "5",
+        "description": "Maximum number of files in the list."
+      },
+      {
+        "name": "uploadDelay",
+        "type": "number",
+        "default": "2000",
+        "description": "Simulated upload duration per file in milliseconds, used without onUpload."
+      },
+      {
+        "name": "simulateFailure",
+        "type": "boolean",
+        "default": "false",
+        "description": "Simulated uploads only: the first attempt of every third file fails."
+      },
+      {
+        "name": "validateFile",
+        "type": "(file: File) => FileError | null",
+        "description": "Extra validation. Return an error to reject the file."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the card."
+      }
+    ],
+    "files": [
+      "file-upload.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { FileUpload } from './file-upload'\n\nexport default function FileUploadDemo() {\n  const [uploaded, setUploaded] = useState<string[]>([])\n  return (\n    <div className=\"flex w-full max-w-sm flex-col items-center gap-4\">\n      {/* No onUpload: the component simulates every upload locally, nothing is sent anywhere. */}\n      <FileUpload\n        acceptedFileTypes={['image/*', '.pdf']}\n        maxFileSize={10 * 1024 * 1024}\n        maxFiles={4}\n        uploadDelay={1800}\n        simulateFailure\n        onComplete={(files) => setUploaded(files.map((f) => f.name))}\n      />\n      <p className=\"text-center text-xs text-muted-foreground\">\n        {uploaded.length ? (\n          <>\n            Finished: <span className=\"text-foreground\">{uploaded.join(', ')}</span>\n          </>\n        ) : (\n          'Pick an image or PDF. The first attempt of every third file fails so you can try Retry.'\n        )}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/upload-sign/file-upload"
+  },
+  {
+    "name": "signature-pad",
+    "title": "Signature Pad",
+    "description": "A canvas to sign on with mouse, touch or pen. Ink is sprung and thins with speed; the result comes out as SVG.",
+    "group": "inputs",
+    "shelf": "upload-sign",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "canvas",
+      "dashboard",
+      "motion"
+    ],
+    "keywords": [
+      "signature",
+      "sign",
+      "pad",
+      "draw",
+      "ink",
+      "svg"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/signature-pad.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "onChange",
+        "type": "(svg: string | null) => void",
+        "description": "Called after each stroke, undo or clear with the signature as SVG, or null once it is empty."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Signature'",
+        "description": "Accessible name of the drawing area."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the card."
+      }
+    ],
+    "files": [
+      "signature-pad.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { SignaturePad } from './signature-pad'\n\nexport default function SignaturePadDemo() {\n  const [svg, setSvg] = useState<string | null>(null)\n  return (\n    <div className=\"flex w-full max-w-[380px] flex-col items-center gap-4\">\n      <SignaturePad onChange={setSvg} />\n      <p className=\"text-center text-xs text-muted-foreground\">\n        {svg ? (\n          <>\n            Captured as SVG, <span className=\"text-foreground tabular-nums\">{svg.length.toLocaleString('en-US')}</span> characters.\n          </>\n        ) : (\n          'Sign above with mouse, touch or pen. Ctrl or Cmd+Z undoes, Backspace clears.'\n        )}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/inputs/upload-sign/signature-pad"
+  },
+  {
+    "name": "collab-toolbar",
+    "title": "Collab Toolbar",
+    "description": "A floating toolbar of icon buttons and a collaborator avatar stack, split into groups by dividers.",
+    "group": "navigation",
+    "shelf": "dock-menus",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "zero-deps"
+    ],
+    "keywords": [
+      "toolbar",
+      "collaboration",
+      "avatars",
+      "icons",
+      "presence"
+    ],
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/collab-toolbar.tsx"
+    },
+    "dependencies": [],
+    "props": [
+      {
+        "name": "groups",
+        "type": "(IconKey[] | 'avatars')[]",
+        "required": true,
+        "description": "Groups shown left to right: runs of icon keys, or 'avatars' for the collaborator stack."
+      },
+      {
+        "name": "avatars",
+        "type": "Collaborator[]",
+        "default": "[]",
+        "description": "Collaborators (name, color, imageUrl) shown where the 'avatars' group sits."
+      },
+      {
+        "name": "onIconClick",
+        "type": "(icon: IconKey) => void",
+        "description": "Called with the icon key when a toolbar button is pressed."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Collaboration toolbar'",
+        "description": "Accessible name of the toolbar."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the toolbar."
+      }
+    ],
+    "files": [
+      "collab-toolbar.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { CollabToolbar, type IconKey } from './collab-toolbar'\n\nexport default function CollabToolbarDemo() {\n  const [last, setLast] = useState<IconKey | null>(null)\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <CollabToolbar\n        groups={[['phone', 'desktop', 'chrome'], ['chat', 'inbox', 'layers'], 'avatars', ['menu']]}\n        avatars={[{ name: 'Ada Lovelace' }, { name: 'Grace Hopper', color: 'var(--primary)' }, { name: 'Linus Torvalds' }]}\n        onIconClick={setLast}\n      />\n      <p aria-live=\"polite\" className=\"text-xs text-muted-foreground\">\n        {last ? `Pressed: ${last}` : 'Press a button.'}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/dock-menus/collab-toolbar"
+  },
+  {
     "name": "dock",
     "title": "Dock",
     "description": "A row of icons that swell as the pointer approaches, macOS style. Stays at rest on touch and under reduced motion.",
@@ -3717,6 +4998,493 @@
     "path": "registry/navigation/dock-menus/dock"
   },
   {
+    "name": "fluid-hover-highlight",
+    "title": "Fluid Hover Highlight",
+    "description": "One highlight that glides between list rows under the pointer or keyboard focus instead of blinking on hover.",
+    "group": "navigation",
+    "shelf": "dock-menus",
+    "layer": "component",
+    "tags": [
+      "hover",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "highlight",
+      "hover",
+      "list",
+      "menu",
+      "spring",
+      "glide"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/fluid-hover-highlight/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "rect",
+        "type": "ItemRect | null",
+        "required": true,
+        "description": "Box to highlight in the container's coordinate space. null fades the highlight out."
+      },
+      {
+        "name": "session",
+        "type": "number",
+        "default": "0",
+        "description": "Changes on each pointer enter, so a fresh highlight fades in instead of travelling."
+      },
+      {
+        "name": "from",
+        "type": "ItemRect | null",
+        "description": "Where a fresh highlight fades in from, for example a checked row."
+      },
+      {
+        "name": "transition",
+        "type": "Transition | false",
+        "description": "Positional spring. false snaps with no travel."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Radius, colour and z-index of the highlight."
+      }
+    ],
+    "files": [
+      "fluid-hover-highlight.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useRef } from 'react'\nimport { FluidHoverHighlight, useFluidHover } from './fluid-hover-highlight'\n\nconst ROWS = ['Overview', 'Activity', 'Members', 'Billing', 'Settings']\n\nexport default function FluidHoverHighlightDemo() {\n  const ref = useRef<HTMLUListElement>(null)\n  const hover = useFluidHover(ref)\n\n  return (\n    <ul\n      ref={ref}\n      aria-label=\"Workspace sections\"\n      className=\"relative w-64 rounded-xl border border-border bg-card p-1.5\"\n      {...hover.containerProps}\n    >\n      <FluidHoverHighlight rect={hover.rect} session={hover.session} className=\"rounded-lg\" />\n      {ROWS.map((label, index) => (\n        <li key={label}>\n          <button\n            type=\"button\"\n            {...hover.getItemProps(index)}\n            className=\"relative flex w-full cursor-pointer items-center rounded-lg px-3 py-2 text-left text-sm text-card-foreground outline-none focus-visible:outline-2 focus-visible:outline-ring\"\n          >\n            {label}\n          </button>\n        </li>\n      ))}\n    </ul>\n  )\n}\n",
+    "path": "registry/navigation/dock-menus/fluid-hover-highlight"
+  },
+  {
+    "name": "kebab-actions-dropdown",
+    "title": "Kebab Actions Dropdown",
+    "description": "A row with a kebab button that expands its action menu inside the same card, with arrow-key navigation.",
+    "group": "navigation",
+    "shelf": "dock-menus",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "zero-deps"
+    ],
+    "keywords": [
+      "menu",
+      "dropdown",
+      "kebab",
+      "actions",
+      "more",
+      "row"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/dropdowns/kebab-actions-dropdown.tsx"
+    },
+    "dependencies": [],
+    "props": [
+      {
+        "name": "rowTitle",
+        "type": "string",
+        "default": "'Quarterly report'",
+        "description": "Title of the row the menu belongs to."
+      },
+      {
+        "name": "items",
+        "type": "KebabMenuItem[]",
+        "default": "Edit, Copy link, Archive, Delete",
+        "description": "Menu entries: id, label, icon, danger, separator."
+      },
+      {
+        "name": "onItemClick",
+        "type": "(item: KebabMenuItem) => void",
+        "description": "Called with the item the user picked. The menu closes first."
+      },
+      {
+        "name": "triggerAriaLabel",
+        "type": "string",
+        "default": "'More actions'",
+        "description": "Accessible name of the kebab button."
+      },
+      {
+        "name": "menuAriaLabel",
+        "type": "string",
+        "default": "'Actions menu'",
+        "description": "Accessible name of the menu."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "kebab-actions-dropdown.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { KebabActionsDropdown } from './kebab-actions-dropdown'\n\nexport default function KebabActionsDropdownDemo() {\n  const [last, setLast] = useState<string | null>(null)\n  return (\n    <div className=\"flex min-h-64 flex-col items-center gap-4\">\n      <KebabActionsDropdown onItemClick={(item) => setLast(item.label ?? item.id)} />\n      <p aria-live=\"polite\" className=\"text-xs text-muted-foreground\">\n        {last ? `Picked: ${last}` : 'Open the menu and pick an action.'}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/dock-menus/kebab-actions-dropdown"
+  },
+  {
+    "name": "marking-menu",
+    "title": "Marking Menu",
+    "description": "A radial menu you open by holding, flicking or right-clicking a surface, with a keyboard path through a Menu button.",
+    "group": "navigation",
+    "shelf": "dock-menus",
+    "layer": "component",
+    "tags": [
+      "click",
+      "drag",
+      "svg",
+      "motion"
+    ],
+    "keywords": [
+      "radial",
+      "pie",
+      "menu",
+      "gesture",
+      "flick",
+      "context"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/marking-menu.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "MarkingMenuItem[]",
+        "default": "Home, Inbox, Calendar, Files, Search, Compose, Profile, Settings",
+        "description": "Up to eight destinations (id, label, icon), laid out clockwise from the top."
+      },
+      {
+        "name": "onSelect",
+        "type": "(item: MarkingMenuItem) => void",
+        "description": "Called with the item picked, by menu, flick or keyboard."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "The surface the menu opens over. Defaults to a small demo page."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the surface."
+      }
+    ],
+    "files": [
+      "marking-menu.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { MarkingMenu } from './marking-menu'\n\nexport default function MarkingMenuDemo() {\n  const [last, setLast] = useState<string | null>(null)\n  return (\n    <div className=\"flex w-full max-w-xl flex-col gap-3\">\n      <MarkingMenu onSelect={(item) => setLast(item.label)} />\n      <p aria-live=\"polite\" className=\"text-center text-xs text-muted-foreground\">\n        {last ? `Went to ${last}` : 'Hold, flick or right-click the surface.'}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/dock-menus/marking-menu"
+  },
+  {
+    "name": "morph-surface",
+    "title": "Morph Surface",
+    "description": "A small pill that morphs into a feedback form and back, with a shared dot and a check on success.",
+    "group": "navigation",
+    "shelf": "dock-menus",
+    "layer": "component",
+    "tags": [
+      "click",
+      "type",
+      "motion"
+    ],
+    "keywords": [
+      "feedback",
+      "morph",
+      "pill",
+      "form",
+      "expand",
+      "dock"
+    ],
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/morph-surface.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "triggerLabel",
+        "type": "string",
+        "default": "'Feedback'",
+        "description": "Text of the pill's trigger and the heading above the field when open."
+      },
+      {
+        "name": "triggerIcon",
+        "type": "ReactNode",
+        "description": "Icon shown before the trigger label."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "default": "'Morph Surface'",
+        "description": "Name shown beside the dot in the collapsed pill."
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "default": "\"What's on your mind?\"",
+        "description": "Placeholder of the message field."
+      },
+      {
+        "name": "onSubmit",
+        "type": "(data: FormData) => void | Promise<void>",
+        "description": "Called with the form data on submit. The surface closes and shows a check once it resolves."
+      },
+      {
+        "name": "onOpen",
+        "type": "() => void",
+        "description": "Called when the surface opens."
+      },
+      {
+        "name": "onClose",
+        "type": "() => void",
+        "description": "Called when the surface closes without sending."
+      },
+      {
+        "name": "onSuccess",
+        "type": "() => void",
+        "description": "Called after a successful submit."
+      },
+      {
+        "name": "isOpen",
+        "type": "boolean",
+        "description": "Controlled open state. Leave it out to let the surface manage itself."
+      },
+      {
+        "name": "onOpenChange",
+        "type": "(open: boolean) => void",
+        "description": "Called with the next open state."
+      },
+      {
+        "name": "collapsedWidth",
+        "type": "number | 'auto'",
+        "default": "360",
+        "description": "Width of the collapsed pill in pixels."
+      },
+      {
+        "name": "expandedWidth",
+        "type": "number",
+        "default": "360",
+        "description": "Width of the open surface in pixels."
+      },
+      {
+        "name": "expandedHeight",
+        "type": "number",
+        "default": "200",
+        "description": "Height of the open surface in pixels."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the wrapper."
+      }
+    ],
+    "files": [
+      "morph-surface.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { MorphSurface } from './morph-surface'\n\nexport default function MorphSurfaceDemo() {\n  return (\n    <div className=\"flex min-h-64 items-end justify-center\">\n      <MorphSurface\n        triggerLabel=\"Feedback\"\n        triggerIcon={\n          <svg aria-hidden=\"true\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth={2} strokeLinecap=\"round\" strokeLinejoin=\"round\">\n            <path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\" />\n          </svg>\n        }\n      />\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/dock-menus/morph-surface"
+  },
+  {
+    "name": "profile-dropdown",
+    "title": "Profile Dropdown",
+    "description": "An account menu that grows out of its own trigger, with status, theme, links, account switching and a hold-to-confirm sign out.",
+    "group": "navigation",
+    "shelf": "dock-menus",
+    "layer": "component",
+    "tags": [
+      "click",
+      "hover",
+      "motion"
+    ],
+    "keywords": [
+      "account",
+      "profile",
+      "menu",
+      "dropdown",
+      "avatar",
+      "switcher",
+      "sign out"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/profile-dropdown.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "accounts",
+        "type": "Account[]",
+        "default": "three sample accounts",
+        "description": "Accounts to switch between: id, name, email, initials, plan."
+      },
+      {
+        "name": "defaultAccountId",
+        "type": "string",
+        "description": "Id of the account shown first. Defaults to the first account."
+      },
+      {
+        "name": "onAccountChange",
+        "type": "(account: Account) => void",
+        "description": "Called when the user picks another account."
+      },
+      {
+        "name": "onAddAccount",
+        "type": "() => void",
+        "description": "Called when the user picks Add account."
+      },
+      {
+        "name": "items",
+        "type": "ProfileMenuItem[]",
+        "default": "Profile, Settings, Billing",
+        "description": "Menu entries between the settings rows and Switch account."
+      },
+      {
+        "name": "theme",
+        "type": "'light' | 'dark' | 'system'",
+        "description": "Controlled theme. Leave it out to keep the choice in local state."
+      },
+      {
+        "name": "defaultTheme",
+        "type": "'light' | 'dark' | 'system'",
+        "default": "'system'",
+        "description": "Initial theme when uncontrolled."
+      },
+      {
+        "name": "onThemeChange",
+        "type": "(theme: AccountTheme) => void",
+        "description": "Called when the theme changes."
+      },
+      {
+        "name": "status",
+        "type": "'online' | 'away' | 'busy'",
+        "description": "Controlled status. Leave it out to keep the choice in local state."
+      },
+      {
+        "name": "defaultStatus",
+        "type": "'online' | 'away' | 'busy'",
+        "default": "'online'",
+        "description": "Initial status when uncontrolled."
+      },
+      {
+        "name": "onStatusChange",
+        "type": "(status: AccountStatus) => void",
+        "description": "Called when the status changes."
+      },
+      {
+        "name": "onSignOut",
+        "type": "() => void",
+        "description": "Called once Sign out has been held for holdDuration."
+      },
+      {
+        "name": "holdDuration",
+        "type": "number",
+        "default": "1200",
+        "description": "Milliseconds Sign out must be held."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "profile-dropdown.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { ProfileDropdown } from './profile-dropdown'\n\nexport default function ProfileDropdownDemo() {\n  return (\n    <div className=\"flex min-h-96 items-start justify-center\">\n      <ProfileDropdown />\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/dock-menus/profile-dropdown"
+  },
+  {
+    "name": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "A breadcrumb trail whose items slide in one after another. Marks the last item as the current page.",
+    "group": "navigation",
+    "shelf": "tabs",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "breadcrumb",
+      "trail",
+      "path",
+      "nav"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/breadcrumb/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "BreadcrumbItem[]",
+        "required": true,
+        "description": "The trail in order: { label, href? }. The last item is the current page."
+      },
+      {
+        "name": "separator",
+        "type": "ReactNode",
+        "description": "Custom separator between items. Defaults to a chevron."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.25",
+        "description": "Seconds each item takes to slide in. Items are staggered. 0 skips the entrance."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the nav element."
+      }
+    ],
+    "files": [
+      "breadcrumb.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { Breadcrumb } from './breadcrumb'\n\nexport default function BreadcrumbDemo() {\n  return (\n    <div className=\"flex flex-col items-start gap-6\">\n      <Breadcrumb\n        items={[\n          { label: 'Home', href: '#' },\n          { label: 'Components', href: '#' },\n          { label: 'Navigation', href: '#' },\n          { label: 'Breadcrumb' },\n        ]}\n      />\n      <Breadcrumb\n        separator={<span>/</span>}\n        items={[\n          { label: 'Projects', href: '#' },\n          { label: 'Mozaik', href: '#' },\n          { label: 'Settings' },\n        ]}\n      />\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/tabs/breadcrumb"
+  },
+  {
     "name": "direction-aware-tabs",
     "title": "Direction Aware Tabs",
     "description": "Tabs whose panel slides in from the side you are moving towards, with a sliding pill and an animated panel height.",
@@ -3784,6 +5552,597 @@
     "variants": [],
     "demo": "import { DirectionAwareTabs } from './direction-aware-tabs'\n\nconst Panel = ({ title, body, tiles }: { title: string; body: string; tiles: number }) => (\n  <div className=\"rounded-xl border border-border bg-card p-5 text-card-foreground\">\n    <h3 className=\"text-lg font-semibold tracking-tight\">{title}</h3>\n    <p className=\"mt-1 max-w-md text-sm text-muted-foreground\">{body}</p>\n    <div className=\"mt-4 flex gap-2\">\n      {Array.from({ length: tiles }, (_, i) => (\n        <div key={i} className=\"h-16 flex-1 rounded-lg bg-linear-to-br from-primary/30 to-muted\" />\n      ))}\n    </div>\n  </div>\n)\n\nexport default function DirectionAwareTabsDemo() {\n  return (\n    <div className=\"w-[480px] max-w-full\">\n      <DirectionAwareTabs\n        tabs={[\n          { id: 'overview', label: 'Overview', content: <Panel title=\"Overview\" body=\"A short summary. Move to a tab on the right and the panel slides in from the right.\" tiles={2} /> },\n          { id: 'activity', label: 'Activity', content: <Panel title=\"Activity\" body=\"This panel is taller. The container animates its height instead of jumping.\" tiles={4} /> },\n          { id: 'settings', label: 'Settings', content: <Panel title=\"Settings\" body=\"Go back left and the motion reverses. Arrow keys, Home and End work too.\" tiles={1} /> },\n        ]}\n      />\n    </div>\n  )\n}\n",
     "path": "registry/navigation/tabs/direction-aware-tabs"
+  },
+  {
+    "name": "linen-tab-button",
+    "title": "Linen Tab Button",
+    "description": "A button with a woven linen face, dashed stitching and a soft lift on press.",
+    "group": "navigation",
+    "shelf": "tabs",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "button",
+      "linen",
+      "fabric",
+      "tab",
+      "stitch"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/linen-tab-button.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "default": "'View details'",
+        "description": "Button label."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables the button."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the button."
+      }
+    ],
+    "files": [
+      "linen-tab-button.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { LinenTabButton } from './linen-tab-button'\n\nexport default function LinenTabButtonDemo() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4\">\n      <LinenTabButton />\n      <LinenTabButton>Open notes</LinenTabButton>\n      <LinenTabButton disabled>Unavailable</LinenTabButton>\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/tabs/linen-tab-button"
+  },
+  {
+    "name": "pagination",
+    "title": "Pagination",
+    "description": "Page navigation with ellipses and a sliding indicator behind the active page.",
+    "group": "navigation",
+    "shelf": "tabs",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "pagination",
+      "pages",
+      "paging",
+      "nav"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/pagination/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "page",
+        "type": "number",
+        "required": true,
+        "description": "Current page, starting at 1."
+      },
+      {
+        "name": "totalPages",
+        "type": "number",
+        "required": true,
+        "description": "Total number of pages."
+      },
+      {
+        "name": "onPageChange",
+        "type": "(page: number) => void",
+        "required": true,
+        "description": "Called with the new page when the user picks one."
+      },
+      {
+        "name": "siblings",
+        "type": "number",
+        "default": "1",
+        "description": "Pages shown on each side of the current page."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.25",
+        "description": "Seconds the sliding indicator and entrance take."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the nav element."
+      }
+    ],
+    "files": [
+      "pagination.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { Pagination } from './pagination'\n\nexport default function PaginationDemo() {\n  const [page, setPage] = useState(4)\n  return (\n    <div className=\"flex flex-col items-center gap-3\">\n      <Pagination page={page} totalPages={12} onPageChange={setPage} />\n      <p className=\"text-sm text-muted-foreground\">\n        Page {page} of 12\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/tabs/pagination"
+  },
+  {
+    "name": "bounce-sidebar",
+    "title": "Bounce Sidebar",
+    "description": "A vertical nav with a dot that hops along a curved path to the selected item.",
+    "group": "navigation",
+    "shelf": "navbar-sidebar",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "dashboard",
+      "motion"
+    ],
+    "keywords": [
+      "sidebar",
+      "nav",
+      "menu",
+      "indicator",
+      "spring"
+    ],
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/bounce-sidebar.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "BounceSidebarItem[]",
+        "required": true,
+        "description": "The entries, top to bottom: { id, label, href?, icon?, disabled?, target?, rel? }."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "description": "Selected item id (controlled)."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "description": "Item selected first when uncontrolled. Defaults to the first item."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: string) => void",
+        "description": "Called with the item id whenever the selection changes."
+      },
+      {
+        "name": "ariaLabel",
+        "type": "string",
+        "default": "'Sidebar navigation'",
+        "description": "Accessible name of the nav landmark."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the nav element."
+      },
+      {
+        "name": "listClassName",
+        "type": "string",
+        "description": "Extra classes for the list."
+      },
+      {
+        "name": "itemClassName",
+        "type": "string",
+        "description": "Extra classes for each item."
+      },
+      {
+        "name": "indicatorClassName",
+        "type": "string",
+        "description": "Extra classes for the bouncing dot."
+      }
+    ],
+    "files": [
+      "bounce-sidebar.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { BounceSidebar } from './bounce-sidebar'\n\nconst items = [\n  { id: 'overview', label: 'Overview' },\n  { id: 'projects', label: 'Projects' },\n  { id: 'activity', label: 'Activity' },\n  { id: 'team', label: 'Team' },\n  { id: 'settings', label: 'Settings' },\n]\n\nexport default function BounceSidebarDemo() {\n  const [value, setValue] = useState('overview')\n  return (\n    <div className=\"w-56 rounded-xl border border-border bg-card p-3 text-card-foreground\">\n      <BounceSidebar items={items} value={value} onValueChange={setValue} />\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/navbar-sidebar/bounce-sidebar"
+  },
+  {
+    "name": "sidebar",
+    "title": "Sidebar",
+    "description": "A collapsible app rail that animates between full width and an icon rail, with menu buttons and a trigger.",
+    "group": "navigation",
+    "shelf": "navbar-sidebar",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "dashboard",
+      "motion",
+      "lucide"
+    ],
+    "keywords": [
+      "sidebar",
+      "rail",
+      "collapse",
+      "nav",
+      "app shell"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/sidebar/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "collapsed",
+        "type": "boolean",
+        "description": "SidebarProvider: collapsed state (controlled)."
+      },
+      {
+        "name": "defaultCollapsed",
+        "type": "boolean",
+        "default": "false",
+        "description": "SidebarProvider: whether it starts collapsed when uncontrolled."
+      },
+      {
+        "name": "onCollapsedChange",
+        "type": "(collapsed: boolean) => void",
+        "description": "SidebarProvider: called with the new state whenever it changes."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.3",
+        "description": "Sidebar: seconds the width change takes."
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "default": "false",
+        "description": "SidebarMenuButton: marks the button as the current page."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "description": "SidebarMenuButton: leading icon. Needed for a usable collapsed rail."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes, accepted by every part."
+      }
+    ],
+    "files": [
+      "sidebar.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { Home, Inbox, Settings, Users } from 'lucide-react'\nimport { useState } from 'react'\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarFooter,\n  SidebarHeader,\n  SidebarLabel,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from './sidebar'\n\nconst links = [\n  { id: 'home', label: 'Home', icon: <Home /> },\n  { id: 'inbox', label: 'Inbox', icon: <Inbox /> },\n  { id: 'team', label: 'Team', icon: <Users /> },\n]\n\nexport default function SidebarDemo() {\n  const [active, setActive] = useState('home')\n\n  return (\n    <SidebarProvider>\n      <div className=\"flex h-80 w-full max-w-lg overflow-hidden rounded-xl border border-border\">\n        <Sidebar>\n          <SidebarHeader>\n            <SidebarTrigger />\n            <SidebarLabel className=\"text-sm font-semibold\">Mozaik</SidebarLabel>\n          </SidebarHeader>\n          <SidebarContent>\n            <SidebarMenu>\n              {links.map((link) => (\n                <SidebarMenuItem key={link.id}>\n                  <SidebarMenuButton icon={link.icon} active={active === link.id} onClick={() => setActive(link.id)}>\n                    {link.label}\n                  </SidebarMenuButton>\n                </SidebarMenuItem>\n              ))}\n            </SidebarMenu>\n          </SidebarContent>\n          <SidebarFooter>\n            <SidebarMenuButton icon={<Settings />}>Settings</SidebarMenuButton>\n          </SidebarFooter>\n        </Sidebar>\n        <main className=\"flex flex-1 items-center justify-center p-6 text-sm text-muted-foreground\">\n          {links.find((l) => l.id === active)?.label} page\n        </main>\n      </div>\n    </SidebarProvider>\n  )\n}\n",
+    "path": "registry/navigation/navbar-sidebar/sidebar"
+  },
+  {
+    "name": "action-search-bar",
+    "title": "Action Search Bar",
+    "description": "A command palette in a search bar: fuzzy search, nested pages, recent rows, shortcut hints and in-row progress.",
+    "group": "navigation",
+    "shelf": "command-search",
+    "layer": "component",
+    "tags": [
+      "type",
+      "click",
+      "css",
+      "motion",
+      "lucide"
+    ],
+    "keywords": [
+      "command",
+      "palette",
+      "search",
+      "cmdk",
+      "actions",
+      "fuzzy"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/action-search-bar.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "items",
+        "type": "CommandItem[]",
+        "required": true,
+        "description": "The commands: { id, label, icon?, group?, keywords?, shortcut?, href?, children?, placeholder? }. Rows with children open a nested page."
+      },
+      {
+        "name": "defaultRecent",
+        "type": "string[]",
+        "default": "[]",
+        "description": "Ids shown under Recent before anything is typed. Running a row adds it."
+      },
+      {
+        "name": "onSelect",
+        "type": "(item: CommandItem, path: CommandItem[]) => unknown",
+        "description": "Called when a row without children is chosen. Return a Promise to show a spinner in the row until it settles."
+      },
+      {
+        "name": "onOpenChange",
+        "type": "(open: boolean) => void",
+        "description": "Called when the palette opens or closes."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean",
+        "default": "false",
+        "description": "Starts with the list open."
+      },
+      {
+        "name": "shortcut",
+        "type": "boolean",
+        "default": "false",
+        "description": "Cmd/Ctrl + K toggles the palette page-wide while it is on screen. By default only while it is focused or hovered."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Search commands'",
+        "description": "Accessible label of the input."
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "default": "'Search or jump to…'",
+        "description": "Input placeholder on the first page."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "action-search-bar.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import {\n  Activity,\n  BookOpen,\n  Copy,\n  FilePlus,\n  FolderInput,\n  History,\n  Keyboard,\n  Link2,\n  SunMoon,\n  UserPlus,\n} from 'lucide-react'\nimport { useState } from 'react'\nimport { ActionSearchBar, type CommandItem } from './action-search-bar'\n\nconst icon = 'size-4'\n\nconst items: CommandItem[] = [\n  { id: 'new-document', label: 'New document', icon: <FilePlus className={icon} />, group: 'Actions', keywords: ['create', 'page', 'file'], shortcut: ['⌘', 'N'] },\n  { id: 'duplicate', label: 'Duplicate page', icon: <Copy className={icon} />, group: 'Actions', keywords: ['copy', 'clone'], shortcut: ['⌘', 'D'] },\n  {\n    id: 'move',\n    label: 'Move to…',\n    icon: <FolderInput className={icon} />,\n    group: 'Actions',\n    keywords: ['folder', 'file'],\n    placeholder: 'Move to which folder?',\n    children: [\n      { id: 'move-inbox', label: 'Inbox', icon: <FolderInput className={icon} /> },\n      { id: 'move-projects', label: 'Projects', icon: <FolderInput className={icon} /> },\n      { id: 'move-archive', label: 'Archive', icon: <FolderInput className={icon} /> },\n    ],\n  },\n  {\n    id: 'theme',\n    label: 'Change theme',\n    icon: <SunMoon className={icon} />,\n    group: 'Actions',\n    keywords: ['appearance', 'dark', 'light', 'mode'],\n    placeholder: 'Choose a theme…',\n    children: [\n      { id: 'theme-light', label: 'Light', icon: <SunMoon className={icon} /> },\n      { id: 'theme-dark', label: 'Dark', icon: <SunMoon className={icon} /> },\n      { id: 'theme-system', label: 'Match system', icon: <SunMoon className={icon} /> },\n    ],\n  },\n  { id: 'invite', label: 'Invite member', icon: <UserPlus className={icon} />, group: 'Actions', keywords: ['team', 'share', 'add'] },\n  { id: 'copy-link', label: 'Copy link', icon: <Link2 className={icon} />, group: 'Actions', keywords: ['url', 'share'], shortcut: ['⌘', 'L'] },\n  { id: 'docs', label: 'Documentation', icon: <BookOpen className={icon} />, group: 'Links', keywords: ['help', 'guide'], href: '/docs' },\n  { id: 'changelog', label: 'Changelog', icon: <History className={icon} />, group: 'Links', keywords: ['release', 'updates', 'new'], href: '/changelog' },\n  { id: 'status', label: 'Status page', icon: <Activity className={icon} />, group: 'Links', keywords: ['uptime', 'incident'], href: '/status' },\n  { id: 'shortcuts', label: 'Keyboard shortcuts', icon: <Keyboard className={icon} />, group: 'Links', keywords: ['keys', 'hotkeys'], href: '/shortcuts' },\n]\n\nexport default function ActionSearchBarDemo() {\n  const [last, setLast] = useState<string | null>(null)\n\n  return (\n    <div className=\"flex h-96 w-full max-w-md flex-col gap-3\">\n      <ActionSearchBar\n        items={items}\n        defaultRecent={['copy-link', 'theme-dark']}\n        onSelect={(item) =>\n          // A short promise shows the in-row spinner before the check mark.\n          new Promise<void>((resolve) => {\n            setTimeout(() => {\n              setLast(item.label)\n              resolve()\n            }, 600)\n          })\n        }\n      />\n      <p aria-live=\"polite\" className=\"text-sm text-muted-foreground\">\n        {last ? `Ran: ${last}` : 'Click the bar, press Cmd/Ctrl + K while it is focused, or just type.'}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/command-search/action-search-bar"
+  },
+  {
+    "name": "favicon-search",
+    "title": "Favicon Search",
+    "description": "A search field with a keyboard-driven result list that shows an icon, title and description per row.",
+    "group": "navigation",
+    "shelf": "command-search",
+    "layer": "component",
+    "tags": [
+      "type",
+      "click",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "search",
+      "combobox",
+      "autocomplete",
+      "favicon",
+      "results"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/favicon-search/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "results",
+        "type": "FaviconSearchResult[]",
+        "required": true,
+        "description": "Results to list: { id, title, url, description?, favicon? }. Filter them yourself as the query changes."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "description": "Query text (controlled)."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(value: string) => void",
+        "description": "Called with the new query on every keystroke."
+      },
+      {
+        "name": "onSelect",
+        "type": "(result: FaviconSearchResult) => void",
+        "description": "Called when a result is picked with click or Enter."
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows skeleton rows instead of results."
+      },
+      {
+        "name": "emptyMessage",
+        "type": "string",
+        "default": "'No results found'",
+        "description": "Text shown when a query has no results."
+      },
+      {
+        "name": "groupLabel",
+        "type": "string",
+        "default": "'Search results'",
+        "description": "Accessible name of the results list."
+      },
+      {
+        "name": "showShortcut",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows a shortcut hint and focuses the field on Cmd/Ctrl + hotkey."
+      },
+      {
+        "name": "hotkey",
+        "type": "string",
+        "default": "'k'",
+        "description": "Key used with Cmd/Ctrl to focus the field."
+      },
+      {
+        "name": "maxResults",
+        "type": "number",
+        "description": "Shows at most this many results."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.25",
+        "description": "Seconds the panel and rows take to animate."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "favicon-search.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { FaviconSearch, type FaviconSearchResult } from './favicon-search'\n\n/** Small inline SVG mark, so the demo needs no network. */\nconst mark = (path: string) =>\n  `data:image/svg+xml;utf8,${encodeURIComponent(\n    `<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#888\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">${path}</svg>`,\n  )}`\n\nconst ALL: FaviconSearchResult[] = [\n  { id: 'docs', title: 'Mozaik Docs', url: 'https://mozaik.example/docs', description: 'Guides and component reference', favicon: mark('<path d=\"M4 4h12l4 4v12H4z\"/><path d=\"M8 12h8M8 16h8\"/>') },\n  { id: 'registry', title: 'Registry', url: 'https://mozaik.example/registry', description: 'Install components with the shadcn CLI', favicon: mark('<rect x=\"3\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\"/>') },\n  { id: 'changelog', title: 'Changelog', url: 'https://mozaik.example/changelog', description: 'What shipped this week' },\n  { id: 'playground', title: 'Playground', url: 'https://mozaik.example/playground', description: 'Try props live in the browser' },\n  { id: 'github', title: 'GitHub', url: 'https://github.example/mozaik', description: 'Source code and issues' },\n]\n\nexport default function FaviconSearchDemo() {\n  const [query, setQuery] = useState('')\n  const [picked, setPicked] = useState<string | null>(null)\n  const q = query.trim().toLowerCase()\n  const results = q\n    ? ALL.filter((r) => r.title.toLowerCase().includes(q) || r.description?.toLowerCase().includes(q))\n    : ALL\n\n  return (\n    <div className=\"flex h-80 w-full max-w-md flex-col gap-3\">\n      <FaviconSearch\n        results={results}\n        value={query}\n        onValueChange={setQuery}\n        onSelect={(r) => setPicked(r.title)}\n        showShortcut\n        maxResults={4}\n      />\n      <p aria-live=\"polite\" className=\"text-sm text-muted-foreground\">\n        {picked ? `Opened: ${picked}` : 'Pick a result with the mouse or the arrow keys.'}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/command-search/favicon-search"
+  },
+  {
+    "name": "search-input",
+    "title": "Search Input",
+    "description": "A search field with a leading icon, a clear button, a hint and an error state.",
+    "group": "navigation",
+    "shelf": "command-search",
+    "layer": "component",
+    "tags": [
+      "type",
+      "click",
+      "css",
+      "zero-deps"
+    ],
+    "keywords": [
+      "search",
+      "input",
+      "field",
+      "clear"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/inputs/search-input.tsx"
+    },
+    "dependencies": [],
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Search'",
+        "description": "Accessible label. Visually hidden."
+      },
+      {
+        "name": "hint",
+        "type": "string",
+        "description": "Helper text under the field. Hidden while an error is shown."
+      },
+      {
+        "name": "error",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shows the error state and message."
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "default": "'Enter a valid search term.'",
+        "description": "Message shown in the error state."
+      },
+      {
+        "name": "clearLabel",
+        "type": "string",
+        "default": "'Clear search'",
+        "description": "Accessible name of the clear button."
+      },
+      {
+        "name": "value",
+        "type": "string",
+        "description": "Field text (controlled)."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string",
+        "default": "''",
+        "description": "Initial text when uncontrolled."
+      },
+      {
+        "name": "onChange",
+        "type": "(value: string, event: ChangeEvent<HTMLInputElement>) => void",
+        "description": "Called with the new text on every change."
+      },
+      {
+        "name": "onClear",
+        "type": "() => void",
+        "description": "Called after the clear button empties the field."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables the field and hides the clear button."
+      },
+      {
+        "name": "containerClassName",
+        "type": "string",
+        "description": "Extra classes for the wrapper around the field."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the input."
+      }
+    ],
+    "files": [
+      "search-input.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { SearchInput } from './search-input'\n\nexport default function SearchInputDemo() {\n  const [value, setValue] = useState('')\n  const tooShort = value.length > 0 && value.length < 3\n\n  return (\n    <div className=\"flex w-full max-w-sm flex-col gap-6\">\n      <SearchInput\n        value={value}\n        onChange={setValue}\n        onClear={() => setValue('')}\n        error={tooShort}\n        errorMessage=\"Type at least 3 characters.\"\n        hint=\"Search components, blocks and docs.\"\n        placeholder=\"Search components…\"\n      />\n      <SearchInput disabled defaultValue=\"Disabled field\" />\n    </div>\n  )\n}\n",
+    "path": "registry/navigation/command-search/search-input"
   },
   {
     "name": "lens",
@@ -5428,6 +7787,69 @@
     "path": "registry/feedback/progress/progress-ring"
   },
   {
+    "name": "alert",
+    "title": "Alert",
+    "description": "An inline notice with an optional icon, title and body in four tones. Warnings and errors interrupt screen readers; info and success are polite.",
+    "group": "feedback",
+    "shelf": "notifications",
+    "layer": "component",
+    "tags": [
+      "css",
+      "dashboard",
+      "zero-deps",
+      "lucide"
+    ],
+    "keywords": [
+      "alert",
+      "notice",
+      "banner",
+      "callout",
+      "message"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/alert/index.tsx"
+    },
+    "dependencies": [],
+    "props": [
+      {
+        "name": "variant",
+        "type": "'info' | 'success' | 'warning' | 'destructive'",
+        "default": "'info'",
+        "description": "Tone of the notice. Warning and destructive use role alert, the others role status."
+      },
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "description": "Bold heading line."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "description": "Optional leading icon, hidden from screen readers."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Body copy under the title."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "alert.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { CircleAlert, CircleCheck, Info, TriangleAlert } from 'lucide-react'\nimport { Alert } from './alert'\n\nexport default function AlertDemo() {\n  return (\n    <div className=\"flex w-[min(92vw,460px)] flex-col gap-3\">\n      <Alert variant=\"info\" icon={<Info />} title=\"Scheduled maintenance\">\n        The dashboard is read-only on Sunday between 02:00 and 03:00 UTC.\n      </Alert>\n      <Alert variant=\"success\" icon={<CircleCheck />} title=\"Wallet connected\">\n        You can now sign transactions from this page.\n      </Alert>\n      <Alert variant=\"warning\" icon={<TriangleAlert />} title=\"Gas is high\">\n        Fees are three times the weekly average. Consider waiting before you swap.\n      </Alert>\n      <Alert variant=\"destructive\" icon={<CircleAlert />} title=\"Transaction failed\">\n        The network rejected the request. Check your balance and <a href=\"#retry\">try again</a>.\n      </Alert>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/notifications/alert"
+  },
+  {
     "name": "animated-subscribe-button",
     "title": "Animated Subscribe Button",
     "description": "A toggle button whose label slides away and the next one drops in. A real button with aria-pressed, in controlled or uncontrolled form.",
@@ -5503,6 +7925,190 @@
     "path": "registry/feedback/notifications/animated-subscribe-button"
   },
   {
+    "name": "animated-toast-stack",
+    "title": "Animated Toast Stack",
+    "description": "A stack of toasts that spring in with a blur, swap their icon and text in place, swipe away and expire on a timer. Includes a hook to drive it.",
+    "group": "feedback",
+    "shelf": "notifications",
+    "layer": "component",
+    "tags": [
+      "drag",
+      "svg",
+      "dashboard",
+      "motion"
+    ],
+    "keywords": [
+      "toast",
+      "notification",
+      "stack",
+      "swipe",
+      "snackbar"
+    ],
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/animated-toast-stack.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "toasts",
+        "type": "AnimatedToast[]",
+        "description": "Toasts to show, oldest first: { id, title, description?, status?, icon?, action?, duration?, dismissible? }."
+      },
+      {
+        "name": "onDismiss",
+        "type": "(id: string) => void",
+        "description": "Called when a toast is swiped or closed. Without it the close button and swipe are off."
+      },
+      {
+        "name": "position",
+        "type": "'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'",
+        "default": "'bottom-right'",
+        "description": "Corner or edge when placement is fixed or absolute; bottom positions also grow upward."
+      },
+      {
+        "name": "placement",
+        "type": "'static' | 'fixed' | 'absolute'",
+        "description": "How the stack is positioned. Defaults to fixed when `fixed` is set, otherwise static."
+      },
+      {
+        "name": "fixed",
+        "type": "boolean",
+        "default": "false",
+        "description": "Shortcut for placement fixed: pins the stack to the viewport and renders it in a portal."
+      },
+      {
+        "name": "portal",
+        "type": "boolean",
+        "description": "Render into a portal. Defaults to true for fixed placement."
+      },
+      {
+        "name": "portalRoot",
+        "type": "Element | null",
+        "description": "Portal target. Defaults to document.body."
+      },
+      {
+        "name": "maxVisible",
+        "type": "number",
+        "default": "4",
+        "description": "How many of the newest toasts are shown."
+      },
+      {
+        "name": "classNames",
+        "type": "ToastClassNames",
+        "description": "Slot classes: root, item, surface, iconWrap, content, title, description, action, close, progress."
+      },
+      {
+        "name": "icons",
+        "type": "Partial<Record<ToastStatus, ReactNode>>",
+        "description": "Override the icon of a status."
+      },
+      {
+        "name": "renderToast",
+        "type": "(toast: AnimatedToast) => ReactNode",
+        "description": "Replace the default toast body."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the list."
+      }
+    ],
+    "files": [
+      "animated-toast-stack.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useAnimatedToastStack, AnimatedToastStack, type ToastInput } from './animated-toast-stack'\n\nconst SAMPLES: ToastInput[] = [\n  { title: 'Swap submitted', description: 'Waiting for 1 confirmation', status: 'loading' },\n  { title: 'Swap confirmed', description: '0.5 ETH for 1,840 USDC', status: 'success' },\n  { title: 'Price alert', description: 'ETH crossed $3,800', status: 'info' },\n  { title: 'Transaction failed', description: 'Slippage too high', status: 'error' },\n]\n\nconst button =\n  'inline-flex h-9 items-center rounded-md border bg-background px-3 text-sm font-medium transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'\n\nexport default function AnimatedToastStackDemo() {\n  const { toasts, showToast, dismissToast, clearToasts } = useAnimatedToastStack({ defaultDuration: 6000, limit: 4 })\n\n  return (\n    <div className=\"flex w-[min(92vw,420px)] flex-col items-center gap-6\">\n      <div className=\"flex flex-wrap justify-center gap-2\">\n        {SAMPLES.map((sample) => (\n          <button key={String(sample.title)} type=\"button\" className={button} onClick={() => showToast(sample)}>\n            {sample.status}\n          </button>\n        ))}\n        <button type=\"button\" className={button} onClick={clearToasts}>\n          Clear\n        </button>\n      </div>\n      <div className=\"min-h-40 w-full\">\n        <AnimatedToastStack\n          toasts={toasts.length ? toasts : [{ id: 'hint', title: 'Press a button', description: 'Toasts stack here and swipe away.', dismissible: false }]}\n          onDismiss={dismissToast}\n          position=\"top-center\"\n          className=\"w-full\"\n        />\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/notifications/animated-toast-stack"
+  },
+  {
+    "name": "notification-banner",
+    "title": "Notification Banner",
+    "description": "A small snackbar with a check icon, an optional action and a close button. Slides up, fades out on dismiss and leaves a button to bring it back.",
+    "group": "feedback",
+    "shelf": "notifications",
+    "layer": "component",
+    "tags": [
+      "click",
+      "css",
+      "motion"
+    ],
+    "keywords": [
+      "snackbar",
+      "toast",
+      "banner",
+      "undo",
+      "notification"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/notifications/toast-notification-banner.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "message",
+        "type": "string",
+        "default": "'Changes saved'",
+        "description": "The message."
+      },
+      {
+        "name": "actionLabel",
+        "type": "string",
+        "default": "'Undo'",
+        "description": "Label of the action button. An empty string hides it."
+      },
+      {
+        "name": "showTriggerLabel",
+        "type": "string",
+        "default": "'Show notification'",
+        "description": "Label of the button that brings the banner back after it was dismissed."
+      },
+      {
+        "name": "onAction",
+        "type": "() => void",
+        "description": "Called when the action button is pressed."
+      },
+      {
+        "name": "onDismiss",
+        "type": "() => void",
+        "description": "Called when the banner starts to close."
+      },
+      {
+        "name": "onShow",
+        "type": "() => void",
+        "description": "Called when the banner is brought back."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "0.3",
+        "description": "Seconds the slide and fade take."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "notification-banner.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { NotificationBanner } from './notification-banner'\n\nexport default function NotificationBannerDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <NotificationBanner />\n      <NotificationBanner message=\"Wallet copied to clipboard\" actionLabel=\"\" showTriggerLabel=\"Show copied notice\" />\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/notifications/notification-banner"
+  },
+  {
     "name": "notification-stack",
     "title": "Notification Stack",
     "description": "A pile of notifications that fans out on hover or focus. Swipe, click or press Delete to dismiss; the remaining cards close the gap.",
@@ -5565,6 +8171,220 @@
     "variants": [],
     "demo": "import { NotificationStack, type StackNotification } from './notification-stack'\n\nconst badge = (initials: string) => (\n  <span className=\"grid size-8 place-items-center rounded-lg bg-primary/15 text-xs font-semibold text-primary\">\n    {initials}\n  </span>\n)\n\nconst notifications: StackNotification[] = [\n  { id: 'n-1', app: 'Messages', title: 'Maya Chen', body: 'Pushed the fix. Can you take a look before standup?', time: 'now', icon: badge('MC') },\n  { id: 'n-2', app: 'Calendar', title: 'Design review in 10 min', body: 'Room 4B, registry roadmap', time: '9:50', icon: badge('CA') },\n  { id: 'n-3', app: 'Mail', title: 'Invoice #2041 paid', body: 'Acme Inc. paid $1,280.00. The receipt is attached.', time: '9:12', icon: badge('ML') },\n  { id: 'n-4', app: 'Wallet', title: 'Card payment', body: '$4.50 at Blue Bottle Coffee', time: '8:31', icon: badge('WA') },\n]\n\nexport default function NotificationStackDemo() {\n  return (\n    <div className=\"min-h-80 w-[min(24rem,90vw)]\">\n      <NotificationStack notifications={notifications} />\n    </div>\n  )\n}\n",
     "path": "registry/feedback/notifications/notification-stack"
+  },
+  {
+    "name": "speech-bubble",
+    "title": "Speech Bubble",
+    "description": "A pill-shaped chat bubble with a curved tail and a blinking caret. Calm and still under reduced motion.",
+    "group": "feedback",
+    "shelf": "notifications",
+    "layer": "component",
+    "tags": [
+      "loop",
+      "svg",
+      "ai",
+      "motion"
+    ],
+    "keywords": [
+      "speech",
+      "bubble",
+      "chat",
+      "message",
+      "caret"
+    ],
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "The message inside the bubble."
+      },
+      {
+        "name": "showCursor",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows a blinking caret after the text on md screens and up."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1",
+        "description": "Seconds per caret blink."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the outer wrapper."
+      }
+    ],
+    "files": [
+      "speech-bubble.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { SpeechBubble } from './speech-bubble'\n\nexport default function SpeechBubbleDemo() {\n  return (\n    <div className=\"flex flex-col items-start gap-8 py-4\">\n      <SpeechBubble>Your signal bot is live.</SpeechBubble>\n      <SpeechBubble showCursor={false}>Whale alert: 4,200 ETH moved.</SpeechBubble>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/notifications/speech-bubble"
+  },
+  {
+    "name": "announcement",
+    "title": "Announcement",
+    "description": "A pill that announces something new: a small tag followed by a title. Render it as a link to make the whole pill clickable.",
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
+    "tags": [
+      "hover",
+      "css",
+      "marketing",
+      "zero-deps",
+      "lucide"
+    ],
+    "keywords": [
+      "announcement",
+      "pill",
+      "badge",
+      "new",
+      "release"
+    ],
+    "source": {
+      "repo": "shadcnblocks/kibo",
+      "license": "MIT",
+      "url": "https://github.com/shadcnblocks/kibo/blob/main/packages/announcement/index.tsx"
+    },
+    "dependencies": [],
+    "props": [
+      {
+        "name": "as",
+        "type": "ElementType",
+        "default": "'div'",
+        "description": "Element to render, for example 'a' to make the whole pill a link."
+      },
+      {
+        "name": "variant",
+        "type": "'outline' | 'secondary'",
+        "default": "'outline'",
+        "description": "Border style of the pill."
+      },
+      {
+        "name": "themed",
+        "type": "boolean",
+        "default": "false",
+        "description": "Softens the tag background so it blends into the pill."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the pill."
+      }
+    ],
+    "files": [
+      "announcement.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { ArrowRight } from 'lucide-react'\nimport { Announcement, AnnouncementTag, AnnouncementTitle } from './announcement'\n\nexport default function AnnouncementDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <Announcement as=\"a\" href=\"#changelog\">\n        <AnnouncementTag>Latest update</AnnouncementTag>\n        <AnnouncementTitle>\n          New signal feeds are live\n          <ArrowRight aria-hidden className=\"size-3 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5\" />\n        </AnnouncementTitle>\n      </Announcement>\n      <Announcement themed variant=\"secondary\">\n        <AnnouncementTag>Beta</AnnouncementTag>\n        <AnnouncementTitle>Wallet tracking</AnnouncementTitle>\n      </Announcement>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/status/announcement"
+  },
+  {
+    "name": "count-badge",
+    "title": "Count Badge",
+    "description": "A badge for the corner of an avatar or icon: a dot, a rolling count with a cap, or a presence dot, with an optional pulse.",
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
+    "tags": [
+      "loop",
+      "css",
+      "dashboard",
+      "motion",
+      "lucide"
+    ],
+    "keywords": [
+      "badge",
+      "count",
+      "notification",
+      "presence",
+      "unread"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/count-badge/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "variant",
+        "type": "'dot' | 'count' | 'status'",
+        "default": "'dot'",
+        "description": "A plain dot, a number, or a presence dot."
+      },
+      {
+        "name": "count",
+        "type": "number",
+        "default": "0",
+        "description": "The number shown by the count variant."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "99",
+        "description": "Largest number shown; above it the badge reads max+."
+      },
+      {
+        "name": "showZero",
+        "type": "boolean",
+        "default": "false",
+        "description": "Show the count variant when the count is 0."
+      },
+      {
+        "name": "status",
+        "type": "'online' | 'offline' | 'busy' | 'away'",
+        "default": "'online'",
+        "description": "Presence shown by the status variant."
+      },
+      {
+        "name": "ping",
+        "type": "boolean",
+        "default": "false",
+        "description": "Adds a pulsing ring. Off under reduced motion."
+      },
+      {
+        "name": "position",
+        "type": "'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'",
+        "default": "'top-right'",
+        "description": "Corner of the child the badge sits on."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "What the badge sits on. Without it the badge stands alone."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the badge."
+      }
+    ],
+    "files": [
+      "count-badge.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { Bell, Mail } from 'lucide-react'\nimport { useState } from 'react'\nimport { CountBadge } from './count-badge'\n\nconst button =\n  'inline-flex h-8 items-center rounded-md border bg-background px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'\n\nconst avatar = 'flex size-10 items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground'\n\nexport default function CountBadgeDemo() {\n  const [count, setCount] = useState(3)\n\n  return (\n    <div className=\"flex flex-col items-center gap-8\">\n      <div className=\"flex items-center gap-8\">\n        <CountBadge variant=\"count\" count={count} ping>\n          <span className={avatar}>\n            <Bell aria-hidden className=\"size-5\" />\n          </span>\n        </CountBadge>\n        <CountBadge variant=\"count\" count={128}>\n          <span className={avatar}>\n            <Mail aria-hidden className=\"size-5\" />\n          </span>\n        </CountBadge>\n        <CountBadge variant=\"dot\">\n          <span className={avatar}>AB</span>\n        </CountBadge>\n      </div>\n      <div className=\"flex items-center gap-6\">\n        {(['online', 'away', 'busy', 'offline'] as const).map((status) => (\n          <CountBadge key={status} variant=\"status\" status={status}>\n            <span className={avatar}>{status[0].toUpperCase()}</span>\n          </CountBadge>\n        ))}\n      </div>\n      <div className=\"flex gap-2\">\n        <button type=\"button\" className={button} onClick={() => setCount((c) => c + 1)}>\n          Add\n        </button>\n        <button type=\"button\" className={button} onClick={() => setCount((c) => Math.max(0, c - 1))}>\n          Remove\n        </button>\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/status/count-badge"
   },
   {
     "name": "dynamic-island",
@@ -5650,6 +8470,68 @@
     "path": "registry/feedback/status/dynamic-island"
   },
   {
+    "name": "empty-state",
+    "title": "Empty State",
+    "description": "A first-run or no-results state: an optional icon, a heading, a supporting sentence and an action.",
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
+    "tags": [
+      "css",
+      "dashboard",
+      "zero-deps",
+      "lucide"
+    ],
+    "keywords": [
+      "empty",
+      "no results",
+      "placeholder",
+      "first run",
+      "blank slate"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/empty/index.tsx"
+    },
+    "dependencies": [],
+    "props": [
+      {
+        "name": "title",
+        "type": "ReactNode",
+        "description": "The heading."
+      },
+      {
+        "name": "description",
+        "type": "ReactNode",
+        "description": "Supporting sentence under the heading."
+      },
+      {
+        "name": "icon",
+        "type": "ReactNode",
+        "description": "Optional icon above the title, hidden from screen readers."
+      },
+      {
+        "name": "action",
+        "type": "ReactNode",
+        "description": "Optional action below the copy, such as a button or a link."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "empty-state.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { Inbox } from 'lucide-react'\nimport { EmptyState } from './empty-state'\n\nexport default function EmptyStateDemo() {\n  return (\n    <EmptyState\n      icon={<Inbox />}\n      title=\"No transactions yet\"\n      description=\"Once you connect a wallet, your latest activity shows up here.\"\n      action={\n        <button\n          type=\"button\"\n          className=\"inline-flex h-9 items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring\"\n        >\n          Connect wallet\n        </button>\n      }\n    />\n  )\n}\n",
+    "path": "registry/feedback/status/empty-state"
+  },
+  {
     "name": "radar-badge",
     "title": "Radar Badge",
     "description": "A live-monitoring badge: a tiny radar sweep with spreading rings next to a label, in live, scanning, idle and alert states.",
@@ -5732,6 +8614,224 @@
     ],
     "demo": "import { BellRing, Check } from 'lucide-react'\nimport { useState } from 'react'\nimport { RadarBadge, type RadarStatus } from './radar-badge'\n\ninterface Watcher {\n  name: string\n  detail: string\n  status: RadarStatus\n  label?: string\n}\n\nconst WATCHERS: Watcher[] = [\n  { name: 'Whale wallets', detail: '42 addresses · mainnet', status: 'live' },\n  { name: 'Bridge contracts', detail: 'Base, Arbitrum, Optimism', status: 'scanning', label: 'Scanning' },\n  { name: 'Airdrop claims', detail: 'Paused since Monday', status: 'idle', label: 'Paused' },\n]\n\nexport default function RadarBadgeDemo() {\n  const [signals, setSignals] = useState(0)\n\n  const treasury: Watcher =\n    signals > 0\n      ? { name: 'Treasury multisig', detail: 'Unusual outflow detected', status: 'alert', label: `${signals} signal${signals > 1 ? 's' : ''}` }\n      : { name: 'Treasury multisig', detail: '3 of 5 signers · Safe', status: 'live' }\n\n  const button =\n    'inline-flex h-8 items-center gap-1.5 rounded-md border bg-background px-3 text-xs font-medium transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'\n\n  return (\n    <div className=\"w-[min(92vw,560px)] space-y-6\">\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <RadarBadge status=\"live\" />\n        <RadarBadge status=\"scanning\" />\n        <RadarBadge status=\"alert\" label=\"3 signals\" />\n        <RadarBadge status=\"idle\" />\n      </div>\n\n      <div className=\"rounded-2xl border bg-card text-card-foreground shadow-sm\">\n        <div className=\"flex items-center justify-between border-b px-5 py-3\">\n          <span className=\"text-sm font-medium\">Watchers</span>\n          <RadarBadge size=\"sm\" status={signals > 0 ? 'alert' : 'live'} label={signals > 0 ? 'Attention' : 'All clear'} />\n        </div>\n        <ul className=\"divide-y\">\n          {[treasury, ...WATCHERS].map((w) => (\n            <li key={w.name} className=\"flex items-center justify-between gap-4 px-5 py-3\">\n              <div className=\"min-w-0\">\n                <p className=\"text-sm font-medium\">{w.name}</p>\n                <p className=\"truncate text-xs text-muted-foreground\">{w.detail}</p>\n              </div>\n              <RadarBadge size=\"sm\" status={w.status} label={w.label} />\n            </li>\n          ))}\n        </ul>\n        <div className=\"flex gap-2 border-t px-5 py-3\">\n          <button type=\"button\" className={button} onClick={() => setSignals((s) => s + 1)}>\n            <BellRing aria-hidden className=\"size-3.5\" />\n            Simulate signal\n          </button>\n          <button type=\"button\" className={button} disabled={signals === 0} onClick={() => setSignals(0)}>\n            <Check aria-hidden className=\"size-3.5\" />\n            Resolve\n          </button>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/feedback/status/radar-badge"
+  },
+  {
+    "name": "security-checkpoint",
+    "title": "Security Checkpoint",
+    "description": "A browser-verification card with lines that draw in from the side; the blocked ones stop at the card with a glowing dot. Draws instantly under reduced motion.",
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
+    "tags": [
+      "css",
+      "web3",
+      "motion"
+    ],
+    "keywords": [
+      "security",
+      "checkpoint",
+      "verification",
+      "captcha",
+      "loading"
+    ],
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/security-checkpoint.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "default": "'Mozaik'",
+        "description": "Bold part of the card heading."
+      },
+      {
+        "name": "subtitle",
+        "type": "string",
+        "default": "'Security Checkpoint'",
+        "description": "Lighter part of the card heading."
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "description": "Sentence under the heading."
+      },
+      {
+        "name": "lines",
+        "type": "CheckpointLine[]",
+        "description": "Rows of the animation: { id, color: 'primary' | 'destructive' }. Primary lines run through, destructive ones stop at the card."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1",
+        "description": "Seconds the lines take to draw in."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "security-checkpoint.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { SecurityCheckpoint } from './security-checkpoint'\n\nexport default function SecurityCheckpointDemo() {\n  return (\n    <div className=\"w-[min(92vw,444px)]\">\n      <SecurityCheckpoint />\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/status/security-checkpoint"
+  },
+  {
+    "name": "status-dot",
+    "title": "Status Dot",
+    "description": "A pill with a pulsing status dot and a label for service states: online, offline, maintenance or degraded.",
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
+    "tags": [
+      "loop",
+      "css",
+      "dashboard",
+      "motion"
+    ],
+    "keywords": [
+      "status",
+      "dot",
+      "uptime",
+      "service",
+      "online"
+    ],
+    "source": {
+      "repo": "shadcnblocks/kibo",
+      "license": "MIT",
+      "url": "https://github.com/shadcnblocks/kibo/blob/main/packages/status/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "status",
+        "type": "'online' | 'offline' | 'maintenance' | 'degraded'",
+        "description": "Service state. Sets the dot color and the default label."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Replaces the default label."
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "default": "1.6",
+        "description": "Seconds per pulse of the ring around the dot. Still under reduced motion."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the pill."
+      }
+    ],
+    "files": [
+      "status-dot.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { StatusDot } from './status-dot'\n\nconst SERVICES = [\n  { name: 'API', status: 'online' },\n  { name: 'Indexer', status: 'degraded' },\n  { name: 'Webhooks', status: 'maintenance' },\n  { name: 'Legacy RPC', status: 'offline' },\n] as const\n\nexport default function StatusDotDemo() {\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <div className=\"flex flex-wrap justify-center gap-3\">\n        <StatusDot status=\"online\" />\n        <StatusDot status=\"degraded\" />\n        <StatusDot status=\"maintenance\" />\n        <StatusDot status=\"offline\" />\n      </div>\n      <ul className=\"w-[min(92vw,320px)] divide-y rounded-xl border bg-card text-sm text-card-foreground\">\n        {SERVICES.map((service) => (\n          <li key={service.name} className=\"flex items-center justify-between px-4 py-2.5\">\n            <span className=\"font-medium\">{service.name}</span>\n            <StatusDot status={service.status} />\n          </li>\n        ))}\n      </ul>\n    </div>\n  )\n}\n",
+    "path": "registry/feedback/status/status-dot"
+  },
+  {
+    "name": "unlock-face-id",
+    "title": "Unlock Face ID",
+    "description": "A Face ID style unlock: brackets and a face draw themselves, a scan line sweeps, then a check reveals the blurred content behind it. Controlled or self-running.",
+    "group": "feedback",
+    "shelf": "status",
+    "layer": "component",
+    "tags": [
+      "click",
+      "svg",
+      "motion"
+    ],
+    "keywords": [
+      "face id",
+      "unlock",
+      "biometric",
+      "scan",
+      "reveal"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/unlock-face-id/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "status",
+        "type": "'idle' | 'scanning' | 'success' | 'error'",
+        "description": "Controlled status. Omit it and the component runs the scan itself on click."
+      },
+      {
+        "name": "scanDuration",
+        "type": "number",
+        "default": "1800",
+        "description": "How long a self-running scan takes, in milliseconds."
+      },
+      {
+        "name": "onScan",
+        "type": "() => void",
+        "description": "Called whenever the trigger is activated."
+      },
+      {
+        "name": "onComplete",
+        "type": "() => void",
+        "description": "Called when a self-running scan succeeds."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Scan to unlock'",
+        "description": "Accessible label of the scan button."
+      },
+      {
+        "name": "errorMessage",
+        "type": "string",
+        "default": "'Face not recognized. Try again.'",
+        "description": "Message shown when the status is error."
+      },
+      {
+        "name": "size",
+        "type": "number",
+        "default": "128",
+        "description": "Rendered size of the glyph in pixels."
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "description": "Content blurred and inert until the status is success."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "unlock-face-id.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { UnlockFaceId } from './unlock-face-id'\n\nexport default function UnlockFaceIdDemo() {\n  return (\n    <UnlockFaceId className=\"w-[min(92vw,320px)]\">\n      <div className=\"rounded-2xl border bg-card p-5 text-card-foreground shadow-sm\">\n        <p className=\"text-xs text-muted-foreground\">Portfolio balance</p>\n        <p className=\"mt-1 text-3xl font-semibold tabular-nums\">$48,210.55</p>\n        <p className=\"mt-3 text-sm text-muted-foreground\">3 wallets · last synced a minute ago</p>\n      </div>\n    </UnlockFaceId>\n  )\n}\n",
+    "path": "registry/feedback/status/unlock-face-id"
   },
   {
     "name": "ai-reasoning",
@@ -6352,6 +9452,113 @@
     "path": "registry/media/mockups/terminal"
   },
   {
+    "name": "candlestick-chart",
+    "title": "Candlestick Chart",
+    "description": "OHLC candles with volume bars, a last-price line and a keyboard-friendly crosshair readout, drawn in plain SVG.",
+    "group": "onchain",
+    "shelf": "prices-charts",
+    "layer": "component",
+    "tags": [
+      "hover",
+      "svg",
+      "web3",
+      "motion"
+    ],
+    "keywords": [
+      "candles",
+      "ohlc",
+      "price",
+      "trading",
+      "chart"
+    ],
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/charts/candlestick-chart.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "candles",
+        "type": "Candle[]",
+        "required": true,
+        "description": "Candles in time order: id, label, open, high, low, close, volume."
+      },
+      {
+        "name": "lastPrice",
+        "type": "number",
+        "description": "Draws a dashed line and a tag at this price, usually the last trade."
+      },
+      {
+        "name": "activeId",
+        "type": "string | null",
+        "description": "Controlled crosshair candle, by id. Pair with onActiveIdChange."
+      },
+      {
+        "name": "defaultActiveId",
+        "type": "string | null",
+        "default": "null",
+        "description": "Crosshair candle when uncontrolled."
+      },
+      {
+        "name": "onActiveIdChange",
+        "type": "(id: string | null) => void",
+        "description": "Called when the pointer or arrow keys move the crosshair."
+      },
+      {
+        "name": "formatPrice",
+        "type": "(value: number) => string",
+        "description": "Formats prices on the axis, tag and legend."
+      },
+      {
+        "name": "formatVolume",
+        "type": "(value: number) => string",
+        "description": "Formats volume in the legend (compact by default)."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Candlestick chart'",
+        "description": "Accessible name; the chart's text summary starts with it."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "default": "320",
+        "description": "Plot height in px."
+      },
+      {
+        "name": "showLegend",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows the OHLC and volume readout above the plot."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "candlestick-chart.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState } from 'react'\nimport { CandlestickChart, type Candle } from './candlestick-chart'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nconst usd = (value: number) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 })\n\n// A small seeded walk so the demo is the same on every render.\nfunction makeCandles(count: number): Candle[] {\n  let seed = 7\n  const rand = () => {\n    seed = (seed * 16807) % 2147483647\n    return seed / 2147483647\n  }\n  let price = 3380\n  return Array.from({ length: count }, (_, i) => {\n    const open = price\n    const close = open * (1 + (rand() - 0.47) * 0.012)\n    const high = Math.max(open, close) * (1 + rand() * 0.004)\n    const low = Math.min(open, close) * (1 - rand() * 0.004)\n    price = close\n    const minutes = 9 * 60 + i * 5\n    return {\n      id: `c${i}`,\n      label: `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`,\n      open,\n      high,\n      low,\n      close,\n      volume: 400 + rand() * 1600,\n    }\n  })\n}\n\nconst START = makeCandles(48)\n\nexport default function CandlestickChartDemo() {\n  const reduced = usePrefersReducedMotion()\n  const [candles, setCandles] = useState(START)\n\n  // The newest candle keeps trading; nothing moves under reduced motion.\n  useEffect(() => {\n    if (reduced) return\n    const id = setInterval(() => {\n      setCandles((list) => {\n        const last = list[list.length - 1]\n        const close = last.close * (1 + (Math.random() - 0.5) * 0.003)\n        return [\n          ...list.slice(0, -1),\n          { ...last, close, high: Math.max(last.high, close), low: Math.min(last.low, close), volume: last.volume + Math.random() * 40 },\n        ]\n      })\n    }, 1600)\n    return () => clearInterval(id)\n  }, [reduced])\n\n  return (\n    <div className=\"w-[min(94vw,720px)] rounded-2xl border border-border bg-card p-5 text-card-foreground\">\n      <p className=\"mb-3 text-sm font-medium\">\n        ETH / USD <span className=\"text-muted-foreground\">· 5m</span>\n      </p>\n      <CandlestickChart candles={candles} lastPrice={candles[candles.length - 1].close} formatPrice={usd} label=\"ETH/USD 5 minute candles\" height={300} />\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/prices-charts/candlestick-chart"
+  },
+  {
     "name": "order-book",
     "title": "Order Book",
     "description": "A depth ladder with asks above and bids below, cumulative depth bars, a spread bar and a fill-cost readout on hover. Driven by snapshots passed as props.",
@@ -6670,6 +9877,118 @@
     "path": "registry/onchain/prices-charts/price-ticker"
   },
   {
+    "name": "volume-profile",
+    "title": "Volume Profile",
+    "description": "Volume traded at each price level as horizontal bars, with the point of control, value area and an inspect-by-keyboard readout, in plain SVG.",
+    "group": "onchain",
+    "shelf": "prices-charts",
+    "layer": "component",
+    "tags": [
+      "hover",
+      "svg",
+      "web3",
+      "motion"
+    ],
+    "keywords": [
+      "volume",
+      "profile",
+      "poc",
+      "value area",
+      "price levels"
+    ],
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/charts/volume-profile.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "data",
+        "type": "VolumeProfileBin[]",
+        "required": true,
+        "description": "Aggregated volume per price range: id, priceLow, priceHigh, volume. Unequal bins and gaps are fine; ranges must not overlap."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Volume profile'",
+        "description": "Accessible name; the chart's text summary starts with it."
+      },
+      {
+        "name": "unit",
+        "type": "string",
+        "default": "'units'",
+        "description": "Unit shown after volumes, e.g. 'ETH'."
+      },
+      {
+        "name": "formatPrice",
+        "type": "(price: number) => string",
+        "description": "Formats prices on the axis and in readouts."
+      },
+      {
+        "name": "formatVolume",
+        "type": "(volume: number) => string",
+        "description": "Formats volumes on the axis and in readouts."
+      },
+      {
+        "name": "valueArea",
+        "type": "number | false",
+        "default": "0.7",
+        "description": "Target fraction of total volume for the value area. false hides it."
+      },
+      {
+        "name": "activeId",
+        "type": "string | null",
+        "description": "Controlled inspected bin id. Pair with onActiveChange."
+      },
+      {
+        "name": "defaultActiveId",
+        "type": "string | null",
+        "default": "null",
+        "description": "Inspected bin when uncontrolled."
+      },
+      {
+        "name": "onActiveChange",
+        "type": "(id: string | null) => void",
+        "description": "Called when the pointer or keyboard moves to another level."
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "default": "320",
+        "description": "Plot height in px."
+      },
+      {
+        "name": "showAxes",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows the price and volume axes."
+      },
+      {
+        "name": "showSummary",
+        "type": "boolean",
+        "default": "true",
+        "description": "Shows total volume, point of control and value area under the plot."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "volume-profile.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { VolumeProfile, type VolumeProfileBin } from './volume-profile'\n\nconst usd = (value: number) => value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })\n\n// 20 price bins of $10 with a bell-shaped volume around $3,420 and a second small shelf near $3,360.\nconst DATA: VolumeProfileBin[] = Array.from({ length: 20 }, (_, i) => {\n  const priceLow = 3300 + i * 10\n  const mid = priceLow + 5\n  const main = 1800 * Math.exp(-((mid - 3420) ** 2) / (2 * 38 ** 2))\n  const shelf = 520 * Math.exp(-((mid - 3360) ** 2) / (2 * 12 ** 2))\n  // A fixed wobble keeps the shape from looking synthetic without randomness.\n  const wobble = 1 + 0.12 * Math.sin(i * 2.3)\n  return { id: `bin-${priceLow}`, priceLow, priceHigh: priceLow + 10, volume: Math.round((main + shelf + 60) * wobble) }\n})\n\nexport default function VolumeProfileDemo() {\n  return (\n    <div className=\"w-[min(94vw,640px)] rounded-2xl border border-border bg-card p-5 text-card-foreground\">\n      <p className=\"mb-4 text-sm font-medium\">\n        ETH / USD <span className=\"text-muted-foreground\">· session volume by price</span>\n      </p>\n      <VolumeProfile data={DATA} unit=\"ETH\" formatPrice={usd} label=\"ETH/USD session volume profile\" height={300} />\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/prices-charts/volume-profile"
+  },
+  {
     "name": "address-chip",
     "title": "Address Chip",
     "description": "A compact EVM address with a generated blockie-style avatar, copy button, ENS label and explorer link.",
@@ -6766,6 +10085,190 @@
     ],
     "demo": "import { ArrowRight } from 'lucide-react'\nimport { AddressChip } from './address-chip'\n\n// Made-up addresses for the demo.\nconst transfers = [\n  {\n    from: { address: '0x33cEb14560bd33b977Ada347Daa646D53418F12D', label: 'mozaik.eth' },\n    to: { address: '0xBf38e418004a7f37b709a2ac6b392f0986470c30' },\n    amount: '2.40 ETH',\n  },\n  {\n    from: { address: '0x2c9E054777108e030220c01aBefCcf4373faB57F' },\n    to: { address: '0x9baFb72f91b8789582615B6908429433f0d7707C', label: 'atlas.eth' },\n    amount: '1,250 USDC',\n  },\n  {\n    from: { address: '0x392B4d7cfFcaD51F11007Ab30606d59f0C0e6796', label: 'orbit.eth' },\n    to: { address: '0x1d3Ee4Cb1365556C2c4bf6adD137bcA43De92211' },\n    amount: '0.75 ETH',\n  },\n]\n\nconst explorer = (address: string) => `https://etherscan.io/address/${address}`\n\nexport default function AddressChipDemo() {\n  return (\n    <div className=\"w-[min(92vw,620px)] space-y-6\">\n      <div className=\"flex flex-wrap items-center justify-center gap-3\">\n        <AddressChip address=\"0x33cEb14560bd33b977Ada347Daa646D53418F12D\" label=\"mozaik.eth\" href={explorer('0x33cEb14560bd33b977Ada347Daa646D53418F12D')} />\n        <AddressChip address=\"0xBf38e418004a7f37b709a2ac6b392f0986470c30\" chars={6} />\n        <AddressChip address=\"0xnot-an-address\" />\n      </div>\n\n      <div className=\"rounded-2xl border bg-card text-card-foreground shadow-sm\">\n        <div className=\"flex items-center justify-between border-b px-5 py-3 text-sm\">\n          <span className=\"font-medium\">Recent transfers</span>\n          <span className=\"text-muted-foreground\">Last 24h</span>\n        </div>\n        <ul className=\"divide-y\">\n          {transfers.map((t, i) => (\n            <li key={i} className=\"flex flex-wrap items-center gap-3 px-5 py-3.5\">\n              <AddressChip {...t.from} href={explorer(t.from.address)} />\n              <ArrowRight aria-hidden className=\"size-4 text-muted-foreground\" />\n              <AddressChip {...t.to} href={explorer(t.to.address)} />\n              <span className=\"ml-auto font-mono text-sm tabular-nums\">{t.amount}</span>\n            </li>\n          ))}\n        </ul>\n      </div>\n    </div>\n  )\n}\n",
     "path": "registry/onchain/wallet-address/address-chip"
+  },
+  {
+    "name": "wallet-card",
+    "title": "Wallet Card",
+    "description": "A stack of payment-style cards with a pointer sheen: pick one to bring it forward, mask the balance and see who shares it.",
+    "group": "onchain",
+    "shelf": "wallet-address",
+    "layer": "component",
+    "tags": [
+      "click",
+      "hover",
+      "web3",
+      "motion"
+    ],
+    "keywords": [
+      "wallet",
+      "card",
+      "balance",
+      "account",
+      "stack"
+    ],
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wallet-card/index.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "accounts",
+        "type": "WalletAccount[]",
+        "required": true,
+        "description": "Cards to stack: id, label, balance, currency and optional holder, last4, expiry, network ('visa' | 'mastercard' | 'amex' | 'generic'), gradient."
+      },
+      {
+        "name": "activeId",
+        "type": "string",
+        "description": "Controlled id of the card in front. Pair with onActiveChange."
+      },
+      {
+        "name": "onActiveChange",
+        "type": "(id: string) => void",
+        "description": "Called when a card is picked by click or arrow keys."
+      },
+      {
+        "name": "hidden",
+        "type": "boolean",
+        "description": "Controlled balance mask. Pair with onHiddenChange."
+      },
+      {
+        "name": "onHiddenChange",
+        "type": "(hidden: boolean) => void",
+        "description": "Called when the hide/show balance button is pressed."
+      },
+      {
+        "name": "members",
+        "type": "WalletMember[]",
+        "default": "[]",
+        "description": "People sharing the wallet, shown as overlapping avatars; extras past four collapse behind a +N toggle."
+      },
+      {
+        "name": "actions",
+        "type": "ReactNode",
+        "description": "Controls rendered at the right of the member row."
+      },
+      {
+        "name": "stackOffset",
+        "type": "number",
+        "default": "13",
+        "description": "Vertical offset in px between stacked cards."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "wallet-card.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { WalletCard, type WalletAccount, type WalletMember } from './wallet-card'\n\nconst ACCOUNTS: WalletAccount[] = [\n  { id: 'main', label: 'Main wallet', balance: 12480.32, currency: 'USD', holder: 'Ada Lovelace', last4: '4821', expiry: '08/29', network: 'visa' },\n  {\n    id: 'vault',\n    label: 'Cold vault',\n    balance: 86250.9,\n    currency: 'USD',\n    holder: 'Ada Lovelace',\n    last4: '9034',\n    expiry: '11/30',\n    network: 'mastercard',\n    gradient: 'bg-gradient-to-br from-primary to-primary/60 text-primary-foreground',\n  },\n  { id: 'ops', label: 'Team ops', balance: 3120.5, currency: 'EUR', holder: 'Mozaik DAO', last4: '1177', expiry: '02/28', network: 'generic' },\n]\n\nconst MEMBERS: WalletMember[] = ['Ada Lovelace', 'Grace Hopper', 'Alan Turing', 'Linus Torvalds', 'Margaret Hamilton', 'Dennis Ritchie'].map(\n  (name) => ({ id: name, name }),\n)\n\nexport default function WalletCardDemo() {\n  const [activeId, setActiveId] = useState('main')\n  return (\n    <div className=\"w-[min(92vw,380px)]\">\n      <WalletCard accounts={ACCOUNTS} members={MEMBERS} activeId={activeId} onActiveChange={setActiveId} />\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/wallet-address/wallet-card"
+  },
+  {
+    "name": "currency-transfer",
+    "title": "Currency Transfer",
+    "description": "A transfer receipt that follows money through four steps, rolls the amount into the new currency and offers a copyable reference.",
+    "group": "onchain",
+    "shelf": "transactions",
+    "layer": "component",
+    "tags": [
+      "loop",
+      "click",
+      "web3",
+      "motion"
+    ],
+    "keywords": [
+      "transfer",
+      "currency",
+      "convert",
+      "receipt",
+      "status",
+      "swap"
+    ],
+    "source": {
+      "repo": "kokonut-labs/kokonutui",
+      "license": "MIT",
+      "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/currency-transfer.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "cssVars": {
+      "light": {
+        "success": "oklch(0.6 0.15 155)"
+      },
+      "dark": {
+        "success": "oklch(0.72 0.15 155)"
+      }
+    },
+    "props": [
+      {
+        "name": "from",
+        "type": "TransferAccount",
+        "description": "Sending side: amount, currency, bank, optional symbol and last4."
+      },
+      {
+        "name": "to",
+        "type": "TransferAccount",
+        "description": "Receiving side: amount, currency, bank, optional symbol, last4 and holder name."
+      },
+      {
+        "name": "rate",
+        "type": "number",
+        "default": "0.92",
+        "description": "Units of the receiving currency per one unit of the sending currency."
+      },
+      {
+        "name": "txnId",
+        "type": "string",
+        "default": "'TXN-DAB3UL494'",
+        "description": "Transaction reference, copyable from the footer."
+      },
+      {
+        "name": "timestamp",
+        "type": "string",
+        "default": "'10:45 AM'",
+        "description": "When the rate was locked."
+      },
+      {
+        "name": "status",
+        "type": "'processing' | 'completed' | 'failed'",
+        "description": "Controlled status. Unset runs a self-completing demo (the finished state under reduced motion)."
+      },
+      {
+        "name": "locale",
+        "type": "string",
+        "default": "'en-US'",
+        "description": "BCP 47 locale for amounts, symbols and the rate."
+      },
+      {
+        "name": "onRetry",
+        "type": "() => void",
+        "description": "Shows a Retry button when the transfer has failed."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "currency-transfer.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { cn } from '@/lib/utils'\nimport { CurrencyTransfer, type TransferStatus } from './currency-transfer'\n\nconst FROM = { amount: 1000, currency: 'USD', symbol: '$', bank: 'Kraken', last4: '2041' }\nconst TO = { amount: 921.4, currency: 'EUR', symbol: '€', bank: 'Bitstamp', last4: '7783', name: 'Lena Fischer' }\n\nconst OPTIONS: { value: TransferStatus | 'auto'; label: string }[] = [\n  { value: 'auto', label: 'Auto' },\n  { value: 'completed', label: 'Arrived' },\n  { value: 'failed', label: 'Failed' },\n]\n\nexport default function CurrencyTransferDemo() {\n  const [mode, setMode] = useState<TransferStatus | 'auto'>('auto')\n  const [run, setRun] = useState(0)\n\n  return (\n    <div className=\"flex w-[min(92vw,384px)] flex-col items-center gap-4\">\n      <div role=\"group\" aria-label=\"Transfer status\" className=\"inline-flex rounded-full bg-muted p-1 text-xs font-medium\">\n        {OPTIONS.map((option) => (\n          <button\n            key={option.value}\n            type=\"button\"\n            aria-pressed={mode === option.value}\n            onClick={() => {\n              setMode(option.value)\n              setRun((n) => n + 1)\n            }}\n            className={cn(\n              'rounded-full px-3 py-1 outline-none focus-visible:ring-2 focus-visible:ring-ring',\n              mode === option.value ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground',\n            )}\n          >\n            {option.label}\n          </button>\n        ))}\n      </div>\n      <CurrencyTransfer\n        key={run}\n        from={FROM}\n        to={TO}\n        rate={0.9214}\n        txnId=\"TXN-8F2K91QX\"\n        timestamp=\"10:45 AM\"\n        status={mode === 'auto' ? undefined : mode}\n        onRetry={() => {\n          setMode('auto')\n          setRun((n) => n + 1)\n        }}\n      />\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/transactions/currency-transfer"
   },
   {
     "name": "receipt-printer",
@@ -6879,6 +10382,96 @@
     ],
     "demo": "import { ReceiptPrinter } from './receipt-printer'\n\nexport default function ReceiptPrinterDemo() {\n  return (\n    <ReceiptPrinter\n      tx={{\n        hash: '0x8f3a1c52d9e47b60a1f3c8d25e9b7a4c6d01f2e3b4a5968778695a4b3c2d1e0f',\n        from: '0x71C7656EC7ab88b098defB751B7401B5f6d8976F',\n        to: '0x2a9fB1c0E5d3a7C8b4F6e1D2c9A0b3E7f5d4C6B8',\n        amount: '0.2500',\n        symbol: 'ETH',\n        fee: '0.00042',\n        status: 'confirmed',\n        network: 'Ethereum',\n        timestamp: '26 Oct 2026 · 08:42',\n      }}\n    />\n  )\n}\n",
     "path": "registry/onchain/transactions/receipt-printer"
+  },
+  {
+    "name": "swap-panel",
+    "title": "Swap Panel",
+    "description": "A cross-chain swap ticket: pay and receive fields, a token picker with chain filter, a live quote and an optional destination address.",
+    "group": "onchain",
+    "shelf": "transactions",
+    "layer": "component",
+    "tags": [
+      "click",
+      "type",
+      "web3",
+      "motion"
+    ],
+    "keywords": [
+      "swap",
+      "exchange",
+      "token",
+      "dex",
+      "bridge",
+      "quote"
+    ],
+    "source": {
+      "repo": "starc007/ui-components",
+      "license": "MIT",
+      "url": "https://github.com/starc007/ui-components/blob/main/components/motion/swap.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "chains",
+        "type": "SwapChain[]",
+        "required": true,
+        "description": "Chains for the picker filter: id, name, symbol (the mark) and tone (token classes for the dot)."
+      },
+      {
+        "name": "tokens",
+        "type": "SwapToken[]",
+        "required": true,
+        "description": "Tokens to swap between: id, symbol, name, chainId and optional balance, usd, address, popular."
+      },
+      {
+        "name": "defaultFromId",
+        "type": "string",
+        "description": "Token id paid at first. Defaults to the first token."
+      },
+      {
+        "name": "defaultToId",
+        "type": "string",
+        "description": "Token id received at first. Defaults to the second token."
+      },
+      {
+        "name": "fee",
+        "type": "number",
+        "default": "0.42",
+        "description": "Network fee in USD shown in the quote."
+      },
+      {
+        "name": "slippage",
+        "type": "number",
+        "default": "0.5",
+        "description": "Slippage tolerance in percent shown in the quote."
+      },
+      {
+        "name": "eta",
+        "type": "string",
+        "default": "'≈ 24s'",
+        "description": "Estimated time shown in the quote."
+      },
+      {
+        "name": "onSwap",
+        "type": "(request: SwapRequest) => void",
+        "description": "Called when the main button is pressed with a valid amount."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "swap-panel.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { SwapPanel, type SwapChain, type SwapRequest, type SwapToken } from './swap-panel'\n\n// Local sample data: no network, no wallet.\nconst CHAINS: SwapChain[] = [\n  { id: 'eth', name: 'Ethereum', symbol: 'Ξ', tone: 'bg-primary text-primary-foreground' },\n  { id: 'sol', name: 'Solana', symbol: '◎', tone: 'bg-foreground text-background' },\n  { id: 'base', name: 'Base', symbol: 'B', tone: 'bg-muted text-muted-foreground' },\n  { id: 'arb', name: 'Arbitrum', symbol: 'A', tone: 'bg-destructive text-primary-foreground' },\n]\n\nconst TOKENS: SwapToken[] = [\n  { id: 'eth-eth', symbol: 'ETH', name: 'Ether', chainId: 'eth', balance: 1.245, usd: 3142, popular: true },\n  { id: 'eth-usdc', symbol: 'USDC', name: 'USD Coin', chainId: 'eth', balance: 4521, usd: 1, popular: true },\n  { id: 'eth-wbtc', symbol: 'WBTC', name: 'Wrapped Bitcoin', chainId: 'eth', balance: 0.04, usd: 96000, popular: true },\n  { id: 'eth-link', symbol: 'LINK', name: 'Chainlink', chainId: 'eth', balance: 120, usd: 22, address: '0x51...86ca' },\n  { id: 'sol-sol', symbol: 'SOL', name: 'Solana', chainId: 'sol', balance: 12.4, usd: 168, popular: true },\n  { id: 'sol-usdc', symbol: 'USDC', name: 'USD Coin', chainId: 'sol', balance: 985.32, usd: 1 },\n  { id: 'base-eth', symbol: 'ETH', name: 'Ether', chainId: 'base', balance: 0.65, usd: 3142 },\n  { id: 'base-usdc', symbol: 'USDC', name: 'USD Coin', chainId: 'base', balance: 1200, usd: 1 },\n  { id: 'arb-arb', symbol: 'ARB', name: 'Arbitrum', chainId: 'arb', balance: 800, usd: 0.95 },\n]\n\nexport default function SwapPanelDemo() {\n  const [last, setLast] = useState<SwapRequest | null>(null)\n  return (\n    <div className=\"flex w-[min(92vw,420px)] flex-col items-center gap-3\">\n      <SwapPanel chains={CHAINS} tokens={TOKENS} defaultFromId=\"eth-eth\" defaultToId=\"sol-sol\" onSwap={setLast} />\n      <p aria-live=\"polite\" className=\"min-h-4 text-center text-xs text-muted-foreground\">\n        {last ? `Requested ${last.amount} ${last.from.symbol} → ${last.receive.toFixed(4)} ${last.to.symbol} (demo only, nothing is sent)` : 'Demo data only: nothing is sent.'}\n      </p>\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/transactions/swap-panel"
   },
   {
     "name": "tx-steps",
@@ -7154,6 +10747,105 @@
     ],
     "demo": "import { AmountPad } from './amount-pad'\n\nexport default function AmountPadDemo() {\n  return (\n    <AmountPad symbol=\"ETH\" symbolPosition=\"suffix\" decimals={4} max={5} balance={3.2041} presets={[0.1, 0.5, 1]}>\n      <div className=\"flex items-center gap-3\">\n        <span className=\"flex size-9 items-center justify-center rounded-full bg-muted font-mono text-xs font-medium\">0x</span>\n        <div className=\"min-w-0 leading-tight\">\n          <p className=\"text-xs text-muted-foreground\">Send to</p>\n          <p className=\"truncate font-mono text-sm font-medium\">0x71C7…976F</p>\n        </div>\n      </div>\n    </AmountPad>\n  )\n}\n",
     "path": "registry/onchain/amount-confirm/amount-pad"
+  },
+  {
+    "name": "amount-stepper",
+    "title": "Amount Stepper",
+    "description": "Minus, amount and plus in one inline control: decimal steps, min and max, and a ticker label for token amounts.",
+    "group": "onchain",
+    "shelf": "amount-confirm",
+    "layer": "component",
+    "tags": [
+      "click",
+      "web3",
+      "motion"
+    ],
+    "keywords": [
+      "amount",
+      "stepper",
+      "quantity",
+      "input",
+      "token"
+    ],
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/quantity-stepper-button.tsx"
+    },
+    "dependencies": [
+      "motion"
+    ],
+    "props": [
+      {
+        "name": "value",
+        "type": "number",
+        "description": "Controlled amount. Pair with onChange."
+      },
+      {
+        "name": "defaultValue",
+        "type": "number",
+        "default": "0",
+        "description": "Starting amount when uncontrolled."
+      },
+      {
+        "name": "step",
+        "type": "number",
+        "default": "1",
+        "description": "Size of one step. Decimals are fine (0.01, 0.5)."
+      },
+      {
+        "name": "min",
+        "type": "number",
+        "default": "0",
+        "description": "Lowest allowed amount."
+      },
+      {
+        "name": "max",
+        "type": "number",
+        "default": "99",
+        "description": "Highest allowed amount."
+      },
+      {
+        "name": "unit",
+        "type": "string",
+        "description": "Ticker or currency shown after the amount, e.g. 'ETH'."
+      },
+      {
+        "name": "decimals",
+        "type": "number",
+        "description": "Fraction digits shown. Defaults to the digits of step."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "default": "'Amount'",
+        "description": "Accessible name of the group."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "default": "false",
+        "description": "Disables both keys."
+      },
+      {
+        "name": "onChange",
+        "type": "(value: number) => void",
+        "description": "Called with the new clamped amount."
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "description": "Extra classes for the root element."
+      }
+    ],
+    "files": [
+      "amount-stepper.tsx"
+    ],
+    "status": "stable",
+    "added": "2026-10-28",
+    "variants": [],
+    "demo": "import { useState } from 'react'\nimport { AmountStepper } from './amount-stepper'\n\nexport default function AmountStepperDemo() {\n  const [amount, setAmount] = useState(0.5)\n  const [gwei, setGwei] = useState(12)\n  return (\n    <div className=\"flex w-[min(92vw,380px)] flex-col gap-5 rounded-2xl border border-border bg-card p-6 text-card-foreground\">\n      <div className=\"flex items-center justify-between gap-4\">\n        <div className=\"leading-tight\">\n          <p className=\"text-sm font-medium\">Stake</p>\n          <p className=\"text-xs text-muted-foreground\">Balance 3.25 ETH</p>\n        </div>\n        <AmountStepper label=\"Amount to stake\" value={amount} onChange={setAmount} step={0.25} min={0} max={3.25} unit=\"ETH\" decimals={2} />\n      </div>\n      <div className=\"flex items-center justify-between gap-4\">\n        <div className=\"leading-tight\">\n          <p className=\"text-sm font-medium\">Max fee</p>\n          <p className=\"text-xs text-muted-foreground\">Priority fee cap</p>\n        </div>\n        <AmountStepper label=\"Max fee\" value={gwei} onChange={setGwei} step={1} min={1} max={60} unit=\"gwei\" />\n      </div>\n    </div>\n  )\n}\n",
+    "path": "registry/onchain/amount-confirm/amount-stepper"
   },
   {
     "name": "hero-section",

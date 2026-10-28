@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "title": "Pagination",
+  "description": "Page navigation with ellipses and a sliding indicator behind the active page.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/navigation/tabs/pagination/pagination.tsx",
+      "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/pagination/index.tsx\nimport { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useId, useMemo } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport interface PaginationProps {\n  /** Current page, starting at 1. */\n  page: number\n  /** Total number of pages. */\n  totalPages: number\n  /** Called with the new page when the user picks one. */\n  onPageChange: (page: number) => void\n  /** Pages shown on each side of the current one. */\n  siblings?: number\n  /** Seconds the sliding indicator and entrance take. */\n  duration?: number\n  /** Extra classes for the nav element. */\n  className?: string\n}\n\nconst ELLIPSIS = 'ellipsis' as const\ntype PageItem = number | typeof ELLIPSIS\n\nconst STAGGER = 0.03\n\n/** Page numbers with ellipses, always showing the first and last page. */\nexport function buildPageRange(page: number, totalPages: number, siblings: number): PageItem[] {\n  const totalSlots = siblings * 2 + 5\n  if (totalPages <= totalSlots) return Array.from({ length: totalPages }, (_, i) => i + 1)\n\n  const left = Math.max(page - siblings, 2)\n  const right = Math.min(page + siblings, totalPages - 1)\n  const items: PageItem[] = [1]\n\n  if (left > 2) items.push(ELLIPSIS)\n  else for (let i = 2; i < left; i++) items.push(i)\n\n  for (let i = left; i <= right; i++) items.push(i)\n\n  if (right < totalPages - 1) items.push(ELLIPSIS)\n  else for (let i = right + 1; i < totalPages; i++) items.push(i)\n\n  items.push(totalPages)\n  return items\n}\n\nfunction Chevron({ dir }: { dir: 'left' | 'right' }) {\n  return (\n    <svg aria-hidden viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth={2} strokeLinecap=\"round\" strokeLinejoin=\"round\" className=\"size-4\">\n      <path d={dir === 'left' ? 'm15 18-6-6 6-6' : 'm9 18 6-6-6-6'} />\n    </svg>\n  )\n}\n\nconst buttonBase =\n  'relative inline-flex h-9 items-center justify-center gap-1 rounded-md text-sm font-medium transition-colors hover:bg-foreground/5 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50'\n\n/** Page navigation with a sliding active-page indicator. */\nexport function Pagination({ page, totalPages, onPageChange, siblings = 1, duration = 0.25, className }: PaginationProps) {\n  const reduced = usePrefersReducedMotion()\n  const still = reduced || duration <= 0\n  const layoutId = `pagination-active-${useId()}`\n  const items = useMemo(() => buildPageRange(page, totalPages, siblings), [page, totalPages, siblings])\n\n  const enter = (index: number) => ({\n    initial: still ? (false as const) : { opacity: 0, y: 4 },\n    animate: { opacity: 1, y: 0 },\n    transition: still ? { duration: 0 } : { duration, ease: 'easeOut' as const, delay: index * STAGGER },\n  })\n\n  return (\n    <nav aria-label=\"Pagination\" className={cn('mx-auto flex w-full justify-center', className)}>\n      <ul className=\"flex flex-row items-center gap-1\">\n        <li>\n          <button\n            type=\"button\"\n            aria-label=\"Go to previous page\"\n            disabled={page <= 1}\n            onClick={() => onPageChange(page - 1)}\n            className={cn(buttonBase, 'px-2.5 text-muted-foreground')}\n          >\n            <Chevron dir=\"left\" />\n            <span className=\"hidden sm:block\">Previous</span>\n          </button>\n        </li>\n\n        {items.map((item, index) => {\n          if (item === ELLIPSIS) {\n            return (\n              <li key={`ellipsis-${index}`} aria-hidden className=\"flex size-9 items-center justify-center\">\n                <motion.span className=\"text-sm text-muted-foreground\" {...enter(index)}>\n                  …\n                </motion.span>\n              </li>\n            )\n          }\n          const active = item === page\n          return (\n            <motion.li key={item} {...enter(index)}>\n              <button\n                type=\"button\"\n                aria-label={`Go to page ${item}`}\n                aria-current={active ? 'page' : undefined}\n                onClick={() => onPageChange(item)}\n                className={cn(buttonBase, 'size-9', active ? 'text-foreground' : 'text-muted-foreground')}\n              >\n                {active && (\n                  <motion.span\n                    aria-hidden\n                    layoutId={layoutId}\n                    className=\"absolute inset-0 rounded-md border border-border bg-background shadow-sm\"\n                    transition={still ? { duration: 0 } : { type: 'spring', duration, bounce: 0.05 }}\n                  />\n                )}\n                <span className=\"relative z-10\">{item}</span>\n              </button>\n            </motion.li>\n          )\n        })}\n\n        <li>\n          <button\n            type=\"button\"\n            aria-label=\"Go to next page\"\n            disabled={page >= totalPages}\n            onClick={() => onPageChange(page + 1)}\n            className={cn(buttonBase, 'px-2.5 text-muted-foreground')}\n          >\n            <span className=\"hidden sm:block\">Next</span>\n            <Chevron dir=\"right\" />\n          </button>\n        </li>\n      </ul>\n    </nav>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "navigation",
+    "shelf": "tabs",
+    "layer": "component",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/pagination/index.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "navigation",
+    "tabs"
+  ],
+  "type": "registry:component"
+}

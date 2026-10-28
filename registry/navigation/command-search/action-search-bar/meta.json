@@ -1,0 +1,23 @@
+{
+  "name": "action-search-bar",
+  "title": "Action Search Bar",
+  "description": "A command palette in a search bar: fuzzy search, nested pages, recent rows, shortcut hints and in-row progress.",
+  "group": "navigation",
+  "shelf": "command-search",
+  "layer": "component",
+  "tags": ["type", "click", "css"],
+  "keywords": ["command", "palette", "search", "cmdk", "actions", "fuzzy"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/action-search-bar.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "CommandItem[]", "required": true, "description": "The commands: { id, label, icon?, group?, keywords?, shortcut?, href?, children?, placeholder? }. Rows with children open a nested page." },
+    { "name": "defaultRecent", "type": "string[]", "default": "[]", "description": "Ids shown under Recent before anything is typed. Running a row adds it." },
+    { "name": "onSelect", "type": "(item: CommandItem, path: CommandItem[]) => unknown", "description": "Called when a row without children is chosen. Return a Promise to show a spinner in the row until it settles." },
+    { "name": "onOpenChange", "type": "(open: boolean) => void", "description": "Called when the palette opens or closes." },
+    { "name": "defaultOpen", "type": "boolean", "default": "false", "description": "Starts with the list open." },
+    { "name": "shortcut", "type": "boolean", "default": "false", "description": "Cmd/Ctrl + K toggles the palette page-wide while it is on screen. By default only while it is focused or hovered." },
+    { "name": "label", "type": "string", "default": "'Search commands'", "description": "Accessible label of the input." },
+    { "name": "placeholder", "type": "string", "default": "'Search or jump to…'", "description": "Input placeholder on the first page." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

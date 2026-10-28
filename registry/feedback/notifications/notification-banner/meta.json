@@ -1,0 +1,22 @@
+{
+  "name": "notification-banner",
+  "title": "Notification Banner",
+  "description": "A small snackbar with a check icon, an optional action and a close button. Slides up, fades out on dismiss and leaves a button to bring it back.",
+  "group": "feedback",
+  "shelf": "notifications",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["snackbar", "toast", "banner", "undo", "notification"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/notifications/toast-notification-banner.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "message", "type": "string", "default": "'Changes saved'", "description": "The message." },
+    { "name": "actionLabel", "type": "string", "default": "'Undo'", "description": "Label of the action button. An empty string hides it." },
+    { "name": "showTriggerLabel", "type": "string", "default": "'Show notification'", "description": "Label of the button that brings the banner back after it was dismissed." },
+    { "name": "onAction", "type": "() => void", "description": "Called when the action button is pressed." },
+    { "name": "onDismiss", "type": "() => void", "description": "Called when the banner starts to close." },
+    { "name": "onShow", "type": "() => void", "description": "Called when the banner is brought back." },
+    { "name": "duration", "type": "number", "default": "0.3", "description": "Seconds the slide and fade take." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "wallet-card",
+  "title": "Wallet Card",
+  "description": "A stack of payment-style cards with a pointer sheen: pick one to bring it forward, mask the balance and see who shares it.",
+  "group": "onchain",
+  "shelf": "wallet-address",
+  "layer": "component",
+  "tags": ["click", "hover", "web3"],
+  "keywords": ["wallet", "card", "balance", "account", "stack"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wallet-card/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "accounts", "type": "WalletAccount[]", "required": true, "description": "Cards to stack: id, label, balance, currency and optional holder, last4, expiry, network ('visa' | 'mastercard' | 'amex' | 'generic'), gradient." },
+    { "name": "activeId", "type": "string", "description": "Controlled id of the card in front. Pair with onActiveChange." },
+    { "name": "onActiveChange", "type": "(id: string) => void", "description": "Called when a card is picked by click or arrow keys." },
+    { "name": "hidden", "type": "boolean", "description": "Controlled balance mask. Pair with onHiddenChange." },
+    { "name": "onHiddenChange", "type": "(hidden: boolean) => void", "description": "Called when the hide/show balance button is pressed." },
+    { "name": "members", "type": "WalletMember[]", "default": "[]", "description": "People sharing the wallet, shown as overlapping avatars; extras past four collapse behind a +N toggle." },
+    { "name": "actions", "type": "ReactNode", "description": "Controls rendered at the right of the member row." },
+    { "name": "stackOffset", "type": "number", "default": "13", "description": "Vertical offset in px between stacked cards." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

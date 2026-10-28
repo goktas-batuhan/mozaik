@@ -1,0 +1,26 @@
+{
+  "name": "candlestick-chart",
+  "title": "Candlestick Chart",
+  "description": "OHLC candles with volume bars, a last-price line and a keyboard-friendly crosshair readout, drawn in plain SVG.",
+  "group": "onchain",
+  "shelf": "prices-charts",
+  "layer": "component",
+  "tags": ["hover", "svg", "web3"],
+  "keywords": ["candles", "ohlc", "price", "trading", "chart"],
+  "source": { "repo": "starc007/ui-components", "license": "MIT", "url": "https://github.com/starc007/ui-components/blob/main/components/charts/candlestick-chart.tsx" },
+  "dependencies": ["motion"],
+  "cssVars": { "light": {"success": "oklch(0.6 0.15 155)"}, "dark": {"success": "oklch(0.72 0.15 155)"} },
+  "props": [
+    { "name": "candles", "type": "Candle[]", "required": true, "description": "Candles in time order: id, label, open, high, low, close, volume." },
+    { "name": "lastPrice", "type": "number", "description": "Draws a dashed line and a tag at this price, usually the last trade." },
+    { "name": "activeId", "type": "string | null", "description": "Controlled crosshair candle, by id. Pair with onActiveIdChange." },
+    { "name": "defaultActiveId", "type": "string | null", "default": "null", "description": "Crosshair candle when uncontrolled." },
+    { "name": "onActiveIdChange", "type": "(id: string | null) => void", "description": "Called when the pointer or arrow keys move the crosshair." },
+    { "name": "formatPrice", "type": "(value: number) => string", "description": "Formats prices on the axis, tag and legend." },
+    { "name": "formatVolume", "type": "(value: number) => string", "description": "Formats volume in the legend (compact by default)." },
+    { "name": "label", "type": "string", "default": "'Candlestick chart'", "description": "Accessible name; the chart's text summary starts with it." },
+    { "name": "height", "type": "number", "default": "320", "description": "Plot height in px." },
+    { "name": "showLegend", "type": "boolean", "default": "true", "description": "Shows the OHLC and volume readout above the plot." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

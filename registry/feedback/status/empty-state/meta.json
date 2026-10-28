@@ -1,0 +1,19 @@
+{
+  "name": "empty-state",
+  "title": "Empty State",
+  "description": "A first-run or no-results state: an optional icon, a heading, a supporting sentence and an action.",
+  "group": "feedback",
+  "shelf": "status",
+  "layer": "component",
+  "tags": ["css", "dashboard"],
+  "keywords": ["empty", "no results", "placeholder", "first run", "blank slate"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/empty/index.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "title", "type": "ReactNode", "description": "The heading." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting sentence under the heading." },
+    { "name": "icon", "type": "ReactNode", "description": "Optional icon above the title, hidden from screen readers." },
+    { "name": "action", "type": "ReactNode", "description": "Optional action below the copy, such as a button or a link." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

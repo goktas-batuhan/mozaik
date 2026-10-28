@@ -1,0 +1,27 @@
+{
+  "name": "volume-profile",
+  "title": "Volume Profile",
+  "description": "Volume traded at each price level as horizontal bars, with the point of control, value area and an inspect-by-keyboard readout, in plain SVG.",
+  "group": "onchain",
+  "shelf": "prices-charts",
+  "layer": "component",
+  "tags": ["hover", "svg", "web3"],
+  "keywords": ["volume", "profile", "poc", "value area", "price levels"],
+  "source": { "repo": "starc007/ui-components", "license": "MIT", "url": "https://github.com/starc007/ui-components/blob/main/components/charts/volume-profile.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "data", "type": "VolumeProfileBin[]", "required": true, "description": "Aggregated volume per price range: id, priceLow, priceHigh, volume. Unequal bins and gaps are fine; ranges must not overlap." },
+    { "name": "label", "type": "string", "default": "'Volume profile'", "description": "Accessible name; the chart's text summary starts with it." },
+    { "name": "unit", "type": "string", "default": "'units'", "description": "Unit shown after volumes, e.g. 'ETH'." },
+    { "name": "formatPrice", "type": "(price: number) => string", "description": "Formats prices on the axis and in readouts." },
+    { "name": "formatVolume", "type": "(volume: number) => string", "description": "Formats volumes on the axis and in readouts." },
+    { "name": "valueArea", "type": "number | false", "default": "0.7", "description": "Target fraction of total volume for the value area. false hides it." },
+    { "name": "activeId", "type": "string | null", "description": "Controlled inspected bin id. Pair with onActiveChange." },
+    { "name": "defaultActiveId", "type": "string | null", "default": "null", "description": "Inspected bin when uncontrolled." },
+    { "name": "onActiveChange", "type": "(id: string | null) => void", "description": "Called when the pointer or keyboard moves to another level." },
+    { "name": "height", "type": "number", "default": "320", "description": "Plot height in px." },
+    { "name": "showAxes", "type": "boolean", "default": "true", "description": "Shows the price and volume axes." },
+    { "name": "showSummary", "type": "boolean", "default": "true", "description": "Shows total volume, point of control and value area under the plot." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

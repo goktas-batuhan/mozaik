@@ -1,0 +1,27 @@
+{
+  "name": "file-upload",
+  "title": "File Upload",
+  "description": "A drop zone with an upload queue: drop, paste or browse, watch progress per file, cancel or retry. Simulated locally unless you pass onUpload.",
+  "group": "inputs",
+  "shelf": "upload-sign",
+  "layer": "component",
+  "tags": ["drag", "click", "dashboard"],
+  "keywords": ["upload", "dropzone", "files", "queue", "progress", "paste"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/file-upload.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "onUpload", "type": "(file: File, helpers: { onProgress: (percent: number) => void; signal: AbortSignal }) => Promise<void>", "description": "Uploads one file. Resolve to finish the row, reject to show an error with Retry. Omit to simulate uploads locally." },
+    { "name": "onUploadSuccess", "type": "(file: File) => void", "description": "Called when one file finishes uploading." },
+    { "name": "onUploadError", "type": "(error: FileError, file: File) => void", "description": "Called for validation errors and failed uploads." },
+    { "name": "onComplete", "type": "(files: File[]) => void", "description": "Called with all uploaded files once nothing is queued or in flight." },
+    { "name": "onFileRemove", "type": "(file: File) => void", "description": "Called when a row is removed, cancelling its upload if needed." },
+    { "name": "acceptedFileTypes", "type": "string[]", "default": "[]", "description": "MIME types, wildcards like image/* or extensions like .pdf. Empty accepts anything." },
+    { "name": "maxFileSize", "type": "number", "default": "5242880", "description": "Maximum size of each file in bytes." },
+    { "name": "multiple", "type": "boolean", "default": "true", "description": "Accept several files at once." },
+    { "name": "maxFiles", "type": "number", "default": "5", "description": "Maximum number of files in the list." },
+    { "name": "uploadDelay", "type": "number", "default": "2000", "description": "Simulated upload duration per file in milliseconds, used without onUpload." },
+    { "name": "simulateFailure", "type": "boolean", "default": "false", "description": "Simulated uploads only: the first attempt of every third file fails." },
+    { "name": "validateFile", "type": "(file: File) => FileError | null", "description": "Extra validation. Return an error to reject the file." },
+    { "name": "className", "type": "string", "description": "Extra classes for the card." }
+  ]
+}

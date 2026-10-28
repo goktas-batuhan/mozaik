@@ -1,0 +1,25 @@
+{
+  "name": "duration-picker",
+  "title": "Duration Picker",
+  "description": "Hours, minutes and seconds as separate segments you type into, step with the keyboard or scrub by dragging, with rolling digits.",
+  "group": "inputs",
+  "shelf": "pickers",
+  "layer": "component",
+  "tags": ["drag", "type", "dashboard"],
+  "keywords": ["duration", "time", "timer", "spinbutton", "scrub"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/duration-picker/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "value", "type": "number", "description": "Controlled value in seconds." },
+    { "name": "defaultValue", "type": "number", "default": "0", "description": "Initial value in seconds when uncontrolled." },
+    { "name": "onChange", "type": "(value: number) => void", "description": "Called with the new value in seconds on every change." },
+    { "name": "units", "type": "('hours' | 'minutes' | 'seconds')[]", "default": "['hours', 'minutes', 'seconds']", "description": "Which segments to show, most significant first." },
+    { "name": "min", "type": "number", "default": "0", "description": "Minimum total duration in seconds." },
+    { "name": "max", "type": "number", "default": "359999", "description": "Maximum total duration in seconds." },
+    { "name": "step", "type": "number", "default": "1", "description": "Amount added per arrow key press, in the focused unit." },
+    { "name": "scrub", "type": "boolean", "default": "true", "description": "Drag a segment sideways to change its value." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables all interaction." },
+    { "name": "label", "type": "string", "description": "Visible label above the picker." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "speech-bubble",
+  "title": "Speech Bubble",
+  "description": "A pill-shaped chat bubble with a curved tail and a blinking caret. Calm and still under reduced motion.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/notifications/speech-bubble/speech-bubble.tsx",
+      "content": "// Source: nolly-studio/cult-ui (MIT) — https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx\nimport { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport type { ComponentProps, ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport interface SpeechBubbleProps {\n  /** The message inside the bubble. */\n  children: ReactNode\n  /** Extra classes for the outer wrapper. */\n  className?: string\n  /** Shows a blinking caret after the text (md screens and up). */\n  showCursor?: boolean\n  /** Seconds per caret blink. */\n  duration?: number\n}\n\nexport function SpeechBubbleRoot({ className, ...props }: ComponentProps<'div'>) {\n  return <div data-slot=\"speech-bubble\" className={cn('mr-12', className)} {...props} />\n}\n\nexport function SpeechBubbleBody({ className, ...props }: ComponentProps<'div'>) {\n  return (\n    <div\n      data-slot=\"speech-bubble-body\"\n      className={cn(\n        'relative flex w-fit items-center rounded-full bg-foreground px-6 py-6 text-background transition-colors lg:px-10 lg:py-5',\n        className,\n      )}\n      {...props}\n    />\n  )\n}\n\nexport function SpeechBubbleTail({ className, ...props }: ComponentProps<'svg'>) {\n  return (\n    <svg\n      data-slot=\"speech-bubble-tail\"\n      aria-hidden=\"true\"\n      className={cn('absolute right-[-17px] bottom-0 h-6 -rotate-5 transition-colors md:right-[-7px] md:h-auto lg:right-[-9px]', className)}\n      fill=\"none\"\n      focusable=\"false\"\n      height=\"45\"\n      viewBox=\"0 0 53 45\"\n      width=\"53\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      {...props}\n    >\n      <path\n        className=\"fill-foreground transition-colors\"\n        d=\"M44 0H0V0C0 24.8528 20.1472 45 45 45H53V45C47.1396 36.535 44 26.4842 44 16.1886V0Z\"\n      />\n    </svg>\n  )\n}\n\nexport function SpeechBubbleText({ className, ...props }: ComponentProps<'p'>) {\n  return (\n    <p\n      data-slot=\"speech-bubble-text\"\n      className={cn('relative text-base leading-[0.9] font-semibold tracking-[-0.06em] text-balance text-background md:text-2xl lg:text-[2rem]', className)}\n      {...props}\n    />\n  )\n}\n\nexport function SpeechBubbleCursor({ duration = 1, className }: { duration?: number; className?: string }) {\n  const reduced = usePrefersReducedMotion()\n  return (\n    <motion.div\n      aria-hidden\n      data-slot=\"speech-bubble-cursor\"\n      className={cn('relative ml-2 hidden h-6 w-4 bg-muted-foreground md:block', className)}\n      animate={reduced ? undefined : { opacity: [1, 0.3, 1] }}\n      transition={{ duration, ease: 'easeInOut', repeat: Infinity }}\n    />\n  )\n}\n\n/** A pill-shaped chat bubble with a curved tail and an optional blinking caret. */\nexport function SpeechBubble({ children, className, showCursor = true, duration = 1 }: SpeechBubbleProps) {\n  return (\n    <SpeechBubbleRoot className={className}>\n      <SpeechBubbleBody>\n        <SpeechBubbleTail />\n        <SpeechBubbleText>{children}</SpeechBubbleText>\n        {showCursor ? <SpeechBubbleCursor duration={duration} /> : null}\n      </SpeechBubbleBody>\n    </SpeechBubbleRoot>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "feedback",
+    "shelf": "notifications",
+    "layer": "component",
+    "source": {
+      "repo": "nolly-studio/cult-ui",
+      "license": "MIT",
+      "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "feedback",
+    "notifications"
+  ],
+  "type": "registry:component"
+}

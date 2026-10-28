@@ -1,0 +1,24 @@
+{
+  "name": "currency-transfer",
+  "title": "Currency Transfer",
+  "description": "A transfer receipt that follows money through four steps, rolls the amount into the new currency and offers a copyable reference.",
+  "group": "onchain",
+  "shelf": "transactions",
+  "layer": "component",
+  "tags": ["loop", "click", "web3"],
+  "keywords": ["transfer", "currency", "convert", "receipt", "status", "swap"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/currency-transfer.tsx" },
+  "dependencies": ["motion"],
+  "cssVars": { "light": {"success": "oklch(0.6 0.15 155)"}, "dark": {"success": "oklch(0.72 0.15 155)"} },
+  "props": [
+    { "name": "from", "type": "TransferAccount", "description": "Sending side: amount, currency, bank, optional symbol and last4." },
+    { "name": "to", "type": "TransferAccount", "description": "Receiving side: amount, currency, bank, optional symbol, last4 and holder name." },
+    { "name": "rate", "type": "number", "default": "0.92", "description": "Units of the receiving currency per one unit of the sending currency." },
+    { "name": "txnId", "type": "string", "default": "'TXN-DAB3UL494'", "description": "Transaction reference, copyable from the footer." },
+    { "name": "timestamp", "type": "string", "default": "'10:45 AM'", "description": "When the rate was locked." },
+    { "name": "status", "type": "'processing' | 'completed' | 'failed'", "description": "Controlled status. Unset runs a self-completing demo (the finished state under reduced motion)." },
+    { "name": "locale", "type": "string", "default": "'en-US'", "description": "BCP 47 locale for amounts, symbols and the rate." },
+    { "name": "onRetry", "type": "() => void", "description": "Shows a Retry button when the transfer has failed." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "favicon-search",
+  "title": "Favicon Search",
+  "description": "A search field with a keyboard-driven result list that shows an icon, title and description per row.",
+  "group": "navigation",
+  "shelf": "command-search",
+  "layer": "component",
+  "tags": ["type", "click", "css"],
+  "keywords": ["search", "combobox", "autocomplete", "favicon", "results"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/favicon-search/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "results", "type": "FaviconSearchResult[]", "required": true, "description": "Results to list: { id, title, url, description?, favicon? }. Filter them yourself as the query changes." },
+    { "name": "value", "type": "string", "description": "Query text (controlled)." },
+    { "name": "onValueChange", "type": "(value: string) => void", "description": "Called with the new query on every keystroke." },
+    { "name": "onSelect", "type": "(result: FaviconSearchResult) => void", "description": "Called when a result is picked with click or Enter." },
+    { "name": "loading", "type": "boolean", "default": "false", "description": "Shows skeleton rows instead of results." },
+    { "name": "emptyMessage", "type": "string", "default": "'No results found'", "description": "Text shown when a query has no results." },
+    { "name": "groupLabel", "type": "string", "default": "'Search results'", "description": "Accessible name of the results list." },
+    { "name": "showShortcut", "type": "boolean", "default": "false", "description": "Shows a shortcut hint and focuses the field on Cmd/Ctrl + hotkey." },
+    { "name": "hotkey", "type": "string", "default": "'k'", "description": "Key used with Cmd/Ctrl to focus the field." },
+    { "name": "maxResults", "type": "number", "description": "Shows at most this many results." },
+    { "name": "duration", "type": "number", "default": "0.25", "description": "Seconds the panel and rows take to animate." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

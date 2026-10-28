@@ -1,0 +1,21 @@
+{
+  "name": "segmented-toggle-button",
+  "title": "Segmented Toggle Button",
+  "description": "An iOS-style segmented control with a pill that slides under the active label.",
+  "group": "inputs",
+  "shelf": "choice",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["segmented", "toggle", "tabs", "switch", "radio", "pill"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/segmented-toggle-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "options", "type": "readonly string[]", "default": "['Day', 'Week', 'Month']", "description": "Segment labels, in order." },
+    { "name": "value", "type": "number", "description": "Controlled index of the active segment." },
+    { "name": "defaultValue", "type": "number", "default": "0", "description": "Initially active index when uncontrolled." },
+    { "name": "onChange", "type": "(index: number, option: string) => void", "description": "Called with the new index and its label." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables all segments." },
+    { "name": "aria-label", "type": "string", "default": "'Options'", "description": "Accessible name of the group." },
+    { "name": "className", "type": "string", "description": "Extra classes for the track." }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "scrubber",
+  "title": "Scrubber",
+  "description": "A horizontal value scrubber: drag across a labelled track to set a number, with tick marks and a capsule thumb.",
+  "group": "inputs",
+  "shelf": "sliders-dials",
+  "layer": "component",
+  "tags": ["drag", "css"],
+  "keywords": ["slider", "scrub", "range", "number input", "value"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/scrubber/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "label", "type": "string", "default": "'Value'", "description": "Label shown on the left of the track. Also the accessible name." },
+    { "name": "value", "type": "number", "description": "Controlled value." },
+    { "name": "defaultValue", "type": "number", "default": "0", "description": "Initial value when uncontrolled." },
+    { "name": "onValueChange", "type": "(value: number) => void", "description": "Called with the new value while dragging or using the keyboard." },
+    { "name": "min", "type": "number", "default": "0", "description": "Minimum value." },
+    { "name": "max", "type": "number", "default": "1", "description": "Maximum value." },
+    { "name": "step", "type": "number", "default": "0.01", "description": "Step increment." },
+    { "name": "decimals", "type": "number", "default": "2", "description": "Decimal places shown in the readout." },
+    { "name": "ticks", "type": "number", "default": "9", "description": "Number of tick marks. 0 hides them." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dimple-switch",
+  "title": "Dimple Switch",
+  "description": "A chunky physical-looking switch: a dimpled knob slides along an inset track.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/inputs/choice/dimple-switch/dimple-switch.tsx",
+      "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/buttons/dimple-switch.tsx\nimport { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { type ChangeEvent, type ComponentPropsWithoutRef, type CSSProperties, type Ref, useState } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nconst MARK_COUNT = 12\n\nexport interface DimpleSwitchProps\n  extends Omit<ComponentPropsWithoutRef<'input'>, 'type' | 'checked' | 'defaultChecked' | 'onChange' | 'value' | 'defaultValue'> {\n  /** Controlled state. */\n  checked?: boolean\n  /** Initial state when uncontrolled. */\n  defaultChecked?: boolean\n  /** Called with the new state. */\n  onCheckedChange?: (checked: boolean) => void\n  /** Accessible name of the switch. */\n  label?: string\n  ref?: Ref<HTMLInputElement>\n}\n\n// Soft shadows built from the foreground token so they follow light and dark themes.\nconst shade = (percent: number) => `color-mix(in oklab, var(--foreground) ${percent}%, transparent)`\nconst light = (percent: number) => `color-mix(in oklab, var(--background) ${percent}%, transparent)`\n\nconst TRACK_SHADOW = `inset 0 0 0.0625em 0.125em ${light(20)}, inset 0 0 0.0625em 0.125em ${shade(40)}`\nconst KNOB_SHADOW = [\n  `inset 0 -0.0625em 0.0625em 0.125em ${shade(10)}`,\n  `inset 0 -0.125em 0.0625em ${shade(20)}`,\n  `inset 0 0.1875em 0.0625em ${light(30)}`,\n  `0 0.125em 0.125em ${shade(50)}`,\n].join(', ')\n\n/** A chunky physical-looking switch: a knob with a dimpled grip slides along an inset track. */\nexport function DimpleSwitch({\n  checked,\n  defaultChecked = false,\n  onCheckedChange,\n  label = 'Enable setting',\n  disabled,\n  className,\n  ref,\n  ...props\n}: DimpleSwitchProps) {\n  const reduced = usePrefersReducedMotion()\n  const isControlled = checked !== undefined\n  const [internal, setInternal] = useState(defaultChecked)\n  const isOn = isControlled ? checked : internal\n\n  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {\n    if (disabled) return\n    const next = event.target.checked\n    if (!isControlled) setInternal(next)\n    onCheckedChange?.(next)\n  }\n\n  return (\n    <label\n      data-state={isOn ? 'on' : 'off'}\n      className={cn(\n        'relative inline-flex items-center justify-center rounded-lg bg-linear-to-b from-border to-muted p-0.5 text-2xl',\n        'has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ring',\n        disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer',\n        className,\n      )}\n    >\n      <input\n        {...props}\n        ref={ref}\n        type=\"checkbox\"\n        role=\"switch\"\n        checked={isControlled ? checked : undefined}\n        defaultChecked={isControlled ? undefined : defaultChecked}\n        disabled={disabled}\n        aria-label={label}\n        onChange={handleChange}\n        className=\"peer absolute inset-0 z-10 h-full w-full cursor-pointer appearance-none opacity-0 outline-none disabled:cursor-not-allowed\"\n      />\n      <span\n        aria-hidden=\"true\"\n        data-layer=\"track\"\n        style={{ boxShadow: TRACK_SHADOW } as CSSProperties}\n        className={cn(\n          'relative flex h-[1.5em] w-[3em] items-center rounded-md bg-muted peer-checked:bg-primary peer-checked:[&>span]:left-[1.5625em]',\n          !reduced && 'transition-[background-color] duration-400 ease-linear',\n        )}\n      >\n        <span\n          data-layer=\"knob\"\n          style={{ boxShadow: KNOB_SHADOW } as CSSProperties}\n          className={cn(\n            'absolute left-[0.0625em] flex h-[1.375em] w-[1.375em] items-center justify-center rounded-[0.3125em] bg-card',\n            !reduced && 'transition-[left] duration-400 ease-linear',\n          )}\n        >\n          <span className=\"absolute grid grid-cols-3 gap-0.5\">\n            {Array.from({ length: MARK_COUNT }, (_, i) => (\n              <span key={i} className=\"size-0.5 rounded-full bg-muted-foreground/50\" />\n            ))}\n          </span>\n        </span>\n      </span>\n    </label>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "inputs",
+    "shelf": "choice",
+    "layer": "component",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/dimple-switch.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "inputs",
+    "choice"
+  ],
+  "type": "registry:component"
+}

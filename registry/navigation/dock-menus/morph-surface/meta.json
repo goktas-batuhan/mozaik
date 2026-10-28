@@ -1,0 +1,28 @@
+{
+  "name": "morph-surface",
+  "title": "Morph Surface",
+  "description": "A small pill that morphs into a feedback form and back, with a shared dot and a check on success.",
+  "group": "navigation",
+  "shelf": "dock-menus",
+  "layer": "component",
+  "tags": ["click", "type"],
+  "keywords": ["feedback", "morph", "pill", "form", "expand", "dock"],
+  "source": { "repo": "nolly-studio/cult-ui", "license": "MIT", "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/morph-surface.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "triggerLabel", "type": "string", "default": "'Feedback'", "description": "Text of the pill's trigger and the heading above the field when open." },
+    { "name": "triggerIcon", "type": "ReactNode", "description": "Icon shown before the trigger label." },
+    { "name": "title", "type": "string", "default": "'Morph Surface'", "description": "Name shown beside the dot in the collapsed pill." },
+    { "name": "placeholder", "type": "string", "default": "\"What's on your mind?\"", "description": "Placeholder of the message field." },
+    { "name": "onSubmit", "type": "(data: FormData) => void | Promise<void>", "description": "Called with the form data on submit. The surface closes and shows a check once it resolves." },
+    { "name": "onOpen", "type": "() => void", "description": "Called when the surface opens." },
+    { "name": "onClose", "type": "() => void", "description": "Called when the surface closes without sending." },
+    { "name": "onSuccess", "type": "() => void", "description": "Called after a successful submit." },
+    { "name": "isOpen", "type": "boolean", "description": "Controlled open state. Leave it out to let the surface manage itself." },
+    { "name": "onOpenChange", "type": "(open: boolean) => void", "description": "Called with the next open state." },
+    { "name": "collapsedWidth", "type": "number | 'auto'", "default": "360", "description": "Width of the collapsed pill in pixels." },
+    { "name": "expandedWidth", "type": "number", "default": "360", "description": "Width of the open surface in pixels." },
+    { "name": "expandedHeight", "type": "number", "default": "200", "description": "Height of the open surface in pixels." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." }
+  ]
+}

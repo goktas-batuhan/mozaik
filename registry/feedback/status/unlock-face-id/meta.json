@@ -1,0 +1,23 @@
+{
+  "name": "unlock-face-id",
+  "title": "Unlock Face ID",
+  "description": "A Face ID style unlock: brackets and a face draw themselves, a scan line sweeps, then a check reveals the blurred content behind it. Controlled or self-running.",
+  "group": "feedback",
+  "shelf": "status",
+  "layer": "component",
+  "tags": ["click", "svg"],
+  "keywords": ["face id", "unlock", "biometric", "scan", "reveal"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/unlock-face-id/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "status", "type": "'idle' | 'scanning' | 'success' | 'error'", "description": "Controlled status. Omit it and the component runs the scan itself on click." },
+    { "name": "scanDuration", "type": "number", "default": "1800", "description": "How long a self-running scan takes, in milliseconds." },
+    { "name": "onScan", "type": "() => void", "description": "Called whenever the trigger is activated." },
+    { "name": "onComplete", "type": "() => void", "description": "Called when a self-running scan succeeds." },
+    { "name": "label", "type": "string", "default": "'Scan to unlock'", "description": "Accessible label of the scan button." },
+    { "name": "errorMessage", "type": "string", "default": "'Face not recognized. Try again.'", "description": "Message shown when the status is error." },
+    { "name": "size", "type": "number", "default": "128", "description": "Rendered size of the glyph in pixels." },
+    { "name": "children", "type": "ReactNode", "description": "Content blurred and inert until the status is success." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

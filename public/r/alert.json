@@ -1,0 +1,34 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "title": "Alert",
+  "description": "An inline notice with an optional icon, title and body in four tones. Warnings and errors interrupt screen readers; info and success are polite.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/notifications/alert/alert.tsx",
+      "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/alert/index.tsx\nimport type { ComponentProps, ReactNode } from 'react'\nimport { cn } from '@/lib/utils'\n\nexport type AlertVariant = 'info' | 'success' | 'warning' | 'destructive'\n\nexport interface AlertProps extends Omit<ComponentProps<'div'>, 'title'> {\n  /** Body copy under the title. */\n  children?: ReactNode\n  /** Optional leading icon. Decorative: it is hidden from screen readers. */\n  icon?: ReactNode\n  /** Bold heading line. */\n  title?: ReactNode\n  /** Tone of the notice. Warning and destructive interrupt (role alert); info and success are polite (role status). */\n  variant?: AlertVariant\n}\n\nconst TONE: Record<AlertVariant, string> = {\n  info: 'border-foreground/15 bg-foreground/5 [&_[data-slot=alert-icon]]:text-foreground',\n  success: 'border-success/30 bg-success/10 [&_[data-slot=alert-icon]]:text-success',\n  warning: 'border-primary/30 bg-primary/10 [&_[data-slot=alert-icon]]:text-primary',\n  destructive: 'border-destructive/30 bg-destructive/10 [&_[data-slot=alert-icon]]:text-destructive',\n}\n\n/** An inline page or form notice with an optional icon, title and body. Not a dialog. */\nexport function Alert({ children, className, icon, title, variant = 'info', ...props }: AlertProps) {\n  const urgent = variant === 'warning' || variant === 'destructive'\n\n  return (\n    <div\n      role={urgent ? 'alert' : 'status'}\n      data-slot=\"alert\"\n      data-variant={variant}\n      {...props}\n      className={cn(\n        'relative flex w-full gap-3 rounded-lg border px-4 py-3 text-sm text-foreground',\n        TONE[variant],\n        className,\n      )}\n    >\n      {icon ? (\n        <span aria-hidden data-slot=\"alert-icon\" className=\"mt-0.5 shrink-0 [&_svg]:size-4\">\n          {icon}\n        </span>\n      ) : null}\n      <div className=\"flex min-w-0 flex-1 flex-col gap-1\">\n        {title ? (\n          <div data-slot=\"alert-title\" className=\"leading-none font-medium\">\n            {title}\n          </div>\n        ) : null}\n        {children ? (\n          <div data-slot=\"alert-description\" className=\"leading-relaxed text-muted-foreground [&_a]:text-foreground [&_a]:underline\">\n            {children}\n          </div>\n        ) : null}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "feedback",
+    "shelf": "notifications",
+    "layer": "component",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/alert/index.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "feedback",
+    "notifications"
+  ],
+  "type": "registry:component"
+}

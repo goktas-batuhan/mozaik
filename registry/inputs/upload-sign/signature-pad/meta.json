@@ -1,0 +1,17 @@
+{
+  "name": "signature-pad",
+  "title": "Signature Pad",
+  "description": "A canvas to sign on with mouse, touch or pen. Ink is sprung and thins with speed; the result comes out as SVG.",
+  "group": "inputs",
+  "shelf": "upload-sign",
+  "layer": "component",
+  "tags": ["drag", "canvas", "dashboard"],
+  "keywords": ["signature", "sign", "pad", "draw", "ink", "svg"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/signature-pad.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "onChange", "type": "(svg: string | null) => void", "description": "Called after each stroke, undo or clear with the signature as SVG, or null once it is empty." },
+    { "name": "label", "type": "string", "default": "'Signature'", "description": "Accessible name of the drawing area." },
+    { "name": "className", "type": "string", "description": "Extra classes for the card." }
+  ]
+}

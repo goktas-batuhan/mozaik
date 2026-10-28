@@ -1,0 +1,20 @@
+{
+  "name": "dimple-switch",
+  "title": "Dimple Switch",
+  "description": "A chunky physical-looking switch: a dimpled knob slides along an inset track.",
+  "group": "inputs",
+  "shelf": "choice",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["switch", "toggle", "checkbox", "skeuomorphic", "setting"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/dimple-switch.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "checked", "type": "boolean", "description": "Controlled state." },
+    { "name": "defaultChecked", "type": "boolean", "default": "false", "description": "Initial state when uncontrolled." },
+    { "name": "onCheckedChange", "type": "(checked: boolean) => void", "description": "Called with the new state." },
+    { "name": "label", "type": "string", "default": "'Enable setting'", "description": "Accessible name of the switch." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the switch." },
+    { "name": "className", "type": "string", "description": "Extra classes for the frame." }
+  ]
+}

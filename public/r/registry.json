@@ -1261,6 +1261,514 @@
       }
     },
     {
+      "name": "card-field",
+      "type": "registry:component",
+      "title": "Card Field",
+      "description": "A one-row card input for checkout. The number groups by brand, then slides away to its last four digits to make room for expiry and security code.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/text-code/card-field/card-field.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "text-code"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "text-code",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/card-field.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "float-input",
+      "type": "registry:component",
+      "title": "Float Input",
+      "description": "A text field whose label starts inside the box and floats up when you focus or type.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/text-code/float-input/float-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "text-code"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "text-code",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/float-input/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "otp-boxed-input",
+      "type": "registry:component",
+      "title": "OTP Boxed Input",
+      "description": "A one-time-code field of separate boxes with paste, arrow-key navigation, error state and a resend countdown.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/text-code/otp-boxed-input/otp-boxed-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "text-code"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "text-code",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/otp/otp-boxed-input.tsx"
+        },
+        "status": "beta",
+        "variants": 0
+      }
+    },
+    {
+      "name": "detent-dial",
+      "type": "registry:component",
+      "title": "Detent Dial",
+      "description": "A rotary knob that clicks from notch to notch, with a swelling tick ring, flick momentum and a rolling readout.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/sliders-dials/detent-dial/detent-dial.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "sliders-dials"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "sliders-dials",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/detent-dial.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "liquid-slider",
+      "type": "registry:component",
+      "title": "Liquid Slider",
+      "description": "A glass of water you fill by dragging its surface. The liquid sloshes and bubbles; under reduced motion it just rises.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/sliders-dials/liquid-slider/liquid-slider.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "sliders-dials"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "sliders-dials",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/liquid-slider.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "scrubber",
+      "type": "registry:component",
+      "title": "Scrubber",
+      "description": "A horizontal value scrubber: drag across a labelled track to set a number, with tick marks and a capsule thumb.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/sliders-dials/scrubber/scrubber.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "sliders-dials"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "sliders-dials",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/scrubber/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "duration-picker",
+      "type": "registry:component",
+      "title": "Duration Picker",
+      "description": "Hours, minutes and seconds as separate segments you type into, step with the keyboard or scrub by dragging, with rolling digits.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/pickers/duration-picker/duration-picker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "pickers"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "pickers",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/duration-picker/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "week-strip-calendar",
+      "type": "registry:component",
+      "title": "Week Strip Calendar",
+      "description": "A one-week date strip: step between weeks with the arrows and tap a day to select it.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/pickers/week-strip-calendar/week-strip-calendar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "pickers"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "pickers",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/calender/week-strip-calendar.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "wheel-picker",
+      "type": "registry:component",
+      "title": "Wheel Picker",
+      "description": "An iOS-style drum picker: real 3D cylinders you drag, flick, scroll or step with the keyboard.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/pickers/wheel-picker/wheel-picker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "pickers"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "pickers",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/wheel-picker.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "dimple-switch",
+      "type": "registry:component",
+      "title": "Dimple Switch",
+      "description": "A chunky physical-looking switch: a dimpled knob slides along an inset track.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/choice/dimple-switch/dimple-switch.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "choice"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "choice",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/dimple-switch.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "segmented-toggle-button",
+      "type": "registry:component",
+      "title": "Segmented Toggle Button",
+      "description": "An iOS-style segmented control with a pill that slides under the active label.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/choice/segmented-toggle-button/segmented-toggle-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "choice"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "choice",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/segmented-toggle-button.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "tip-selector",
+      "type": "registry:component",
+      "title": "Tip Selector",
+      "description": "A checkout tip picker set on a draggable tape with preset chips, a Round up shortcut and rolling totals.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/choice/tip-selector/tip-selector.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "choice"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "choice",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/tip-selector.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:component",
+      "title": "File Upload",
+      "description": "A drop zone with an upload queue: drop, paste or browse, watch progress per file, cancel or retry. Simulated locally unless you pass onUpload.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/upload-sign/file-upload/file-upload.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "upload-sign"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "upload-sign",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/file-upload.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "signature-pad",
+      "type": "registry:component",
+      "title": "Signature Pad",
+      "description": "A canvas to sign on with mouse, touch or pen. Ink is sprung and thins with speed; the result comes out as SVG.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/inputs/upload-sign/signature-pad/signature-pad.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "inputs",
+        "upload-sign"
+      ],
+      "meta": {
+        "group": "inputs",
+        "shelf": "upload-sign",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/signature-pad.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "collab-toolbar",
+      "type": "registry:component",
+      "title": "Collab Toolbar",
+      "description": "A floating toolbar of icon buttons and a collaborator avatar stack, split into groups by dividers.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/dock-menus/collab-toolbar/collab-toolbar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "dock-menus"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "dock-menus",
+        "layer": "component",
+        "source": {
+          "repo": "nolly-studio/cult-ui",
+          "license": "MIT",
+          "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/collab-toolbar.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
       "name": "dock",
       "type": "registry:component",
       "title": "Dock",
@@ -1295,6 +1803,208 @@
       }
     },
     {
+      "name": "fluid-hover-highlight",
+      "type": "registry:component",
+      "title": "Fluid Hover Highlight",
+      "description": "One highlight that glides between list rows under the pointer or keyboard focus instead of blinking on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/dock-menus/fluid-hover-highlight/fluid-hover-highlight.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "dock-menus"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "dock-menus",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/fluid-hover-highlight/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "kebab-actions-dropdown",
+      "type": "registry:component",
+      "title": "Kebab Actions Dropdown",
+      "description": "A row with a kebab button that expands its action menu inside the same card, with arrow-key navigation.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/dock-menus/kebab-actions-dropdown/kebab-actions-dropdown.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "dock-menus"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "dock-menus",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/dropdowns/kebab-actions-dropdown.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "marking-menu",
+      "type": "registry:component",
+      "title": "Marking Menu",
+      "description": "A radial menu you open by holding, flicking or right-clicking a surface, with a keyboard path through a Menu button.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/dock-menus/marking-menu/marking-menu.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "dock-menus"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "dock-menus",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/marking-menu.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "morph-surface",
+      "type": "registry:component",
+      "title": "Morph Surface",
+      "description": "A small pill that morphs into a feedback form and back, with a shared dot and a check on success.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/dock-menus/morph-surface/morph-surface.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "dock-menus"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "dock-menus",
+        "layer": "component",
+        "source": {
+          "repo": "nolly-studio/cult-ui",
+          "license": "MIT",
+          "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/morph-surface.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "profile-dropdown",
+      "type": "registry:component",
+      "title": "Profile Dropdown",
+      "description": "An account menu that grows out of its own trigger, with status, theme, links, account switching and a hold-to-confirm sign out.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/dock-menus/profile-dropdown/profile-dropdown.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "dock-menus"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "dock-menus",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/profile-dropdown.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:component",
+      "title": "Breadcrumb",
+      "description": "A breadcrumb trail whose items slide in one after another. Marks the last item as the current page.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/tabs/breadcrumb/breadcrumb.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "tabs"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "tabs",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/breadcrumb/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
       "name": "direction-aware-tabs",
       "type": "registry:component",
       "title": "Direction Aware Tabs",
@@ -1323,6 +2033,242 @@
           "repo": "nolly-studio/cult-ui",
           "license": "MIT",
           "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/direction-aware-tabs.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "linen-tab-button",
+      "type": "registry:component",
+      "title": "Linen Tab Button",
+      "description": "A button with a woven linen face, dashed stitching and a soft lift on press.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/tabs/linen-tab-button/linen-tab-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "tabs"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "tabs",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/linen-tab-button.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "pagination",
+      "type": "registry:component",
+      "title": "Pagination",
+      "description": "Page navigation with ellipses and a sliding indicator behind the active page.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/tabs/pagination/pagination.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "tabs"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "tabs",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/pagination/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "bounce-sidebar",
+      "type": "registry:component",
+      "title": "Bounce Sidebar",
+      "description": "A vertical nav with a dot that hops along a curved path to the selected item.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/navbar-sidebar/bounce-sidebar/bounce-sidebar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "navbar-sidebar"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "navbar-sidebar",
+        "layer": "component",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/bounce-sidebar.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:component",
+      "title": "Sidebar",
+      "description": "A collapsible app rail that animates between full width and an icon rail, with menu buttons and a trigger.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/navbar-sidebar/sidebar/sidebar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "navbar-sidebar"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "navbar-sidebar",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/sidebar/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "action-search-bar",
+      "type": "registry:component",
+      "title": "Action Search Bar",
+      "description": "A command palette in a search bar: fuzzy search, nested pages, recent rows, shortcut hints and in-row progress.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/command-search/action-search-bar/action-search-bar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "command-search"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "command-search",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/action-search-bar.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "favicon-search",
+      "type": "registry:component",
+      "title": "Favicon Search",
+      "description": "A search field with a keyboard-driven result list that shows an icon, title and description per row.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/command-search/favicon-search/favicon-search.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "command-search"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "command-search",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/favicon-search/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "search-input",
+      "type": "registry:component",
+      "title": "Search Input",
+      "description": "A search field with a leading icon, a clear button, a hint and an error state.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/navigation/command-search/search-input/search-input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "navigation",
+        "command-search"
+      ],
+      "meta": {
+        "group": "navigation",
+        "shelf": "command-search",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/inputs/search-input.tsx"
         },
         "status": "stable",
         "variants": 0
@@ -1863,6 +2809,38 @@
       }
     },
     {
+      "name": "alert",
+      "type": "registry:component",
+      "title": "Alert",
+      "description": "An inline notice with an optional icon, title and body in four tones. Warnings and errors interrupt screen readers; info and success are polite.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/notifications/alert/alert.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "notifications"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "notifications",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/alert/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
       "name": "animated-subscribe-button",
       "type": "registry:component",
       "title": "Animated Subscribe Button",
@@ -1891,6 +2869,74 @@
           "repo": "magicuidesign/magicui",
           "license": "MIT",
           "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/animated-subscribe-button.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "animated-toast-stack",
+      "type": "registry:component",
+      "title": "Animated Toast Stack",
+      "description": "A stack of toasts that spring in with a blur, swap their icon and text in place, swipe away and expire on a timer. Includes a hook to drive it.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/notifications/animated-toast-stack/animated-toast-stack.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "notifications"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "notifications",
+        "layer": "component",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/animated-toast-stack.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "notification-banner",
+      "type": "registry:component",
+      "title": "Notification Banner",
+      "description": "A small snackbar with a check icon, an optional action and a close button. Slides up, fades out on dismiss and leaves a button to bring it back.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/notifications/notification-banner/notification-banner.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "notifications"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "notifications",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/notifications/toast-notification-banner.tsx"
         },
         "status": "stable",
         "variants": 0
@@ -1931,6 +2977,106 @@
       }
     },
     {
+      "name": "speech-bubble",
+      "type": "registry:component",
+      "title": "Speech Bubble",
+      "description": "A pill-shaped chat bubble with a curved tail and a blinking caret. Calm and still under reduced motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/notifications/speech-bubble/speech-bubble.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "notifications"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "notifications",
+        "layer": "component",
+        "source": {
+          "repo": "nolly-studio/cult-ui",
+          "license": "MIT",
+          "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "announcement",
+      "type": "registry:component",
+      "title": "Announcement",
+      "description": "A pill that announces something new: a small tag followed by a title. Render it as a link to make the whole pill clickable.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/status/announcement/announcement.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "status"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "status",
+        "layer": "component",
+        "source": {
+          "repo": "shadcnblocks/kibo",
+          "license": "MIT",
+          "url": "https://github.com/shadcnblocks/kibo/blob/main/packages/announcement/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "count-badge",
+      "type": "registry:component",
+      "title": "Count Badge",
+      "description": "A badge for the corner of an avatar or icon: a dot, a rolling count with a cap, or a presence dot, with an optional pulse.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/status/count-badge/count-badge.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "status"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "status",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/count-badge/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
       "name": "dynamic-island",
       "type": "registry:component",
       "title": "Dynamic Island",
@@ -1962,6 +3108,38 @@
         },
         "status": "stable",
         "variants": 2
+      }
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:component",
+      "title": "Empty State",
+      "description": "A first-run or no-results state: an optional icon, a heading, a supporting sentence and an action.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/status/empty-state/empty-state.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "status"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "status",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/empty/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -2000,6 +3178,108 @@
         "source": "original",
         "status": "stable",
         "variants": 2
+      }
+    },
+    {
+      "name": "security-checkpoint",
+      "type": "registry:component",
+      "title": "Security Checkpoint",
+      "description": "A browser-verification card with lines that draw in from the side; the blocked ones stop at the card with a glowing dot. Draws instantly under reduced motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/status/security-checkpoint/security-checkpoint.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "status"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "status",
+        "layer": "component",
+        "source": {
+          "repo": "nolly-studio/cult-ui",
+          "license": "MIT",
+          "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/security-checkpoint.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "status-dot",
+      "type": "registry:component",
+      "title": "Status Dot",
+      "description": "A pill with a pulsing status dot and a label for service states: online, offline, maintenance or degraded.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/status/status-dot/status-dot.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "status"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "status",
+        "layer": "component",
+        "source": {
+          "repo": "shadcnblocks/kibo",
+          "license": "MIT",
+          "url": "https://github.com/shadcnblocks/kibo/blob/main/packages/status/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "unlock-face-id",
+      "type": "registry:component",
+      "title": "Unlock Face ID",
+      "description": "A Face ID style unlock: brackets and a face draw themselves, a scan line sweeps, then a check reveals the blurred content behind it. Controlled or self-running.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/feedback/status/unlock-face-id/unlock-face-id.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "feedback",
+        "status"
+      ],
+      "meta": {
+        "group": "feedback",
+        "shelf": "status",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/unlock-face-id/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -2155,6 +3435,48 @@
       }
     },
     {
+      "name": "candlestick-chart",
+      "type": "registry:component",
+      "title": "Candlestick Chart",
+      "description": "OHLC candles with volume bars, a last-price line and a keyboard-friendly crosshair readout, drawn in plain SVG.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/prices-charts/candlestick-chart/candlestick-chart.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain",
+        "prices-charts"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "prices-charts",
+        "layer": "component",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/charts/candlestick-chart.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
       "name": "order-book",
       "type": "registry:component",
       "title": "Order Book",
@@ -2235,6 +3557,40 @@
       }
     },
     {
+      "name": "volume-profile",
+      "type": "registry:component",
+      "title": "Volume Profile",
+      "description": "Volume traded at each price level as horizontal bars, with the point of control, value area and an inspect-by-keyboard readout, in plain SVG.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/prices-charts/volume-profile/volume-profile.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "onchain",
+        "prices-charts"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "prices-charts",
+        "layer": "component",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/charts/volume-profile.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
       "name": "address-chip",
       "type": "registry:component",
       "title": "Address Chip",
@@ -2270,6 +3626,82 @@
         "source": "original",
         "status": "stable",
         "variants": 1
+      }
+    },
+    {
+      "name": "wallet-card",
+      "type": "registry:component",
+      "title": "Wallet Card",
+      "description": "A stack of payment-style cards with a pointer sheen: pick one to bring it forward, mask the balance and see who shares it.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/wallet-address/wallet-card/wallet-card.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "onchain",
+        "wallet-address"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "wallet-address",
+        "layer": "component",
+        "source": {
+          "repo": "educlopez/smoothui",
+          "license": "MIT",
+          "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/wallet-card/index.tsx"
+        },
+        "status": "stable",
+        "variants": 0
+      }
+    },
+    {
+      "name": "currency-transfer",
+      "type": "registry:component",
+      "title": "Currency Transfer",
+      "description": "A transfer receipt that follows money through four steps, rolls the amount into the new currency and offers a copyable reference.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/transactions/currency-transfer/currency-transfer.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "cssVars": {
+        "light": {
+          "success": "oklch(0.6 0.15 155)"
+        },
+        "dark": {
+          "success": "oklch(0.72 0.15 155)"
+        }
+      },
+      "categories": [
+        "onchain",
+        "transactions"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "transactions",
+        "layer": "component",
+        "source": {
+          "repo": "kokonut-labs/kokonutui",
+          "license": "MIT",
+          "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/currency-transfer.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -2312,6 +3744,40 @@
         },
         "status": "stable",
         "variants": 2
+      }
+    },
+    {
+      "name": "swap-panel",
+      "type": "registry:component",
+      "title": "Swap Panel",
+      "description": "A cross-chain swap ticket: pay and receive fields, a token picker with chain filter, a live quote and an optional destination address.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/transactions/swap-panel/swap-panel.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "onchain",
+        "transactions"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "transactions",
+        "layer": "component",
+        "source": {
+          "repo": "starc007/ui-components",
+          "license": "MIT",
+          "url": "https://github.com/starc007/ui-components/blob/main/components/motion/swap.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {
@@ -2384,6 +3850,40 @@
         },
         "status": "stable",
         "variants": 2
+      }
+    },
+    {
+      "name": "amount-stepper",
+      "type": "registry:component",
+      "title": "Amount Stepper",
+      "description": "Minus, amount and plus in one inline control: decimal steps, min and max, and a ticker label for token amounts.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/onchain/amount-confirm/amount-stepper/amount-stepper.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "categories": [
+        "onchain",
+        "amount-confirm"
+      ],
+      "meta": {
+        "group": "onchain",
+        "shelf": "amount-confirm",
+        "layer": "component",
+        "source": {
+          "repo": "bidyut10/opensourceui",
+          "license": "MIT",
+          "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/quantity-stepper-button.tsx"
+        },
+        "status": "stable",
+        "variants": 0
       }
     },
     {

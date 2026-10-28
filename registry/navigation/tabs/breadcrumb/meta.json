@@ -1,0 +1,18 @@
+{
+  "name": "breadcrumb",
+  "title": "Breadcrumb",
+  "description": "A breadcrumb trail whose items slide in one after another. Marks the last item as the current page.",
+  "group": "navigation",
+  "shelf": "tabs",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["breadcrumb", "trail", "path", "nav"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/breadcrumb/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "BreadcrumbItem[]", "required": true, "description": "The trail in order: { label, href? }. The last item is the current page." },
+    { "name": "separator", "type": "ReactNode", "description": "Custom separator between items. Defaults to a chevron." },
+    { "name": "duration", "type": "number", "default": "0.25", "description": "Seconds each item takes to slide in. Items are staggered. 0 skips the entrance." },
+    { "name": "className", "type": "string", "description": "Extra classes for the nav element." }
+  ]
+}

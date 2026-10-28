@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "float-input",
+  "title": "Float Input",
+  "description": "A text field whose label starts inside the box and floats up when you focus or type.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/inputs/text-code/float-input/float-input.tsx",
+      "content": "// Source: educlopez/smoothui (MIT) — https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/float-input/index.tsx\r\nimport { motion, useReducedMotion, useReducedMotionConfig } from 'motion/react'\r\nimport { useId, useState, type ReactNode } from 'react'\r\nimport { cn } from '@/lib/utils'\r\n\r\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\r\nfunction usePrefersReducedMotion() {\r\n  const os = useReducedMotion()\r\n  const forced = useReducedMotionConfig()\r\n  return Boolean(os || forced)\r\n}\r\n\r\nconst LABEL_TRANSITION = { duration: 0.28, ease: [0.4, 0, 0.2, 1] as [number, number, number, number] }\r\n\r\nexport interface FloatInputProps {\r\n  /** Text of the label. It sits inside the field and floats up on focus or when there is a value. */\r\n  label: string\r\n  /** Controlled value. */\r\n  value?: string\r\n  /** Initial value when uncontrolled. */\r\n  defaultValue?: string\r\n  /** Called with the new text on every change. */\r\n  onChange?: (value: string) => void\r\n  /** Placeholder, shown only once the label has floated. */\r\n  placeholder?: string\r\n  /** Disables the field. */\r\n  disabled?: boolean\r\n  /** Decorative icon at the start of the field. */\r\n  icon?: ReactNode\r\n  /** Extra classes for the wrapper. */\r\n  className?: string\r\n  /** Extra classes for the input. */\r\n  inputClassName?: string\r\n  /** Extra classes for the label. */\r\n  labelClassName?: string\r\n}\r\n\r\n/** A text field whose label starts inside the box and floats up when you type. */\r\nexport function FloatInput({\r\n  value,\r\n  defaultValue = '',\r\n  onChange,\r\n  label,\r\n  placeholder = '',\r\n  disabled = false,\r\n  className,\r\n  inputClassName,\r\n  labelClassName,\r\n  icon,\r\n}: FloatInputProps) {\r\n  const [internal, setInternal] = useState(defaultValue)\r\n  const [focused, setFocused] = useState(false)\r\n  const reduced = usePrefersReducedMotion()\r\n  const id = `float-input-${useId().replace(/:/g, '')}`\r\n\r\n  const current = value ?? internal\r\n  const floating = current !== '' || focused\r\n\r\n  return (\r\n    <div className={cn('relative flex items-center', className)}>\r\n      {icon ? (\r\n        <span aria-hidden className=\"absolute top-1/2 left-3 -translate-y-1/2 text-muted-foreground\">\r\n          {icon}\r\n        </span>\r\n      ) : null}\r\n      <input\r\n        id={id}\r\n        type=\"text\"\r\n        value={current}\r\n        disabled={disabled}\r\n        placeholder={floating ? placeholder : ''}\r\n        onFocus={() => setFocused(true)}\r\n        onBlur={() => setFocused(false)}\r\n        onChange={(event) => {\r\n          if (value === undefined) setInternal(event.target.value)\r\n          onChange?.(event.target.value)\r\n        }}\r\n        className={cn(\r\n          'peer w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors',\r\n          'placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/40',\r\n          'disabled:cursor-not-allowed disabled:opacity-50',\r\n          icon && 'pl-10',\r\n          inputClassName,\r\n        )}\r\n      />\r\n      <motion.label\r\n        htmlFor={id}\r\n        initial={false}\r\n        animate={floating ? { scale: 0.85, y: -24, x: 0 } : { scale: 1, y: 0, x: icon ? 28 : 0 }}\r\n        transition={reduced ? { duration: 0 } : LABEL_TRANSITION}\r\n        className={cn(\r\n          'pointer-events-none absolute top-1/2 left-3 z-[2] origin-left -translate-y-1/2 rounded-sm bg-background px-1 text-sm transition-colors',\r\n          floating ? 'text-primary' : 'text-muted-foreground',\r\n          disabled && 'opacity-50',\r\n          labelClassName,\r\n        )}\r\n      >\r\n        {label}\r\n      </motion.label>\r\n    </div>\r\n  )\r\n}\r\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "inputs",
+    "shelf": "text-code",
+    "layer": "component",
+    "source": {
+      "repo": "educlopez/smoothui",
+      "license": "MIT",
+      "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/float-input/index.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "inputs",
+    "text-code"
+  ],
+  "type": "registry:component"
+}

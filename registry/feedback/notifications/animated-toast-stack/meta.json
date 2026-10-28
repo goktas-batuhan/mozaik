@@ -1,0 +1,26 @@
+{
+  "name": "animated-toast-stack",
+  "title": "Animated Toast Stack",
+  "description": "A stack of toasts that spring in with a blur, swap their icon and text in place, swipe away and expire on a timer. Includes a hook to drive it.",
+  "group": "feedback",
+  "shelf": "notifications",
+  "layer": "component",
+  "tags": ["drag", "svg", "dashboard"],
+  "keywords": ["toast", "notification", "stack", "swipe", "snackbar"],
+  "source": { "repo": "starc007/ui-components", "license": "MIT", "url": "https://github.com/starc007/ui-components/blob/main/components/motion/animated-toast-stack.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "toasts", "type": "AnimatedToast[]", "description": "Toasts to show, oldest first: { id, title, description?, status?, icon?, action?, duration?, dismissible? }." },
+    { "name": "onDismiss", "type": "(id: string) => void", "description": "Called when a toast is swiped or closed. Without it the close button and swipe are off." },
+    { "name": "position", "type": "'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right'", "default": "'bottom-right'", "description": "Corner or edge when placement is fixed or absolute; bottom positions also grow upward." },
+    { "name": "placement", "type": "'static' | 'fixed' | 'absolute'", "description": "How the stack is positioned. Defaults to fixed when `fixed` is set, otherwise static." },
+    { "name": "fixed", "type": "boolean", "default": "false", "description": "Shortcut for placement fixed: pins the stack to the viewport and renders it in a portal." },
+    { "name": "portal", "type": "boolean", "description": "Render into a portal. Defaults to true for fixed placement." },
+    { "name": "portalRoot", "type": "Element | null", "description": "Portal target. Defaults to document.body." },
+    { "name": "maxVisible", "type": "number", "default": "4", "description": "How many of the newest toasts are shown." },
+    { "name": "classNames", "type": "ToastClassNames", "description": "Slot classes: root, item, surface, iconWrap, content, title, description, action, close, progress." },
+    { "name": "icons", "type": "Partial<Record<ToastStatus, ReactNode>>", "description": "Override the icon of a status." },
+    { "name": "renderToast", "type": "(toast: AnimatedToast) => ReactNode", "description": "Replace the default toast body." },
+    { "name": "className", "type": "string", "description": "Extra classes for the list." }
+  ]
+}

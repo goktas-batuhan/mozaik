@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segmented-toggle-button",
+  "title": "Segmented Toggle Button",
+  "description": "An iOS-style segmented control with a pill that slides under the active label.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/inputs/choice/segmented-toggle-button/segmented-toggle-button.tsx",
+      "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/buttons/segmented-toggle-button.tsx\nimport { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { type ComponentPropsWithoutRef, type CSSProperties, type KeyboardEvent, type Ref, useRef, useState } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport interface SegmentedToggleButtonProps\n  extends Omit<ComponentPropsWithoutRef<'div'>, 'onChange' | 'defaultValue' | 'children'> {\n  /** Segment labels, in order. */\n  options?: readonly string[]\n  /** Controlled index of the active segment. */\n  value?: number\n  /** Initially active index when uncontrolled. */\n  defaultValue?: number\n  /** Called with the new index and its label. */\n  onChange?: (index: number, option: string) => void\n  /** Disables all segments. */\n  disabled?: boolean\n  /** Accessible name of the group. */\n  'aria-label'?: string\n  ref?: Ref<HTMLDivElement>\n}\n\nconst EASE = 'cubic-bezier(0.22, 1, 0.36, 1)'\n// 0.25rem of padding on each side and 0.25rem between segments.\nconst GAP = 0.25\nconst PAD = 0.25\n\n/** An iOS-style segmented control: a pill slides under the active label. */\nexport function SegmentedToggleButton({\n  options = ['Day', 'Week', 'Month'],\n  value,\n  defaultValue = 0,\n  onChange,\n  disabled = false,\n  className,\n  style,\n  ref,\n  'aria-label': ariaLabel = 'Options',\n  ...props\n}: SegmentedToggleButtonProps) {\n  const reduced = usePrefersReducedMotion()\n  const isControlled = value !== undefined\n  const [internal, setInternal] = useState(defaultValue)\n  const count = options.length\n  const clampIndex = (i: number) => Math.min(Math.max(i, 0), Math.max(count - 1, 0))\n  const active = clampIndex(isControlled ? value : internal)\n  const buttons = useRef<(HTMLButtonElement | null)[]>([])\n\n  const select = (index: number) => {\n    if (disabled) return\n    if (!isControlled) setInternal(index)\n    onChange?.(index, options[index] ?? '')\n  }\n\n  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {\n    let next = index\n    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % count\n    else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + count) % count\n    else if (event.key === 'Home') next = 0\n    else if (event.key === 'End') next = count - 1\n    else return\n    event.preventDefault()\n    select(next)\n    buttons.current[next]?.focus()\n  }\n\n  const motion = reduced ? 'none' : `transform 500ms ${EASE}`\n\n  return (\n    <div\n      {...props}\n      ref={ref}\n      role=\"radiogroup\"\n      aria-label={ariaLabel}\n      aria-disabled={disabled || undefined}\n      style={{ gridTemplateColumns: `repeat(${Math.max(count, 1)}, minmax(0, 1fr))`, ...style } as CSSProperties}\n      className={cn(\n        'relative inline-grid w-fit gap-1 rounded-xl bg-muted p-1 text-sm font-medium shadow-inner select-none',\n        disabled && 'opacity-50',\n        className,\n      )}\n    >\n      <span\n        aria-hidden=\"true\"\n        className=\"pointer-events-none absolute top-1 bottom-1 left-1 rounded-lg bg-card shadow-sm\"\n        style={{\n          width: `calc((100% - ${PAD * 2 + GAP * (count - 1)}rem) / ${Math.max(count, 1)})`,\n          transform: `translateX(calc(${active} * (100% + ${GAP}rem)))`,\n          transition: motion,\n        }}\n      />\n      {options.map((option, index) => (\n        <button\n          key={option}\n          ref={(el) => {\n            buttons.current[index] = el\n          }}\n          type=\"button\"\n          role=\"radio\"\n          aria-checked={active === index}\n          tabIndex={active === index ? 0 : -1}\n          disabled={disabled}\n          onClick={() => select(index)}\n          onKeyDown={(event) => handleKeyDown(event, index)}\n          className={cn(\n            'relative z-10 min-w-18 cursor-pointer rounded-lg px-4 py-2 text-center whitespace-nowrap outline-none',\n            'focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-ring disabled:cursor-not-allowed',\n            !reduced && 'transition-colors duration-500',\n            active === index ? 'text-foreground' : 'text-muted-foreground hover:text-foreground/80',\n          )}\n        >\n          {option}\n        </button>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "inputs",
+    "shelf": "choice",
+    "layer": "component",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/buttons/segmented-toggle-button.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "inputs",
+    "choice"
+  ],
+  "type": "registry:component"
+}

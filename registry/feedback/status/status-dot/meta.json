@@ -1,0 +1,18 @@
+{
+  "name": "status-dot",
+  "title": "Status Dot",
+  "description": "A pill with a pulsing status dot and a label for service states: online, offline, maintenance or degraded.",
+  "group": "feedback",
+  "shelf": "status",
+  "layer": "component",
+  "tags": ["loop", "css", "dashboard"],
+  "keywords": ["status", "dot", "uptime", "service", "online"],
+  "source": { "repo": "shadcnblocks/kibo", "license": "MIT", "url": "https://github.com/shadcnblocks/kibo/blob/main/packages/status/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "status", "type": "'online' | 'offline' | 'maintenance' | 'degraded'", "description": "Service state. Sets the dot color and the default label." },
+    { "name": "children", "type": "ReactNode", "description": "Replaces the default label." },
+    { "name": "duration", "type": "number", "default": "1.6", "description": "Seconds per pulse of the ring around the dot. Still under reduced motion." },
+    { "name": "className", "type": "string", "description": "Extra classes for the pill." }
+  ]
+}

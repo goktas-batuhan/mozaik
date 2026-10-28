@@ -1,0 +1,20 @@
+{
+  "name": "pagination",
+  "title": "Pagination",
+  "description": "Page navigation with ellipses and a sliding indicator behind the active page.",
+  "group": "navigation",
+  "shelf": "tabs",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["pagination", "pages", "paging", "nav"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/pagination/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "page", "type": "number", "required": true, "description": "Current page, starting at 1." },
+    { "name": "totalPages", "type": "number", "required": true, "description": "Total number of pages." },
+    { "name": "onPageChange", "type": "(page: number) => void", "required": true, "description": "Called with the new page when the user picks one." },
+    { "name": "siblings", "type": "number", "default": "1", "description": "Pages shown on each side of the current page." },
+    { "name": "duration", "type": "number", "default": "0.25", "description": "Seconds the sliding indicator and entrance take." },
+    { "name": "className", "type": "string", "description": "Extra classes for the nav element." }
+  ]
+}

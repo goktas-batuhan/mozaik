@@ -1,0 +1,20 @@
+{
+  "name": "wheel-picker",
+  "title": "Wheel Picker",
+  "description": "An iOS-style drum picker: real 3D cylinders you drag, flick, scroll or step with the keyboard.",
+  "group": "inputs",
+  "shelf": "pickers",
+  "layer": "component",
+  "tags": ["drag", "scroll", "css"],
+  "keywords": ["picker", "wheel", "drum", "time picker", "ios", "select"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/wheel-picker.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "columns", "type": "WheelColumn[]", "description": "The wheels, left to right: { id, label, options, loop?, className? }. Defaults to a 12-hour time picker." },
+    { "name": "value", "type": "Record<string, string>", "description": "Controlled selection, keyed by column id." },
+    { "name": "defaultValue", "type": "Record<string, string>", "description": "Initial selection when uncontrolled." },
+    { "name": "onValueChange", "type": "(value: Record<string, string>) => void", "description": "Called once a wheel comes to rest on a new option." },
+    { "name": "label", "type": "string", "default": "'Time'", "description": "Accessible name for the whole picker." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." }
+  ]
+}

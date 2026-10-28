@@ -1,0 +1,24 @@
+{
+  "name": "tip-selector",
+  "title": "Tip Selector",
+  "description": "A checkout tip picker set on a draggable tape with preset chips, a Round up shortcut and rolling totals.",
+  "group": "inputs",
+  "shelf": "choice",
+  "layer": "component",
+  "tags": ["drag", "click", "marketing"],
+  "keywords": ["tip", "checkout", "payment", "slider", "percent", "ruler"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/tip-selector.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "subtotal", "type": "number", "default": "42.6", "description": "The order amount before the tip." },
+    { "name": "recipient", "type": "{ name: string; note?: string }", "default": "{ name: 'Sam', note: 'Your courier · 6 min early' }", "description": "Who the tip goes to." },
+    { "name": "percents", "type": "number[]", "default": "[15, 18, 20]", "description": "Percents marked on the tape and offered as shortcuts." },
+    { "name": "value", "type": "number", "description": "Controlled tip, in percent." },
+    { "name": "defaultValue", "type": "number", "default": "18", "description": "Where the tape starts when uncontrolled, in percent." },
+    { "name": "max", "type": "number", "default": "30", "description": "The far end of the tape, in percent." },
+    { "name": "currency", "type": "string", "default": "'$'", "description": "Currency symbol shown before amounts." },
+    { "name": "onChange", "type": "(tip: number, percent: number) => void", "description": "Called when the tip changes, with the tip amount and the percent." },
+    { "name": "onPay", "type": "(total: number) => void", "description": "Called with the total when the order button is pressed." },
+    { "name": "className", "type": "string", "description": "Extra classes for the card." }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "kebab-actions-dropdown",
+  "title": "Kebab Actions Dropdown",
+  "description": "A row with a kebab button that expands its action menu inside the same card, with arrow-key navigation.",
+  "group": "navigation",
+  "shelf": "dock-menus",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["menu", "dropdown", "kebab", "actions", "more", "row"],
+  "source": { "repo": "bidyut10/opensourceui", "license": "MIT", "url": "https://github.com/bidyut10/opensourceui/blob/main/components/dropdowns/kebab-actions-dropdown.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "rowTitle", "type": "string", "default": "'Quarterly report'", "description": "Title of the row the menu belongs to." },
+    { "name": "items", "type": "KebabMenuItem[]", "default": "Edit, Copy link, Archive, Delete", "description": "Menu entries: id, label, icon, danger, separator." },
+    { "name": "onItemClick", "type": "(item: KebabMenuItem) => void", "description": "Called with the item the user picked. The menu closes first." },
+    { "name": "triggerAriaLabel", "type": "string", "default": "'More actions'", "description": "Accessible name of the kebab button." },
+    { "name": "menuAriaLabel", "type": "string", "default": "'Actions menu'", "description": "Accessible name of the menu." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

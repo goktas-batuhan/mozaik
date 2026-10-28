@@ -1,0 +1,19 @@
+{
+  "name": "alert",
+  "title": "Alert",
+  "description": "An inline notice with an optional icon, title and body in four tones. Warnings and errors interrupt screen readers; info and success are polite.",
+  "group": "feedback",
+  "shelf": "notifications",
+  "layer": "component",
+  "tags": ["css", "dashboard"],
+  "keywords": ["alert", "notice", "banner", "callout", "message"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/alert/index.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "variant", "type": "'info' | 'success' | 'warning' | 'destructive'", "default": "'info'", "description": "Tone of the notice. Warning and destructive use role alert, the others role status." },
+    { "name": "title", "type": "ReactNode", "description": "Bold heading line." },
+    { "name": "icon", "type": "ReactNode", "description": "Optional leading icon, hidden from screen readers." },
+    { "name": "children", "type": "ReactNode", "description": "Body copy under the title." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

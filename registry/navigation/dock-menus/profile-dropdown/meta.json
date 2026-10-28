@@ -1,0 +1,28 @@
+{
+  "name": "profile-dropdown",
+  "title": "Profile Dropdown",
+  "description": "An account menu that grows out of its own trigger, with status, theme, links, account switching and a hold-to-confirm sign out.",
+  "group": "navigation",
+  "shelf": "dock-menus",
+  "layer": "component",
+  "tags": ["click", "hover"],
+  "keywords": ["account", "profile", "menu", "dropdown", "avatar", "switcher", "sign out"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/profile-dropdown.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "accounts", "type": "Account[]", "default": "three sample accounts", "description": "Accounts to switch between: id, name, email, initials, plan." },
+    { "name": "defaultAccountId", "type": "string", "description": "Id of the account shown first. Defaults to the first account." },
+    { "name": "onAccountChange", "type": "(account: Account) => void", "description": "Called when the user picks another account." },
+    { "name": "onAddAccount", "type": "() => void", "description": "Called when the user picks Add account." },
+    { "name": "items", "type": "ProfileMenuItem[]", "default": "Profile, Settings, Billing", "description": "Menu entries between the settings rows and Switch account." },
+    { "name": "theme", "type": "'light' | 'dark' | 'system'", "description": "Controlled theme. Leave it out to keep the choice in local state." },
+    { "name": "defaultTheme", "type": "'light' | 'dark' | 'system'", "default": "'system'", "description": "Initial theme when uncontrolled." },
+    { "name": "onThemeChange", "type": "(theme: AccountTheme) => void", "description": "Called when the theme changes." },
+    { "name": "status", "type": "'online' | 'away' | 'busy'", "description": "Controlled status. Leave it out to keep the choice in local state." },
+    { "name": "defaultStatus", "type": "'online' | 'away' | 'busy'", "default": "'online'", "description": "Initial status when uncontrolled." },
+    { "name": "onStatusChange", "type": "(status: AccountStatus) => void", "description": "Called when the status changes." },
+    { "name": "onSignOut", "type": "() => void", "description": "Called once Sign out has been held for holdDuration." },
+    { "name": "holdDuration", "type": "number", "default": "1200", "description": "Milliseconds Sign out must be held." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

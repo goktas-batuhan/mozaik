@@ -1,0 +1,25 @@
+{
+  "name": "detent-dial",
+  "title": "Detent Dial",
+  "description": "A rotary knob that clicks from notch to notch, with a swelling tick ring, flick momentum and a rolling readout.",
+  "group": "inputs",
+  "shelf": "sliders-dials",
+  "layer": "component",
+  "tags": ["drag", "svg", "dashboard"],
+  "keywords": ["dial", "knob", "rotary", "thermostat", "detent", "slider"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/detent-dial.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "label", "type": "string", "default": "'Temperature'", "description": "Accessible name, also shown inside the knob." },
+    { "name": "min", "type": "number", "default": "16", "description": "Lowest value." },
+    { "name": "max", "type": "number", "default": "30", "description": "Highest value." },
+    { "name": "step", "type": "number", "default": "0.5", "description": "Distance between notches." },
+    { "name": "defaultValue", "type": "number", "default": "21", "description": "Initial value when uncontrolled. Double-clicking the knob returns here." },
+    { "name": "value", "type": "number", "description": "Controlled value." },
+    { "name": "onValueChange", "type": "(value: number) => void", "description": "Called each time the dial crosses into a new notch." },
+    { "name": "formatValue", "type": "(value: number) => string", "description": "Formats the readout, the end labels and aria-valuetext." },
+    { "name": "size", "type": "number", "default": "240", "description": "Diameter in pixels." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables dragging, keys and the wheel." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." }
+  ]
+}

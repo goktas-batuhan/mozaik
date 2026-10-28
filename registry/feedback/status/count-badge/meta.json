@@ -1,0 +1,23 @@
+{
+  "name": "count-badge",
+  "title": "Count Badge",
+  "description": "A badge for the corner of an avatar or icon: a dot, a rolling count with a cap, or a presence dot, with an optional pulse.",
+  "group": "feedback",
+  "shelf": "status",
+  "layer": "component",
+  "tags": ["loop", "css", "dashboard"],
+  "keywords": ["badge", "count", "notification", "presence", "unread"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/count-badge/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "variant", "type": "'dot' | 'count' | 'status'", "default": "'dot'", "description": "A plain dot, a number, or a presence dot." },
+    { "name": "count", "type": "number", "default": "0", "description": "The number shown by the count variant." },
+    { "name": "max", "type": "number", "default": "99", "description": "Largest number shown; above it the badge reads max+." },
+    { "name": "showZero", "type": "boolean", "default": "false", "description": "Show the count variant when the count is 0." },
+    { "name": "status", "type": "'online' | 'offline' | 'busy' | 'away'", "default": "'online'", "description": "Presence shown by the status variant." },
+    { "name": "ping", "type": "boolean", "default": "false", "description": "Adds a pulsing ring. Off under reduced motion." },
+    { "name": "position", "type": "'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'", "default": "'top-right'", "description": "Corner of the child the badge sits on." },
+    { "name": "children", "type": "ReactNode", "description": "What the badge sits on. Without it the badge stands alone." },
+    { "name": "className", "type": "string", "description": "Extra classes for the badge." }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "speech-bubble",
+  "title": "Speech Bubble",
+  "description": "A pill-shaped chat bubble with a curved tail and a blinking caret. Calm and still under reduced motion.",
+  "group": "feedback",
+  "shelf": "notifications",
+  "layer": "component",
+  "tags": ["loop", "svg", "ai"],
+  "keywords": ["speech", "bubble", "chat", "message", "caret"],
+  "source": { "repo": "nolly-studio/cult-ui", "license": "MIT", "url": "https://github.com/nolly-studio/cult-ui/blob/main/apps/www/registry/default/ui/speech-bubble.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "The message inside the bubble." },
+    { "name": "showCursor", "type": "boolean", "default": "true", "description": "Shows a blinking caret after the text on md screens and up." },
+    { "name": "duration", "type": "number", "default": "1", "description": "Seconds per caret blink." },
+    { "name": "className", "type": "string", "description": "Extra classes for the outer wrapper." }
+  ]
+}

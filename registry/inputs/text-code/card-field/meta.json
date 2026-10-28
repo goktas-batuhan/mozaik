@@ -1,0 +1,19 @@
+{
+  "name": "card-field",
+  "title": "Card Field",
+  "description": "A one-row card input for checkout. The number groups by brand, then slides away to its last four digits to make room for expiry and security code.",
+  "group": "inputs",
+  "shelf": "text-code",
+  "layer": "component",
+  "tags": ["type", "click", "marketing"],
+  "keywords": ["credit card", "checkout", "payment", "expiry", "cvc", "luhn"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/card-field.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "amount", "type": "number", "default": "48", "description": "What the pay button charges." },
+    { "name": "currency", "type": "string", "default": "'$'", "description": "Currency symbol shown before the amount." },
+    { "name": "onPay", "type": "(card: CardDetails) => Promise<void> | void", "description": "Called with brand, last4 and MM/YY when Pay is pressed. Return a promise and the button waits for it; reject to decline." },
+    { "name": "testMode", "type": "boolean", "default": "true", "description": "Shows a 'Use test card' link that types a test number in for you." },
+    { "name": "className", "type": "string", "description": "Extra classes for the card." }
+  ]
+}

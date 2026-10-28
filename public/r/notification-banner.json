@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "notification-banner",
+  "title": "Notification Banner",
+  "description": "A small snackbar with a check icon, an optional action and a close button. Slides up, fades out on dismiss and leaves a button to bring it back.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/feedback/notifications/notification-banner/notification-banner.tsx",
+      "content": "// Source: bidyut10/opensourceui (MIT) — https://github.com/bidyut10/opensourceui/blob/main/components/notifications/toast-notification-banner.tsx\nimport { useReducedMotion, useReducedMotionConfig } from 'motion/react'\nimport { useEffect, useState, type ComponentPropsWithoutRef, type Ref } from 'react'\nimport { cn } from '@/lib/utils'\n\n/** OS setting, or forced on with <MotionConfig reducedMotion=\"always\">. */\nfunction usePrefersReducedMotion() {\n  const os = useReducedMotion()\n  const forced = useReducedMotionConfig()\n  return Boolean(os || forced)\n}\n\nexport interface NotificationBannerProps extends Omit<ComponentPropsWithoutRef<'output'>, 'children'> {\n  /** The message. */\n  message?: string\n  /** Label of the action button. Pass an empty string to hide it. */\n  actionLabel?: string\n  /** Label of the button that brings the banner back after it was dismissed. */\n  showTriggerLabel?: string\n  /** Called when the banner starts to close. */\n  onDismiss?: () => void\n  /** Called when the action button is pressed. */\n  onAction?: () => void\n  /** Called when the banner is brought back. */\n  onShow?: () => void\n  /** Seconds the slide and fade take. */\n  duration?: number\n  ref?: Ref<HTMLOutputElement>\n}\n\n/** A small snackbar with a check icon, an optional action and a close button. It slides up, fades out on dismiss and leaves a button to bring it back. */\nexport function NotificationBanner({\n  className,\n  message = 'Changes saved',\n  actionLabel = 'Undo',\n  showTriggerLabel = 'Show notification',\n  onDismiss,\n  onAction,\n  onShow,\n  duration = 0.3,\n  ref,\n  ...props\n}: NotificationBannerProps) {\n  const reduced = usePrefersReducedMotion()\n  const [phase, setPhase] = useState<'open' | 'closing' | 'closed'>('open')\n  const exitMs = reduced ? 0 : Math.round(duration * 1000)\n\n  useEffect(() => {\n    if (phase !== 'closing') return\n    const timer = window.setTimeout(() => setPhase('closed'), exitMs)\n    return () => window.clearTimeout(timer)\n  }, [phase, exitMs])\n\n  const handleDismiss = () => {\n    if (phase !== 'open') return\n    setPhase('closing')\n    onDismiss?.()\n  }\n\n  const handleShow = () => {\n    setPhase('open')\n    onShow?.()\n  }\n\n  if (phase === 'closed') {\n    return (\n      <button\n        type=\"button\"\n        onClick={handleShow}\n        className={cn(\n          'cursor-pointer rounded-xl bg-muted px-4 py-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground',\n          'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',\n          className,\n        )}\n      >\n        {showTriggerLabel}\n      </button>\n    )\n  }\n\n  return (\n    <output\n      ref={ref}\n      data-slot=\"notification-banner\"\n      data-phase={phase}\n      style={{ transitionDuration: reduced ? '0s' : `${duration}s` }}\n      {...props}\n      className={cn(\n        'inline-flex max-w-80 items-center gap-2.5 rounded-xl border border-border bg-card/95 px-3 py-2.5 text-card-foreground shadow-lg backdrop-blur-xl',\n        'translate-y-0 opacity-100 transition-[opacity,translate] ease-out',\n        !reduced && 'starting:translate-y-3 starting:opacity-0',\n        !reduced && 'data-[phase=closing]:translate-y-3',\n        'data-[phase=closing]:opacity-0',\n        className,\n      )}\n    >\n      <span aria-hidden className=\"flex size-5 shrink-0 items-center justify-center rounded-full bg-success text-background\">\n        <svg viewBox=\"0 0 24 24\" className=\"size-3\" fill=\"none\" stroke=\"currentColor\" strokeWidth={3.5} strokeLinecap=\"round\" strokeLinejoin=\"round\">\n          <path d=\"M20 6 9 17l-5-5\" />\n        </svg>\n      </span>\n\n      <p className=\"min-w-0 flex-1 text-[13px] leading-tight\">{message}</p>\n\n      {actionLabel ? (\n        <button\n          type=\"button\"\n          onClick={onAction}\n          className=\"shrink-0 cursor-pointer rounded text-[13px] font-semibold underline underline-offset-2 transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-ring\"\n        >\n          {actionLabel}\n        </button>\n      ) : null}\n\n      <button\n        type=\"button\"\n        onClick={handleDismiss}\n        aria-label=\"Dismiss\"\n        className=\"shrink-0 cursor-pointer rounded p-0.5 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring\"\n      >\n        <svg aria-hidden viewBox=\"0 0 24 24\" className=\"size-3\" fill=\"none\" stroke=\"currentColor\" strokeWidth={2.5} strokeLinecap=\"round\">\n          <path d=\"M18 6 6 18M6 6l12 12\" />\n        </svg>\n      </button>\n    </output>\n  )\n}\n",
+      "type": "registry:component"
+    }
+  ],
+  "meta": {
+    "group": "feedback",
+    "shelf": "notifications",
+    "layer": "component",
+    "source": {
+      "repo": "bidyut10/opensourceui",
+      "license": "MIT",
+      "url": "https://github.com/bidyut10/opensourceui/blob/main/components/notifications/toast-notification-banner.tsx"
+    },
+    "status": "stable",
+    "variants": 0
+  },
+  "categories": [
+    "feedback",
+    "notifications"
+  ],
+  "type": "registry:component"
+}
