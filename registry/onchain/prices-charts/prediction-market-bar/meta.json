@@ -1,0 +1,21 @@
+{
+  "name": "prediction-market-bar",
+  "title": "Prediction Market Bar",
+  "description": "A binary market card: the question, the chance of Yes, a split odds bar and Yes and No share prices as buttons. Data in, no wallet.",
+  "group": "onchain",
+  "shelf": "prices-charts",
+  "layer": "component",
+  "tags": ["click", "web3", "dashboard"],
+  "keywords": ["prediction", "market", "odds", "polymarket", "yes no", "probability"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "cssVars": { "light": {"success": "oklch(0.6 0.15 155)"}, "dark": {"success": "oklch(0.72 0.15 155)"} },
+  "props": [
+    { "name": "question", "type": "string", "required": true, "description": "The question the market resolves." },
+    { "name": "yes", "type": "number", "required": true, "description": "Probability of Yes from 0 to 1; also the Yes share price in dollars." },
+    { "name": "volume", "type": "string", "description": "Traded volume, shown as given." },
+    { "name": "closes", "type": "string", "description": "Resolution date or status line." },
+    { "name": "onTrade", "type": "(side: 'yes' | 'no') => void", "description": "Called with the side when a trade button is pressed. Nothing is sent." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

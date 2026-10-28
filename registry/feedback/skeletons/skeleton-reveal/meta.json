@@ -1,0 +1,20 @@
+{
+  "name": "skeleton-reveal",
+  "title": "Skeleton Reveal",
+  "description": "Wraps real content and swaps a placeholder for it with a cross-fade. The content is always laid out, so nothing shifts when it arrives.",
+  "group": "feedback",
+  "shelf": "skeletons",
+  "layer": "component",
+  "tags": ["loop", "css"],
+  "keywords": ["skeleton", "loading", "placeholder", "fade", "layout shift", "suspense"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "loading", "type": "boolean", "required": true, "description": "While true the placeholder shows; when it turns false the content fades in." },
+    { "name": "children", "type": "ReactNode", "required": true, "description": "The real content. It is always laid out, so the box never changes size." },
+    { "name": "placeholder", "type": "ReactNode", "description": "Custom placeholder (build it from SkeletonBar). Defaults to a few grey lines." },
+    { "name": "duration", "type": "number", "default": "0.45", "description": "Seconds for the cross-fade." },
+    { "name": "label", "type": "string", "default": "'Loading'", "description": "Announced while loading." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

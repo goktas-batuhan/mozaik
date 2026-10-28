@@ -1,0 +1,21 @@
+{
+  "name": "liquidity-heatmap",
+  "title": "Liquidity Heatmap",
+  "description": "Resting liquidity by price level over time as a grid of cells whose strength follows the size, with a current-price row and an arrow-key readout.",
+  "group": "onchain",
+  "shelf": "prices-charts",
+  "layer": "component",
+  "tags": ["hover", "css", "web3"],
+  "keywords": ["heatmap", "liquidity", "order book", "depth", "price levels", "walls"],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    { "name": "cells", "type": "number[][]", "required": true, "description": "Liquidity per cell, cells[row][column]. Row 0 is the highest price, column 0 the oldest time." },
+    { "name": "rowLabels", "type": "string[]", "required": true, "description": "One label per row, top to bottom." },
+    { "name": "columnLabels", "type": "string[]", "required": true, "description": "One label per column, left to right." },
+    { "name": "markerRow", "type": "number", "description": "Row index of the current price; its row gets a marker." },
+    { "name": "formatValue", "type": "(value: number) => string", "description": "Formats values in the readout (compact by default)." },
+    { "name": "label", "type": "string", "default": "'Liquidity heatmap'", "description": "Accessible name of the grid." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

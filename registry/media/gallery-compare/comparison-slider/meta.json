@@ -1,0 +1,25 @@
+{
+  "name": "comparison-slider",
+  "title": "Comparison Slider",
+  "description": "A before/after reveal split by a draggable divider that is also a keyboard slider (arrows, page keys, home and end).",
+  "group": "media",
+  "shelf": "gallery-compare",
+  "layer": "component",
+  "tags": ["drag", "hover", "css"],
+  "keywords": ["before", "after", "compare", "image", "slider", "diff"],
+  "source": { "repo": "haydenbleasel/kibo", "license": "MIT", "url": "https://github.com/haydenbleasel/kibo/blob/main/packages/comparison/index.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "before", "type": "ReactNode", "required": true, "description": "Layer shown left of the divider." },
+    { "name": "after", "type": "ReactNode", "required": true, "description": "Layer shown right of the divider." },
+    { "name": "beforeLabel", "type": "string", "default": "'Before'", "description": "Corner tag for the left layer." },
+    { "name": "afterLabel", "type": "string", "default": "'After'", "description": "Corner tag for the right layer." },
+    { "name": "position", "type": "number", "description": "Controlled divider position, 0 to 100. Pair with onPositionChange." },
+    { "name": "defaultPosition", "type": "number", "default": "50", "description": "Divider position when uncontrolled." },
+    { "name": "onPositionChange", "type": "(position: number) => void", "description": "Called when the pointer or keys move the divider." },
+    { "name": "hover", "type": "boolean", "default": "false", "description": "Follow the pointer without pressing." },
+    { "name": "step", "type": "number", "default": "5", "description": "Arrow-key step in percent." },
+    { "name": "label", "type": "string", "default": "'Comparison position'", "description": "Accessible name of the slider." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root; give it an aspect ratio or height." }
+  ]
+}

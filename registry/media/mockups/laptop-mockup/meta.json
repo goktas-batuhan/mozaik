@@ -1,0 +1,17 @@
+{
+  "name": "laptop-mockup",
+  "title": "Laptop Mockup",
+  "description": "A laptop with a 16:10 screen and a hinged base, drawn with theme tokens. Anything you pass becomes the screen.",
+  "group": "media",
+  "shelf": "mockups",
+  "layer": "component",
+  "tags": ["css", "marketing"],
+  "keywords": ["laptop", "macbook", "device", "frame", "screen"],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Screen content." },
+    { "name": "screenLabel", "type": "string", "default": "'Laptop screen'", "description": "Accessible name for the screen region." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root; set the width here (max 640px by default)." }
+  ]
+}

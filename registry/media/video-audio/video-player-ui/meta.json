@@ -1,0 +1,25 @@
+{
+  "name": "video-player-ui",
+  "title": "Video Player UI",
+  "description": "Video controls on a 16:9 stage: a big play button, scrub bar, time readout, speed cycle and fullscreen. It runs its own clock and loads no media.",
+  "group": "media",
+  "shelf": "video-audio",
+  "layer": "component",
+  "tags": ["click", "drag", "css"],
+  "keywords": ["video", "player", "controls", "scrub", "speed", "poster"],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "The picture area: a poster, a video element you control, or any node." },
+    { "name": "duration", "type": "number", "required": true, "description": "Clip length in seconds." },
+    { "name": "playing", "type": "boolean", "description": "Controlled play state. Pair with onPlayingChange." },
+    { "name": "defaultPlaying", "type": "boolean", "default": "false", "description": "Play state when uncontrolled." },
+    { "name": "onPlayingChange", "type": "(playing: boolean) => void", "description": "Called by the play buttons and when the clip ends." },
+    { "name": "currentTime", "type": "number", "description": "Controlled position in seconds. Pair with onTimeChange." },
+    { "name": "defaultCurrentTime", "type": "number", "default": "0", "description": "Position when uncontrolled." },
+    { "name": "onTimeChange", "type": "(time: number) => void", "description": "Called on every tick and seek; mirror it onto a real video element." },
+    { "name": "onFullscreen", "type": "() => void", "description": "Called by the fullscreen button." },
+    { "name": "label", "type": "string", "default": "'Video player'", "description": "Accessible name of the player group." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

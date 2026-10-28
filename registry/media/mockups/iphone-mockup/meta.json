@@ -1,0 +1,17 @@
+{
+  "name": "iphone-mockup",
+  "title": "iPhone Mockup",
+  "description": "A phone frame with a dynamic island and side buttons, drawn with theme tokens. Anything you pass becomes the screen.",
+  "group": "media",
+  "shelf": "mockups",
+  "layer": "component",
+  "tags": ["css", "marketing"],
+  "keywords": ["phone", "device", "frame", "mobile", "screenshot"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/iphone.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Screen content; it fills the display and is clipped to the rounded corners." },
+    { "name": "island", "type": "boolean", "default": "true", "description": "Shows the dynamic island cut-out." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root; width is set here (max 280px by default)." }
+  ]
+}

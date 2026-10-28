@@ -1,0 +1,17 @@
+{
+  "name": "android-mockup",
+  "title": "Android Mockup",
+  "description": "A phone frame with a punch-hole camera and a gesture bar, drawn with theme tokens. Anything you pass becomes the screen.",
+  "group": "media",
+  "shelf": "mockups",
+  "layer": "component",
+  "tags": ["css", "marketing"],
+  "keywords": ["phone", "android", "device", "frame", "mobile"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/android.tsx" },
+  "dependencies": [],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Screen content; it fills the display and is clipped to the rounded corners." },
+    { "name": "gestureBar", "type": "boolean", "default": "true", "description": "Shows the gesture bar at the bottom of the screen." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root; width is set here (max 260px by default)." }
+  ]
+}
