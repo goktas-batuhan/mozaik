@@ -1,0 +1,19 @@
+{
+  "name": "glow-hover-card",
+  "title": "Glow Hover Cards",
+  "description": "A grid of cards lit by one shared glow: borders and fills light up under the pointer and carry across neighbouring cards.",
+  "group": "cards",
+  "shelf": "surface",
+  "layer": "component",
+  "tags": ["hover", "css", "marketing"],
+  "keywords": ["glow", "spotlight", "grid", "cards", "features", "border"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/glow-hover-card/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "{ id: string; content: ReactNode }[]", "description": "Cards in the grid." },
+    { "name": "columns", "type": "number", "default": "3", "description": "Number of grid columns." },
+    { "name": "glowSize", "type": "number", "default": "180", "description": "Radius in pixels of the glow around the pointer." },
+    { "name": "intensity", "type": "number", "default": "0.12", "description": "Strength of the soft fill, 0 to 1. The glowing border is always full strength." },
+    { "name": "className", "type": "string", "description": "Extra classes for the grid." }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "command-button",
+  "title": "Command Button",
+  "description": "A button that draws its keyboard shortcut as physical keycaps. The shortcut works page-wide: caps sink as keys go down and the button clicks on a match.",
+  "group": "buttons",
+  "shelf": "animated",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["button", "shortcut", "keyboard", "keycap", "command"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/command-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "shortcut", "type": "string", "default": "'mod+k'", "description": "Shortcut as +-joined parts: mod (Cmd on Mac, Ctrl elsewhere), ctrl, alt, shift and one key." },
+    { "name": "global", "type": "boolean", "default": "true", "description": "Listen for the shortcut on the whole page. Plain-key shortcuts are ignored while typing in a field." },
+    { "name": "children", "type": "ReactNode", "default": "'Search'", "description": "Button label." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the button and its shortcut." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}

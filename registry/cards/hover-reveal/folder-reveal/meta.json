@@ -1,0 +1,24 @@
+{
+  "name": "folder-reveal",
+  "title": "Folder Reveal",
+  "description": "A folder that fans its cards out when opened: the flap tips forward and the cards rise and spread, on hover, click or keyboard.",
+  "group": "cards",
+  "shelf": "hover-reveal",
+  "layer": "component",
+  "tags": ["hover", "click", "css"],
+  "keywords": ["folder", "files", "fan", "reveal", "cards", "stack"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/folder-reveal/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "{ id: string; content: ReactNode }[]", "description": "Cards kept in the folder. Five or fewer read best." },
+    { "name": "label", "type": "string", "default": "'Folder'", "description": "Accessible name of the folder button." },
+    { "name": "trigger", "type": "'hover' | 'click'", "default": "'hover'", "description": "hover opens under a mouse; both triggers toggle on click and keyboard." },
+    { "name": "open", "type": "boolean", "description": "Controlled open state." },
+    { "name": "defaultOpen", "type": "boolean", "default": "false", "description": "Initial open state when uncontrolled." },
+    { "name": "onOpenChange", "type": "(open: boolean) => void", "description": "Called with the new open state." },
+    { "name": "size", "type": "number", "default": "260", "description": "Folder width in pixels. Height follows." },
+    { "name": "spread", "type": "number", "default": "56", "description": "Horizontal distance in pixels between fanned cards." },
+    { "name": "rotation", "type": "number", "default": "7", "description": "Degrees of rotation per card as the fan opens." },
+    { "name": "className", "type": "string", "description": "Extra classes for the folder button." }
+  ]
+}

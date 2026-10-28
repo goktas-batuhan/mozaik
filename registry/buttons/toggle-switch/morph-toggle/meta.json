@@ -1,0 +1,23 @@
+{
+  "name": "morph-toggle",
+  "title": "Morph Toggle",
+  "description": "A switch with a spring thumb that can morph from a rounded square to a circle, or carry an icon that turns as it flips.",
+  "group": "buttons",
+  "shelf": "toggle-switch",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["switch", "toggle", "checkbox", "setting", "icon"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/morph-toggle/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "checked", "type": "boolean", "description": "Controlled state." },
+    { "name": "defaultChecked", "type": "boolean", "default": "false", "description": "Initial state when uncontrolled." },
+    { "name": "onChange", "type": "(checked: boolean) => void", "description": "Called with the new state." },
+    { "name": "variant", "type": "'default' | 'morph' | 'icon'", "default": "'default'", "description": "morph squares the thumb while off; icon shows icons inside the thumb." },
+    { "name": "icons", "type": "{ on: ReactNode; off: ReactNode }", "description": "Icons for the on and off states, used by the icon variant." },
+    { "name": "size", "type": "'sm' | 'md' | 'lg'", "default": "'md'", "description": "Track size." },
+    { "name": "label", "type": "string", "description": "Accessible name." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the switch." },
+    { "name": "className", "type": "string", "description": "Extra classes for the track." }
+  ]
+}

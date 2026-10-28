@@ -1,0 +1,21 @@
+{
+  "name": "bell-button",
+  "title": "Bell Button",
+  "description": "A notification toggle whose bell swings and rings when switched on, with an unread badge, and goes quiet with a slash when off.",
+  "group": "buttons",
+  "shelf": "animated",
+  "layer": "component",
+  "tags": ["click", "svg", "dashboard"],
+  "keywords": ["button", "bell", "notification", "ring", "subscribe"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "pressed", "type": "boolean", "description": "Controlled state. true means notifications are on." },
+    { "name": "defaultPressed", "type": "boolean", "default": "false", "description": "Initial state when uncontrolled." },
+    { "name": "onPressedChange", "type": "(pressed: boolean) => void", "description": "Called with the new state when the button is pressed." },
+    { "name": "label", "type": "string", "default": "'Notifications'", "description": "Visible text next to the bell. Empty for an icon-only button." },
+    { "name": "count", "type": "number", "default": "0", "description": "Unread count shown as a badge while on. Hidden at 0." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the button." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}
