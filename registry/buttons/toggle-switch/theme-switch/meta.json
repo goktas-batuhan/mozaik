@@ -1,0 +1,20 @@
+{
+  "name": "theme-switch",
+  "title": "Theme Switch",
+  "description": "A sun and moon switch: a sliding mask bites the sun into a crescent while its rays fold away. Reports the theme and leaves applying it to you.",
+  "group": "buttons",
+  "shelf": "toggle-switch",
+  "layer": "component",
+  "tags": ["click", "svg", "dashboard"],
+  "keywords": ["theme", "dark mode", "toggle", "switch", "sun", "moon"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/switch-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "theme", "type": "'light' | 'dark'", "description": "Controlled theme." },
+    { "name": "defaultTheme", "type": "'light' | 'dark'", "default": "'light'", "description": "Initial theme when uncontrolled." },
+    { "name": "onThemeChange", "type": "(theme: 'light' | 'dark') => void", "description": "Called with the theme to switch to. The component never touches the document." },
+    { "name": "showLabel", "type": "boolean", "default": "false", "description": "Show a text label next to the icon." },
+    { "name": "size", "type": "'sm' | 'md' | 'lg'", "default": "'md'", "description": "Button size." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "time-machine-stack",
+  "title": "Time Machine Stack",
+  "description": "A stack that reaches back through time: older cards peek out above the front one, and Newer, Older or the arrow keys step through them.",
+  "group": "cards",
+  "shelf": "flip-stack",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["stack", "history", "timeline", "cards", "depth", "changelog"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/time-machine-stack/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "{ id: string; label: string; content: ReactNode }[]", "description": "Cards from newest (front) to oldest (back)." },
+    { "name": "index", "type": "number", "description": "Controlled index of the card in front." },
+    { "name": "defaultIndex", "type": "number", "default": "0", "description": "Initial index when uncontrolled." },
+    { "name": "onIndexChange", "type": "(index: number) => void", "description": "Called with the new front index." },
+    { "name": "visibleCount", "type": "number", "default": "3", "description": "Cards visible behind the front one." },
+    { "name": "offsetY", "type": "number", "default": "28", "description": "Vertical step in pixels between stacked cards." },
+    { "name": "className", "type": "string", "description": "Extra classes for the stack area. Give it a size." }
+  ]
+}

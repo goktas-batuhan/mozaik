@@ -1,0 +1,22 @@
+{
+  "name": "emboss-surface",
+  "title": "Emboss Surface",
+  "description": "A surface carved by light: raised, pressed in or stamped, with the relief following a light angle you set or the pointer. Can carve just the text.",
+  "group": "cards",
+  "shelf": "surface",
+  "layer": "component",
+  "tags": ["hover", "css"],
+  "keywords": ["emboss", "deboss", "neumorphism", "relief", "shadow", "stamp", "surface"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/emboss-surface/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "variant", "type": "'emboss' | 'deboss' | 'stamp'", "default": "'emboss'", "description": "emboss raises the surface, deboss presses it in, stamp is a hard-edged raised plate." },
+    { "name": "target", "type": "'surface' | 'text'", "default": "'surface'", "description": "surface carves the box; text carves the letters only." },
+    { "name": "depth", "type": "number", "default": "6", "description": "Relief depth in pixels." },
+    { "name": "lightAngle", "type": "number", "default": "135", "description": "Direction the light comes from in degrees: 0 right, 90 up, 135 top left." },
+    { "name": "softness", "type": "number", "default": "0.6", "description": "Shadow diffusion from 0 (hard) to 1 (soft)." },
+    { "name": "interactive", "type": "boolean", "default": "false", "description": "Let the light angle follow the pointer on hover-capable devices." },
+    { "name": "as", "type": "ElementType", "default": "'div'", "description": "Element or component rendered as the surface." },
+    { "name": "className", "type": "string", "description": "Extra classes for the surface." }
+  ]
+}

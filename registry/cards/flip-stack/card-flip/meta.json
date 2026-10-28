@@ -1,0 +1,22 @@
+{
+  "name": "card-flip",
+  "title": "Card Flip",
+  "description": "A card that turns over on a spring to show its back, on click, Enter or Space, or optionally while a mouse hovers it.",
+  "group": "cards",
+  "shelf": "flip-stack",
+  "layer": "component",
+  "tags": ["click", "hover", "css"],
+  "keywords": ["card", "flip", "3d", "rotate", "back", "reveal"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/card-flip.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "front", "type": "ReactNode", "description": "Content of the front face. Keep it non-interactive: the card is the button." },
+    { "name": "back", "type": "ReactNode", "description": "Content of the back face." },
+    { "name": "trigger", "type": "'click' | 'hover'", "default": "'click'", "description": "hover also flips while a mouse is over the card. Click and keyboard always flip." },
+    { "name": "axis", "type": "'x' | 'y'", "default": "'y'", "description": "Axis the card turns around." },
+    { "name": "flipped", "type": "boolean", "description": "Controlled state; true shows the back." },
+    { "name": "defaultFlipped", "type": "boolean", "default": "false", "description": "Initial state when uncontrolled." },
+    { "name": "onFlippedChange", "type": "(flipped: boolean) => void", "description": "Called with the new state." },
+    { "name": "className", "type": "string", "description": "Extra classes for the card. Set its size here." }
+  ]
+}

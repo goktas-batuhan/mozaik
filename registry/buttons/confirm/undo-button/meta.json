@@ -1,0 +1,23 @@
+{
+  "name": "undo-button",
+  "title": "Undo Button",
+  "description": "A button that acts at once, then holds the real commit back for a short undo window with a draining bar and a Ctrl/Cmd+Z shortcut.",
+  "group": "buttons",
+  "shelf": "confirm",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["button", "undo", "archive", "delete", "confirm", "countdown"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/undo-button.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "label", "type": "string", "default": "'Archive'", "description": "What the button does." },
+    { "name": "doneLabel", "type": "string", "default": "'Archived'", "description": "The same action in the past tense." },
+    { "name": "icon", "type": "ReactNode", "description": "Leading icon in the idle state. Decorative." },
+    { "name": "duration", "type": "number", "default": "5000", "description": "Undo window in milliseconds. Hovering the button with a mouse pauses the clock." },
+    { "name": "resetAfter", "type": "number | null", "default": "2400", "description": "Milliseconds after committing before the button returns to idle. null stays on the done state." },
+    { "name": "onAction", "type": "() => void", "description": "Called when the button is pressed and the undo window opens." },
+    { "name": "onCommit", "type": "() => void", "description": "Called when the window closes without an undo: do the real work here." },
+    { "name": "onUndo", "type": "() => void", "description": "Called when the action is undone." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}

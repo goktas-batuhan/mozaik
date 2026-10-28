@@ -1,0 +1,20 @@
+{
+  "name": "double-tap-button",
+  "title": "Double Tap Button",
+  "description": "A destructive action that needs two presses: the first arms it with a draining fuse, the second inside the window confirms. Waiting or blur disarms it.",
+  "group": "buttons",
+  "shelf": "confirm",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["button", "confirm", "destructive", "delete", "press again", "safety"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "string", "description": "Text in the resting state, e.g. Delete project." },
+    { "name": "armedLabel", "type": "string", "default": "'Press again to confirm'", "description": "Text while armed, waiting for the second press." },
+    { "name": "onConfirm", "type": "() => void", "description": "Called on the second press, inside the arming window." },
+    { "name": "window", "type": "number", "default": "3000", "description": "Milliseconds the button stays armed before it falls back to rest." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the button." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}

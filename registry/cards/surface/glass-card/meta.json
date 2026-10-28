@@ -1,0 +1,20 @@
+{
+  "name": "glass-card",
+  "title": "Glass Card",
+  "description": "A frosted glass pane with blurred backdrop, a polished rim and a specular highlight that follows the pointer.",
+  "group": "cards",
+  "shelf": "surface",
+  "layer": "component",
+  "tags": ["hover", "css", "marketing"],
+  "keywords": ["glass", "frosted", "blur", "glassmorphism", "card", "specular"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/glass-card/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "blur", "type": "number", "default": "14", "description": "Backdrop blur strength in pixels." },
+    { "name": "radius", "type": "number", "default": "24", "description": "Corner radius in pixels." },
+    { "name": "tint", "type": "string", "default": "card token at 45%", "description": "Frosted body color. Any CSS color." },
+    { "name": "specular", "type": "boolean", "default": "true", "description": "Light that follows the pointer across the pane on hover-capable devices." },
+    { "name": "shadow", "type": "boolean", "default": "true", "description": "Cast a soft shadow and lift slightly on hover." },
+    { "name": "className", "type": "string", "description": "Extra classes for the pane." }
+  ]
+}

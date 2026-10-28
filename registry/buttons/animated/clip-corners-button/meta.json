@@ -1,0 +1,18 @@
+{
+  "name": "clip-corners-button",
+  "title": "Clip Corners Button",
+  "description": "A tech-style button with shaved corners that cut deeper on hover and keyboard focus.",
+  "group": "buttons",
+  "shelf": "animated",
+  "layer": "component",
+  "tags": ["hover", "css", "ai"],
+  "keywords": ["button", "clip-path", "corners", "sci-fi", "cta"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "cut", "type": "number", "default": "10", "description": "Size in pixels of the cut at each corner when idle." },
+    { "name": "hoverCut", "type": "number", "default": "18", "description": "Size in pixels of the cut while hovered or focused." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the button." },
+    { "name": "className", "type": "string", "description": "Extra classes for the button." }
+  ]
+}
