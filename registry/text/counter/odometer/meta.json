@@ -1,0 +1,22 @@
+{
+  "name": "odometer",
+  "title": "Odometer",
+  "description": "A number on mechanical digit wheels that roll to their new faces whenever the value changes. Formats with Intl, so currency and grouping just work.",
+  "group": "text",
+  "shelf": "counter",
+  "layer": "component",
+  "tags": ["css", "dashboard", "marketing"],
+  "keywords": ["odometer", "counter", "digits", "number", "roll", "stats"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "value", "type": "number", "required": true, "description": "The number to show. When it changes, each digit wheel rolls to its new face." },
+    { "name": "as", "type": "ElementType", "default": "'span'", "description": "Element to render." },
+    { "name": "locale", "type": "string", "default": "'en-US'", "description": "BCP 47 locale used to format the number." },
+    { "name": "format", "type": "Intl.NumberFormatOptions", "description": "Intl.NumberFormat options: currency, grouping, decimals and so on." },
+    { "name": "duration", "type": "number", "default": "0.9", "description": "Seconds a wheel takes to roll." },
+    { "name": "stagger", "type": "number", "default": "0.05", "description": "Seconds between wheels, from the last digit to the first." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the animation off so the number jumps." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

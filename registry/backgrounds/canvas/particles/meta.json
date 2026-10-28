@@ -1,0 +1,23 @@
+{
+  "name": "particles",
+  "title": "Particles",
+  "description": "Specks of light drifting across a canvas that lean towards the cursor. Rests off screen and stills under reduced motion.",
+  "group": "backgrounds",
+  "shelf": "canvas",
+  "layer": "component",
+  "tags": ["loop", "hover", "canvas"],
+  "keywords": ["particles", "dust", "stars", "snow", "drift", "cursor"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/particles.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the particles." },
+    { "name": "quantity", "type": "number", "default": "90", "description": "Number of particles." },
+    { "name": "size", "type": "number", "default": "1.2", "description": "Radius of the smallest particle in pixels." },
+    { "name": "speed", "type": "number", "default": "8", "description": "Drift speed in pixels per second. 0 holds the field still." },
+    { "name": "angle", "type": "number", "default": "90", "description": "Direction of the drift in degrees. 0 drifts right, 90 drifts down." },
+    { "name": "magnetism", "type": "number", "default": "24", "description": "How far particles lean towards the cursor, in pixels. 0 turns it off." },
+    { "name": "color", "type": "string", "description": "Any CSS color. Defaults to the foreground token." },
+    { "name": "seed", "type": "number", "default": "11", "description": "Seed for the starting field." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

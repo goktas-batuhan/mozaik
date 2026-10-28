@@ -1,0 +1,20 @@
+{
+  "name": "flow-field",
+  "title": "Flow Field",
+  "description": "Wind drawn as streamlines on a canvas. The cursor is a disc the air flows around. Rests off screen and stills under reduced motion.",
+  "group": "backgrounds",
+  "shelf": "canvas",
+  "layer": "component",
+  "tags": ["loop", "hover", "canvas"],
+  "keywords": ["flow", "wind", "streamlines", "noise", "particles", "cursor"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/flow-field.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the wind." },
+    { "name": "density", "type": "number", "default": "1", "description": "Multiplies the number of streamlines (about 420 at 1)." },
+    { "name": "speed", "type": "number", "default": "1", "description": "How fast the wind blows. 0 holds a still frame." },
+    { "name": "interactive", "type": "boolean", "default": "true", "description": "The cursor parts the streams like a disc in the air. Off on touch screens and under reduced motion." },
+    { "name": "seed", "type": "number", "default": "5", "description": "Seed for the wind." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

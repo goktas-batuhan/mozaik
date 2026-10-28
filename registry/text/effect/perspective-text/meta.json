@@ -1,0 +1,22 @@
+{
+  "name": "perspective-text",
+  "title": "Perspective Text",
+  "description": "Words or lines stacked in depth on a plane that tilts towards the cursor. Sits at a calm fixed angle under reduced motion.",
+  "group": "text",
+  "shelf": "effect",
+  "layer": "component",
+  "tags": ["hover", "css"],
+  "keywords": ["3d", "perspective", "depth", "tilt", "parallax"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/perspective-text-3d/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "text", "type": "string", "required": true, "description": "The text. Screen readers read it as one string." },
+    { "name": "split", "type": "'words' | 'lines'", "default": "'words'", "description": "Split into words, or into lines at each line break." },
+    { "name": "depth", "type": "number", "default": "36", "description": "Distance between neighbouring pieces along the depth axis, in pixels." },
+    { "name": "perspective", "type": "number", "default": "800", "description": "Perspective distance in pixels. Lower is more dramatic." },
+    { "name": "rotateY", "type": "number", "default": "14", "description": "Largest tilt around the vertical axis, in degrees." },
+    { "name": "rotateX", "type": "number", "default": "9", "description": "Largest tilt around the horizontal axis, in degrees." },
+    { "name": "interactive", "type": "boolean", "default": "true", "description": "Tilt towards the cursor while it is over the text. Off on touch screens and under reduced motion." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

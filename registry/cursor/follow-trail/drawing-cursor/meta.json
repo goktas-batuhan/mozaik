@@ -1,0 +1,22 @@
+{
+  "name": "drawing-cursor",
+  "title": "Drawing Cursor",
+  "description": "The cursor leaves a smooth ink line on a click-through canvas that thins when you move fast and fades as it dries.",
+  "group": "cursor",
+  "shelf": "follow-trail",
+  "layer": "component",
+  "tags": ["hover", "canvas"],
+  "keywords": ["ink", "draw", "trail", "line", "pen", "cursor"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/drawing-cursor/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content of the area. The ink is drawn above it and never blocks clicks." },
+    { "name": "color", "type": "string", "description": "Any CSS color. Defaults to the primary token." },
+    { "name": "lineWidth", "type": "number", "default": "3", "description": "Widest the line gets, in pixels." },
+    { "name": "decay", "type": "number", "default": "800", "description": "Milliseconds a stretch of ink takes to fade out." },
+    { "name": "taper", "type": "boolean", "default": "true", "description": "Thin the line where the cursor moves fast." },
+    { "name": "clearOnLeave", "type": "boolean", "default": "true", "description": "Wipe the ink when the cursor leaves the area." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the ink off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the area." }
+  ]
+}

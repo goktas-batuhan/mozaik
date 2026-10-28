@@ -1,0 +1,19 @@
+{
+  "name": "dot-field",
+  "title": "Dot Field",
+  "description": "A halftone of dots on a springy membrane. A swipe drags the dots and a click sends a ring through them.",
+  "group": "backgrounds",
+  "shelf": "canvas",
+  "layer": "component",
+  "tags": ["loop", "hover", "click", "canvas"],
+  "keywords": ["dots", "halftone", "spring", "ripple", "membrane", "cursor"],
+  "source": { "repo": "kokonut-labs/kokonutui", "license": "MIT", "url": "https://github.com/kokonut-labs/kokonutui/blob/main/components/kokonutui/dot-field.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the dots." },
+    { "name": "spacing", "type": "number", "default": "18", "description": "Distance between dots in pixels." },
+    { "name": "interactive", "type": "boolean", "default": "true", "description": "A swipe pushes the dots and a click sends a shockwave. Off on touch screens and under reduced motion." },
+    { "name": "seed", "type": "number", "default": "14", "description": "Seed for the halftone pattern." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

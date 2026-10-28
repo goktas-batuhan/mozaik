@@ -1,0 +1,22 @@
+{
+  "name": "light-rays",
+  "title": "Light Rays",
+  "description": "Soft shafts of light that fade in, sway and fade out over two corner glows. Holds a still pose under reduced motion.",
+  "group": "backgrounds",
+  "shelf": "gradient",
+  "layer": "component",
+  "tags": ["loop", "css", "marketing"],
+  "keywords": ["light", "rays", "beams", "glow", "hero"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/light-rays.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the rays." },
+    { "name": "count", "type": "number", "default": "7", "description": "Number of rays." },
+    { "name": "color", "type": "string", "default": "'var(--primary)'", "description": "Any CSS color." },
+    { "name": "blur", "type": "number", "default": "36", "description": "Blur of each ray in pixels." },
+    { "name": "duration", "type": "number", "default": "14", "description": "Seconds one ray takes to fade in, sway and fade out." },
+    { "name": "length", "type": "string", "default": "'70%'", "description": "Length of the rays. Any CSS length." },
+    { "name": "seed", "type": "number", "default": "4", "description": "Seed for the layout of the rays." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "flickering-grid",
+  "title": "Flickering Grid",
+  "description": "A grid of small squares that blink between dim and bright on a canvas. Stills under reduced motion and rests off screen.",
+  "group": "backgrounds",
+  "shelf": "canvas",
+  "layer": "component",
+  "tags": ["loop", "canvas", "marketing"],
+  "keywords": ["grid", "flicker", "squares", "noise", "tech"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/flickering-grid.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the grid." },
+    { "name": "squareSize", "type": "number", "default": "4", "description": "Side of each square in pixels." },
+    { "name": "gap", "type": "number", "default": "6", "description": "Space between squares in pixels." },
+    { "name": "flickerChance", "type": "number", "default": "0.3", "description": "Chance per second that a square picks a new brightness." },
+    { "name": "maxOpacity", "type": "number", "default": "0.3", "description": "Brightest a square can get, from 0 to 1." },
+    { "name": "color", "type": "string", "description": "Any CSS color. Defaults to the foreground token." },
+    { "name": "seed", "type": "number", "default": "7", "description": "Seed for the starting pattern." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

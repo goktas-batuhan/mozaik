@@ -1,0 +1,19 @@
+{
+  "name": "scroll-text-reveal",
+  "title": "Scroll Text Reveal",
+  "description": "A paragraph whose words light up one by one as it scrolls up the screen. Shows all the text under reduced motion.",
+  "group": "text",
+  "shelf": "reveal",
+  "layer": "component",
+  "tags": ["scroll", "css", "marketing"],
+  "keywords": ["scroll", "reveal", "words", "paragraph", "progress", "highlight"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/text-reveal.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "text", "type": "string", "required": true, "description": "The text. Screen readers read it as one string." },
+    { "name": "as", "type": "ElementType", "default": "'p'", "description": "Element to render." },
+    { "name": "offset", "type": "[string, string]", "default": "['start 0.9', 'start 0.35']", "description": "Where the reveal starts and ends, as scroll offsets of the text against the viewport." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the scroll link off and shows all of the text." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
