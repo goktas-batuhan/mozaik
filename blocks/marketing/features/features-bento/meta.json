@@ -1,0 +1,90 @@
+{
+  "name": "features-bento",
+  "title": "Features Bento",
+  "description": "A headline beside its intro copy, over a dense bento grid of feature tiles with artwork.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "hover",
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "bento",
+    "grid",
+    "tiles"
+  ],
+  "source": {
+    "repo": "educlopez/smoothui",
+    "license": "MIT",
+    "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/features/features-2/index.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "bento-grid"
+  ],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy beside the headline."
+    },
+    {
+      "name": "eyebrow",
+      "type": "ReactNode",
+      "description": "Small label above the headline."
+    },
+    {
+      "name": "features",
+      "type": "{ title: string; description?: ReactNode; icon?: ReactNode; visual?: ReactNode; colSpan?: 1 | 2 | 3; rowSpan?: 1 | 2; href?: string }[]",
+      "required": true,
+      "description": "The tiles, in reading order."
+    },
+    {
+      "name": "rowHeight",
+      "type": "string",
+      "default": "12rem",
+      "description": "Minimum height of one grid row, any CSS length."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds the grid takes to fade in."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "features-hover-expand",
+  "title": "Features Hover Expand",
+  "description": "A row of panels where the one you point at, focus or select grows to reveal its copy.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "hover",
+    "click",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "expand",
+    "panels",
+    "accordion"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "panels",
+      "type": "{ id: string; title: string; description: ReactNode; icon?: ReactNode; visual?: ReactNode }[]",
+      "required": true,
+      "description": "Panels side by side on wide containers, stacked on narrow ones. One is open at a time."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "Panel open on first render. Defaults to the first one."
+    },
+    {
+      "name": "openOnHover",
+      "type": "boolean",
+      "default": "true",
+      "description": "Open a panel on mouse hover as well as on click and keyboard focus."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

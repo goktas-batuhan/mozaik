@@ -1,0 +1,79 @@
+{
+  "name": "features-accordion-media",
+  "title": "Features Accordion Media",
+  "description": "An accordion of features beside a preview panel that cross-fades to match the open row.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "click",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "accordion",
+    "preview",
+    "showcase"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "smooth-accordion"
+  ],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; title: string; description: ReactNode; media: ReactNode }[]",
+      "required": true,
+      "description": "One row per feature. Exactly one row is open at a time."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "description": "Row open on first render. Defaults to the first one."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.35",
+      "description": "Seconds the preview takes to cross-fade."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the preview animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "name": "features-alternating",
+  "title": "Features Alternating",
+  "description": "Zig-zag rows with copy on one side and media on the other, swapping sides down the page.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "zigzag",
+    "media",
+    "showcase"
+  ],
+  "source": {
+    "repo": "educlopez/smoothui",
+    "license": "MIT",
+    "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/features/features-3/index.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "features",
+      "type": "{ title: string; description: ReactNode; media: ReactNode; link?: { label: string; href: string } }[]",
+      "required": true,
+      "description": "Rows, top to bottom. The media side swaps on every other row."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.6",
+      "description": "Seconds each half takes to slide in."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

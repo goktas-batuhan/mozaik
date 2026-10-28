@@ -1,0 +1,84 @@
+{
+  "name": "features-showcase",
+  "title": "Features Showcase",
+  "description": "A product shot in the middle with feature callouts on both sides, stacking under it on narrow containers.",
+  "group": "marketing",
+  "shelf": "features",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "features",
+    "showcase",
+    "callouts",
+    "product"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [],
+  "props": [
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Copy under the headline."
+    },
+    {
+      "name": "media",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Product image or mock-up in the middle."
+    },
+    {
+      "name": "left",
+      "type": "{ title: string; description: ReactNode; icon?: ReactNode }[]",
+      "required": true,
+      "description": "Callouts on the left of the media."
+    },
+    {
+      "name": "right",
+      "type": "{ title: string; description: ReactNode; icon?: ReactNode }[]",
+      "required": true,
+      "description": "Callouts on the right of the media."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.5",
+      "description": "Seconds each callout takes to fade in."
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true,
+      "description": "Section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "titleAs",
+      "type": "ElementType",
+      "default": "'h2'",
+      "description": "Element for the headline."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}
