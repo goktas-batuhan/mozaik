@@ -1,0 +1,21 @@
+{
+  "name": "stats-sparkline-cards",
+  "title": "Stats Sparkline Cards",
+  "description": "Cards that pair a counting number with a small line chart of its recent history that draws itself in.",
+  "group": "marketing",
+  "shelf": "stats",
+  "layer": "block",
+  "tags": ["in-view", "svg", "dashboard"],
+  "keywords": ["stats", "sparkline", "chart", "trend", "history", "cards"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "stats", "type": "SparkStat[]", "required": true, "description": "Two to four stats: value, prefix, suffix, decimalPlaces, label, history and caption." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation, the count-up and the line drawing off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "pricing-enterprise-split",
+  "title": "Pricing Enterprise Split",
+  "description": "Quick self-serve plans on one side and a dark talk-to-sales card on the other.",
+  "group": "marketing",
+  "shelf": "pricing",
+  "layer": "block",
+  "tags": ["in-view", "css", "marketing"],
+  "keywords": ["pricing", "enterprise", "sales", "contact", "self-serve"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": [],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "plans", "type": "SelfServePlan[]", "required": true, "description": "Self-serve rows: name, description, price, unit and button target." },
+    { "name": "enterprise", "type": "{ name: string; description: string; features: string[]; action: {...}; note?: string }", "required": true, "description": "The sales-led card." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "selfServeHeading", "type": "string", "default": "'Self-serve'", "description": "Heading above the self-serve plans." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

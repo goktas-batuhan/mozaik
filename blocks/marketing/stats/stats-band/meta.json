@@ -1,0 +1,20 @@
+{
+  "name": "stats-band",
+  "title": "Stats Band",
+  "description": "A single filled strip of counting stats separated by hairlines, made to sit between two sections.",
+  "group": "marketing",
+  "shelf": "stats",
+  "layer": "block",
+  "tags": ["in-view", "css", "marketing"],
+  "keywords": ["stats", "band", "strip", "numbers", "banner"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker"],
+  "props": [
+    { "name": "title", "type": "string", "required": true, "description": "Short line that names the band. Visually hidden; labels the section." },
+    { "name": "stats", "type": "BandStat[]", "required": true, "description": "Three to five stats: value, prefix, suffix, decimalPlaces and label." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation and the count-up off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

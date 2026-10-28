@@ -1,0 +1,23 @@
+{
+  "name": "stats-split-feature",
+  "title": "Stats Split Feature",
+  "description": "The story and a link on the left, a two by two grid of ruled, counting stats on the right.",
+  "group": "marketing",
+  "shelf": "stats",
+  "layer": "block",
+  "tags": ["in-view", "css", "marketing"],
+  "keywords": ["stats", "split", "numbers", "story", "two-column"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "stats", "type": "SplitStat[]", "required": true, "description": "Four stats read best: value, prefix, suffix, decimalPlaces, label and description." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "eyebrow", "type": "string", "description": "Small text above the headline." },
+    { "name": "action", "type": "{ label: string; href: string }", "description": "Link under the copy." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation and the count-up off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

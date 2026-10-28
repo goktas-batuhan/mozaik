@@ -1,0 +1,23 @@
+{
+  "name": "pricing-tier-cards",
+  "title": "Pricing Tier Cards",
+  "description": "Three side-by-side tier cards with a billing switch; the featured tier sits raised with a badge.",
+  "group": "marketing",
+  "shelf": "pricing",
+  "layer": "block",
+  "tags": ["click", "in-view", "marketing"],
+  "keywords": ["pricing", "tiers", "plans", "cards", "billing"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/pricing/pricing-2/index.tsx" },
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker", "segmented-toggle-button"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "tiers", "type": "PricingTier[]", "required": true, "description": "Two to four tiers: name, description, monthly and yearly price, features, action, featured and badge." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "currency", "type": "string", "default": "'$'", "description": "Currency symbol before each price." },
+    { "name": "defaultYearly", "type": "boolean", "default": "false", "description": "Start on the yearly prices." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

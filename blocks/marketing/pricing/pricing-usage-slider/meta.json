@@ -1,0 +1,32 @@
+{
+  "name": "pricing-usage-slider",
+  "title": "Pricing Usage Slider",
+  "description": "A slider picks the number of seats and the monthly total ticks to match, with a summary panel beside it.",
+  "group": "marketing",
+  "shelf": "pricing",
+  "layer": "block",
+  "tags": ["drag", "in-view", "marketing"],
+  "keywords": ["pricing", "slider", "seats", "calculator", "usage"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "basePrice", "type": "number", "required": true, "description": "Flat monthly price that covers `included` units." },
+    { "name": "unitPrice", "type": "number", "required": true, "description": "Monthly price of each unit above `included`." },
+    { "name": "action", "type": "{ label: string; href?: string; onClick?: () => void }", "required": true, "description": "Call to action under the total." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "unit", "type": "string", "default": "'seat'", "description": "Singular name of the counted unit." },
+    { "name": "min", "type": "number", "default": "1", "description": "Smallest amount." },
+    { "name": "max", "type": "number", "default": "100", "description": "Largest amount." },
+    { "name": "step", "type": "number", "default": "1", "description": "Slider step." },
+    { "name": "defaultValue", "type": "number", "default": "10", "description": "Initial amount, clamped to min and max." },
+    { "name": "included", "type": "number", "default": "0", "description": "Units covered by the base price." },
+    { "name": "currency", "type": "string", "default": "'$'", "description": "Currency symbol before the total." },
+    { "name": "features", "type": "string[]", "default": "[]", "description": "What the plan includes." },
+    { "name": "onChange", "type": "(value: number) => void", "description": "Called with the new amount while the slider moves." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "pricing-single-card",
+  "title": "Pricing Single Card",
+  "description": "One plan in a single card with a monthly / yearly switch and a price that ticks between the two.",
+  "group": "marketing",
+  "shelf": "pricing",
+  "layer": "block",
+  "tags": ["click", "in-view", "marketing"],
+  "keywords": ["pricing", "plan", "billing", "toggle", "single"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/pricing/pricing-1/index.tsx" },
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker", "segmented-toggle-button"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "plan", "type": "PricingSingleCardPlan", "required": true, "description": "The plan: name, tagline, monthly and yearly price, features and action." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "currency", "type": "string", "default": "'$'", "description": "Currency symbol before the price." },
+    { "name": "savingsNote", "type": "string", "description": "Note under the switch, e.g. \"Yearly billing saves 20%\"." },
+    { "name": "defaultYearly", "type": "boolean", "default": "true", "description": "Start on the yearly price." },
+    { "name": "onPeriodChange", "type": "(period: 'monthly' | 'yearly') => void", "description": "Called when the billing period changes." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
