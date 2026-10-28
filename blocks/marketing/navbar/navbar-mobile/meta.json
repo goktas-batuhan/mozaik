@@ -1,0 +1,24 @@
+{
+  "name": "navbar-mobile",
+  "title": "Navbar Mobile Menu",
+  "description": "Top bar that folds into a menu button on narrow containers, with focus moved into the open menu, a Tab loop and Escape to close.",
+  "group": "marketing",
+  "shelf": "navbar",
+  "layer": "block",
+  "tags": ["click", "marketing"],
+  "keywords": ["navbar", "mobile", "hamburger", "menu", "focus trap", "responsive"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": [],
+  "props": [
+    { "name": "brand", "type": "ReactNode", "required": true, "description": "Logo or wordmark." },
+    { "name": "links", "type": "{ label: string; href: string; current?: boolean }[]", "required": true, "description": "Links, shown inline on wide containers and in the menu on narrow ones." },
+    { "name": "action", "type": "{ label: string; href: string }", "description": "Call to action, inline or at the end of the menu." },
+    { "name": "label", "type": "string", "default": "'Main'", "description": "Accessible name of the nav landmark." },
+    { "name": "defaultOpen", "type": "boolean", "default": "false", "description": "Starts with the menu open." },
+    { "name": "onOpenChange", "type": "(open: boolean) => void", "description": "Called when the menu opens or closes." },
+    { "name": "duration", "type": "number", "default": "0.25", "description": "Seconds the menu takes to slide open." },
+    { "name": "as", "type": "ElementType", "default": "'header'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

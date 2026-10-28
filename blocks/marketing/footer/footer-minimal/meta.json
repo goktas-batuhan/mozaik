@@ -1,0 +1,22 @@
+{
+  "name": "footer-minimal",
+  "title": "Footer Minimal",
+  "description": "A single-row footer with brand and copyright, a few links and social icons that lift on hover.",
+  "group": "marketing",
+  "shelf": "footer",
+  "layer": "block",
+  "tags": ["hover", "css", "marketing"],
+  "keywords": ["footer", "minimal", "social", "row"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/footers/footer-4/index.tsx" },
+  "dependencies": ["motion"],
+  "registryDependencies": [],
+  "props": [
+    { "name": "brand", "type": "ReactNode", "required": true, "description": "Logo or wordmark at the start." },
+    { "name": "copyright", "type": "ReactNode", "description": "Short text next to the brand." },
+    { "name": "links", "type": "{ label: string; href: string }[]", "default": "[]", "description": "Links in the middle." },
+    { "name": "social", "type": "{ label: string; href: string; icon: ReactNode }[]", "default": "[]", "description": "Icon links at the end. The label names each link." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the hover lift on social icons off." },
+    { "name": "as", "type": "ElementType", "default": "'footer'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

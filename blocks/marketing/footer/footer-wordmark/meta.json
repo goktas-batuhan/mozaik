@@ -1,0 +1,24 @@
+{
+  "name": "footer-wordmark",
+  "title": "Footer Wordmark",
+  "description": "Closing footer with a contact line, address and social links above an oversized wordmark that scales with its container.",
+  "group": "marketing",
+  "shelf": "footer",
+  "layer": "block",
+  "tags": ["css", "marketing"],
+  "keywords": ["footer", "wordmark", "giant", "contact", "bold"],
+  "source": { "repo": "ui-layouts/uilayouts", "license": "MIT", "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/footer-section/footer-bold.tsx" },
+  "dependencies": [],
+  "registryDependencies": [],
+  "props": [
+    { "name": "wordmark", "type": "string", "required": true, "description": "The giant word along the bottom edge. Hidden from assistive tech." },
+    { "name": "title", "type": "ReactNode", "description": "Large line at the top." },
+    { "name": "email", "type": "string", "description": "Shown as an underlined mailto link under the title." },
+    { "name": "address", "type": "string[]", "description": "Address lines." },
+    { "name": "links", "type": "{ label: string; href: string }[]", "default": "[]", "description": "Social or profile links." },
+    { "name": "copyright", "type": "ReactNode", "description": "Text at the start of the bottom bar." },
+    { "name": "topHref", "type": "string", "default": "'#top'", "description": "Target of the Back to top link." },
+    { "name": "as", "type": "ElementType", "default": "'footer'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "footer-status",
+  "title": "Footer Status",
+  "description": "Dense utility footer with a system status pill, a language switcher, a few links and copyright.",
+  "group": "marketing",
+  "shelf": "footer",
+  "layer": "block",
+  "tags": ["click", "dashboard", "marketing"],
+  "keywords": ["footer", "status", "language", "locale", "utility"],
+  "source": "original",
+  "dependencies": [],
+  "registryDependencies": [],
+  "props": [
+    { "name": "brand", "type": "ReactNode", "required": true, "description": "Logo or wordmark." },
+    { "name": "status", "type": "string", "default": "'All systems operational'", "description": "Text of the status pill." },
+    { "name": "statusHref", "type": "string", "default": "'#'", "description": "Where the status pill links to." },
+    { "name": "languages", "type": "{ code: string; label: string }[]", "default": "[]", "description": "Languages offered in the switcher." },
+    { "name": "defaultLanguage", "type": "string", "description": "Initially selected language code. Defaults to the first." },
+    { "name": "onLanguageChange", "type": "(code: string) => void", "description": "Called with the code of the language the visitor picks." },
+    { "name": "links", "type": "{ label: string; href: string }[]", "default": "[]", "description": "Small links in the bottom bar." },
+    { "name": "copyright", "type": "ReactNode", "description": "Text at the start of the bottom bar." },
+    { "name": "as", "type": "ElementType", "default": "'footer'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

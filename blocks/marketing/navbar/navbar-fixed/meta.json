@@ -1,0 +1,24 @@
+{
+  "name": "navbar-fixed",
+  "title": "Navbar Fixed",
+  "description": "Full-width top bar that sticks or pins to the viewport, with links, a quiet action and a filled call to action.",
+  "group": "marketing",
+  "shelf": "navbar",
+  "layer": "block",
+  "tags": ["css", "marketing"],
+  "keywords": ["navbar", "header", "sticky", "fixed", "top bar"],
+  "source": "original",
+  "dependencies": [],
+  "registryDependencies": [],
+  "props": [
+    { "name": "brand", "type": "ReactNode", "required": true, "description": "Logo or wordmark." },
+    { "name": "brandHref", "type": "string", "default": "'/'", "description": "Link of the brand." },
+    { "name": "links", "type": "{ label: string; href: string; current?: boolean }[]", "required": true, "description": "Main links. The current one gets aria-current." },
+    { "name": "secondaryAction", "type": "{ label: string; href: string }", "description": "Quiet link before the call to action." },
+    { "name": "primaryAction", "type": "{ label: string; href: string }", "description": "Filled call to action at the end." },
+    { "name": "position", "type": "'sticky' | 'fixed' | 'static'", "default": "'sticky'", "description": "How the bar stays in view." },
+    { "name": "label", "type": "string", "default": "'Main'", "description": "Accessible name of the nav landmark." },
+    { "name": "as", "type": "ElementType", "default": "'header'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
