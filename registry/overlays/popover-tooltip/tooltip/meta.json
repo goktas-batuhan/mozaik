@@ -1,0 +1,20 @@
+{
+  "name": "tooltip",
+  "title": "Tooltip",
+  "description": "A short label for a control that shows on hover and keyboard focus, wired with aria-describedby. Escape hides it; it only fades under reduced motion.",
+  "group": "overlays",
+  "shelf": "popover-tooltip",
+  "layer": "component",
+  "tags": ["hover", "css"],
+  "keywords": ["tooltip", "hint", "label", "tip", "help"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "content", "type": "ReactNode", "description": "The tip. Keep it short." },
+    { "name": "children", "type": "ReactNode", "description": "The element that gets the tip. Use a focusable one." },
+    { "name": "side", "type": "'top' | 'bottom' | 'left' | 'right'", "default": "'top'", "description": "Side of the trigger the tip appears on." },
+    { "name": "delay", "type": "number", "default": "0.3", "description": "Seconds to wait before showing on hover. Focus shows it at once." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Never show the tip." },
+    { "name": "className", "type": "string", "description": "Extra classes for the wrapper." }
+  ]
+}

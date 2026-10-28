@@ -1,0 +1,20 @@
+{
+  "name": "blur-scrim",
+  "title": "Blur Scrim",
+  "description": "A blur-and-dim layer that covers its container instead of the page, with content centred on top. Click or Escape dismisses it; no fade under reduced motion.",
+  "group": "overlays",
+  "shelf": "scrim-blur",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["scrim", "blur", "backdrop", "lock", "overlay", "paywall"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "active", "type": "boolean", "description": "Whether the scrim covers its container." },
+    { "name": "onDismiss", "type": "() => void", "description": "Called when the scrim is clicked or Escape is pressed." },
+    { "name": "blur", "type": "number", "default": "8", "description": "Blur of the covered content in pixels." },
+    { "name": "dim", "type": "number", "default": "0.5", "description": "How strongly the background colour dims it, 0 to 1." },
+    { "name": "children", "type": "ReactNode", "description": "Content centred on top of the scrim." },
+    { "name": "className", "type": "string", "description": "Extra classes for the scrim." }
+  ]
+}

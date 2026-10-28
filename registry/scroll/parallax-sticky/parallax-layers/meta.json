@@ -1,0 +1,19 @@
+{
+  "name": "parallax-layers",
+  "title": "Parallax Layers",
+  "description": "A stack of layers that drift at different speeds as the scene scrolls past. Layers stay put under reduced motion.",
+  "group": "scroll",
+  "shelf": "parallax-sticky",
+  "layer": "component",
+  "tags": ["scroll", "css", "marketing"],
+  "keywords": ["parallax", "depth", "layers", "hero", "scene"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/parallax-layers/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "layers", "type": "{ id: string; content: ReactNode; depth: number; blur?: number; opacity?: number }[]", "description": "Layers from back to front. depth 0 stays put, 1 moves the full range." },
+    { "name": "direction", "type": "'vertical' | 'horizontal'", "default": "'vertical'", "description": "Axis the layers travel along." },
+    { "name": "range", "type": "number", "default": "80", "description": "Travel in pixels at depth 1." },
+    { "name": "container", "type": "RefObject<HTMLElement | null>", "description": "Scrollable element that drives the motion. Defaults to the page." },
+    { "name": "className", "type": "string", "description": "Size of the scene." }
+  ]
+}

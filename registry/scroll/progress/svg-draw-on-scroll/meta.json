@@ -1,0 +1,19 @@
+{
+  "name": "svg-draw-on-scroll",
+  "title": "SVG Draw on Scroll",
+  "description": "SVG strokes that draw themselves as the element scrolls through view, one path after another. Fully drawn under reduced motion.",
+  "group": "scroll",
+  "shelf": "progress",
+  "layer": "component",
+  "tags": ["scroll", "svg", "marketing"],
+  "keywords": ["draw", "path", "stroke", "line", "illustration"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/svg-draw-on-scroll/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "paths", "type": "string[]", "description": "Path `d` strings in viewBox units, drawn one after another." },
+    { "name": "viewBox", "type": "string", "default": "'0 0 100 100'", "description": "SVG viewBox the paths are written in." },
+    { "name": "strokeWidth", "type": "number", "default": "2", "description": "Stroke width in pixels." },
+    { "name": "container", "type": "RefObject<HTMLElement | null>", "description": "Scrollable element that drives the drawing. Defaults to the page." },
+    { "name": "className", "type": "string", "description": "Size and color (text color sets the stroke)." }
+  ]
+}

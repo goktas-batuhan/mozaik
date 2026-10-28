@@ -1,0 +1,19 @@
+{
+  "name": "shuffle-grid",
+  "title": "Shuffle Grid",
+  "description": "A grid whose tiles glide to new places when shuffled or reset. Tiles jump instead under reduced motion.",
+  "group": "layout",
+  "shelf": "grids",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["grid", "shuffle", "reorder", "layout", "tiles"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "items", "type": "{ id: string; content: ReactNode }[]", "description": "The tiles, in their starting order." },
+    { "name": "columns", "type": "2 | 3 | 4", "default": "3", "description": "Columns of the grid." },
+    { "name": "controls", "type": "boolean", "default": "true", "description": "Show the Shuffle and Reset buttons." },
+    { "name": "onOrderChange", "type": "(ids: string[]) => void", "description": "Called with the new id order after a shuffle or reset." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
