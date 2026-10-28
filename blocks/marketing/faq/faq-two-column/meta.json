@@ -1,0 +1,69 @@
+{
+  "name": "faq-two-column",
+  "title": "FAQ Two Column",
+  "description": "Intro and a support card on the left, a stack of collapsible answers on the right. Stacks on narrow containers.",
+  "group": "marketing",
+  "shelf": "faq",
+  "layer": "block",
+  "tags": [
+    "click",
+    "marketing"
+  ],
+  "keywords": [
+    "faq",
+    "support",
+    "two column",
+    "sticky"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/faq-section/faq-founder.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "smooth-accordion"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; question: ReactNode; answer: ReactNode }[]",
+      "required": true,
+      "description": "Questions and answers."
+    },
+    {
+      "name": "support",
+      "type": "{ name: string; role?: string; message?: ReactNode; actionLabel: string; href?: string; onClick?: () => void }",
+      "description": "Card under the intro that points people to a person. Initials make the avatar."
+    },
+    {
+      "name": "defaultOpen",
+      "type": "string[]",
+      "default": "[]",
+      "description": "Ids that are open first."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

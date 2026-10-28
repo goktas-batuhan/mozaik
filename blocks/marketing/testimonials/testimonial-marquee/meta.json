@@ -1,0 +1,83 @@
+{
+  "name": "testimonial-marquee",
+  "title": "Testimonial Marquee",
+  "description": "Rows of testimonial cards drifting in opposite directions with faded edges. Built on Marquee; still under reduced motion.",
+  "group": "marketing",
+  "shelf": "testimonials",
+  "layer": "block",
+  "tags": [
+    "loop",
+    "hover",
+    "marketing"
+  ],
+  "keywords": [
+    "testimonials",
+    "marquee",
+    "rows",
+    "reviews"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/testimonial-section/marque-testimonial.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "marquee"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; quote: string; name: string; role?: string; company?: string }[]",
+      "required": true,
+      "description": "Testimonials, dealt out to the rows in turn."
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "default": "2",
+      "description": "Number of rows. Each row runs against the one above."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "50",
+      "description": "Seconds for one full loop of a row."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "default": "true",
+      "description": "Pause a row while the pointer or focus is on it."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Stops every row and shows the cards still."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

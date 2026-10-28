@@ -1,0 +1,72 @@
+{
+  "name": "testimonial-carousel",
+  "title": "Testimonial Carousel",
+  "description": "One testimonial at a time with previous and next buttons, dots, a counter and arrow keys. No autoplay.",
+  "group": "marketing",
+  "shelf": "testimonials",
+  "layer": "block",
+  "tags": [
+    "click",
+    "marketing"
+  ],
+  "keywords": [
+    "testimonials",
+    "carousel",
+    "slider",
+    "quotes"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/testimonial-section/testimonial-carousel.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; quote: string; name: string; role?: string; company?: string }[]",
+      "required": true,
+      "description": "Testimonials, one slide each."
+    },
+    {
+      "name": "defaultIndex",
+      "type": "number",
+      "default": "0",
+      "description": "Index of the slide shown first."
+    },
+    {
+      "name": "onIndexChange",
+      "type": "(index: number) => void",
+      "description": "Called with the new index whenever the slide changes."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.35",
+      "description": "Seconds a slide takes to change."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

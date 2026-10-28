@@ -1,0 +1,50 @@
+{
+  "name": "testimonial-featured",
+  "title": "Testimonial Featured",
+  "description": "One large centered quote with its author, backed by a row of shorter supporting quotes.",
+  "group": "marketing",
+  "shelf": "testimonials",
+  "layer": "block",
+  "tags": [
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "testimonials",
+    "featured",
+    "quote",
+    "case study"
+  ],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    {
+      "name": "featured",
+      "type": "{ id: string; quote: string; name: string; role?: string; company?: string }",
+      "required": true,
+      "description": "The quote in the spotlight."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; quote: string; name: string; role?: string; company?: string }[]",
+      "default": "[]",
+      "description": "Smaller supporting quotes in a row underneath. Up to three read best."
+    },
+    {
+      "name": "eyebrow",
+      "type": "string",
+      "description": "Small label above the quote."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

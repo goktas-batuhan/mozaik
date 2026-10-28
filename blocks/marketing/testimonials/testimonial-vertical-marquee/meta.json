@@ -1,0 +1,79 @@
+{
+  "name": "testimonial-vertical-marquee",
+  "title": "Testimonial Vertical Marquee",
+  "description": "Columns of testimonial cards scrolling up and down inside a masked window. Built on Marquee; still under reduced motion.",
+  "group": "marketing",
+  "shelf": "testimonials",
+  "layer": "block",
+  "tags": [
+    "loop",
+    "hover",
+    "marketing"
+  ],
+  "keywords": [
+    "testimonials",
+    "marquee",
+    "vertical",
+    "columns"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "marquee"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; quote: string; name: string; role?: string; company?: string }[]",
+      "required": true,
+      "description": "Testimonials, dealt out to the columns in turn."
+    },
+    {
+      "name": "columns",
+      "type": "1 | 2 | 3",
+      "default": "3",
+      "description": "Number of columns on wide containers. Narrow ones show fewer."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "60",
+      "description": "Seconds for one full loop of the first column."
+    },
+    {
+      "name": "pauseOnHover",
+      "type": "boolean",
+      "default": "true",
+      "description": "Pause a column while the pointer or focus is on it."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Stops every column and shows the cards still."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

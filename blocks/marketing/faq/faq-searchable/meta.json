@@ -1,0 +1,78 @@
+{
+  "name": "faq-searchable",
+  "title": "FAQ Searchable",
+  "description": "FAQ with a search field. Matches in questions and answers narrow the list as you type, with a live count and an empty state.",
+  "group": "marketing",
+  "shelf": "faq",
+  "layer": "block",
+  "tags": [
+    "type",
+    "click",
+    "marketing"
+  ],
+  "keywords": [
+    "faq",
+    "search",
+    "filter"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "smooth-accordion",
+    "search-input"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; question: string; answer: string }[]",
+      "required": true,
+      "description": "Questions and answers as text so they can be searched."
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "default": "'Search questions…'",
+      "description": "Placeholder of the search field."
+    },
+    {
+      "name": "emptyMessage",
+      "type": "ReactNode",
+      "default": "'No questions match your search.'",
+      "description": "Text shown when nothing matches."
+    },
+    {
+      "name": "defaultQuery",
+      "type": "string",
+      "default": "''",
+      "description": "Text typed into the field first."
+    },
+    {
+      "name": "onQueryChange",
+      "type": "(query: string) => void",
+      "description": "Called with the text whenever the search changes."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}
