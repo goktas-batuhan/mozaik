@@ -1,0 +1,26 @@
+{
+  "name": "pricing-credit-packs",
+  "title": "Pricing Credit Packs",
+  "description": "Prepaid credit packs as selectable tiles with a summary bar showing the price per credit.",
+  "group": "marketing",
+  "shelf": "pricing",
+  "layer": "block",
+  "tags": ["click", "in-view", "marketing"],
+  "keywords": ["pricing", "credits", "packs", "top-up", "prepaid"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "packs", "type": "CreditPack[]", "required": true, "description": "Packs: id, credits, price and an optional badge." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "defaultPackId", "type": "string", "description": "Id of the pack selected first. Defaults to the second pack." },
+    { "name": "currency", "type": "string", "default": "'$'", "description": "Currency symbol before the prices." },
+    { "name": "creditLabel", "type": "string", "default": "'credits'", "description": "Plural name of what a credit buys." },
+    { "name": "actionLabel", "type": "string", "default": "'Buy credits'", "description": "Label of the purchase button." },
+    { "name": "onBuy", "type": "(pack: CreditPack) => void", "description": "Called with the pack when the button is pressed." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

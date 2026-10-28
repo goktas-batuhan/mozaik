@@ -1,0 +1,26 @@
+{
+  "name": "pricing-addons-builder",
+  "title": "Pricing Add-ons Builder",
+  "description": "A base plan plus checkable add-ons, with a receipt panel that sums the monthly total.",
+  "group": "marketing",
+  "shelf": "pricing",
+  "layer": "block",
+  "tags": ["click", "in-view", "marketing"],
+  "keywords": ["pricing", "addons", "builder", "configurator", "checkout", "receipt"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "plan", "type": "{ name: string; price: number; features: string[] }", "required": true, "description": "The base plan." },
+    { "name": "addons", "type": "PricingAddon[]", "required": true, "description": "Optional extras: id, name, description and monthly price." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "defaultSelected", "type": "string[]", "default": "[]", "description": "Ids of the add-ons that start checked." },
+    { "name": "currency", "type": "string", "default": "'$'", "description": "Currency symbol before the prices." },
+    { "name": "actionLabel", "type": "string", "default": "'Checkout'", "description": "Label of the checkout button." },
+    { "name": "onCheckout", "type": "(selected: PricingAddon[], total: number) => void", "description": "Called with the checked add-ons and the total." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

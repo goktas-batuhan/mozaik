@@ -1,0 +1,28 @@
+{
+  "name": "pricing-lifetime-deal",
+  "title": "Pricing Lifetime Deal",
+  "description": "A one-time-payment offer as a ticket-style card with a price stub and a bar for licences left.",
+  "group": "marketing",
+  "shelf": "pricing",
+  "layer": "block",
+  "tags": ["in-view", "css", "marketing"],
+  "keywords": ["pricing", "lifetime", "one-time", "offer", "ticket"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["number-ticker"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Section headline. Labels the section for assistive tech." },
+    { "name": "price", "type": "number", "required": true, "description": "One-time price." },
+    { "name": "sold", "type": "number", "required": true, "description": "Licences sold so far." },
+    { "name": "total", "type": "number", "required": true, "description": "Licences available in total." },
+    { "name": "features", "type": "string[]", "required": true, "description": "What the licence includes." },
+    { "name": "action", "type": "{ label: string; href?: string; onClick?: () => void }", "required": true, "description": "Call to action." },
+    { "name": "description", "type": "ReactNode", "description": "Supporting copy under the headline." },
+    { "name": "originalPrice", "type": "number", "description": "Regular price, shown struck through." },
+    { "name": "currency", "type": "string", "default": "'$'", "description": "Currency symbol before the prices." },
+    { "name": "note", "type": "ReactNode", "description": "Small print under the button." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the entrance animation off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
