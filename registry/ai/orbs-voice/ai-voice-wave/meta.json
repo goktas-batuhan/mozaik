@@ -1,0 +1,21 @@
+{
+  "name": "ai-voice-wave",
+  "title": "AI Voice Wave",
+  "description": "A row of bars for voice input or output. Feed it live levels or let it pulse on its own while active. Static and level-shaped under reduced motion.",
+  "group": "ai",
+  "shelf": "orbs-voice",
+  "layer": "component",
+  "tags": ["loop", "css", "ai"],
+  "keywords": ["voice", "waveform", "audio", "bars", "microphone", "speech"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "levels", "type": "number[]", "description": "Bar heights from 0 to 1, left to right. Leave it out for a built-in speech-like shape." },
+    { "name": "bars", "type": "number", "default": "24", "description": "Number of bars when levels is not given." },
+    { "name": "active", "type": "boolean", "default": "false", "description": "True while the voice is live. The bars move and the label says listening." },
+    { "name": "height", "type": "number", "default": "48", "description": "Height of the wave in pixels." },
+    { "name": "label", "type": "string", "default": "'Voice'", "description": "Accessible name prefix. The state is added after it." },
+    { "name": "duration", "type": "number", "default": "0.9", "description": "Seconds for one pulse of a bar." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

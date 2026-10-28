@@ -1,0 +1,20 @@
+{
+  "name": "ai-suggestions",
+  "title": "AI Suggestions",
+  "description": "Prompt suggestion chips for an empty chat or the follow-ups after an answer. They pop in from the middle outward.",
+  "group": "ai",
+  "shelf": "chat",
+  "layer": "component",
+  "tags": ["click", "css", "ai"],
+  "keywords": ["suggestions", "chips", "prompts", "follow-up", "chat"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-suggestions/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "suggestions", "type": "AISuggestion[]", "required": true, "description": "The chips to show, each with an id and a label." },
+    { "name": "onSelect", "type": "(suggestion: AISuggestion) => void", "description": "Called with the chip the user picked." },
+    { "name": "label", "type": "string", "description": "Small heading above the chips, such as \"Follow-ups\"." },
+    { "name": "delay", "type": "number", "default": "0.045", "description": "Seconds between chips as they pop in, counted from the middle outward." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables every chip." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "heatmap-calendar",
+  "title": "Heatmap Calendar",
+  "description": "A contribution-style grid of days in weekly columns, darker for busier days. Hover or focus a day to read it; the total is the caption.",
+  "group": "data",
+  "shelf": "charts",
+  "layer": "component",
+  "tags": ["hover", "css", "dashboard"],
+  "keywords": ["heatmap", "calendar", "contributions", "activity", "grid", "streak"],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    { "name": "values", "type": "number[]", "required": true, "description": "One count per day, oldest first. The first value is the first day of the first week." },
+    { "name": "onSelect", "type": "(index: number, value: number) => void", "description": "Called when a day is picked with the mouse or the keyboard." },
+    { "name": "unit", "type": "string", "default": "'events'", "description": "Noun for the caption, such as \"commits\"." },
+    { "name": "cell", "type": "number", "default": "12", "description": "Size of a day in pixels." },
+    { "name": "gap", "type": "number", "default": "3", "description": "Gap between days in pixels." },
+    { "name": "label", "type": "string", "default": "'Activity'", "description": "Accessible name of the grid." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "ai-prompt-input",
+  "title": "AI Prompt Input",
+  "description": "A chat prompt box that grows with the text. Enter sends, Shift+Enter adds a line, and the send button turns into a stop button while the model answers.",
+  "group": "ai",
+  "shelf": "chat",
+  "layer": "component",
+  "tags": ["type", "click", "ai"],
+  "keywords": ["prompt", "chat", "textarea", "composer", "send", "stop"],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    { "name": "value", "type": "string", "description": "Controlled text." },
+    { "name": "defaultValue", "type": "string", "default": "''", "description": "Initial text when you do not control it." },
+    { "name": "onChange", "type": "(value: string) => void", "description": "Called on every change with the new text." },
+    { "name": "onSubmit", "type": "(value: string) => void", "description": "Called with the trimmed text on Enter or on send." },
+    { "name": "onStop", "type": "() => void", "description": "Called when the stop button is pressed while loading." },
+    { "name": "loading", "type": "boolean", "default": "false", "description": "True while the model is answering. Swaps the send button for a stop button." },
+    { "name": "placeholder", "type": "string", "default": "'Ask anything…'", "description": "Placeholder text." },
+    { "name": "label", "type": "string", "default": "'Message'", "description": "Accessible name of the text box." },
+    { "name": "maxRows", "type": "number", "default": "6", "description": "Most lines the box grows to before it scrolls." },
+    { "name": "actions", "type": "ReactNode", "description": "Extra controls on the left of the footer, such as a model picker." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Disables the box and the buttons." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

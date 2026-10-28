@@ -1,0 +1,24 @@
+{
+  "name": "data-table",
+  "title": "Data Table",
+  "description": "A sortable table with real table markup. Click a heading to sort ascending, descending, then back to the original order. Numbers sort as numbers.",
+  "group": "data",
+  "shelf": "tables",
+  "layer": "component",
+  "tags": ["click", "css", "dashboard"],
+  "keywords": ["table", "data", "sort", "grid", "rows", "columns"],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    { "name": "columns", "type": "DataTableColumn<T>[]", "required": true, "description": "The columns, each with a key, header, optional align, sortable flag and render function." },
+    { "name": "rows", "type": "T[]", "required": true, "description": "The rows." },
+    { "name": "getRowId", "type": "(row: T, index: number) => string", "description": "A stable id for each row. Defaults to the row's index." },
+    { "name": "sort", "type": "DataTableSort | null", "description": "Controlled sort, as a column key and a direction." },
+    { "name": "defaultSort", "type": "DataTableSort | null", "default": "null", "description": "Initial sort when you do not control it." },
+    { "name": "onSortChange", "type": "(sort: DataTableSort | null) => void", "description": "Called when the reader changes the sort." },
+    { "name": "caption", "type": "string", "description": "Visible caption, also the table's accessible name." },
+    { "name": "dense", "type": "boolean", "default": "false", "description": "Tighter rows." },
+    { "name": "empty", "type": "string", "default": "'No data'", "description": "Text for an empty table." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

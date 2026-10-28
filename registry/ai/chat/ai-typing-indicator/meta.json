@@ -1,0 +1,20 @@
+{
+  "name": "ai-typing-indicator",
+  "title": "AI Typing Indicator",
+  "description": "Three bouncing dots in a chat bubble that show someone is typing. Level and calm under reduced motion.",
+  "group": "ai",
+  "shelf": "chat",
+  "layer": "component",
+  "tags": ["loop", "css", "ai"],
+  "keywords": ["typing", "indicator", "dots", "chat", "loading", "bubble"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "name", "type": "string", "default": "'Assistant'", "description": "Who is typing. Read aloud as \"<name> is typing\"." },
+    { "name": "dots", "type": "number", "default": "3", "description": "Number of dots." },
+    { "name": "duration", "type": "number", "default": "1", "description": "Seconds for one bounce." },
+    { "name": "delay", "type": "number", "default": "0.15", "description": "Seconds between one dot and the next." },
+    { "name": "paused", "type": "boolean", "default": "false", "description": "Pauses the dots without hiding the indicator." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "ai-task-list",
+  "title": "AI Task List",
+  "description": "The plan an agent is working through: rows with pending, running, done and failed states, sub-steps, and a done/total count worked out from the rows.",
+  "group": "ai",
+  "shelf": "agents-tools",
+  "layer": "component",
+  "tags": ["loop", "svg", "ai"],
+  "keywords": ["tasks", "plan", "checklist", "agent", "steps", "progress"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-task-list/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "tasks", "type": "AITask[]", "required": true, "description": "The plan in order. Each task has an id, label, status ('pending' | 'running' | 'done' | 'failed'), optional note and optional children." },
+    { "name": "label", "type": "string", "default": "'Plan'", "description": "Heading. The done/total count is worked out from the tasks." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

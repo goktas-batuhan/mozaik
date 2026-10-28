@@ -1,0 +1,22 @@
+{
+  "name": "bar-chart",
+  "title": "Bar Chart",
+  "description": "A vertical bar chart made of plain divs. The tallest bar is highlighted, values show on hover or all the time, and the full data is read aloud.",
+  "group": "data",
+  "shelf": "charts",
+  "layer": "component",
+  "tags": ["hover", "css", "dashboard"],
+  "keywords": ["bar", "chart", "histogram", "columns", "graph", "dashboard"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "data", "type": "BarChartDatum[]", "required": true, "description": "One bar per item, left to right, each with a label and a value." },
+    { "name": "height", "type": "number", "default": "160", "description": "Height of the plot in pixels." },
+    { "name": "showValues", "type": "boolean", "default": "false", "description": "Show each value above its bar. Otherwise the value shows for the bar you hover." },
+    { "name": "format", "type": "(value: number) => string", "description": "Formats a value for display. Defaults to en-US grouping." },
+    { "name": "label", "type": "string", "default": "'Bar chart'", "description": "Accessible name. A summary of the data is added after it." },
+    { "name": "duration", "type": "number", "default": "0.5", "description": "Seconds for the bars to grow in." },
+    { "name": "delay", "type": "number", "default": "0.04", "description": "Seconds between one bar and the next." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

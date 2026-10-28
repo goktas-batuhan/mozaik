@@ -1,0 +1,18 @@
+{
+  "name": "ai-orb",
+  "title": "AI Orb",
+  "description": "A soft glowing orb for a voice assistant with four states: idle, listening, thinking and speaking. Still and calm under reduced motion.",
+  "group": "ai",
+  "shelf": "orbs-voice",
+  "layer": "component",
+  "tags": ["loop", "css", "ai"],
+  "keywords": ["orb", "voice", "assistant", "listening", "thinking", "speaking"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "state", "type": "'idle' | 'listening' | 'thinking' | 'speaking'", "default": "'idle'", "description": "What the assistant is doing. Changes the motion and the spoken label." },
+    { "name": "size", "type": "number", "default": "96", "description": "Diameter in pixels." },
+    { "name": "duration", "type": "number", "default": "2.4", "description": "Seconds for one breath or spin." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

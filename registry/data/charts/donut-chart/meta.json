@@ -1,0 +1,22 @@
+{
+  "name": "donut-chart",
+  "title": "Donut Chart",
+  "description": "A donut chart in plain SVG that draws in slice by slice. The legend gives every share as text, and the total sits in the hole.",
+  "group": "data",
+  "shelf": "charts",
+  "layer": "component",
+  "tags": ["svg", "dashboard"],
+  "keywords": ["donut", "pie", "chart", "share", "ring", "breakdown"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "data", "type": "DonutSlice[]", "required": true, "description": "The slices in order, each with a label and a value. Values are shares of the total." },
+    { "name": "size", "type": "number", "default": "160", "description": "Diameter in pixels." },
+    { "name": "thickness", "type": "number", "default": "18", "description": "Ring thickness in pixels." },
+    { "name": "center", "type": "ReactNode", "description": "Content in the hole. Defaults to the total." },
+    { "name": "legend", "type": "boolean", "default": "true", "description": "Show the legend with a percentage for each slice." },
+    { "name": "label", "type": "string", "default": "'Share'", "description": "Accessible name. A summary of the shares is added after it." },
+    { "name": "duration", "type": "number", "default": "0.8", "description": "Seconds for the ring to draw in." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

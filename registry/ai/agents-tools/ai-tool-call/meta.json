@@ -1,0 +1,21 @@
+{
+  "name": "ai-tool-call",
+  "title": "AI Tool Call",
+  "description": "One agent tool call as a single line with a status ring that turns from queued to running to done or failed. Opens to show arguments and result.",
+  "group": "ai",
+  "shelf": "agents-tools",
+  "layer": "component",
+  "tags": ["click", "svg", "ai"],
+  "keywords": ["tool", "call", "agent", "status", "function", "collapsible"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-tool-call/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "name", "type": "string", "required": true, "description": "Tool name, such as search_web." },
+    { "name": "status", "type": "'pending' | 'running' | 'success' | 'error'", "default": "'pending'", "description": "Where the call is in its life." },
+    { "name": "args", "type": "ReactNode", "description": "What the tool was called with. Shown when the row is open." },
+    { "name": "result", "type": "ReactNode", "description": "What the tool returned. Shown when the row is open." },
+    { "name": "summary", "type": "string", "description": "Short note on the right, such as \"3 files\" or \"1.2s\"." },
+    { "name": "defaultOpen", "type": "boolean", "default": "false", "description": "Start open." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

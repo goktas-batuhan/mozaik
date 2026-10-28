@@ -1,0 +1,19 @@
+{
+  "name": "ai-sources",
+  "title": "AI Sources",
+  "description": "A \"Used N sources\" toggle that opens into a numbered list of links, for showing where an answer came from.",
+  "group": "ai",
+  "shelf": "chat",
+  "layer": "component",
+  "tags": ["click", "css", "ai"],
+  "keywords": ["sources", "citations", "references", "links", "answer", "chat"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "sources", "type": "AISource[]", "required": true, "description": "The pages the answer was built from, each with an id, title, url and optional site." },
+    { "name": "open", "type": "boolean", "description": "Open state when you control it." },
+    { "name": "defaultOpen", "type": "boolean", "default": "false", "description": "Initial open state when you do not control it." },
+    { "name": "onOpenChange", "type": "(open: boolean) => void", "description": "Called when the reader opens or closes the list." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

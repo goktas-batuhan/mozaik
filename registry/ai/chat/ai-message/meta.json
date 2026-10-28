@@ -1,0 +1,23 @@
+{
+  "name": "ai-message",
+  "title": "AI Message",
+  "description": "A chat message bubble for a user or an assistant, with copy, retry and thumbs buttons that appear on hover and on keyboard focus.",
+  "group": "ai",
+  "shelf": "chat",
+  "layer": "component",
+  "tags": ["hover", "css", "ai"],
+  "keywords": ["chat", "message", "bubble", "assistant", "copy", "feedback"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/components/ai-message/index.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "from", "type": "'user' | 'assistant'", "default": "'assistant'", "description": "Who wrote the message. Decides the side, the colors and whether feedback buttons show." },
+    { "name": "avatar", "type": "ReactNode", "description": "Shown beside the bubble, such as an avatar or an orb." },
+    { "name": "bubble", "type": "boolean", "default": "true", "description": "Draw the tinted bubble. Turn it off when the content brings its own surfaces." },
+    { "name": "timestamp", "type": "string", "description": "Preformatted time, such as \"14:32\"." },
+    { "name": "copyText", "type": "string", "description": "Plain text for the copy button. Leave it out to hide the button." },
+    { "name": "onRetry", "type": "() => void", "description": "Shows a retry button when set." },
+    { "name": "onVote", "type": "(vote: 'up' | 'down') => void", "description": "Shows thumbs up and down on assistant messages when set." },
+    { "name": "children", "type": "ReactNode", "description": "The message content." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

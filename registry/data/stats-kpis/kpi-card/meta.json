@@ -1,0 +1,25 @@
+{
+  "name": "kpi-card",
+  "title": "KPI Card",
+  "description": "A metric card with a label, a big number, the change since last period and an optional sparkline. Good and bad changes are colored and also spoken.",
+  "group": "data",
+  "shelf": "stats-kpis",
+  "layer": "component",
+  "tags": ["svg", "dashboard"],
+  "keywords": ["kpi", "metric", "stat", "number", "delta", "dashboard", "card"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["sparkline"],
+  "props": [
+    { "name": "label", "type": "string", "required": true, "description": "Name of the metric." },
+    { "name": "value", "type": "number | string", "required": true, "description": "The headline number or text. Numbers are formatted with en-US grouping." },
+    { "name": "prefix", "type": "string", "description": "Text before the value, such as \"$\"." },
+    { "name": "suffix", "type": "string", "description": "Text after the value, such as \"%\" or \" ms\"." },
+    { "name": "delta", "type": "number", "description": "Change since the last period, in percent. Positive is up." },
+    { "name": "lowerIsBetter", "type": "boolean", "default": "false", "description": "Count a falling number as good news, for metrics like errors or cost." },
+    { "name": "deltaLabel", "type": "string", "description": "Words after the delta, such as \"vs last week\"." },
+    { "name": "trend", "type": "number[]", "description": "Recent values for a sparkline in the corner, oldest first." },
+    { "name": "icon", "type": "ReactNode", "description": "Icon at the top right. Decorative." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
