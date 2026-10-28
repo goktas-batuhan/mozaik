@@ -1,0 +1,65 @@
+{
+  "name": "faq-accordion",
+  "title": "FAQ Accordion",
+  "description": "Centered FAQ with a headline, short intro and one stack of collapsible answers.",
+  "group": "marketing",
+  "shelf": "faq",
+  "layer": "block",
+  "tags": [
+    "click",
+    "marketing"
+  ],
+  "keywords": [
+    "faq",
+    "accordion",
+    "questions"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "smooth-accordion"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; question: ReactNode; answer: ReactNode }[]",
+      "required": true,
+      "description": "Questions and answers, top to bottom."
+    },
+    {
+      "name": "defaultOpen",
+      "type": "string[]",
+      "default": "[]",
+      "description": "Ids that are open first."
+    },
+    {
+      "name": "type",
+      "type": "'single' | 'multiple'",
+      "default": "'single'",
+      "description": "single keeps one answer open, multiple lets several stay open."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "name": "faq-grid",
+  "title": "FAQ Grid",
+  "description": "Every question and answer on the page at once in a numbered grid, revealed in a soft stagger. No clicks needed.",
+  "group": "marketing",
+  "shelf": "faq",
+  "layer": "block",
+  "tags": [
+    "in-view",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "faq",
+    "grid",
+    "definition list"
+  ],
+  "source": {
+    "repo": "educlopez/smoothui",
+    "license": "MIT",
+    "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/faqs/faq-1/index.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; question: ReactNode; answer: ReactNode }[]",
+      "required": true,
+      "description": "Questions and answers. Every answer stays visible."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.5",
+      "description": "Seconds each answer takes to fade in."
+    },
+    {
+      "name": "stagger",
+      "type": "number",
+      "default": "0.06",
+      "description": "Seconds between answers."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turns the entrance animation off."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

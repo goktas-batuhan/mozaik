@@ -1,0 +1,49 @@
+{
+  "name": "testimonial-wall",
+  "title": "Testimonial Wall",
+  "description": "Masonry wall of testimonial cards in one to three columns with optional star ratings and initials avatars.",
+  "group": "marketing",
+  "shelf": "testimonials",
+  "layer": "block",
+  "tags": [
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "testimonials",
+    "masonry",
+    "reviews",
+    "quotes"
+  ],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; quote: string; name: string; role?: string; company?: string; rating?: number }[]",
+      "required": true,
+      "description": "Testimonials. Cards flow into columns and keep their natural height."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

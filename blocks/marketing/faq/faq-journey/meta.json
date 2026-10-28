@@ -1,0 +1,67 @@
+{
+  "name": "faq-journey",
+  "title": "FAQ Journey",
+  "description": "FAQ as a numbered path: a vertical line with one step per question and one answer open at a time.",
+  "group": "marketing",
+  "shelf": "faq",
+  "layer": "block",
+  "tags": [
+    "click",
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "faq",
+    "timeline",
+    "steps",
+    "numbered"
+  ],
+  "source": {
+    "repo": "ui-layouts/uilayouts",
+    "license": "MIT",
+    "url": "https://github.com/ui-layouts/uilayouts/blob/main/packages/blocks/src/faq-section/faq-journey.tsx"
+  },
+  "dependencies": [
+    "motion"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; question: ReactNode; answer: ReactNode }[]",
+      "required": true,
+      "description": "Questions in reading order. Each gets a numbered step on the line."
+    },
+    {
+      "name": "defaultOpen",
+      "type": "string",
+      "description": "Id of the step that is open first."
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "default": "0.3",
+      "description": "Seconds the open and close take."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

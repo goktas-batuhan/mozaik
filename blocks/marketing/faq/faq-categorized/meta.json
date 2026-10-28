@@ -1,0 +1,63 @@
+{
+  "name": "faq-categorized",
+  "title": "FAQ Categorized",
+  "description": "FAQ split into categories: a tab list picks the topic, an accordion holds its answers.",
+  "group": "marketing",
+  "shelf": "faq",
+  "layer": "block",
+  "tags": [
+    "click",
+    "marketing"
+  ],
+  "keywords": [
+    "faq",
+    "categories",
+    "tabs"
+  ],
+  "source": "original",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "smooth-accordion"
+  ],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "categories",
+      "type": "{ id: string; label: string; items: { id: string; question: ReactNode; answer: ReactNode }[] }[]",
+      "required": true,
+      "description": "Categories, one tab each."
+    },
+    {
+      "name": "defaultCategory",
+      "type": "string",
+      "description": "Id of the category shown first. Defaults to the first one."
+    },
+    {
+      "name": "onCategoryChange",
+      "type": "(id: string) => void",
+      "description": "Called with the category id whenever the tab changes."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}

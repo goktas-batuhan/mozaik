@@ -1,0 +1,49 @@
+{
+  "name": "testimonial-metrics",
+  "title": "Testimonial Metrics",
+  "description": "Cards that lead with one big result and back it up with a short quote and author.",
+  "group": "marketing",
+  "shelf": "testimonials",
+  "layer": "block",
+  "tags": [
+    "css",
+    "marketing"
+  ],
+  "keywords": [
+    "testimonials",
+    "metrics",
+    "results",
+    "case study"
+  ],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "description": "The section headline. Labels the section for assistive tech."
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "description": "Supporting copy under the headline."
+    },
+    {
+      "name": "items",
+      "type": "{ id: string; metric: string; metricLabel: string; quote: string; name: string; role?: string; company?: string }[]",
+      "required": true,
+      "description": "Testimonials, each led by one big number."
+    },
+    {
+      "name": "as",
+      "type": "ElementType",
+      "default": "'section'",
+      "description": "Element for the root."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "description": "Extra classes for the root element."
+    }
+  ]
+}
