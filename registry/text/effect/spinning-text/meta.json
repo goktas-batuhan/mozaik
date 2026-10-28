@@ -1,0 +1,20 @@
+{
+  "name": "spinning-text",
+  "title": "Spinning Text",
+  "description": "Letters set around a circle that turns forever, in either direction. Holds still under reduced motion.",
+  "group": "text",
+  "shelf": "effect",
+  "layer": "component",
+  "tags": ["loop", "css"],
+  "keywords": ["circle", "ring", "badge", "rotate", "circular"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/spinning-text.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "text", "type": "string", "required": true, "description": "The text that circles. Screen readers read it as one string." },
+    { "name": "duration", "type": "number", "default": "10", "description": "Seconds for one full turn." },
+    { "name": "reverse", "type": "boolean", "default": "false", "description": "Spin the other way." },
+    { "name": "radius", "type": "number", "default": "5", "description": "Radius of the circle in ch units, so it scales with the font." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the animation off and holds the ring still." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

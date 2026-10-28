@@ -1,0 +1,20 @@
+{
+  "name": "line-shadow-text",
+  "title": "Line Shadow Text",
+  "description": "Text with a hatched, diagonal-lined shadow that slowly slides behind it. The hatching holds still under reduced motion.",
+  "group": "text",
+  "shelf": "effect",
+  "layer": "component",
+  "tags": ["loop", "css", "marketing"],
+  "keywords": ["shadow", "hatch", "lines", "stripes", "headline"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/line-shadow-text.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "text", "type": "string", "required": true, "description": "The text. The shadow is a decorative copy, so screen readers read it once." },
+    { "name": "as", "type": "ElementType", "default": "'span'", "description": "Element to render." },
+    { "name": "shadowColor", "type": "string", "default": "'var(--primary)'", "description": "Color of the hatched shadow. Any CSS color." },
+    { "name": "duration", "type": "number", "default": "0.8", "description": "Seconds the hatching takes to slide by one stripe. 0 holds it still." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the animation off and holds the hatching still." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

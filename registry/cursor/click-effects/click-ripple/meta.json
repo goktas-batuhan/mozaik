@@ -1,0 +1,21 @@
+{
+  "name": "click-ripple",
+  "title": "Click Ripple",
+  "description": "Sends rings of the primary color out from every click inside an area, on a click-through layer. Off on touch screens and under reduced motion.",
+  "group": "cursor",
+  "shelf": "click-effects",
+  "layer": "component",
+  "tags": ["click", "css"],
+  "keywords": ["ripple", "click", "rings", "pulse", "feedback", "cursor"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content of the area. Clicks reach it as usual." },
+    { "name": "size", "type": "number", "default": "160", "description": "Diameter the rings grow to, in pixels." },
+    { "name": "duration", "type": "number", "default": "0.8", "description": "Seconds one ring takes to grow and fade." },
+    { "name": "rings", "type": "number", "default": "2", "description": "Rings sent out by each click." },
+    { "name": "stagger", "type": "number", "default": "0.12", "description": "Seconds between rings of the same click." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Turns the ripples off." },
+    { "name": "className", "type": "string", "description": "Extra classes for the area." }
+  ]
+}

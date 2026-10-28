@@ -1,0 +1,23 @@
+{
+  "name": "glyph-matrix",
+  "title": "Glyph Matrix",
+  "description": "A grid of monospace glyphs where a few cells at a time swap character and brightness. Fades towards the bottom and stills under reduced motion.",
+  "group": "backgrounds",
+  "shelf": "canvas",
+  "layer": "component",
+  "tags": ["loop", "canvas", "ai"],
+  "keywords": ["glyphs", "matrix", "terminal", "code", "characters"],
+  "source": { "repo": "magicuidesign/magicui", "license": "MIT", "url": "https://github.com/magicuidesign/magicui/blob/main/apps/www/registry/magicui/glyph-matrix.tsx" },
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "children", "type": "ReactNode", "description": "Content rendered above the matrix." },
+    { "name": "glyphs", "type": "string", "default": "'01·•+*/\\\\<>='", "description": "Characters each cell can show." },
+    { "name": "cellSize", "type": "number", "default": "14", "description": "Size of a cell, and of its font, in pixels." },
+    { "name": "mutationRate", "type": "number", "default": "0.04", "description": "Share of the cells that change on each tick, from 0 to 1." },
+    { "name": "interval", "type": "number", "default": "90", "description": "Milliseconds between ticks." },
+    { "name": "fadeBottom", "type": "number", "default": "0.6", "description": "How much the matrix fades towards the bottom, from 0 to 1." },
+    { "name": "color", "type": "string", "description": "Any CSS color. Defaults to the muted foreground token." },
+    { "name": "seed", "type": "number", "default": "3", "description": "Seed for the starting matrix." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
