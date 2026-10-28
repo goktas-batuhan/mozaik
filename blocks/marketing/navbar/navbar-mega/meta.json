@@ -1,0 +1,23 @@
+{
+  "name": "navbar-mega",
+  "title": "Navbar Mega Menu",
+  "description": "Top bar with full-width mega-menu panels and its own focus management: arrow keys, Escape and click-away all behave.",
+  "group": "marketing",
+  "shelf": "navbar",
+  "layer": "block",
+  "tags": ["hover", "click", "marketing"],
+  "keywords": ["navbar", "mega menu", "dropdown", "keyboard", "focus"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": [],
+  "props": [
+    { "name": "brand", "type": "ReactNode", "required": true, "description": "Logo or wordmark." },
+    { "name": "items", "type": "{ label: string; href?: string; sections?: { title: string; links: { label: string; href: string; description?: string }[] }[]; featured?: ReactNode }[]", "required": true, "description": "Top-level entries. Entries with sections become menu buttons that open a panel." },
+    { "name": "action", "type": "{ label: string; href: string }", "description": "Call to action at the end." },
+    { "name": "label", "type": "string", "default": "'Main'", "description": "Accessible name of the nav landmark." },
+    { "name": "openOnHover", "type": "boolean", "default": "true", "description": "Open panels on mouse hover as well as on click." },
+    { "name": "duration", "type": "number", "default": "0.18", "description": "Seconds the panel takes to fade in." },
+    { "name": "as", "type": "ElementType", "default": "'header'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

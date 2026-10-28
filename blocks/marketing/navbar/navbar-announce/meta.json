@@ -1,0 +1,25 @@
+{
+  "name": "navbar-announce",
+  "title": "Navbar Announcement",
+  "description": "A dismissible announcement strip above a bar whose links share one soft highlight that glides between them.",
+  "group": "marketing",
+  "shelf": "navbar",
+  "layer": "block",
+  "tags": ["hover", "click", "marketing"],
+  "keywords": ["navbar", "announcement", "banner", "highlight", "header"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["fluid-hover-highlight"],
+  "props": [
+    { "name": "brand", "type": "ReactNode", "required": true, "description": "Logo or wordmark." },
+    { "name": "links", "type": "{ label: string; href: string; current?: boolean }[]", "required": true, "description": "Links with the gliding highlight." },
+    { "name": "announcement", "type": "ReactNode", "description": "Text of the strip above the bar. Leave out for no strip." },
+    { "name": "announcementAction", "type": "{ label: string; href: string }", "description": "Link inside the strip." },
+    { "name": "secondaryAction", "type": "{ label: string; href: string }", "description": "Quiet link next to the call to action." },
+    { "name": "primaryAction", "type": "{ label: string; href: string }", "description": "Filled call to action." },
+    { "name": "onDismiss", "type": "() => void", "description": "Called when the visitor dismisses the strip." },
+    { "name": "label", "type": "string", "default": "'Main'", "description": "Accessible name of the nav landmark." },
+    { "name": "as", "type": "ElementType", "default": "'header'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

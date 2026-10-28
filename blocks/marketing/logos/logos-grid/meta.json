@@ -1,0 +1,21 @@
+{
+  "name": "logos-grid",
+  "title": "Logos Grid",
+  "description": "Logos in a ruled grid where each gets its own bordered cell that brightens on hover; cells can be links.",
+  "group": "marketing",
+  "shelf": "logos",
+  "layer": "block",
+  "tags": ["hover", "css", "marketing"],
+  "keywords": ["logos", "logo cloud", "grid", "customers", "partners"],
+  "source": { "repo": "educlopez/smoothui", "license": "MIT", "url": "https://github.com/educlopez/smoothui/blob/main/packages/smoothui/blocks/logos/logo-cloud-1/index.tsx" },
+  "dependencies": [],
+  "registryDependencies": [],
+  "props": [
+    { "name": "title", "type": "ReactNode", "default": "\"You're in good company\"", "description": "Heading above the grid." },
+    { "name": "description", "type": "ReactNode", "description": "Copy under the heading." },
+    { "name": "logos", "type": "{ name: string; logo: ReactNode; href?: string }[]", "required": true, "description": "Logos, one per cell. The name is read by screen readers." },
+    { "name": "columns", "type": "3 | 4", "default": "4", "description": "Columns on wide containers; narrow ones use two." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

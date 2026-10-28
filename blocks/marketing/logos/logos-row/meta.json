@@ -1,0 +1,19 @@
+{
+  "name": "logos-row",
+  "title": "Logos Row",
+  "description": "A single quiet line: a label, a hairline rule and a row of logos that wraps on narrow containers.",
+  "group": "marketing",
+  "shelf": "logos",
+  "layer": "block",
+  "tags": ["hover", "css", "marketing"],
+  "keywords": ["logos", "logo cloud", "row", "trusted by", "inline"],
+  "source": "original",
+  "dependencies": [],
+  "registryDependencies": [],
+  "props": [
+    { "name": "label", "type": "ReactNode", "default": "'Trusted by'", "description": "Short label before the logos." },
+    { "name": "logos", "type": "{ name: string; logo: ReactNode }[]", "required": true, "description": "Logos in a row. The name is read by screen readers." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

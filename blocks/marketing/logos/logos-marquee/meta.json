@@ -1,0 +1,23 @@
+{
+  "name": "logos-marquee",
+  "title": "Logos Marquee",
+  "description": "A heading over an endless strip of logos that fades at both edges and pauses on hover. Still under reduced motion.",
+  "group": "marketing",
+  "shelf": "logos",
+  "layer": "block",
+  "tags": ["loop", "hover", "marketing"],
+  "keywords": ["logos", "logo cloud", "marquee", "trusted by", "customers"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["marquee"],
+  "props": [
+    { "name": "title", "type": "ReactNode", "default": "'Trusted by teams everywhere'", "description": "Small heading above the strip." },
+    { "name": "logos", "type": "{ name: string; logo: ReactNode }[]", "required": true, "description": "Logos to loop. The name is read by screen readers." },
+    { "name": "duration", "type": "number", "default": "40", "description": "Seconds for one full loop." },
+    { "name": "reverse", "type": "boolean", "default": "false", "description": "Runs the loop the other way." },
+    { "name": "pauseOnHover", "type": "boolean", "default": "true", "description": "Pauses while the pointer or focus is on the strip." },
+    { "name": "disabled", "type": "boolean", "default": "false", "description": "Stops the loop and shows the logos still." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

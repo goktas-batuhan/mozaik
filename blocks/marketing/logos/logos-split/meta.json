@@ -1,0 +1,21 @@
+{
+  "name": "logos-split",
+  "title": "Logos Split",
+  "description": "Headline, copy and a link on the left, logos as bordered tiles on the right; stacks on narrow containers.",
+  "group": "marketing",
+  "shelf": "logos",
+  "layer": "block",
+  "tags": ["hover", "css", "marketing"],
+  "keywords": ["logos", "logo cloud", "split", "tiles", "customers"],
+  "source": "original",
+  "dependencies": [],
+  "registryDependencies": [],
+  "props": [
+    { "name": "title", "type": "ReactNode", "required": true, "description": "Headline on the left." },
+    { "name": "description", "type": "ReactNode", "description": "Copy under the headline." },
+    { "name": "action", "type": "{ label: string; href: string }", "description": "Link under the copy." },
+    { "name": "logos", "type": "{ name: string; logo: ReactNode }[]", "required": true, "description": "Logos shown as tiles. The name is read by screen readers." },
+    { "name": "as", "type": "ElementType", "default": "'section'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "footer-centered",
+  "title": "Footer Centered",
+  "description": "Centred footer: brand, tagline, a link row with a gliding hover highlight, round social icons and copyright.",
+  "group": "marketing",
+  "shelf": "footer",
+  "layer": "block",
+  "tags": ["hover", "css", "marketing"],
+  "keywords": ["footer", "centered", "links", "social"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "registryDependencies": ["fluid-hover-highlight"],
+  "props": [
+    { "name": "brand", "type": "ReactNode", "required": true, "description": "Logo or wordmark on top." },
+    { "name": "tagline", "type": "ReactNode", "description": "One line under the brand." },
+    { "name": "links", "type": "{ label: string; href: string }[]", "default": "[]", "description": "Row of links with a gliding highlight." },
+    { "name": "social", "type": "{ label: string; href: string; icon: ReactNode }[]", "default": "[]", "description": "Round icon links. The label names each link." },
+    { "name": "copyright", "type": "ReactNode", "description": "Text at the bottom." },
+    { "name": "as", "type": "ElementType", "default": "'footer'", "description": "Element for the root." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
