@@ -1,0 +1,19 @@
+{
+  "name": "orbit-loader",
+  "title": "Orbit Loader",
+  "description": "Dots circling on nested rings at different speeds. Under reduced motion it holds one evenly spread frame.",
+  "group": "feedback",
+  "shelf": "loaders",
+  "layer": "component",
+  "tags": ["loop", "css"],
+  "keywords": ["loader", "spinner", "orbit", "dots", "loading"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "dots", "type": "number", "default": "3", "description": "Number of orbiting dots (1 to 5), each on its own ring." },
+    { "name": "size", "type": "number", "default": "48", "description": "Outer diameter in px." },
+    { "name": "duration", "type": "number", "default": "2.4", "description": "Seconds for the outermost dot to circle once; inner dots are faster." },
+    { "name": "label", "type": "string", "default": "'Loading'", "description": "Announced to screen readers." },
+    { "name": "className", "type": "string", "description": "Extra classes; the dots take the text color." }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "price-target-fan",
+  "title": "Price Target Fan",
+  "description": "Recent price history followed by a cone from the low to the high target, with the average as a dashed line and the move against today's price.",
+  "group": "onchain",
+  "shelf": "prices-charts",
+  "layer": "component",
+  "tags": ["svg", "web3", "dashboard"],
+  "keywords": ["price target", "forecast", "fan chart", "analyst", "range", "projection"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "history", "type": "readonly number[]", "required": true, "description": "Recent closes, oldest first; the last one is the current price." },
+    { "name": "targets", "type": "{ low: number; avg: number; high: number }", "required": true, "description": "The target range the fan opens to." },
+    { "name": "horizon", "type": "string", "default": "'12 months'", "description": "Where the targets point to." },
+    { "name": "formatPrice", "type": "(value: number) => string", "description": "Formats prices in labels and the text summary (USD by default)." },
+    { "name": "label", "type": "string", "default": "'Price targets'", "description": "Accessible name; the text summary starts with it." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

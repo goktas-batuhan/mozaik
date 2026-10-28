@@ -1,0 +1,19 @@
+{
+  "name": "step-progress",
+  "title": "Step Progress",
+  "description": "One progress bar cut into a segment per step with labels underneath. Finished steps are full, the current one fills as far as you say.",
+  "group": "feedback",
+  "shelf": "progress",
+  "layer": "component",
+  "tags": ["css", "dashboard"],
+  "keywords": ["stepper", "progress", "wizard", "checkout", "onboarding", "steps"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "steps", "type": "readonly string[]", "required": true, "description": "Step names, in order." },
+    { "name": "current", "type": "number", "required": true, "description": "Zero-based current step. Pass steps.length when everything is done." },
+    { "name": "partial", "type": "number", "default": "0", "description": "How far through the current step you are, 0 to 1." },
+    { "name": "label", "type": "string", "default": "'Progress'", "description": "Accessible name of the progress bar." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}

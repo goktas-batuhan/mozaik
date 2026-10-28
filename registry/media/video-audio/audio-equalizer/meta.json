@@ -1,0 +1,20 @@
+{
+  "name": "audio-equalizer",
+  "title": "Audio Equalizer",
+  "description": "Level bars that bounce while audio plays and settle into a calm wave when it stops or when motion is reduced.",
+  "group": "media",
+  "shelf": "video-audio",
+  "layer": "component",
+  "tags": ["loop", "css"],
+  "keywords": ["equalizer", "audio", "music", "bars", "now playing", "visualizer"],
+  "source": "original",
+  "dependencies": ["motion"],
+  "props": [
+    { "name": "bars", "type": "number", "default": "5", "description": "Number of bars." },
+    { "name": "playing", "type": "boolean", "default": "true", "description": "Bars bounce while true; under reduced motion they hold a resting shape." },
+    { "name": "size", "type": "number", "default": "32", "description": "Height of the tallest bar in px." },
+    { "name": "duration", "type": "number", "default": "1.1", "description": "Seconds for one bounce of the slowest bar." },
+    { "name": "label", "type": "string", "default": "'Audio level'", "description": "Accessible name." },
+    { "name": "className", "type": "string", "description": "Extra classes; the bars take the text color." }
+  ]
+}

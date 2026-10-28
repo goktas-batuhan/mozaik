@@ -1,0 +1,25 @@
+{
+  "name": "audio-player",
+  "title": "Audio Player",
+  "description": "A compact track card with cover, play and pause, a seek slider with times and a mute toggle. It runs its own clock, so it needs no audio file.",
+  "group": "media",
+  "shelf": "video-audio",
+  "layer": "component",
+  "tags": ["click", "drag", "css"],
+  "keywords": ["audio", "music", "player", "podcast", "track", "seek"],
+  "source": "original",
+  "dependencies": [],
+  "props": [
+    { "name": "title", "type": "string", "required": true, "description": "Track title." },
+    { "name": "artist", "type": "string", "description": "Artist or show line under the title." },
+    { "name": "duration", "type": "number", "required": true, "description": "Track length in seconds." },
+    { "name": "cover", "type": "ReactNode", "description": "Artwork at the left. Defaults to a music note." },
+    { "name": "playing", "type": "boolean", "description": "Controlled play state. Pair with onPlayingChange." },
+    { "name": "defaultPlaying", "type": "boolean", "default": "false", "description": "Play state when uncontrolled." },
+    { "name": "onPlayingChange", "type": "(playing: boolean) => void", "description": "Called by the button and when the track ends." },
+    { "name": "currentTime", "type": "number", "description": "Controlled position in seconds. Pair with onTimeChange." },
+    { "name": "defaultCurrentTime", "type": "number", "default": "0", "description": "Position when uncontrolled." },
+    { "name": "onTimeChange", "type": "(time: number) => void", "description": "Called on every tick and seek; mirror it onto a real audio element." },
+    { "name": "className", "type": "string", "description": "Extra classes for the root element." }
+  ]
+}
